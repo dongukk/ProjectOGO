@@ -10,25 +10,29 @@
 	}
 	#left{
 		height: 100%;
-		width: 75%;
+		width: 78%;
 		float: left;
 	}
 	#right{
 		height: 100%;
-		width: 25%;
+		width: 22%;
 		float: right;
 	}
+	
 	/* 오른쪽의 결제 box */
 	.box {
 		background-color: white;
-		width: 200px;
+		width: 180px;
 		height: 150px;
 		padding: 20px; 
 		border: 8px solid #6633FF;
 		border-radius: 20px 20px 20px 20px;
-		margin: 15px;
+		margin: 70px;
 		position : fixed;
+		text-align:center;
 	}
+	
+	
 	/* box.jsp의 price */
 	#price{
 		font-size: 32px;
@@ -53,12 +57,23 @@
 		left: 50%;
 		transform: translate(-50%, 60%);
 	}
+	/* 수강결제 글자 */
+	#payBtn{
+		position: absolute;
+		top: 20%;
+		left: 20%;
+	}
 	/* 찜 버튼 */
 	#like{
 		cursor : pointer;
 		position: absolute;
 		bottom: 8%;
 		left: 20%;
+	}
+	#heartCount{
+		position: absolute;
+		bottom: 20%;
+		left: 125%;
 	}
 	/* photo container */
 	.container{ 
