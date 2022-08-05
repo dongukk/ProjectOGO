@@ -50,9 +50,12 @@ for(int i=0; i< list.size(); i++){
 	}//for
 %>
 
-</td>  
-<td><%  if(Mdto.getUserid().equals("admin") && Mdto.getUserpasswd().equals("admin")){ %>
+
+<%  if(Mdto != null) {
+
+if(Mdto.getUserid().equals("admin") && Mdto.getUserpasswd().equals("admin")){ %>
 	<input type="button" value="새 글작성" onclick="window.location.href='notice/NewNotice.jsp'">
-<% }//if admin %>	</td> 
+<% }
+}//if admin %>  </td> 
 </tr>
 </table>

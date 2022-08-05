@@ -49,7 +49,7 @@ public class Delete_NoticeServlet extends HttpServlet {
 			int num = service.delete(nnum);
 			System.out.println("삭제 갯수"+ num);
 			session.setAttribute("mesg", "영구적으로 삭제되었습니다.");
-			nextpage = "MAIN";
+			nextpage = "NoticeListServlet";
 			
 		}//delete끝
 		response.sendRedirect(nextpage);
