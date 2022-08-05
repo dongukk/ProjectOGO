@@ -43,7 +43,7 @@
 		transform: translate(-50%, -30%);
 	}
 	/* 수강결제 버튼 */
-	#btn{ 
+	#payBtn{ 
 		background-color: #6633FF; 
 		color: white; 
 		font-size: 24px; 
@@ -58,7 +58,7 @@
 		transform: translate(-50%, 60%);
 	}
 	/* 수강결제 글자 */
-	#payBtn{
+	#payBtnSpan{
 		position: absolute;
 		top: 20%;
 		left: 20%;
@@ -80,13 +80,13 @@
 		display: flex;
 	}
 	/* photo 버튼 */
-	.btn{
+	.photoBtn{
 		height: 200px;
 		cursor : pointer;
 		widows: 50px;
 	}
 	/* photo 왼쪽 오른쪽 버튼 이미지 */
-	.btn2{
+	.photoBtn2{
 		transform: translate(0, 150%);
 	}
 	.photo{

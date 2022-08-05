@@ -18,7 +18,7 @@
 	<div class="box">
 	 
 	  <div id="price"><%=priceF %>원</div>
-	  <div id="btn"><span id="payBtn">수강결제</span></div>
+	  <div id="payBtn"><span id="payBtnSpan">수강결제</span></div>
 	  <div id="like">
 	  	<img id="heart" <%if(heartYN==1){ %>src="class_img/heart2.png"<%}else{ %>src="class_img/heart1.png" <%} %> 
 	  	height="35px" width="35px">
