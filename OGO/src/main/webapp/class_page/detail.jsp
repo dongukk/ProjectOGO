@@ -7,7 +7,9 @@
 	String place =dto.getPlace();
 %>
 <div id="detail">
-<h2>일정 및 장소 안내</h2>
+  <div class="name">
+    <h2>일정 및 장소 안내</h2>
+  </div>
 	<hr>
 		<div id="classDetail">
 			-일정 : <%=schedule %><br>

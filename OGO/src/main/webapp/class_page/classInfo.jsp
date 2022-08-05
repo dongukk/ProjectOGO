@@ -8,9 +8,11 @@
 	con_class=con_class.replaceAll("(\r\n|\r|\n|\n\r)", "<br>");//개행 작업
 %>
 <div id="classInfo">
-<h2>클래스 행성 소개</h2>
-<hr>
-<div id="classInfo">
+  <div class="name">
+    <h2>클래스 행성 소개</h2>
+  </div>
+  <hr>
+  <div id="classInfo">
 	<%= con_class %><br> 
-</div>
+  </div>
 </div>

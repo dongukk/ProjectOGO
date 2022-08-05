@@ -9,8 +9,12 @@
 	con_notice=con_notice.replaceAll("(\r\n|\r|\n|\n\r)", "<br>");//개행 작업
 %>
 <div id="notice">
-<h2>공지사항</h2>
-<hr>
-<%=con_notice %>
-<br>
+  <div class="name">
+    <h2>공지사항</h2>
+  </div>
+  <hr>
+  <div>
+    <%=con_notice %>
+    <br>
+  </div>
 </div>

@@ -10,8 +10,12 @@
 	attention=attention.replaceAll("(\r\n|\r|\n|\n\r)", "<br>");//개행 작업
 %>
 <div class="attention" id="attention">
-<h2>유의사항</h2>
-<hr>
-<%=attention %>
+  <div class="name">
+    <h2>유의사항</h2>
+  </div>
+  <hr>
+  <div>
+	<%=attention %>
+  </div>
 </div>
 
