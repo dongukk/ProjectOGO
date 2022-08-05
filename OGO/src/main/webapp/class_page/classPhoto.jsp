@@ -19,7 +19,7 @@
     	<div class="photoBtn"> <!-- 오른쪽으로 넘기는 버튼 -->
     	  <img class="photoBtn2" id="rightBtn" src="class_img/rightbutton.png" width= "50px">
     	</div>
-    </div> --> 
+    </div> 
  <!--    
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 	  <div class="carousel-inner">
