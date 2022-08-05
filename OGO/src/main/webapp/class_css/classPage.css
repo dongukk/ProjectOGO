@@ -22,8 +22,8 @@
 	/* 오른쪽의 결제 box */
 	.box {
 		background-color: white;
-		width: 150px;
-		height: 150px;
+		width: 180px;
+		height: 160px;
 		padding: 20px; 
 		border: 8px solid #6633FF;
 		border-radius: 20px 20px 20px 20px;
@@ -34,7 +34,8 @@
 	
 	/* box.jsp의 price */
 	#price{
-		font-size: 28px;
+		font-size: 24px;
+		font-weight: bold;
 		text-align: right;
 		position: absolute;
 		top: 20%;
@@ -45,7 +46,7 @@
 	#payBtn{ 
 		background-color: #6633FF; 
 		color: white; 
-		font-size: 20px; 
+		font-size: 18px; 
 		font-weight: bold;
 		width: 70%;
 		height: 25%;
@@ -59,8 +60,8 @@
 	/* 수강결제 글자 */
 	#payBtn2{
 		position: absolute;
-		top: 20%;
-		left: 20%;
+		top: 17%;
+		left: 18%;
 	}
 	/* 찜 버튼 */
 	#like{
@@ -71,9 +72,10 @@
 	}
 	#heartCount{
 		position: absolute;
-		bottom: 20%;
+		bottom: 18%;
 		left: 125%;
 	}
+	
 	/* photo container */
 	.container{ 
 		display: flex;
@@ -97,4 +99,4 @@
 		height: 200px;
 	}
 	
-	
+	 

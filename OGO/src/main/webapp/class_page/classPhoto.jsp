@@ -5,6 +5,7 @@
     <h2>클래스 Photo</h2>
   </div>
   <hr>
+<div class="classPhoto2">
     <div class="container">
     	<div class="photoBtn"> <!-- 왼쪽으로 넘기는 버튼 -->
     	  <img class="photoBtn2" id="leftBtn" src="class_img/leftbutton.png" width= "50px">
@@ -18,7 +19,7 @@
     	<div class="photoBtn"> <!-- 오른쪽으로 넘기는 버튼 -->
     	  <img class="photoBtn2" id="rightBtn" src="class_img/rightbutton.png" width= "50px">
     	</div>
-    </div>
-</div>
-
+    </div> 
+</div> 
 <br>
+</div>

@@ -22,7 +22,7 @@
 	  <div id="like">
 	  	<img id="heart" <%if(heartYN==1){ %>src="class_img/heart2.png"<%}else{ %>src="class_img/heart1.png" <%} %> 
 	  	height="35px" width="35px">
-	  	<span id="heartCount" style="font-size: 20px;"><%=heartCount %></span> <!-- 찜 개수 -->
+	  	<span id="heartCount" style="font-size: 17px;"><%=heartCount %></span> <!-- 찜 개수 -->
 	  </div>
 	 
 	</div>
