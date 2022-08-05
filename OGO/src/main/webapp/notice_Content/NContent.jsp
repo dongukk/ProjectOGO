@@ -18,9 +18,28 @@
 <% NoticeDTO dto = (NoticeDTO) request.getAttribute("dto");
 	MemberDTO Mdto = (MemberDTO) session.getAttribute("login");
 
-	if( Mdto.getUserid().equals("admin") && Mdto.getUserpasswd().equals("admin") ){
+	
+	if ( Mdto != null || Mdto == null) {
 	%>
+	
+	
 	<div>
+	<a href="NoticeListServlet">목록으로</a>
+</div>
+
+<table border='1'>
+	<tr>
+	 <td>${dto.ntitle}</td><td>${dto.nickname}</td><td>${dto.ndate}</td>
+	</tr>
+	
+	<tr>
+	<td colspan="3">${dto.ncontent}<br><br><br><br></td>
+	</tr>
+</table>
+	
+<% } else if (  Mdto.getUserid().equals("admin") && Mdto.getUserpasswd().equals("admin")  ) { %>
+
+<div>
 	<a href="NoticeListServlet">목록으로</a>
 	</div>
 	
@@ -38,19 +57,5 @@
 </table>
 <input type="button" value="수정" id="update"> <input type="button" value="삭제" onclick="window.location.href='Delete_NoticeServlet?nnum=<%= dto.getNnum() %>'">
 </form>
-<% } else { %>
-<div>
-	<a href="NoticeListServlet">목록으로</a>
-</div>
-
-<table border='1'>
-	<tr>
-	 <td>${dto.ntitle}</td><td>${dto.nickname}</td><td>${dto.ndate}</td>
-	</tr>
-	
-	<tr>
-	<td colspan="3">${dto.ncontent}<br><br><br><br></td>
-	</tr>
-</table>
 
 <% }//else %>

@@ -48,7 +48,7 @@ public class Create_NoticeServlet extends HttpServlet {
 		int Cnum = service.new_notice(Ndto);
 		if (Cnum == 1) {
 			session.setAttribute("mesg", "성공적으로 글을 작성했습니다.");
-			response.sendRedirect("MAIN");
+			response.sendRedirect("NoticeListServlet");
 		}
 		
 		

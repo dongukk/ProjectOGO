@@ -45,7 +45,6 @@ public class Update_NoticeServlet extends HttpServlet {
 		String nnum =  request.getParameter("nnum");
 		String ntitle =  request.getParameter("ntitle");
 		String ncontent =  request.getParameter("ncontent");
-		System.out.println(nnum + ntitle + ncontent);
 		
 		NoticeDTO ndto = new NoticeDTO(Integer.parseInt(nnum), mdto.getUserid(), ntitle, ncontent, "today");
 		
@@ -57,7 +56,7 @@ public class Update_NoticeServlet extends HttpServlet {
 				} else {
 					session.setAttribute("mesg", "수정중 오류가 발생 했습니다.");
 				}//수정 갯수 if 
-		 nextpage = "MAIN";
+		 nextpage = "NoticeListServlet";
 			
 		};
 			
