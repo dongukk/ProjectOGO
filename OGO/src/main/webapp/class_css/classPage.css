@@ -75,7 +75,11 @@
 		bottom: 18%;
 		left: 125%;
 	}
-	
+	.classPhoto2{
+		min-height: 400px;
+		min-width: 600px;
+	}
+ 	
 	/* photo container */
 	.container{ 
 		display: flex;
@@ -98,5 +102,5 @@
 		width: 300px; 
 		height: 200px;
 	}
-	
+	 
 	 
