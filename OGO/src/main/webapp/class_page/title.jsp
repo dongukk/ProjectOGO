@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.dto.classpage.ClassDTO"%>
 <%
-	ClassDTO dto = (ClassDTO)request.getAttribute("dto");
-	String className= dto.getClassName();
+	ClassDTO cDTO = (ClassDTO)request.getAttribute("cDTO");
+	String className= cDTO.getClassName();
 %>   
  
 <div class="imgAll">

@@ -1,3 +1,4 @@
+<%@page import="com.dto.login.MemberDTO"%>
 <%@page import="com.dto.classpage.ClassDTO"%>
 <%@page import="org.apache.ibatis.javassist.bytecode.stackmap.TypeData.ClassName"%>
 <%@page import="java.util.List"%>
@@ -17,10 +18,11 @@
 <%
 	String heartYN = (String)request.getAttribute("heartYN");
 	String heartCount = String.valueOf(request.getAttribute("heartCount"));
-	ClassDTO dto =(ClassDTO)request.getAttribute("dto");
-	int classNum=dto.getClassNum();
+	ClassDTO cDTO =(ClassDTO)request.getAttribute("cDTO");
+	int classNum=cDTO.getClassNum();
 	///
-	String userId = (String)request.getAttribute("userId2");; //나중에 session에서 받아오기
+	MemberDTO mDTO= (MemberDTO)session.getAttribute("login"); 
+	String userId = mDTO.getUserId();
 %>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">

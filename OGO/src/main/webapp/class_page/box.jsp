@@ -7,8 +7,8 @@
 	//System.out.print(heartYN);
 	String heartCount = String.valueOf(request.getAttribute("heartCount"));
 	
-	ClassDTO dto = (ClassDTO)request.getAttribute("dto");
-	int price= dto.getPrice();
+	ClassDTO cDTO = (ClassDTO)request.getAttribute("cDTO");
+	int price= cDTO.getPrice();
 	NumberFormat numberFormat = NumberFormat.getInstance();
 	String priceF=numberFormat.format(price);
 
