@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectNickName" parameterType="string" resultType="string">
 		select nickname
 		from class join member using(userid)
-		where userid = #{userId}
+		where userid = #{tuterId}
 	</select>
     
 

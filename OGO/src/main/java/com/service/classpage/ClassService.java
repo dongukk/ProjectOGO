@@ -28,11 +28,11 @@ public class ClassService {
 		return dto;
 	}
 
-	public String selectNickName(String userId) {
+	public String selectNickName(String tuterId) {
 		SqlSession session= MySqlSessionFactory.getSession();
 		String name="";
 		try {
-			name= dao.selectNickName(session, userId);
+			name= dao.selectNickName(session, tuterId);
 		} finally {
 			session.close();
 		}

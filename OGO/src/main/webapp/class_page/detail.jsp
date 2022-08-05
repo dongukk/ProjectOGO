@@ -2,9 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	ClassDTO dto = (ClassDTO)request.getAttribute("dto");
-	String schedule =dto.getSchedule();
-	String place =dto.getPlace();
+	ClassDTO cDTO = (ClassDTO)request.getAttribute("cDTO");
+	String schedule =cDTO.getSchedule();
+	String place =cDTO.getPlace();
 %>
 <div id="detail">
   <div class="name">
