@@ -16,10 +16,11 @@
 <link rel="stylesheet" href="class_css/classPage.css">
 <%
 	String heartYN = (String)request.getAttribute("heartYN");
+	String heartCount = String.valueOf(request.getAttribute("heartCount"));
 	ClassDTO dto =(ClassDTO)request.getAttribute("dto");
 	int classNum=dto.getClassNum();
-	
-	String userId= "1"; //나중에 session에서 받아오기
+	///
+	String userId = (String)request.getAttribute("userId2");; //나중에 session에서 받아오기
 %>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -27,39 +28,54 @@
 		
 		//찜 버튼 클릭
 		$("#like").on("click", function() {
+
 			var heart =$("#heart");
-			//ajax 아직 구현중
-			/* $.ajax({
+			//ajax 
+			$.ajax({
 				type: "get",
-				url: "HeartInsertServlet", //서버에 전달 및 응답
-				data: {//사용자가 서버에 전달할 데이터
-					classNum: classNum, //data전송
-					userId: userId,
-					heartYN: heartYN
+				url: "HeartServlet",
+				dataType: "text",
+				async: false,
+				data: { //서버에 넘겨줄 데이터
+					userId : <%=userId%>,
+					classNum : <%=classNum%>,
+					heartYN : <%=heartYN%>
 				},
-				dataType: "text", //응답타입
-				success: function(data, status, xhr) {//응답성공의 경우
+				success: function(data, status, xhr) {
 					console.log("success");
-					if (heart.attr("src")=="class_img/heart1.png") {
+					console.log(data);
+					if (data=="insert") {
 						heart.attr("src","class_img/heart2.png");
-					}else {
+						alert("찜 목록에 추가되었습니다");
+					}else { //delete인 경우
 						heart.attr("src","class_img/heart1.png");
+						alert("찜 목록에서 삭제되었습니다");
 					}
-					
 				},
-				error: function(xhr, status, error) {//에러의 경우
-					console.log("error");
-					
+				error: function(xhr, status, e) {
+					console.log("heart error");
+					console.log(e, status);
 				}
-			});//ajax end  */
-			if (heart.attr("src")=="class_img/heart1.png") { //insert 되어야 함 //heartYN이 0이라는 뜻
-				
-				heart.attr("src","class_img/heart2.png");//success에 넣기 
-				
-			} else { //찜목록에 이미 있는 경우. delete 되어야 함
-				//ajax
-				heart.attr("src","class_img/heart1.png");//success에 넣기
-			}  
+			})//ajax end
+			
+			//찜 개수 구하기
+			$.ajax({
+				type: "get",
+				url: "HeartCountServlet",
+				dataType: "text",
+				data: { //서버에 넘겨줄 데이터
+					classNum : <%=classNum%>
+				},
+				success: function(data, status, xhr) {
+					console.log("count success");
+					$("#heartCount").text(data);
+				},
+				error: function(xhr, status, e) {
+					console.log("count error");
+					console.log(e, status);
+				}
+			})//ajax end
+			
 		});//like click
 		
 		//나중에 클래스별로 img 파일명 저장해서 받아오기
@@ -98,9 +114,31 @@
 		
 	});//ready
 </script>
-
 </head>
 <body>
+  <div class="header">
+    <div class="progress-container">
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+  <nav class="navBar">
+    <div class="navBar_logo" >
+      <a href="#"><img src="NAV/img/OGOLogo.jpg" alt=""></a>
+    </div>
+    <ul class="navBar_menu">
+      <li><a href="">BEST</a></li>
+      <li><a href="">MYSPACE</a></li>
+      <li><a href="">공지사항&FAQ</a></li>
+    </ul>
+    <ul class="login">
+      <!-- 로그인 마이페이지 더미-->
+      <li><a href="#"><img src="NAV/img/login.png" alt="" style="height: 30px; width: 30px;"></a></li>
+      <li><a href="#"><img src="NAV/img/mypage.png" alt="" style="height: 30px; width: 30px;"></a></li>
+    </ul>
+    
+    <a href="" class="navBar_btn"><img src="NAV/img/menu.png" alt=""></a>
+    
+  </nav>
   
 <div class="wrap">
   <div id="right">
