@@ -1,0 +1,50 @@
+create TABLE notice(
+nnum NUMBER CONSTRAINT notice_nnum_pk PRIMARY key,
+ntitle VARCHAR2(100) CONSTRAINT notice_ntitle_nn NOT NULL,
+ndate date CONSTRAINT notice_ndate_nn NOT NULL,
+userid VARCHAR2(100) CONSTRAINT notice_nuserid_nn NOT NULL,
+ncontent CLOB CONSTRAINT notice_ncontent_nn NOT NULL
+);
+
+create SEQUENCE nnum_seq
+INCREMENT  by 1
+START WITH 1
+MINVALUE 1
+MAXVALUE 9999
+NOCYCLE
+NOCACHE
+NOORDER;
+
+insert into notice(nnum,ntitle,ndate,userid,ncontent)
+VALUES(nnum_seq.nextval,'개인정보 수정 및 이용약관 안내', sysdate,'manager','개인정보 수집 동의 안내에 대해 공지해드릴 사항이 있어');
+
+insert into notice(nnum,ntitle,ndate,userid,ncontent)
+VALUES(nnum_seq.nextval,'통기타 행성 클래스 10%할인 이벤트 안내', sysdate,'manager','처음 생성된 음악 행성을 기념으로 통기타 클래스를 10% 할인하는 이벤트를 진행하려 합니다.');
+
+insert into notice(nnum,ntitle,ndate,userid,ncontent)
+VALUES(nnum_seq.nextval,'클래스 환불 약관 안내', sysdate, 'manager', '환불 약정 규정   일반적으로 소비자는 자신이 체결한 전자상거래 계약에 대해 그 계약의 내용을 불문하고 그 청약철회 및 계약해제의 기간(통상 7일) 내에는 청약철회 등을 자유롭게 할 수 있습니다(「전자상거래 등에서의 소비자보호에 관한 법률」 제17조제1항).
+※ 소비자에게 불리한 규정(주문 취소나 반품 금지 등)이 포함된 구매계약은 효력이 없습니다(「전자상거래 등에서의 소비자보호에 관한 법률」 제35조).');
+
+insert into notice(nnum,ntitle,ndate,userid,ncontent)
+VALUES(nnum_seq.nextval,'클래스 튜터 자격 인증 시 유의사항', sysdate,'manager','주의해야 할 것이 한두 개가 아닙니다');
+
+insert into notice(nnum,ntitle,ndate,userid,ncontent)
+VALUES(nnum_seq.nextval,'[이벤트]인스타 해쉬태그 이벤트 당첨자 안내', sysdate,'manager','당첨을 축하합니다! 상금은 다음기회에!');
+
+insert into notice(nnum,ntitle,ndate,userid,ncontent)
+VALUES(nnum_seq.nextval,'[이벤트]6월 행성 클래스 우수 리뷰어 당첨자 안내', sysdate,'manager','리뷰 쉐프 리뷰 맛잘알인 당신! 담에도 잘 부탁해!');
+
+insert into notice(nnum,ntitle,ndate,userid,ncontent)
+VALUES(nnum_seq.nextval,'77777777777777', sysdate,'manager','이것은 7');
+
+insert into notice(nnum,ntitle,ndate,userid,ncontent)
+VALUES(nnum_seq.nextval,'88888888888888', sysdate,'manager','이것은 8');
+
+insert into notice(nnum,ntitle,ndate,userid,ncontent)
+VALUES(nnum_seq.nextval,'999999999999999', sysdate,'manager','이것은 9');
+
+insert into notice(nnum,ntitle,ndate,userid,ncontent)
+VALUES(nnum_seq.nextval,'1010101010', sysdate,'manager','이것은 10');
+
+
+commit;

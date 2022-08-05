@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>O G O 로그인</title>
+	<link rel="stylesheet" href="../LoginCSS/login.css">
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<section class="login-form">
+		<img src="../LoginImg/login.jpg">
+		<h1><a href="../createMemberServlet" style="text-decoration: none;">OGO가 처음이신가요?</a><br></h1>	
+		<form action="../loginServlet">	<!-- 로그인하면 가는 페이지 삽입할것-->
+			<div class="int-area">	<!-- div(전체적인 틀을 잡아줌, 각각의 블럭을 알맞게 배치) -->
+				<input type="text" name="userId" id="userId"
+				autocomplete="off" required>	<!-- autocomplete(이전에 입력한 비슷한값들 드롭다운 옵션), required(폼 데이터(form data)가 서버로 제출되기 전 반드시 채워져 있어야 하는 입력 필드를 명시) -->
+				<label for="userId">USER NAME</label>	<!-- label(for속성이용 다른요소와 결합가능) -->			
+			</div>
+			<div class="int-area">
+				<input type="password" name="userPasswd" id="userPasswd"
+				autocomplete="off" required>
+				<label for="userPasswd">PASSWORD</label>				
+			</div>
+			<div class="caption" style="text-align: right;">			
+				<a href="">Forgot Id, password?</a>
+			</div>
+			<div class="btn-area">
+				<button type="submit">LOGIN</button><br><br>
+				<a class="btn btn1"href="https://www.naver.com/" target="_blank" onclick="window.close();">네이버 계정으로 로그인</a>
+                <a class="btn btn2"href="https://www.kakaocorp.com/" target="_blank" onclick="window.close();">카카오 계정으로 로그인</a>
+			</div>
+			
+		</form>
+		
+	</section>
+</body>
+</html>

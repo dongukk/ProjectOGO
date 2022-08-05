@@ -1,0 +1,86 @@
+	.wrap{
+		min-width: 768px;
+		margin-left: 150px;
+		margin-right: 150px;
+		margin-top: 100px;
+	}
+	
+	.tutor{
+		margin-top: 15px;
+	}
+	#left{
+		height: 100%;
+		width: 75%;
+		float: left;
+	}
+	#right{
+		height: 100%;
+		width: 25%;
+		float: right;
+	}
+	/* 오른쪽의 결제 box */
+	.box {
+		background-color: white;
+		width: 200px;
+		height: 150px;
+		padding: 20px; 
+		border: 8px solid #6633FF;
+		border-radius: 20px 20px 20px 20px;
+		margin: 15px;
+		position : fixed;
+	}
+	/* box.jsp의 price */
+	#price{
+		font-size: 32px;
+		text-align: right;
+		position: absolute;
+		top: 20%;
+		right: -15%;
+		transform: translate(-50%, -30%);
+	}
+	/* 수강결제 버튼 */
+	#btn{ 
+		background-color: #6633FF; 
+		color: white; 
+		font-size: 24px; 
+		font-weight: bold;
+		width: 70%;
+		height: 25%;
+		text-align: center;
+		cursor : pointer;
+		position: absolute;
+		top: 25%;
+		left: 50%;
+		transform: translate(-50%, 60%);
+	}
+	/* 찜 버튼 */
+	#like{
+		cursor : pointer;
+		position: absolute;
+		bottom: 8%;
+		left: 20%;
+	}
+	/* photo container */
+	.container{ 
+		display: flex;
+	}
+	/* photo 버튼 */
+	.btn{
+		height: 200px;
+		cursor : pointer;
+		widows: 50px;
+	}
+	/* photo 왼쪽 오른쪽 버튼 이미지 */
+	.btn2{
+		transform: translate(0, 150%);
+	}
+	.photo{
+		margin: 5px;
+	}
+	/* class photo의 이미지 */
+	.photoSize{
+		width: 300px; 
+		height: 200px;
+	}
+	
+	

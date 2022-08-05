@@ -1,0 +1,29 @@
+create user ogo identified by ogo;
+GRANT CONNECT, RESOURCE to ogo;
+//sis계정에서 실행
+
+
+DROP TABLE ogo_faq;
+
+CREATE TABLE ogo_faq (
+faqNum NUMBER CONSTRAINT ogo_faqNum_pk PRIMARY KEY,
+faqTitle VARCHAR2(100) CONSTRAINT ogo_faqTitle_notNull NOT NULL,
+faqContent clob CONSTRAINT ogo_faqContent_notNull NOT NULL
+);
+
+
+drop sequence faqNum_seq;
+
+create SEQUENCE faqNum_seq
+  INCREMENT BY 1 MAXVALUE 5000 CYCLE;
+  
+
+  
+  INSERT into ogo_faq(FAQNUM,FAQTITLE,FAQCONTENT)
+  values(FAQNUM_SEQ.nextval, 'O-GO는 어떤 플랫폼인가요?', 'O-GO는 우주를 미행한다는 의미로 다양한 경험과 체험을 도와주는 맞춤 취미 연결 프로그램 입니다!');
+  INSERT into ogo_faq(FAQNUM,FAQTITLE,FAQCONTENT)
+  values(FAQNUM_SEQ.nextval, '튜터로 클래스를 등록하고 싶어요!', '하세요!');
+  INSERT into ogo_faq(FAQNUM,FAQTITLE,FAQCONTENT)
+  values(FAQNUM_SEQ.nextval, '튜터님과 통화하고 싶어요!', '하세요!!');
+  INSERT into ogo_faq(FAQNUM,FAQTITLE,FAQCONTENT)
+  values(FAQNUM_SEQ.nextval, '클래스 취소는 어떻게 하나요?', '고객센터를 이용해 주세요:-)');

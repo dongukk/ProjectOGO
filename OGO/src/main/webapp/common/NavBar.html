@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>O G O</title>
+<link rel="icon" href="common/img/OGO.ico">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="common/NavBar.css">
+<link rel="stylesheet" href="common/Bar.css">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<script src="common/NavBar.js" defer></script> <!-- defer html 파싱 후에 js 파일 실행 -->
+<script type="text/javascript">
+	// 팝업창 가운데 출력
+	function popUp() {
+		var child;
+	 	var width=500;
+		var height=700;
+		var left = Math.ceil(( window.screen.width - width )/2);
+		var top = Math.ceil(( window.screen.height - height )/2);  
+		child= window.open("LoginMain/login.html", "", "width="+width+", height="+height+", left="+left+",top="+top);
+	} 
+</script>
+
+
+  <div class="header">
+    <div class="progress-container">
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+  <nav class="navBar">
+    <div class="navBar_logo" >
+      <a href="MainForm.jsp"><img src="common/img/OGOLogo.jpg" alt=""></a>
+    </div>
+    <ul class="navBar_menu">
+      <li><a href="ClassPage">행성카테고리</a></li>
+      <li><a href="MyPageServlet">MYSPACE</a></li>
+      <li><a href="MAIN">공지사항&FAQ</a></li>
+    </ul>
+     <ul class="login">
+      <!-- 로그인 마이페이지 더미-->
+      <li><a href="#"><img src="common/img/login.png" alt="" style="height: 30px; width: 30px;"></a></li>
+      <li><a href="#"><img src="common/img/mypage.png" alt="" style="height: 30px; width: 30px;"></a></li>
+    </ul>
+    
+    <a href="" class="navBar_btn"><img src="common/img/menu.png" alt=""></a> 
+  </nav>
+</head>

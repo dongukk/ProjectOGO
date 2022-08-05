@@ -1,0 +1,22 @@
+@charset "UTF-8";
+.faq {
+	background: #8041D9;
+	color: #FFFFFF;
+	}
+	
+	.faq_A{
+	display: none;
+	}
+	
+	table {
+    margin-left:auto; 
+    margin-right:auto;
+    
+    width: 600px;
+    
+ border-radius: 10px;	
+ } 
+	
+	 body {
+  text-align: center; 
+	}

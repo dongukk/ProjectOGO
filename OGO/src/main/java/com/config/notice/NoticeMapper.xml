@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="noticeMapper">
+    
+    
+    <select id="selectContent" parameterType="string" resultType="NoticeDTO">
+     select NCONTENT,to_char(ndate,'yyyy-mm-dd') ndate, NNUM,NTITLE,NICKNAME
+  		from notice JOIN MEMBER USING(USERID)
+  		where NNUM = #{nnum}
+    </select>
+    
+    <select id="selectP" resultType="NoticeDTO">
+     select NCONTENT,to_char(ndate,'yyyy-mm-dd') ndate, NNUM,NTITLE,NICKNAME
+  		from notice JOIN MEMBER USING(USERID)
+  		order by ndate desc
+    </select>
+    
+    <select id="totalcount" resultType="integer">
+    	select count(*)
+    	from notice
+    </select>
+  
+  	<insert id="new_notice" parameterType="NoticeDTO">
+  	 insert into NOTICE( NNUM, NTITLE, NDATE, USERID, NCONTENT )
+  	 values( nnum_seq.nextval,#{ntitle},sysdate,#{nickname},#{ncontent} )
+  	 <!-- nickname이지만 userid값이 들어가 있음 -->
+  	</insert>
+  	
+  	<update id="update" parameterType="NoticeDTO">
+  		update notice
+  		set NTITLE = #{ntitle}, NDATE = sysdate, USERID = #{nickname}, NCONTENT = #{ncontent}
+  		<!-- nickname이지만 userid값이 들어가 있음 -->
+  		where NNUM = #{nnum}
+  	</update>
+  	
+  	<delete id="delete" parameterType="string">
+  	delete from notice
+  	where nnum = #{nnum}
+  	</delete>
+  	
+</mapper>
