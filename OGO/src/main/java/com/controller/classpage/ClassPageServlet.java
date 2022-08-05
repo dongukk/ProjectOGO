@@ -29,7 +29,6 @@ public class ClassPageServlet extends HttpServlet {
 		
 		HttpSession session=request.getSession();
 		MemberDTO mDTO= (MemberDTO)session.getAttribute("login");
-		
 		int classNum= 1; //나중에 클래스Num 받아오기
 		
 		ClassService service= new ClassService();
@@ -45,7 +44,10 @@ public class ClassPageServlet extends HttpServlet {
 		HashMap classContents =service.selectContent(classNum); 
 		
 		//찜 
-		String userId=mDTO.getUserId(); //유저 아이디 
+		String userId=""; //로그인이 되지 않은 경우에도 페이지 볼 수 있도록 처리하는 중
+		if (mDTO!=null) { //로그인 된 경우
+			userId=mDTO.getUserId(); //유저 아이디 
+		}
 		HeartService hservice= new HeartService();
 		HashMap<String, Object> heartData= new HashMap<String, Object>();
 		heartData.put("userId", userId);
@@ -68,6 +70,7 @@ public class ClassPageServlet extends HttpServlet {
 		
 		RequestDispatcher dis =request.getRequestDispatcher("ClassPage.jsp");
 		dis.forward(request, response);
+		
 	}
 
 	/**

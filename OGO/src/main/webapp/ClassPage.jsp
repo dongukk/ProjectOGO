@@ -22,7 +22,10 @@
 	int classNum=cDTO.getClassNum();
 	///
 	MemberDTO mDTO= (MemberDTO)session.getAttribute("login"); 
-	String userId = mDTO.getUserId();
+	String userId=null;
+	if(mDTO!=null){
+		userId = mDTO.getUserId();
+	}
 %>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -30,7 +33,6 @@
 		
 		//찜 버튼 클릭
 		$("#like").on("click", function() {
-
 			var heart =$("#heart");
 			//ajax 
 			$.ajax({
