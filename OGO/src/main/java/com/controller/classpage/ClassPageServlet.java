@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.dto.classpage.ClassDTO;
+import com.dto.login.MemberDTO;
 import com.service.classpage.ClassService;
 import com.service.classpage.HeartService;
 
@@ -32,20 +34,22 @@ public class ClassPageServlet extends HttpServlet {
 		ClassDTO dto= service.select(classNum); //class 정보
 			System.out.println(dto);//dto 확인
 		
-		String userId= "tutor3"; //클래스의 튜터 아이디
+		String tuterId= "tutor3"; //클래스의 튜터 아이디 - 나중에 변수명 바꾸기
 			//System.out.println(userId);//id확인
 		
 		//튜터 닉네임
-		String nickName=service.selectNickName(userId);
+		String nickName=service.selectNickName(tuterId);
 		//클래스소개,튜터소개,일정장소,유의사항,공지사항-resultMap
 		HashMap classContents =service.selectContent(classNum); 
 			//System.out.println(classContents);
 		
 		//찜 
-		String userId2="3"; //유저 아이디 (나중에 session에서 받아오기)
+		HttpSession session=request.getSession();
+		MemberDTO mDTO= (MemberDTO)session.getAttribute("login");
+		String userId=mDTO.getUserId(); //유저 아이디 
 		HeartService hservice= new HeartService();
 		HashMap<String, Object> map= new HashMap<String, Object>();
-		map.put("userId", userId2);
+		map.put("userId", userId);
 		map.put("classNum", classNum);
 		
 		//클래스의 찜 여부 확인
@@ -62,7 +66,7 @@ public class ClassPageServlet extends HttpServlet {
 		request.setAttribute("dto", dto);
 		request.setAttribute("nickName", nickName);
 		request.setAttribute("classContents", classContents);
-		request.setAttribute("userId2", userId2); //나중에 session에서 userid 받아쓰기
+		request.setAttribute("userId2", userId); //나중에 session에서 userid 받아쓰기
 		
 		RequestDispatcher dis =request.getRequestDispatcher("ClassPage.jsp");
 		dis.forward(request, response);
