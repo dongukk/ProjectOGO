@@ -34,7 +34,8 @@ public class ClassPageServlet extends HttpServlet {
 		ClassDTO dto= service.select(classNum); //class 정보
 			System.out.println(dto);//dto 확인
 		
-		String tuterId= "tutor3"; //클래스의 튜터 아이디 - 나중에 변수명 바꾸기
+		
+		String tuterId= dto.getUserId(); //클래스의 튜터 아이디 - 나중에 변수명 바꾸기
 			//System.out.println(userId);//id확인
 		
 		//튜터 닉네임
