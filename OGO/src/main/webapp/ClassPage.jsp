@@ -33,52 +33,56 @@
 		
 		//찜 버튼 클릭
 		$("#like").on("click", function() {
-			var heart =$("#heart");
-			//ajax 
-			$.ajax({
-				type: "get",
-				url: "HeartServlet",
-				dataType: "text",
-				async: false,
-				data: { //서버에 넘겨줄 데이터
-					userId : <%=userId%>,
-					classNum : <%=classNum%>,
-					heartYN : <%=heartYN%>
-				},
-				success: function(data, status, xhr) {
-					console.log("success");
-					console.log(data);
-					if (data=="insert") {
-						heart.attr("src","class_img/heart2.png");
-						alert("찜 목록에 추가되었습니다");
-					}else { //delete인 경우
-						heart.attr("src","class_img/heart1.png");
-						alert("찜 목록에서 삭제되었습니다");
+			if (<%=userId%>==null) {
+				alert("로그인 후 사용가능합니다");
+			}else {
+				var heart =$("#heart");
+				//ajax 
+				$.ajax({
+					type: "get",
+					url: "HeartServlet",
+					dataType: "text",
+					async: false,
+					data: { //서버에 넘겨줄 데이터
+						userId : <%=userId%>,
+						classNum : <%=classNum%>,
+						heartYN : <%=heartYN%>
+					},
+					success: function(data, status, xhr) {
+						console.log("success");
+						console.log(data);
+						if (data=="insert") {
+							heart.attr("src","class_img/heart2.png");
+							alert("찜 목록에 추가되었습니다");
+						}else { //delete인 경우
+							heart.attr("src","class_img/heart1.png");
+							alert("찜 목록에서 삭제되었습니다");
+						}
+					},
+					error: function(xhr, status, e) {
+						console.log("heart error");
+						console.log(e, status);
 					}
-				},
-				error: function(xhr, status, e) {
-					console.log("heart error");
-					console.log(e, status);
-				}
-			})//ajax end
-			
-			//찜 개수 구하기
-			$.ajax({
-				type: "get",
-				url: "HeartCountServlet",
-				dataType: "text",
-				data: { //서버에 넘겨줄 데이터
-					classNum : <%=classNum%>
-				},
-				success: function(data, status, xhr) {
-					console.log("count success");
-					$("#heartCount").text(data);
-				},
-				error: function(xhr, status, e) {
-					console.log("count error");
-					console.log(e, status);
-				}
-			})//ajax end
+				})//ajax end
+				
+				//찜 개수 구하기
+				$.ajax({
+					type: "get",
+					url: "HeartCountServlet",
+					dataType: "text",
+					data: { //서버에 넘겨줄 데이터
+						classNum : <%=classNum%>
+					},
+					success: function(data, status, xhr) {
+						console.log("count success");
+						$("#heartCount").text(data);
+					},
+					error: function(xhr, status, e) {
+						console.log("count error");
+						console.log(e, status);
+					}
+				})//ajax end
+			}
 			
 			
 		});//like click
@@ -114,8 +118,14 @@
 				$("#photo1").attr("src", "class_img/"+images[idx]);
 				$("#photo2").attr("src", "class_img/"+images[idx+1]);
 			}
-			
-		});
+		});//rightBtn end
+		
+		//수강결제 버튼 클릭
+		$("#payBtn").on("click", function() {
+			if (<%=userId%>==null) {
+				alert("로그인이 필요합니다");
+			}
+		}) 
 		
 	});//ready
 </script>

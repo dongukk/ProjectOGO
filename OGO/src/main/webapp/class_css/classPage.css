@@ -58,7 +58,7 @@
 		transform: translate(-50%, 60%);
 	}
 	/* 수강결제 글자 */
-	#payBtnSpan{
+	#payBtn2{
 		position: absolute;
 		top: 20%;
 		left: 20%;
