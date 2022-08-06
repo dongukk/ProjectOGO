@@ -108,7 +108,7 @@
 	    </div>
 	  </div>
 	  <div class="col-12">
-	    <button type="submit" class="btn btn-primary">등록</button>
+	    <button type="submit" class="btn btn-primary">등록하기</button>
 	  </div>
 	</form>
    
