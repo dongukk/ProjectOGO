@@ -67,9 +67,13 @@
 	    <label for="inputDate" class="form-label">클래스 일자</label>
 	    <input type="text" class="form-control" id="inputDate" placeholder="클래스 일자">
 	  </div>
-	  <div class="col-12">
+	  <div class="col-11">
 	    <label for="inputPrice" class="form-label">클래스 가격</label>
 	    <input type="text" class="form-control" id="inputPrice" placeholder="클래스 가격">
+	  </div>
+	  <div class="col-1">
+	  	<br><br>
+	  	<p>(원)</p>
 	  </div>
 	  <hr>
 	  <div class="mb-3 row">
