@@ -28,7 +28,8 @@ public class MemberAddServlet extends HttpServlet {
 		// 프로젝트 이름 바꿀시 경로도 수정해야됨
 		// String savePath = request.getServletContext().getRealPath(path);
 		// 상대경로 저장안됨, 절대경로로 지정
-		String savePath = "C:\\eclipse\\jsp_test\\work1\\OGO\\src\\main\\webapp\\upload\\member";
+		// String savePath = "C:\\eclipse\\jsp_test\\work1\\OGO\\src\\main\\webapp\\upload\\member";
+		String savePath = "C:\\Users\\UserK\\git\\ProjectOGO\\OGO\\src\\main\\webapp\\upload\\member";
 		
 		// 파일 크기 제한 - 20MB
 		int maxSize = 1024*1024*20;
