@@ -47,7 +47,7 @@
 	<h1>로그인 후 메인페이지(정보 넘어오는거 확인용)</h1> <br>
 	<h2>로그인 회원 정보</h2> <br>
 	<!-- 사진 불러오는 방법 : /프로젝트명/사진저장경로/ + 사진명 -->
-	<img id="profilePhoto" src="<%= "/projectA_Cho_0804/upload/member/" + profilePhoto %>"><br>
+	<img id="profilePhoto" src="<%= "/OGO/upload/member/" + profilePhoto %>"><br>
 	프로필사진<br><br>
 	아이디 : <%= userId %><br>
 	이름 : <%= userName %><br>
