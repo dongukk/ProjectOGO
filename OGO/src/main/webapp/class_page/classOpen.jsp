@@ -1,3 +1,4 @@
+<%@page import="com.dto.login.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
@@ -24,6 +25,10 @@
     </style>
   </head>
   <body>
+<%
+	MemberDTO mDTO =(MemberDTO)session.getAttribute("login");
+	String userId=mDTO.getUserId(); //튜터가 될 유저의 아이디
+%>
   <div class="one">
   	<div id="two">
   		<h1>클래스 등록</h1>
@@ -31,6 +36,11 @@
   	<br>
     <!-- <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post" enctype="multipart/form-data"> -->
     <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post">
+	  <div class="col-md-12">
+	    <label for="tutorId" class="form-label">튜터 ID</label>
+	    <!-- 현재 로그인 한 아이디 정보 받아옴 -->
+	    <input class="form-control" type="text" id="tutorId" name="tutorId" value="<%=userId %>" readonly>
+	  </div>
 	  <div class="col-md-12">
 	    <label for="inputclassName" class="form-label">클래스명</label>
 	    <input type="text" class="form-control" id="inputclassName" name="className" placeholder="클래스명을 입력해주세요">
