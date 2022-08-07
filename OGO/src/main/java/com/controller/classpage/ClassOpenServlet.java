@@ -14,8 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 public class ClassOpenServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		request.setCharacterEncoding("utf-8");
+		String className =request.getParameter("className");
+		String category =request.getParameter("category");
+		String subCategory =request.getParameter("subCategory");
+		String schedule =request.getParameter("classDate");
+		String price =request.getParameter("classPrice");
+		String place =request.getParameter("classPlace"); //classPlace는 나중에 수정
+		
+		String textClassInfo =request.getParameter("textClassInfo");
+		String textTutorInfo =request.getParameter("textTutorInfo");
+		String textNotice =request.getParameter("textNotice");
+		String textAttention =request.getParameter("textAttention");
+		
+		System.out.println(className+"\t"+category+"\t"+subCategory+"\t"+schedule);
+		
 	}
 
 	/**

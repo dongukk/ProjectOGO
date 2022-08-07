@@ -18,7 +18,7 @@
     		margin-right: 300px;
     		margin-bottom: 200px;
     	}
-    	two{
+    	#two{
     		text-align: center;
     	}
     </style>
@@ -29,14 +29,15 @@
   		<h1>클래스 등록</h1>
   	</div>
   	<br>
-    <form class="row g-3" id="classOpenForm" action="#" method="post" enctype="multipart/form-data">
+    <!-- <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post" enctype="multipart/form-data"> -->
+    <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post">
 	  <div class="col-md-12">
 	    <label for="inputclassName" class="form-label">클래스명</label>
-	    <input type="text" class="form-control" id="inputclassName" placeholder="클래스명을 입력해주세요">
+	    <input type="text" class="form-control" id="inputclassName" name="className" placeholder="클래스명을 입력해주세요">
 	  </div>
 	  <div class="col-md-6">
-	    <label for="selectCategory" class="form-label">클래스 종류</label>
-	    <select id="selectCategory" class="form-select">
+	    <label for="category" class="form-label">클래스 종류</label>
+	    <select id="category" class="form-select" name="category">
 	      <option selected>Category</option>
 	      <option class="category" value="뷰티">뷰티</option>
 	      <option class="category" value="외국어">외국어</option>
@@ -46,8 +47,8 @@
 	    </select>
 	  </div>
 	  <div class="col-md-6">
-	    <label for="selectCategory2" class="form-label">클래스 종류</label>
-	    <select id="selectCategory2" class="form-select">
+	    <label for="subCategory" class="form-label">클래스 종류</label>
+	    <select id="subCategory" class="form-select" name="subCategory">
 	      <option selected>Sub Category</option>
 	      <option class="subCategory" value="메이크업">메이크업</option>
 	      <option class="subCategory" value="스타일링">스타일링</option>
@@ -63,20 +64,39 @@
 	    </select>
 	  </div>
 	  <div class="col-12">
-	    <label for="inputDate" class="form-label">클래스 일자</label>
-	    <input type="date" class="form-control" id="inputDate">
+	    <label for="classDate" class="form-label">클래스 일자</label>
+	    <input type="date" class="form-control" id="classDate" name="classDate">
+	  </div>
+	  <div class="col-md-6">
+	       <label for="classTime1" class="form-label">클래스 시작 시간</label>
+	       <input type="time" class="form-control" id="classTime1" name="classTime1">
+	  </div>
+	  <div class="col-md-6">
+	       <label for="classTime2" class="form-label">클래스 종료 시간</label>
+	       <input type="time" class="form-control" id="classTime2" name="classTime2">
 	  </div>
 	  <div class="col-12">
-	  	<label for="inputPrice" class="form-label">클래스 가격</label>
+	  	<label for="classPrice" class="form-label">클래스 가격</label>
 	  	<div class="input-group mb-3">
 		  <span class="input-group-text">₩</span>
-		  <input type="text" class="form-control" id="inputPrice" style="text-align: right;" placeholder="99,999">
+		  <input type="text" class="form-control" id="classPrice" name="classPrice"
+		  style="text-align: right;" placeholder="99,999">
 		  <span class="input-group-text">(원)</span>
 	  	</div>
 	  </div>
 	  <div class="col-12">
-	    <label for="inputPlace" class="form-label">클래스 위치</label>
-	    <input type="text" class="form-control" id="inputPlace" placeholder="클래스 위치">
+	    <label for="classPlace" class="form-label">클래스 위치</label>
+	    <div class="input-group">
+	      <label class="input-group-text" for="post">우편번호</label>
+	      <input type=text class="form-control" id="post" name="post">
+	      <button type="button" class="btn btn-secondary" onclick="execDaumPostcode()">우편번호찾기</button>
+	  	</div>
+	  </div>
+	  <div class="col-6 mb-3">
+	    <input type=text class="form-control" id="address1" name="address1" placeholder="도로명주소">
+	  </div>
+	  <div class="col-6 mb-3">
+	    <input type=text class="form-control" id="address2" name="address2" placeholder="지번주소">
 	  </div>
 	  <div class="col-12">
 	    <label class="form-label">클래스 소개 사진 업로드 (최대 5장까지 가능)</label>
@@ -104,27 +124,19 @@
 	  
 	  <div class="mb-3">
 	  	<label for="textClassInfo" class="form-label">클래스 소개</label>
-	  	<textarea class="form-control" id="textClassInfo" rows="5"></textarea>
+	  	<textarea class="form-control" id="textClassInfo" name="textClassInfo" rows="5"></textarea>
 	  </div>
 	  <div class="mb-3">
 	  	<label for="textTutorInfo" class="form-label">튜터 소개</label>
-	  	<textarea class="form-control" id="textTutorInfo" rows="5"></textarea>
+	  	<textarea class="form-control" id="textTutorInfo" name="textTutorInfo" rows="5"></textarea>
 	  </div>
 	  <div class="mb-3">
 	  	<label for="textNotice" class="form-label">클래스 공지사항</label>
-	  	<textarea class="form-control" id="textNotice" rows="5"></textarea>
+	  	<textarea class="form-control" id="textNotice" name="textNotice" rows="5"></textarea>
 	  </div>
 	  <div class="mb-3">
 	  	<label for="textAttention" class="form-label">클래스 유의사항</label>
-	  	<textarea class="form-control" id="textAttention" rows="5"></textarea>
-	  </div>
-	  <div class="col-12">
-	    <div class="form-check">
-	      <input class="form-check-input" type="checkbox" id="gridCheck">
-	      <label class="form-check-label" for="gridCheck">
-	        Check me out
-	      </label>
-	    </div>
+	  	<textarea class="form-control" id="textAttention" name="textAttention" rows="5"></textarea>
 	  </div>
 	  <div class="col-12">
 	    <button type="submit" class="btn btn-primary">등록하기</button>
@@ -144,3 +156,54 @@
     -->
   </body>
 </html>
+
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    function execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+                // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+                if(fullRoadAddr !== ''){
+                    fullRoadAddr += extraRoadAddr;
+                }
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('post').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('address1').value = fullRoadAddr;
+                document.getElementById('address2').value = data.jibunAddress;
+
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoRoadAddress) {
+                    //예상되는 도로명 주소에 조합형 주소를 추가한다.
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    document.getElementById('guide').innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                } else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                } else {
+                    document.getElementById('guide').innerHTML = '';
+                }
+            }
+        }).open();
+    }
+</script>
