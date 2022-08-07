@@ -29,13 +29,13 @@
   		<h1>클래스 등록</h1>
   	</div>
   	<br>
-    <form class="row g-3" id="classOpenForm">
+    <form class="row g-3" id="classOpenForm" action="#" method="post" enctype="multipart/form-data">
 	  <div class="col-md-12">
 	    <label for="inputclassName" class="form-label">클래스명</label>
-	    <input type="text" class="form-control" id="classOpenName" placeholder="클래스명">
+	    <input type="text" class="form-control" id="inputclassName" placeholder="클래스명을 입력해주세요">
 	  </div>
 	  <div class="col-md-6">
-	    <label for="inputState" class="form-label">클래스 종류</label>
+	    <label for="selectCategory" class="form-label">클래스 종류</label>
 	    <select id="selectCategory" class="form-select">
 	      <option selected>Category</option>
 	      <option class="category" value="뷰티">뷰티</option>
@@ -46,10 +46,9 @@
 	    </select>
 	  </div>
 	  <div class="col-md-6">
-	    <label for="inputState" class="form-label">클래스 종류</label>
-	    <select id="inputState" class="form-select">
+	    <label for="selectCategory2" class="form-label">클래스 종류</label>
+	    <select id="selectCategory2" class="form-select">
 	      <option selected>Sub Category</option>
-	      
 	      <option class="subCategory" value="메이크업">메이크업</option>
 	      <option class="subCategory" value="스타일링">스타일링</option>
 	      <option class="subCategory" value="영어">영어</option>
@@ -65,24 +64,44 @@
 	  </div>
 	  <div class="col-12">
 	    <label for="inputDate" class="form-label">클래스 일자</label>
-	    <input type="text" class="form-control" id="inputDate" placeholder="클래스 일자">
+	    <input type="date" class="form-control" id="inputDate">
 	  </div>
-	  <div class="col-11">
-	    <label for="inputPrice" class="form-label">클래스 가격</label>
-	    <input type="text" class="form-control" id="inputPrice" placeholder="클래스 가격">
-	  </div>
-	  <div class="col-1">
-	  	<br><br>
-	  	<p>(원)</p>
+	  <div class="col-12">
+	  	<label for="inputPrice" class="form-label">클래스 가격</label>
+	  	<div class="input-group mb-3">
+		  <span class="input-group-text">₩</span>
+		  <input type="text" class="form-control" id="inputPrice" style="text-align: right;" placeholder="99,999">
+		  <span class="input-group-text">(원)</span>
+	  	</div>
 	  </div>
 	  <div class="col-12">
 	    <label for="inputPlace" class="form-label">클래스 위치</label>
 	    <input type="text" class="form-control" id="inputPlace" placeholder="클래스 위치">
 	  </div>
 	  <div class="col-12">
-	    <label for="classPhotoUpload" class="form-label">클래스 소개 사진 업로드</label>
-	    <input type="text" class="form-control" id="classPhotoUpload" placeholder="클래스 사진">
+	    <label class="form-label">클래스 소개 사진 업로드 (최대 5장까지 가능)</label>
+	    <div class="input-group mb-3">
+	      <input type="file" class="form-control" id="inputClassPhoto1">
+	      <label class="input-group-text" for="inputClassPhoto1">Upload</label>
+	  	</div>
+	    <div class="input-group mb-3">
+	      <input type="file" class="form-control" id="inputClassPhoto2">
+	      <label class="input-group-text" for="inputGroupFile02">Upload</label>
+	  	</div>
+	    <div class="input-group mb-3">
+	      <input type="file" class="form-control" id="inputClassPhoto3">
+	      <label class="input-group-text" for="inputClassPhoto3">Upload</label>
+	  	</div>
+	    <div class="input-group mb-3">
+	      <input type="file" class="form-control" id="inputClassPhoto4">
+	      <label class="input-group-text" for="inputClassPhoto4">Upload</label>
+	  	</div>
+	    <div class="input-group mb-3">
+	      <input type="file" class="form-control" id="inputClassPhoto5">
+	      <label class="input-group-text" for="inputClassPhoto5">Upload</label>
+	  	</div>
 	  </div>
+	  
 	  <div class="mb-3">
 	  	<label for="textClassInfo" class="form-label">클래스 소개</label>
 	  	<textarea class="form-control" id="textClassInfo" rows="5"></textarea>
