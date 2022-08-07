@@ -61,4 +61,16 @@ public class ClassService {
 		return con_class;
 	}
 
+	public int classOpen(ClassDTO cDTO) {
+		SqlSession session= MySqlSessionFactory.getSession();
+		int num=0;
+		try {
+			num= dao.classOpen(session, cDTO);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return num;
+	}
+
 }
