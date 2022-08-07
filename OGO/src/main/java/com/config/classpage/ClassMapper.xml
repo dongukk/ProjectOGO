@@ -15,5 +15,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where userid = #{tuterId}
 	</select>
     
+    <insert id="classOpen" parameterType="ClassDTO">
+    	insert into 
+    	class(classnum, classname, userid, category, price, schedule, place)
+    	values(CLASS_SEQ.nextval,#{className},#{userId},#{category},#{price},#{schedule},#{place})
+    </insert>
 
 </mapper>

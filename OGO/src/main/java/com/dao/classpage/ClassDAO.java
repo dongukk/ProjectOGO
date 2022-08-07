@@ -24,6 +24,11 @@ public class ClassDAO {
 		return con_class;
 	}
 
+	public int classOpen(SqlSession session, ClassDTO cDTO) {
+		int num =session.insert("ClassMapper.classOpen", cDTO);
+		return num;
+	}
+
 
 
 //	public String selectClass(SqlSession session, String classId) {
