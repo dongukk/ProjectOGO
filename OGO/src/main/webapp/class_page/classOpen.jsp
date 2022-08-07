@@ -23,6 +23,52 @@
     		text-align: center;
     	}
     </style>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$("#classOpenForm").on("submit", function() {
+			var className=$("#className").val();
+			var category=$("#category").val();
+			var subCategory=$("#subCategory").val();
+			var classDate=$("#classDate").val();
+			var classStartTime=$("#classStartTime").val();
+			var classEndTime=$("#classEndTime").val();
+			var classPrice=$("#classPrice").val();
+			var post=$("#post").val();
+			var address1=$("#address1").val();
+			var address2=$("#address2").val();
+			var classPhoto1=$("#classPhoto1").val();
+			
+			if (className.length==0) {
+				alert("클래스명을 입력해주세요");
+				event.preventDefault();
+			}else if (category.length==0) {
+				alert("카테고리를 선택해주세요");
+				event.preventDefault();
+			}else if (subCategory.length==0) {
+				alert("서브카테고리를 선택해주세요");
+				event.preventDefault();
+			}else if (classDate.length==0) {
+				alert("클래스 날짜를 선택해주세요");
+				event.preventDefault();
+			}else if (classStartTime.length==0) {
+				alert("클래스 시작 시간을 입력해주세요");
+				event.preventDefault();
+			}else if (classEndTime.length==0) {
+				alert("클래스 종료 시간을 입력해주세요");
+				event.preventDefault();
+			}else if (classPrice.length==0) {
+				alert("클래스 가격을 입력해주세요");
+				event.preventDefault();
+			}
+			
+			
+		}) 
+		
+		
+	})//ready
+</script>
   </head>
   <body>
 <%
@@ -42,8 +88,8 @@
 	    <input class="form-control" type="text" id="tutorId" name="tutorId" value="<%=userId %>" readonly>
 	  </div>
 	  <div class="col-md-12">
-	    <label for="inputclassName" class="form-label">클래스명</label>
-	    <input type="text" class="form-control" id="inputclassName" name="className" placeholder="클래스명을 입력해주세요">
+	    <label for="className" class="form-label">클래스명</label>
+	    <input type="text" class="form-control" id="className" name="className" placeholder="클래스명을 입력해주세요">
 	  </div>
 	  <div class="col-md-6">
 	    <label for="category" class="form-label">클래스 종류</label>
@@ -78,12 +124,12 @@
 	    <input type="date" class="form-control" id="classDate" name="classDate">
 	  </div>
 	  <div class="col-md-6">
-	       <label for="classTime1" class="form-label">클래스 시작 시간</label>
-	       <input type="time" class="form-control" id="classTime1" name="classTime1">
+	       <label for="classStartTime" class="form-label">클래스 시작 시간</label>
+	       <input type="time" class="form-control" id="classStartTime" name="classStartTime">
 	  </div>
 	  <div class="col-md-6">
-	       <label for="classTime2" class="form-label">클래스 종료 시간</label>
-	       <input type="time" class="form-control" id="classTime2" name="classTime2">
+	       <label for="classEndTime" class="form-label">클래스 종료 시간</label>
+	       <input type="time" class="form-control" id="classEndTime" name="classEndTime">
 	  </div>
 	  <div class="col-12">
 	  	<label for="classPrice" class="form-label">클래스 가격</label>
@@ -111,24 +157,24 @@
 	  <div class="col-12">
 	    <label class="form-label">클래스 소개 사진 업로드 (최대 5장까지 가능)</label>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="inputClassPhoto1">
-	      <label class="input-group-text" for="inputClassPhoto1">Upload</label>
+	      <input type="file" class="form-control" id="classPhoto1">
+	      <label class="input-group-text" for="classPhoto1">Upload</label>
 	  	</div>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="inputClassPhoto2">
-	      <label class="input-group-text" for="inputGroupFile02">Upload</label>
+	      <input type="file" class="form-control" id="classPhoto2">
+	      <label class="input-group-text" for="classPhoto2">Upload</label>
 	  	</div>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="inputClassPhoto3">
-	      <label class="input-group-text" for="inputClassPhoto3">Upload</label>
+	      <input type="file" class="form-control" id="classPhoto3">
+	      <label class="input-group-text" for="classPhoto3">Upload</label>
 	  	</div>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="inputClassPhoto4">
-	      <label class="input-group-text" for="inputClassPhoto4">Upload</label>
+	      <input type="file" class="form-control" id="classPhoto4">
+	      <label class="input-group-text" for="classPhoto4">Upload</label>
 	  	</div>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="inputClassPhoto5">
-	      <label class="input-group-text" for="inputClassPhoto5">Upload</label>
+	      <input type="file" class="form-control" id="classPhoto5">
+	      <label class="input-group-text" for="classPhoto5">Upload</label>
 	  	</div>
 	  </div>
 	  
