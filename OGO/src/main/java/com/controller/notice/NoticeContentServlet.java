@@ -38,7 +38,6 @@ public class NoticeContentServlet extends HttpServlet {
 			
 			NoticeService service = new NoticeService();
 			NoticeDTO dto = service.selectContent(nnum);
-			System.out.println(dto);
 			
 			request.setAttribute("dto", dto);
 			

@@ -25,6 +25,6 @@
 <body>
 	<hr><br>
 	<h1 style="text-align: center;">로그인 전 main페이지</h1>
-	
+
 </body>
 </html>

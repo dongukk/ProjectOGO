@@ -154,7 +154,7 @@ String hobby = dto.getHobby();
   position: relative;
   width: 150px;
   height: 150px;
-  background-image: url("<%= "/projectA_Cho_0804/upload/member/" + profilePhoto %>");
+  background-image: url("<%= "/OGO/upload/member/" + profilePhoto %>");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

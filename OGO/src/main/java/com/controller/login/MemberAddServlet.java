@@ -23,13 +23,14 @@ public class MemberAddServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		// 서버의 위치 - webapp(맨앞의 /) 아래의 위치 
-		String path = "/upload/member";
+		// String path = "/upload/member";
 		// 서버 컴퓨터의 실제적으로 저장되는 폴더 위치 
 		// 프로젝트 이름 바꿀시 경로도 수정해야됨
-		String savePath = request.getServletContext().getRealPath(path);
+		// String savePath = request.getServletContext().getRealPath(path);
 		// 상대경로 저장안됨, 절대경로로 지정
-		// String savePath = "C:\\eclipse\\jsp_test\\work1\\projectA_Cho_0804\\src\\main\\webapp\\upload\\member";
-
+		// String savePath = "C:\\eclipse\\jsp_test\\work1\\OGO\\src\\main\\webapp\\upload\\member";
+		String savePath = "C:\\Users\\UserK\\git\\ProjectOGO\\OGO\\src\\main\\webapp\\upload\\member";
+		
 		// 파일 크기 제한 - 20MB
 		int maxSize = 1024*1024*20;
 		
