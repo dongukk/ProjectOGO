@@ -31,7 +31,7 @@
   	<br>
     <form class="row g-3" id="classOpenForm">
 	  <div class="col-md-12">
-	    <label for="inputEmail4" class="form-label">클래스명</label>
+	    <label for="inputclassName" class="form-label">클래스명</label>
 	    <input type="text" class="form-control" id="classOpenName" placeholder="클래스명">
 	  </div>
 	  <div class="col-md-6">
@@ -75,14 +75,10 @@
 	  	<br><br>
 	  	<p>(원)</p>
 	  </div>
-	  <hr>
-	  <div class="mb-3 row">
-	    <label for="inputPlace" class="col-sm-2 col-form-label">클래스 위치</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="inputPlace" placeholder="클래스 위치">
-	    </div>
-      </div>
-      
+	  <div class="col-12">
+	    <label for="inputPlace" class="form-label">클래스 위치</label>
+	    <input type="text" class="form-control" id="inputPlace" placeholder="클래스 위치">
+	  </div>
 	  <div class="col-12">
 	    <label for="classPhotoUpload" class="form-label">클래스 소개 사진 업로드</label>
 	    <input type="text" class="form-control" id="classPhotoUpload" placeholder="클래스 사진">
