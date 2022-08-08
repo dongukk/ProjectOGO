@@ -15,10 +15,11 @@ import javax.servlet.http.HttpSession;
 public class createMemberServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
+		// response.setContentType("text/html;charset=utf-8");
+		// PrintWriter out = response.getWriter();
 		// 팝업창 닫으면서 부모창 새로운창 생성
-		out.println("<script> opener.parent.location='LoginCURD/createMember.jsp'; window.close();</script>");
+		// out.println("<script> opener.parent.location='LoginCURD/createMember.jsp'; window.close();</script>");
+		response.sendRedirect("LoginCURD/createMember.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
