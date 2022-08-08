@@ -66,6 +66,58 @@
 			
 		}) 
 		
+		//arr= [];
+		var idx= 0;
+		$("#scheduleBtn").on("click", function() {
+			var classDate= $("#classDate").val();
+			var classStartTime= $("#classStartTime").val();
+			var classEndTime= $("#classEndTime").val();
+			var schedule= classDate+"&nbsp;"+classStartTime+"~"+classEndTime;
+			
+			//arr.push(schedule);
+			//var str= "";
+			/* if (arr.length < 11) {
+				for (var i = 1; i <= arr.length; i++) {
+					str = "<div class='input-group mb-3' id='sched"+i+"'>"+
+					"<span class='input-group-text'>"+i+"회차</span>"+
+					"<input type='text' class='form-control' id='id"+i+"' value="+schedule+" readonly>"+
+					"<button class='close btn btn-outline-secondary' type='button' data-xxx='sched"+i+"' data-yyy='id"+i+"'>X</button><br>"+
+					"</div>"
+				}
+				
+			}else {
+				alert("클래스는 최대 10회차까지만 등록 가능합니다");
+			}
+			$("#classSchedule").append(str); */
+			
+			idx++;
+			if (idx <= 10) {
+				// 개별 삭제는 나중에 다시 시도
+				/* $("#classSchedule").append("<div class='input-group mb-3' id='sched"+idx+"'>"+
+						"<span class='input-group-text'>"+idx+"회차</span>"+
+						"<input type='text' class='form-control' value="+schedule+" readonly>"+
+						"<button class='close btn btn-outline-secondary' type='button' data-xxx='sched"+idx+"'>X</button><br>"+
+						"</div>"); */
+				$("#classSchedule").append("<div class='input-group mb-3' id='sched"+idx+"'>"+
+						"<span class='input-group-text'>"+idx+"회차</span>"+
+						"<input type='text' class='form-control' value="+schedule+" readonly>"+
+						"<br></div>");
+				$("#schedule"+idx).val(schedule);
+				console.log($("#schedule"+idx).val()); 
+				
+			}else {
+				alert("클래스는 최대 10회차까지만 등록 가능합니다")
+			} 
+			
+			
+		});//end scheduleBtn
+		
+		//전체 삭제
+		$("#allDelete").on("click", function() {
+			
+			idx=0;
+			$("#classSchedule").empty();
+		})
 		
 	})//ready
 </script>
@@ -73,6 +125,9 @@
   <body>
 <%
 	MemberDTO mDTO =(MemberDTO)session.getAttribute("login");
+	/* if(mDTO==null){
+		
+	} */
 	String userId=mDTO.getUserId(); //튜터가 될 유저의 아이디
 %>
   <div class="one">
@@ -82,6 +137,17 @@
   	<br>
     <!-- <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post" enctype="multipart/form-data"> -->
     <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post">
+     <input type="hidden" id="schedule1" name="schedule1" value="">
+     <input type="hidden" id="schedule2" name="schedule2" value="">
+     <input type="hidden" id="schedule3" name="schedule3" value="">
+     <input type="hidden" id="schedule4" name="schedule4" value="">
+     <input type="hidden" id="schedule5" name="schedule5" value="">
+     <input type="hidden" id="schedule6" name="schedule6" value="">
+     <input type="hidden" id="schedule7" name="schedule7" value="">
+     <input type="hidden" id="schedule8" name="schedule8" value="">
+     <input type="hidden" id="schedule9" name="schedule9" value="">
+     <input type="hidden" id="schedule10" name="schedule10" value="">
+     
 	  <div class="col-md-12">
 	    <label for="tutorId" class="form-label">튜터 ID</label>
 	    <!-- 현재 로그인 한 아이디 정보 받아옴 -->
@@ -119,7 +185,7 @@
 	      <option class="subCategory" value="영상">영상</option>
 	    </select>
 	  </div>
-	  <div class="col-12">
+	  <!-- <div class="col-12">
 	    <label for="classDate" class="form-label">클래스 일자</label>
 	    <input type="date" class="form-control" id="classDate" name="classDate">
 	  </div>
@@ -130,6 +196,51 @@
 	  <div class="col-md-6">
 	       <label for="classEndTime" class="form-label">클래스 종료 시간</label>
 	       <input type="time" class="form-control" id="classEndTime" name="classEndTime">
+	  </div>
+	  <div class="col-12">
+	    <button type="button" class="btn btn-primary" id="scheduleBtn">일정 추가하기</button>
+	  </div> -->
+	  
+	  <div class="col-12 mb-3" >
+	  	<label for="classSchedule" class="form-label">클래스 일정 (*최대 10회차까지 등록 가능합니다)</label><br>
+	  	<div class="btn-group mb-3" role="group">
+	  	  <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#updateSchedule">일정 추가하기</button>
+	  	  <button type="button" class="btn btn-outline-primary" id="allDelete">전체 삭제</button>
+	  	</div>
+	  	
+	  	<!-- modal - 일정추가하기 -->
+	  	<div class="modal fade" id="updateSchedule" tabindex="-1" aria-labelledby="updateScheduleLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="updateScheduleLabel">클래스 일정 추가하기</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <form>
+		          <div class="mb-3">
+		            <label for="classDate" class="form-label">클래스 일자</label>
+	    			<input type="date" class="form-control" id="classDate" name="classDate">
+		          </div>
+		          <div class="col-md-6 mb-3">
+		            <label for="classStartTime" class="form-label">클래스 시작 시간</label>
+	       			<input type="time" class="form-control" id="classStartTime" name="classStartTime">
+		          </div>
+		          <div class="col-md-6 mb-3">
+				    <label for="classEndTime" class="form-label">클래스 종료 시간</label>
+				    <input type="time" class="form-control" id="classEndTime" name="classEndTime">
+				  </div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary" id="scheduleBtn">등록</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	  	
+	  	<div id="classSchedule"></div>
 	  </div>
 	  <div class="col-12">
 	  	<label for="classPrice" class="form-label">클래스 가격</label>
