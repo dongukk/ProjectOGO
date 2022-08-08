@@ -1,10 +1,15 @@
 <%@page import="javax.annotation.processing.SupportedSourceVersion"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -24,6 +29,44 @@ $("input[name=hobby]").click(function() {
 	else 
 		$("#hobbyAll").prop("checked", true); 
 });
+
+
+//이용약관 다중체크박스 전체선택,해제
+$("#tserviseALL").click(function() {
+	if($("#tserviseALL").is(":checked")) $("input[name=tservise]").prop("checked", true);
+	else $("input[name=tservise]").prop("checked", false);
+});
+// 하위항목 체크박스 모두 선택시 상위 전체체크박스 활성화
+$("input[name=tservise]").click(function() {
+	var total = $("input[name=tservise]").length;
+	var checked = $("input[name=tservise]:checked").length;
+	
+	if(total != checked) 
+		$("#tserviseALL").prop("checked", false);
+	else 
+		$("#tserviseALL").prop("checked", true); 
+});
+
+// 이용약관 동의 이벤트
+<!-- check Box 이벤트처리를 위한 Script -->
+$("#tserviceOK").click(function(){
+	event.preventDefault();
+	   if ( ! $("#tservise1").is(":checked")) {
+	    alert('이용동의 약관에 동의하지 않았습니다.');  
+	    return false; 
+	   }
+	   if (! $("#tservise2").is(":checked")) {
+	    alert('개인정보 수집 및 이용에 대한 안내를 동의하지 않았습니다.'); 
+	    return false; 
+	   }
+	 	$(this).attr("data-dismiss","modal");
+	 	$("#tserviceOK2").css("color","green");
+}); 
+$("#tserviceNO").click(function () {	
+	alert("이용약관에 동의하지 않으시면 회원가입이 안됩니다.")
+	return false; 
+});
+
 
 // 비번확인
 // 키 이벤트 발생시 패스워드 일치여부 검사 
@@ -80,7 +123,17 @@ $("form").submit(function () {
 		$("#nickname").focus();
 		event.preventDefault();
 	}	
-});
+	
+		// 이용약관 비동의 이벤트 중지
+	if ( ! $("#tservise1").is(":checked")) {
+	   alert('이용동의 약관에 동의하지 않았습니다.');  
+	   return false; 
+	}
+	if (! $("#tservise2").is(":checked")) {
+		alert('개인정보 수집 및 이용에 대한 안내를 동의하지 않았습니다.'); 
+		return false; 
+	}
+}); // end form submit
 
 });	// end ready
 
@@ -106,13 +159,14 @@ $(function(){
 </script>
 <style type="text/css">
 	#div_left {
-	  width: 38%;
+	  width: 40%;
 	  float: left;
-	  margin-left: 7%;
+	  margin-left: 5%;
 	  margin-bottom: 0%;
 	}
 	#div_right {
 	  width: 50%;
+	  height : 1500px;
 	  float: right;
 	  margin-left: 5%;
 	  margin-bottom: 0%;
@@ -136,9 +190,9 @@ $(function(){
 	.div_submit{
 		text-align: center;
 	}
-
 </style>
-
+</head>
+<body>
 <div id="div_right">
 	<img src="../LoginImg/b.jpg" id="img_b">
 </div>
@@ -259,17 +313,115 @@ $(function(){
 		</div><br>
 		<input type="hidden" value="<%= hobbys%>">
 		<!-- <button id="btnChk1">버튼</button> -->
-		<a>이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택), 프로모션 안내메일 수신(선택)에 모두 동의합니다.</a>
-		<span style="color: gray;">내용을 모두 확인하였고 동의합니다.</span>
+		<a href="#" data-toggle="modal" data-target="#myModal">
+		  이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택), 프로모션 안내메일 수신(선택)에<br> 모두 동의합니다.</a>
+		<span id="tserviceOK2" style="color: gray;">내용을 모두 확인하였고 동의합니다.</span>
 		<br><br>
 		<div class="div_submit">
 			<button class="btn btn-default" type="submit">가입</button>	<!-- 임시로 로그인후 페이지 출력 -->
 			<button class="btn btn-default" type="reset">새로고침</button>
 			<button class="btn btn-default closeBtn" type="button" onclick="window.close();" id="close">닫기</button>
 		</div>
-	</form>
-</div>
+		
+		
+			<div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false">	<!-- data-backdrop="static" 속성은 모달창 주의의 검은 배경을 클릭하여도 창이 닫히지 않는다.  data-keyboard="false" 옵션은 esc 키를 눌러도 창을 닫지 않게 해준다. -->
+    <div class="modal-dialog modal-xl modal-dialog-centered">	<!-- modal-dialog-centered 속성은 모달창 내용이 화면 중앙으로 나오도록, -->
+      <div class="modal-content">
+     
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <!-- <h4 class="modal-title">이 용 약 관</h4> -->
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+<div id="d1" style="text-align: center;">
+ <img src="../LoginImg/a.jpg">
+ <h2 align="center">회원가입을 환영합니다.</h2><br/><br/>
+  <tr>
+   <td align="left"><font size="2">이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택), <br>
+   프로모션 안내 메일 수신(선택)에 모두 동의합니다.</font></td>
+ 
+   <td><input type="checkbox" class="tserviseALL" name="tserviseALL" id="tserviseALL"></td><hr/>
+  </tr>
+ <div id="accordion">
+  
+   <h3><a href="#"><font size="2">OGO 이용약관 동의(필수)</font><input type="checkbox" class="tservise" name="tservise" id="tservise1"/></a></h3>
+   <td><textarea readonly="readonly" rows="5" cols="66">
+제 1 조 (목적)
 
+이 약관은 OGO 주식회사 ("회사" 또는 "OGO")가 제공하는 OGO 및 OGO 관련 제반 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
+
+
+제 2 조 (정의)
+
+이 약관에서 사용하는 용어의 정의는 다음과 같습니다.
+①"서비스"라 함은 구현되는 단말기(PC, TV, 휴대형단말기 등의 각종 유무선 장치를 포함)와 상관없이 "회원"이 이용할 수 있는 OGO 및 OGO 관련 제반 서비스를 의미합니다.
+②"회원"이라 함은 회사의 "서비스"에 접속하여 이 약관에 따라 "회사"와 이용계약을 체결하고 "회사"가 제공하는 "서비스"를 이용하는 고객을 말합니다.
+③"아이디(ID)"라 함은 "회원"의 식별과 "서비스" 이용을 위하여 "회원"이 정하고 "회사"가 승인하는 문자와 숫자의 조합을 의미합니다.
+④"비밀번호"라 함은 "회원"이 부여 받은 "아이디와 일치되는 "회원"임을 확인하고 비밀보호를 위해 "회원" 자신이 정한 문자 또는 숫자의 조합을 의미합니다.
+⑤"유료서비스"라 함은 "회사"가 유료로 제공하는 각종 온라인디지털콘텐츠(각종 정보콘텐츠, VOD, 아이템 기타 유료콘텐츠를 포함) 및 제반 서비스를 의미합니다.
+⑥"포인트"라 함은 서비스의 효율적 이용을 위해 회사가 임의로 책정 또는 지급, 조정할 수 있는 재산적 가치가 없는 "서비스" 상의 가상 데이터를 의미합니다.
+⑦"게시물"이라 함은 "회원"이 "서비스"를 이용함에 있어 "서비스상"에 게시한 부호ㆍ문자ㆍ음성ㆍ음향ㆍ화상ㆍ동영상 등의 정보 형태의 글, 사진, 동영상 및 각종 파일과 링크 등을 의미합니다. 
+   </textarea>
+   <h3><a href="#"><font size="2">개인정보 수집 및 이용에 대한 안내(필수)</font><input type="checkbox" class="tservise" name="tservise" id="tservise2"/></a></h3>
+   <div>
+     <textarea readonly="readonly" rows="5" cols="66">
+
+정보통신망법 규정에 따라 OGO에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
+
+
+1. 수집하는 개인정보
+
+이용자는 회원가입을 하지 않아도 정보 검색, 뉴스 보기 등 대부분의 OGO 서비스를 회원과 동일하게 이용할 수 있습니다. 이용자가 메일, 캘린더, 카페, 블로그 등과 같이 개인화 혹은 회원제 서비스를 이용하기 위해 회원가입을 할 경우, OGO는 서비스 이용을 위해 필요한 최소한의 개인정보를 수집합니다.
+ 
+   </textarea>
+   </div>
+   <h3><a href="#"><font size="2">위치정보 이용약관 동의(선택)</font><input type="checkbox" class="tservise" name="tservise" id="tservise3"/></a></h3>
+   <div>
+     <textarea readonly="readonly" rows="5" cols="66">
+
+위치정보 이용약관에 동의하시면, 위치를 활용한 광고 정보 수신 등을 포함하는 OGO 위치기반 서비스를 이용할 수 있습니다.
+
+
+제 1 조 (목적)
+이 약관은 OGO 주식회사 (이하 “회사”)가 제공하는 위치정보사업 또는 위치기반서비스사업과 관련하여 회사와 개인위치정보주체와의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
+
+
+제 2 조 (약관 외 준칙)
+이 약관에 명시되지 않은 사항은 위치정보의 보호 및 이용 등에 관한 법률, 정보통신망 이용촉진 및 정보보호 등에 관한 법률, 전기통신기본법, 전기통신사업법 등 관계법령과 회사의 이용약관 및 개인정보취급방침, 회사가 별도로 정한 지침 등에 의합니다.
+
+
+제 3 조 (서비스 내용 및 요금)
+①회사는 직접 위치정보를 수집하거나 위치정보사업자인 이동통신사로부터 위치정보를 전달받아 아래와 같은 위치기반서비스를 제공합니다. 1.Geo Tagging 서비스: 게시글 등록 시점의 개인위치정보주체의 위치정보를 게시글과 함께 저장합니다.
+2.위치정보를 활용한 검색결과 제공 서비스: 정보 검색을 요청하거나 개인위치정보주체 또는 이동성 있는 기기의 위치정보를 제공 시 본 위치정보를 이용한 검색결과 및 주변결과(맛집, 주변업체, 교통수단 등)를 제시합니다.
+3.위치정보를 활용한 친구찾기 및 친구맺기: 현재 위치를 활용하여 친구를 찾아주거나 친구를 추천하여 줍니다.
+4.연락처 교환하기: 위치정보를 활용하여 친구와 연락처를 교환할 수 있습니다.
+5.현재 위치를 활용한 광고정보 제공 서비스: 광고정보 제공 요청 시 개인위치정보주체의 현 위치를 이용하여 광고소재를 제시합니다.
+6. 이용자 보호 및 부정 이용 방지: 개인위치정보주체 또는 이동성 있는 기기의 위치를 이용하여 권한없는 자의 비정상적인 서비스 이용 시도 등을 차단합니다.
+ </textarea>
+   </div>
+ </div>
+  <tr>
+   <td align="left"><font size="2">이벤트 등 프로모션 알림 메일 수신(선택)</font></td>
+   <td><input type="checkbox" class="tservise" name="tservise" id="tservise4"></td><hr/>
+  </tr>
+ 
+ <div align="center">
+  <br/>
+	  <input type="submit" value="동의" id="tserviceOK"> <!-- data-dismiss="modal" 속성은 모달창을 닫을 수 있게 해준다. -->
+	  <input type="reset" value="비동의" id="tserviceNO">		 
+  <br/>
+ </div>
+    	
+</form>
+
+    <!-- 2. Bootstrap JS코드 넣기 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
