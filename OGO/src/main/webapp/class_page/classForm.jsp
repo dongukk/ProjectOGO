@@ -65,27 +65,37 @@
 			
 			
 		}) 
+
 		var idx= 0;
 		$("#scheduleBtn").on("click", function() {
 			var classDate= $("#classDate").val();
 			var classStartTime= $("#classStartTime").val();
 			var classEndTime= $("#classEndTime").val();
-			var schedule=  classDate+" "+classStartTime+"~"+classEndTime;
+			var schedule= classDate+"&nbsp;"+classStartTime+"~"+classEndTime;
 			
+			 
 			idx++;
 			if (idx <= 10) {
-				$("#classSchedule").append("<div class='input-group mb-3'>"+
+				$("#classSchedule").append("<div class='input-group mb-3' id='sched"+idx+"'>"+
 						"<span class='input-group-text'>"+idx+"회차</span>"+
 						"<input type='text' class='form-control' value="+schedule+" readonly>"+
-						"<span class='input-group-text'>X</span><br>"+
+						"<button class='close btn btn-outline-secondary' type='button' data-xxx='sched"+idx+"'>X</button><br>"+
 						"</div>");
 				$("#schedule"+idx).val(schedule);
-				//console.log($("#schedule"+idx).val());
+				console.log($("#schedule"+idx).val()); 
+				
 			}else {
 				alert("클래스는 최대 10회차까지만 등록 가능합니다");
 			}
 			
-		});//end
+			//close 처리
+			$(".close").on("click", function() {
+				var data =$(this).attr("data-xxx");
+				//console.log(data);
+				$("#"+data).remove();
+			})
+			
+		});//end scheduleBtn
 		
 		
 	})//ready
@@ -154,7 +164,7 @@
 	      <option class="subCategory" value="영상">영상</option>
 	    </select>
 	  </div>
-	  <div class="col-12">
+	  <!-- <div class="col-12">
 	    <label for="classDate" class="form-label">클래스 일자</label>
 	    <input type="date" class="form-control" id="classDate" name="classDate">
 	  </div>
@@ -168,10 +178,43 @@
 	  </div>
 	  <div class="col-12">
 	    <button type="button" class="btn btn-primary" id="scheduleBtn">일정 추가하기</button>
-	  </div>
+	  </div> -->
 	  
-	  <div class="col-12" >
-	  	<label for="classSchedule" class="form-label">클래스 일정</label>
+	  <div class="col-12 mb-3" >
+	  	<label for="classSchedule" class="form-label">클래스 일정 (*최대 10회차까지 등록 가능합니다)</label><br>
+	  	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateSchedule" data-bs-whatever="@mdo">일정 추가하기</button><br>
+	  	<!-- modal - 일정추가하기 -->
+	  	<div class="modal fade" id="updateSchedule" tabindex="-1" aria-labelledby="updateScheduleLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="updateScheduleLabel">클래스 일정 추가하기</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <form>
+		          <div class="mb-3">
+		            <label for="classDate" class="form-label">클래스 일자</label>
+	    			<input type="date" class="form-control" id="classDate" name="classDate">
+		          </div>
+		          <div class="col-md-6 mb-3">
+		            <label for="classStartTime" class="form-label">클래스 시작 시간</label>
+	       			<input type="time" class="form-control" id="classStartTime" name="classStartTime">
+		          </div>
+		          <div class="col-md-6 mb-3">
+				    <label for="classEndTime" class="form-label">클래스 종료 시간</label>
+				    <input type="time" class="form-control" id="classEndTime" name="classEndTime">
+				  </div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary" id="scheduleBtn">등록</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	  	
 	  	<div id="classSchedule"></div>
 	  </div>
 	  <div class="col-12">
