@@ -1,5 +1,6 @@
 package com.controller.login;
 
+import java.awt.Event;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -24,9 +25,9 @@ public class loginUIServlet extends HttpServlet {
 			out.println("<script> alert('mesg'); </script>"); 
 			session.removeAttribute("mesg");
 			out.close();
-		
+			
 		} 
-		response.sendRedirect("login.html");
+		response.sendRedirect("MainForm.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

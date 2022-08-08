@@ -6,7 +6,9 @@
 
 <meta charset="UTF-8">
 <title>O G O</title>
-
+</head>
+ 
+<body>
 
 <%
 	String mesg = (String)session.getAttribute("mesg");
@@ -21,8 +23,7 @@
 %>
 	<jsp:include page="common/NavBar.html" flush="true" />
 	<jsp:include page="common/LoginBar.jsp" flush="true" />	
-</head>
-<body>
+
 	<hr><br>
 	<h1 style="text-align: center;">로그인 전 main페이지</h1>
 

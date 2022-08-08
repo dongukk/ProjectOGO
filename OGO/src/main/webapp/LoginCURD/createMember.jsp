@@ -158,6 +158,9 @@ $(function(){
 %>
 </script>
 <style type="text/css">
+	#div_top{
+		margin-top: 5%;
+	}
 	#div_left {
 	  width: 40%;
 	  float: left;
@@ -165,19 +168,20 @@ $(function(){
 	  margin-bottom: 0%;
 	}
 	#div_right {
-	  width: 50%;
-	  height : 1500px;
+	  width: 45%;
+	  height : 1100px;
 	  float: right;
 	  margin-left: 5%;
-	  margin-bottom: 0%;
+	  margin-right: 5%;
+	  margin-bottom: 5%;
 	}
 	h1{
 		text-align: center;
 		margin-bottom: 50px;
 	}
 	#img_b {
-		width: 80%;
-		height: 80%;
+		width: 100%;
+		height: 100%;
 		margin-top: 5%;
 		margin-right: 10%;
 		margin-bottom: 10%;
@@ -206,6 +210,7 @@ $(function(){
 </style>
 </head>
 <body>
+<div id="div_top"></div>
 <div id="div_right">
 	<img src="../LoginImg/b.jpg" id="img_b">
 </div>
@@ -351,7 +356,7 @@ $(function(){
         <!-- Modal body -->
         <div class="modal-body">
 <div id="d1" style="text-align: center;">
- <img src="../LoginImg/a.jpg" width="400" height="200">
+ <img src="../LoginImg/logo.jpg" width="400" height="200">
  <h2 align="center">회원가입을 환영합니다.</h2><br/><br/>
   <tr>
 	  <div id="d2">
