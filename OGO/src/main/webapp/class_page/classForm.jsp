@@ -65,7 +65,8 @@
 			
 			
 		}) 
-
+		
+		//arr= [];
 		var idx= 0;
 		$("#scheduleBtn").on("click", function() {
 			var classDate= $("#classDate").val();
@@ -73,30 +74,50 @@
 			var classEndTime= $("#classEndTime").val();
 			var schedule= classDate+"&nbsp;"+classStartTime+"~"+classEndTime;
 			
-			 
-			idx++;
-			if (idx <= 10) {
-				$("#classSchedule").append("<div class='input-group mb-3' id='sched"+idx+"'>"+
-						"<span class='input-group-text'>"+idx+"회차</span>"+
-						"<input type='text' class='form-control' value="+schedule+" readonly>"+
-						"<button class='close btn btn-outline-secondary' type='button' data-xxx='sched"+idx+"'>X</button><br>"+
-						"</div>");
-				$("#schedule"+idx).val(schedule);
-				console.log($("#schedule"+idx).val()); 
+			//arr.push(schedule);
+			//var str= "";
+			/* if (arr.length < 11) {
+				for (var i = 1; i <= arr.length; i++) {
+					str = "<div class='input-group mb-3' id='sched"+i+"'>"+
+					"<span class='input-group-text'>"+i+"회차</span>"+
+					"<input type='text' class='form-control' id='id"+i+"' value="+schedule+" readonly>"+
+					"<button class='close btn btn-outline-secondary' type='button' data-xxx='sched"+i+"' data-yyy='id"+i+"'>X</button><br>"+
+					"</div>"
+				}
 				
 			}else {
 				alert("클래스는 최대 10회차까지만 등록 가능합니다");
 			}
+			$("#classSchedule").append(str); */
 			
-			//close 처리
-			$(".close").on("click", function() {
-				var data =$(this).attr("data-xxx");
-				//console.log(data);
-				$("#"+data).remove();
-			})
+			idx++;
+			if (idx <= 10) {
+				// 개별 삭제는 나중에 다시 시도
+				/* $("#classSchedule").append("<div class='input-group mb-3' id='sched"+idx+"'>"+
+						"<span class='input-group-text'>"+idx+"회차</span>"+
+						"<input type='text' class='form-control' value="+schedule+" readonly>"+
+						"<button class='close btn btn-outline-secondary' type='button' data-xxx='sched"+idx+"'>X</button><br>"+
+						"</div>"); */
+				$("#classSchedule").append("<div class='input-group mb-3' id='sched"+idx+"'>"+
+						"<span class='input-group-text'>"+idx+"회차</span>"+
+						"<input type='text' class='form-control' value="+schedule+" readonly>"+
+						"<br></div>");
+				$("#schedule"+idx).val(schedule);
+				console.log($("#schedule"+idx).val()); 
+				
+			}else {
+				alert("클래스는 최대 10회차까지만 등록 가능합니다")
+			} 
+			
 			
 		});//end scheduleBtn
 		
+		//전체 삭제
+		$("#allDelete").on("click", function() {
+			
+			idx=0;
+			$("#classSchedule").empty();
+		})
 		
 	})//ready
 </script>
@@ -182,7 +203,11 @@
 	  
 	  <div class="col-12 mb-3" >
 	  	<label for="classSchedule" class="form-label">클래스 일정 (*최대 10회차까지 등록 가능합니다)</label><br>
-	  	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateSchedule" data-bs-whatever="@mdo">일정 추가하기</button><br>
+	  	<div class="btn-group mb-3" role="group">
+	  	  <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#updateSchedule">일정 추가하기</button>
+	  	  <button type="button" class="btn btn-outline-primary" id="allDelete">전체 삭제</button>
+	  	</div>
+	  	
 	  	<!-- modal - 일정추가하기 -->
 	  	<div class="modal fade" id="updateSchedule" tabindex="-1" aria-labelledby="updateScheduleLabel" aria-hidden="true">
 		  <div class="modal-dialog">
