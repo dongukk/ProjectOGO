@@ -190,6 +190,19 @@ $(function(){
 	.div_submit{
 		text-align: center;
 	}
+	h3{
+		text-align: left;
+		margin-left: 50px;
+	}
+	.tservise{
+		position: relative;
+        top: 2.2px;
+        left: 2px;
+	}
+	#d2{
+		text-align: left;
+		margin-left: 50px;
+	}
 </style>
 </head>
 <body>
@@ -284,10 +297,11 @@ $(function(){
 			<input type="text" name="address2" id="address2" placeholder="지번주소">
 			<span id="guide" style="color:#999"></span>
 		</div>
-		<div class="form-group">
+		<div class="form-inline">
 			<label for="email">이메일(*)</label><br>
 			<!-- type : email - 모바일의 키패드가 email입력 패드로 바뀐다. 입력한 데이터가 이메일 양식에 맞는지 검사한다. -->
-			<input type="text" name="email1" id="email1" required="required">@
+			<input type="text" name="email1" id="email1" required="required">
+			<span class="input-group-text">@</span>	
 	        <input type="text" name="email2" id="email2" required="required" placeholder="직접입력" >
 	        <select id="sel" style="height: 24px;">	<!-- 선택창 높이 설정 -->
 	       		<option selected disabled >이메일 선택</option>  <!-- 선택못하게 설정 -->
@@ -324,7 +338,7 @@ $(function(){
 		</div>
 		
 		
-			<div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false">	<!-- data-backdrop="static" 속성은 모달창 주의의 검은 배경을 클릭하여도 창이 닫히지 않는다.  data-keyboard="false" 옵션은 esc 키를 눌러도 창을 닫지 않게 해준다. -->
+<div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false">	<!-- data-backdrop="static" 속성은 모달창 주의의 검은 배경을 클릭하여도 창이 닫히지 않는다.  data-keyboard="false" 옵션은 esc 키를 눌러도 창을 닫지 않게 해준다. -->
     <div class="modal-dialog modal-xl modal-dialog-centered">	<!-- modal-dialog-centered 속성은 모달창 내용이 화면 중앙으로 나오도록, -->
       <div class="modal-content">
      
@@ -337,14 +351,15 @@ $(function(){
         <!-- Modal body -->
         <div class="modal-body">
 <div id="d1" style="text-align: center;">
- <img src="../LoginImg/a.jpg">
+ <img src="../LoginImg/a.jpg" width="400" height="200">
  <h2 align="center">회원가입을 환영합니다.</h2><br/><br/>
   <tr>
-   <td align="left"><font size="2">이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택), <br>
-   프로모션 안내 메일 수신(선택)에 모두 동의합니다.</font></td>
- 
-   <td><input type="checkbox" class="tserviseALL" name="tserviseALL" id="tserviseALL"></td><hr/>
-  </tr>
+	  <div id="d2">
+		   <td align="left"><font size="2">이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택),
+		   프로모션 안내 메일 수신<br>(선택)에 모두 동의합니다.</font></td>
+		   <td><input type="checkbox" class="tservise" name="tserviseALL" id="tserviseALL"></td><hr/>
+		  </tr>
+	  </div>
  <div id="accordion">
   
    <h3><a href="#"><font size="2">OGO 이용약관 동의(필수)</font><input type="checkbox" class="tservise" name="tservise" id="tservise1"/></a></h3>
@@ -403,11 +418,8 @@ $(function(){
  </textarea>
    </div>
  </div>
-  <tr>
-   <td align="left"><font size="2">이벤트 등 프로모션 알림 메일 수신(선택)</font></td>
-   <td><input type="checkbox" class="tservise" name="tservise" id="tservise4"></td><hr/>
-  </tr>
- 
+ <h3><a href="#"><font size="2">이벤트 등 프로모션 알림 메일 수신(선택)</font><input type="checkbox" class="tservise" name="tservise" id="tservise4"/></a></h3>
+ <hr>
  <div align="center">
   <br/>
 	  <input type="submit" value="동의" id="tserviceOK"> <!-- data-dismiss="modal" 속성은 모달창을 닫을 수 있게 해준다. -->
