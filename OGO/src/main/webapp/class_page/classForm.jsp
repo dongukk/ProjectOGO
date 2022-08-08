@@ -65,6 +65,21 @@
 			
 			
 		}) 
+		var arr = [];
+		$("#scheduleBtn").on("click", function() {
+			var classDate= $("#classDate").val();
+			var classStartTime= $("#classStartTime").val();
+			var classEndTime= $("#classEndTime").val();
+			var schedule=  classDate+" "+classStartTime+"~"+classEndTime;
+			$("#classSchedule").append(schedule+"<br>");
+			/* arr.push(schedule);
+			$.each(arr, function(i, elt) {
+				$("#classSchedule").append(elt+"<br>");
+			}) */
+			//$("#classSchedule").append(classDate+" "+classStartTime+"~"+classEndTime);
+			
+			
+		});//end
 		
 		
 	})//ready
@@ -73,6 +88,9 @@
   <body>
 <%
 	MemberDTO mDTO =(MemberDTO)session.getAttribute("login");
+	/* if(mDTO==null){
+		
+	} */
 	String userId=mDTO.getUserId(); //튜터가 될 유저의 아이디
 %>
   <div class="one">
@@ -130,6 +148,14 @@
 	  <div class="col-md-6">
 	       <label for="classEndTime" class="form-label">클래스 종료 시간</label>
 	       <input type="time" class="form-control" id="classEndTime" name="classEndTime">
+	  </div>
+	  <div class="col-12">
+	    <button type="button" class="btn btn-primary" id="scheduleBtn">일정 추가하기</button>
+	  </div>
+	  
+	  <div class="col-12" id="classSchedule">
+	  	<label for="classSchedule" class="form-label">클래스 일정</label>
+	  	
 	  </div>
 	  <div class="col-12">
 	  	<label for="classPrice" class="form-label">클래스 가격</label>

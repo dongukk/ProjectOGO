@@ -29,6 +29,7 @@
 	String userId=null;
 	if(mDTO!=null){
 		userId = mDTO.getUserId();
+		//out.print(userId);
 	}
 %>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
