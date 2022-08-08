@@ -65,19 +65,25 @@
 			
 			
 		}) 
-		var arr = [];
+		var idx= 0;
 		$("#scheduleBtn").on("click", function() {
 			var classDate= $("#classDate").val();
 			var classStartTime= $("#classStartTime").val();
 			var classEndTime= $("#classEndTime").val();
 			var schedule=  classDate+" "+classStartTime+"~"+classEndTime;
-			$("#classSchedule").append(schedule+"<br>");
-			/* arr.push(schedule);
-			$.each(arr, function(i, elt) {
-				$("#classSchedule").append(elt+"<br>");
-			}) */
-			//$("#classSchedule").append(classDate+" "+classStartTime+"~"+classEndTime);
 			
+			idx++;
+			if (idx <= 10) {
+				$("#classSchedule").append("<div class='input-group mb-3'>"+
+						"<span class='input-group-text'>"+idx+"회차</span>"+
+						"<input type='text' class='form-control' value="+schedule+" readonly>"+
+						"<span class='input-group-text'>X</span><br>"+
+						"</div>");
+				$("#schedule"+idx).val(schedule);
+				//console.log($("#schedule"+idx).val());
+			}else {
+				alert("클래스는 최대 10회차까지만 등록 가능합니다");
+			}
 			
 		});//end
 		
@@ -100,6 +106,17 @@
   	<br>
     <!-- <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post" enctype="multipart/form-data"> -->
     <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post">
+     <input type="hidden" id="schedule1" name="schedule1" value="">
+     <input type="hidden" id="schedule2" name="schedule2" value="">
+     <input type="hidden" id="schedule3" name="schedule3" value="">
+     <input type="hidden" id="schedule4" name="schedule4" value="">
+     <input type="hidden" id="schedule5" name="schedule5" value="">
+     <input type="hidden" id="schedule6" name="schedule6" value="">
+     <input type="hidden" id="schedule7" name="schedule7" value="">
+     <input type="hidden" id="schedule8" name="schedule8" value="">
+     <input type="hidden" id="schedule9" name="schedule9" value="">
+     <input type="hidden" id="schedule10" name="schedule10" value="">
+     
 	  <div class="col-md-12">
 	    <label for="tutorId" class="form-label">튜터 ID</label>
 	    <!-- 현재 로그인 한 아이디 정보 받아옴 -->
@@ -153,9 +170,9 @@
 	    <button type="button" class="btn btn-primary" id="scheduleBtn">일정 추가하기</button>
 	  </div>
 	  
-	  <div class="col-12" id="classSchedule">
+	  <div class="col-12" >
 	  	<label for="classSchedule" class="form-label">클래스 일정</label>
-	  	
+	  	<div id="classSchedule"></div>
 	  </div>
 	  <div class="col-12">
 	  	<label for="classPrice" class="form-label">클래스 가격</label>
