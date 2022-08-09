@@ -31,9 +31,7 @@
 			var className=$("#className").val();
 			var category=$("#category").val();
 			var subCategory=$("#subCategory").val();
-			//var classDate=$("#classDate").val();
-			var classStartTime=$("#classStartTime").val();
-			var classEndTime=$("#classEndTime").val();
+			
 			var classPrice=$("#classPrice").val();
 			var post=$("#post").val();
 			var address1=$("#address1").val();
@@ -48,12 +46,6 @@
 				event.preventDefault();
 			}else if (subCategory.length==0) {
 				alert("서브카테고리를 선택해주세요");
-				event.preventDefault();
-			}else if (classStartTime.length==0) {
-				alert("클래스 시작 시간을 입력해주세요");
-				event.preventDefault();
-			}else if (classEndTime.length==0) {
-				alert("클래스 종료 시간을 입력해주세요");
 				event.preventDefault();
 			}else if (classPrice.length==0) {
 				alert("클래스 가격을 입력해주세요");

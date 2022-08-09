@@ -17,8 +17,54 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <insert id="classOpen" parameterType="ClassDTO">
     	insert into 
-    	class(classnum, classname, userid, category, price, schedule, place)
-    	values(CLASS_SEQ.nextval,#{className},#{userId},#{category},#{price},#{schedule},#{place})
+    	class(classnum, classname, userid, subcategory, price, place,
+    	schedule1,schedule2,schedule3,schedule4,schedule5,schedule6,schedule7,schedule8,schedule9,schedule10)
+    	<choose>
+    		<when test="schedule2 == null">
+	    		values(CLASS_SEQ.nextval,#{className},#{userId},#{subcategory},#{price},#{place},
+	    		#{schedule1},null,null,null,null,null,null,null,null,null)
+    		</when>
+    		<when test="schedule3 == null">
+	    		values(CLASS_SEQ.nextval,#{className},#{userId},#{subcategory},#{price},#{place},
+	    		#{schedule1},#{schedule2},null,null,null,null,null,null,null,null)
+    		</when>
+    		<when test="schedule4 == null">
+	    		values(CLASS_SEQ.nextval,#{className},#{userId},#{subcategory},#{price},#{place},
+	    		#{schedule1},#{schedule2},#{schedule3},null,null,null,null,null,null,null)
+    		</when>
+    		<when test="schedule5 == null">
+	    		values(CLASS_SEQ.nextval,#{className},#{userId},#{subcategory},#{price},#{place},
+	    		#{schedule1},#{schedule2},#{schedule3},#{schedule4},null,null,null,null,null,null)
+    		</when>
+    		<when test="schedule6 == null">
+	    		values(CLASS_SEQ.nextval,#{className},#{userId},#{subcategory},#{price},#{place},
+	    		#{schedule1},#{schedule2},#{schedule3},#{schedule4},#{schedule5},null,null,null,null,null)
+    		</when>
+    		<when test="schedule7 == null">
+	    		values(CLASS_SEQ.nextval,#{className},#{userId},#{subcategory},#{price},#{place},
+	    		#{schedule1},#{schedule2},#{schedule3},#{schedule4},#{schedule5},#{schedule6},null,null,null,null)
+    		</when>
+    		<when test="schedule8 == null">
+	    		values(CLASS_SEQ.nextval,#{className},#{userId},#{subcategory},#{price},#{place},
+	    		#{schedule1},#{schedule2},#{schedule3},#{schedule4},#{schedule5},#{schedule6},
+	    		#{schedule7},null,null,null)
+    		</when>
+    		<when test="schedule9 == null">
+	    		values(CLASS_SEQ.nextval,#{className},#{userId},#{subcategory},#{price},#{place},
+	    		#{schedule1},#{schedule2},#{schedule3},#{schedule4},#{schedule5},#{schedule6},
+	    		#{schedule7},#{schedule8},null,null)
+    		</when>
+    		<when test="schedule10 == null">
+	    		values(CLASS_SEQ.nextval,#{className},#{userId},#{subcategory},#{price},#{place},
+	    		#{schedule1},#{schedule2},#{schedule3},#{schedule4},#{schedule5},#{schedule6},
+	    		#{schedule7},#{schedule8},#{schedule9},null)
+    		</when>
+    		<when test="schedule10 != null">
+	    		values(CLASS_SEQ.nextval,#{className},#{userId},#{subcategory},#{price},#{place},
+	    		#{schedule1},#{schedule2},#{schedule3},#{schedule4},#{schedule5},#{schedule6},
+	    		#{schedule7},#{schedule8},#{schedule9},#{schedule10})
+    		</when>
+    	</choose>
     </insert>
 
 </mapper>
