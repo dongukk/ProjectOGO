@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ClassMapper">
+	<select id="select" resultType="ClassDTO" parameterType="int">
+		select classnum, classname, userid, category, price, schedule, place
+		from class
+		where classnum = #{classNum}
+	</select>
+	
+	<select id="selectNickName" parameterType="string" resultType="string">
+		select nickname
+		from class join member using(userid)
+		where userid = #{tuterId}
+	</select>
+    
+    <insert id="classOpen" parameterType="ClassDTO">
+    	insert into 
+    	class(classnum, classname, userid, category, price, schedule, place)
+    	values(CLASS_SEQ.nextval,#{className},#{userId},#{category},#{price},#{schedule},#{place})
+    </insert>
+
+</mapper>

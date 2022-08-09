@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="HeartMapper">
+   
+	<select id="heartSearch" parameterType="hashmap" resultType="int">
+		select count(*) 
+		from heart
+		where userId = #{userId} and classNum = #{classNum}
+	</select>
+	
+	<select id="heartCount" parameterType="int" resultType="int">
+		select count(*) 
+		from heart
+		where classNum = #{classNum}
+	</select>
+	
+	<delete id="heartdelete" parameterType="hashmap">
+		delete 
+		from heart
+		where userId = #{userId} and classNum = #{classNum}
+	</delete>
+	
+	<insert id="heartInsert">
+		INSERT INTO heart(classnum,userid,num) 
+		VALUES (#{classNum}, #{userId}, HEART_SEQ.nextval)
+	</insert>
+    	
+
+    
+</mapper>
