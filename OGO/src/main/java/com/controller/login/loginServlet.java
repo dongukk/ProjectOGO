@@ -45,10 +45,14 @@ public class loginServlet extends HttpServlet {
 			// out.println("<script>opener.parent.location='MainForm2.jsp'; window.close();</script>");
 			response.sendRedirect("MainForm2.jsp");
 		} else {	// 회원아닌 경우			
-			out.println("<script>alert('아이디 및 비밀번호를 확인해주세요.');</script>");
-//			out.println("<script>alert('아이디 및 비밀번호를 확인해주세요.');location.href='loginUIServlet';</script>");
-//			out.flush();
-			response.sendRedirect("loginUIServlet");
+//			out.println("<script>alert('아이디 및 비밀번호를 확인해주세요.');</script>");
+			HttpSession session = request.getSession();
+//			session.setAttribute("mesg", "아이디 및 비밀번호를 확인해주세요.");
+//			out.println("<script>alert(mesg); location.href='MainForm.jsp'; </script>");
+//			out.println("<script>alert('아이디 및 비밀번호를 확인해주세요.'); location.href='MainForm.jsp'; </script>");
+			out.println("<script>alert('아이디 및 비밀번호를 확인해주세요.'); history.back(); </script>");
+			out.flush(); // 전의 내용을 강제적으로 화면에 뿌려주는 기능
+//			response.sendRedirect("MainForm.jsp");
 		}
 		
 	}

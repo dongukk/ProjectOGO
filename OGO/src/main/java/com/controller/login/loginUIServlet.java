@@ -22,12 +22,12 @@ public class loginUIServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String mesg = (String)session.getAttribute("mesg");
 		if(mesg!=null){			
-			out.println("<script> alert('mesg'); </script>"); 
+			out.println("<script> alert('mesg');  location.href='MainForm.jsp'; </script>"); 
 			session.removeAttribute("mesg");
 			out.close();
-			
+			// response.sendRedirect("MainForm.jsp");
 		} 
-		response.sendRedirect("MainForm.jsp");
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
