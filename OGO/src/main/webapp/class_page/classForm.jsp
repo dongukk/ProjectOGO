@@ -31,12 +31,17 @@
 			var className=$("#className").val();
 			var category=$("#category").val();
 			var subCategory=$("#subCategory").val();
-			
+			var schedule1=$("#schedule1").val();
 			var classPrice=$("#classPrice").val();
 			var post=$("#post").val();
 			var address1=$("#address1").val();
 			var address2=$("#address2").val();
 			var classPhoto1=$("#classPhoto1").val();
+			var textClassInfo=$("#textClassInfo").val();
+			var textTutorInfo=$("#textTutorInfo").val();
+			var textNotice=$("#textNotice").val();
+			var textAttention=$("#textAttention").val();
+			
 			
 			if (className.length==0) {
 				alert("클래스명을 입력해주세요");
@@ -47,11 +52,26 @@
 			}else if (subCategory.length==0) {
 				alert("서브카테고리를 선택해주세요");
 				event.preventDefault();
+			}else if (schedule1.length==0) {
+				alert("클래스 일정을 추가해주세요");
+				event.preventDefault();
 			}else if (classPrice.length==0) {
 				alert("클래스 가격을 입력해주세요");
 				event.preventDefault();
 			}else if (post.length==0 && address1.length==0 && address2.length==0) {
 				alert("주소를 입력해주세요");
+				event.preventDefault();
+			}else if (textClassInfo.length==0) {
+				alert("클래스 소개를 입력해주세요");
+				event.preventDefault();
+			}else if (textTutorInfo.length==0) {
+				alert("튜터 소개를 입력해주세요");
+				event.preventDefault();
+			}else if (textNotice.length==0) {
+				alert("클래스 공지사항을 입력해주세요");
+				event.preventDefault();
+			}else if (textAttention.length==0) {
+				alert("클래스 유희사항을 입력해주세요");
 				event.preventDefault();
 			}
 			
