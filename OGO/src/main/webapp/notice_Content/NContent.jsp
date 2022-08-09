@@ -1,4 +1,4 @@
-<%@page import="com.dto.notice.MemberDTO"%>
+<%@page import="com.dto.login.MemberDTO"%>
 <%@page import="com.dto.notice.NoticeDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -37,7 +37,7 @@
 	</tr>
 </table>
 	
-<% } else if (  Mdto.getUserid().equals("admin") && Mdto.getUserpasswd().equals("admin")  ) { %>
+<% } else if (  Mdto.getUserId().equals("admin") && Mdto.getUserPasswd().equals("admin")  ) { %>
 
 <div>
 	<a href="NoticeListServlet">목록으로</a>

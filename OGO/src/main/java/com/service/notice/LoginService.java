@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.config.notice.MySqlSessionFactory;
 import com.dao.notice.LoginDAO;
-import com.dto.notice.MemberDTO;
+import com.dto.login.MemberDTO;
 
 public class LoginService {
 

@@ -1,9 +1,9 @@
-<%@page import="com.dto.notice.MemberDTO"%>
+<%@page import="com.dto.login.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
     <% MemberDTO dto = (MemberDTO) session.getAttribute("login"); 
-    	String userid = dto.getUserid();
+    	String userid = dto.getUserId();
     %>
     <form action="../Create_NoticeServlet" method="get" >
     <table border="1">

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dto.notice.MemberDTO;
+import com.dto.login.MemberDTO;
 import com.dto.notice.NoticeDTO;
 import com.service.notice.NoticeService;
 
@@ -43,7 +43,7 @@ public class Delete_NoticeServlet extends HttpServlet {
 			nextpage = "MAIN";
 			//로그인 페이지 연결 되면 연결
 			
-		} else if (mdto.userid.equals("admin") && mdto.getUserpasswd().equals("admin")) {
+		} else if (mdto.getUserId().equals("admin") && mdto.getUserPasswd().equals("admin")) {
 		
 			NoticeService service = new NoticeService();
 			int num = service.delete(nnum);

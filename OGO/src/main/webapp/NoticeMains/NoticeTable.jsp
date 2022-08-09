@@ -1,4 +1,4 @@
-<%@page import="com.dto.notice.MemberDTO"%>
+<%@page import="com.dto.login.MemberDTO"%>
 <%@page import="com.dto.notice.PageDTO"%>
 <%@page import="com.dto.notice.NoticeDTO"%>
 <%@page import="java.util.List"%>
@@ -53,7 +53,7 @@ for(int i=0; i< list.size(); i++){
 
 <%  if(Mdto != null) {
 
-if(Mdto.getUserid().equals("admin") && Mdto.getUserpasswd().equals("admin")){ %>
+if(Mdto.getUserId().equals("admin") && Mdto.getUserPasswd().equals("admin")){ %>
 	<input type="button" value="새 글작성" onclick="window.location.href='notice/NewNotice.jsp'">
 <% }
 }//if admin %>  </td> 

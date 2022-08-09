@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dto.notice.MemberDTO;
+import com.dto.login.MemberDTO;
 import com.dto.notice.NoticeDTO;
 import com.service.notice.NoticeService;
 
@@ -40,13 +40,13 @@ public class Update_NoticeServlet extends HttpServlet {
 			nextpage = "MAIN";
 			//로그인 페이지 연결 되면 연결
 			
-		} else if (mdto.userid.equals("admin") && mdto.getUserpasswd().equals("admin")) {
+		} else if (mdto.getUserId().equals("admin") && mdto.getUserPasswd().equals("admin")) {
 			
 		String nnum =  request.getParameter("nnum");
 		String ntitle =  request.getParameter("ntitle");
 		String ncontent =  request.getParameter("ncontent");
 		
-		NoticeDTO ndto = new NoticeDTO(Integer.parseInt(nnum), mdto.getUserid(), ntitle, ncontent, "today");
+		NoticeDTO ndto = new NoticeDTO(Integer.parseInt(nnum), mdto.getUserId(), ntitle, ncontent, "today");
 		
 		NoticeService service = new NoticeService();
 		int num = service.update(ndto);

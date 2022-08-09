@@ -2,7 +2,7 @@ package com.dao.notice;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.dto.notice.MemberDTO;
+import com.dto.login.MemberDTO;
 
 public class LoginDAO {
 

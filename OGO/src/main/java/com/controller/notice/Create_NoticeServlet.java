@@ -1,5 +1,6 @@
 package com.controller.notice;
 
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dto.notice.MemberDTO;
+import com.dao.login.MemberDAO;
+import com.dto.login.MemberDTO;
 import com.dto.notice.NoticeDTO;
 import com.service.notice.NoticeService;
 
@@ -39,7 +41,7 @@ public class Create_NoticeServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
-		String userid = dto.getUserid();
+		String userid = dto.getUserId();
 		
 		NoticeDTO Ndto = new NoticeDTO(0, userid, ntitle, ncontent, "today"); 
 		//dto는 nickname자리지만 필요한 정보는 userid이기 때문에  nickname자리에 userid작성
