@@ -11,14 +11,11 @@ public class HeartService {
 	
 	HeartDAO dao;
 	
-	public HeartService() {
-		dao= new HeartDAO();
-	}
-
 	public int heartSearch(HashMap<String, Object> map) {
 		SqlSession session= MySqlSessionFactory.getSession();
 		int n=0;
 		try {
+			dao= new HeartDAO();
 			n= dao.heartSearch(session, map);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -31,6 +28,7 @@ public class HeartService {
 		SqlSession session= MySqlSessionFactory.getSession();
 		int n=0;
 		try {
+			dao= new HeartDAO();
 			n= dao.heartCount(session, classNum);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -44,6 +42,7 @@ public class HeartService {
 		SqlSession session= MySqlSessionFactory.getSession();
 		int n=0;
 		try {
+			dao= new HeartDAO();
 			n= dao.heartdelete(session, map);
 			session.commit();
 		} catch (Exception e) {
@@ -58,6 +57,7 @@ public class HeartService {
 		SqlSession session= MySqlSessionFactory.getSession();
 		int n=0;
 		try {
+			dao= new HeartDAO();
 			n= dao.heartInsert(session, map);
 			session.commit();
 		} catch (Exception e) {

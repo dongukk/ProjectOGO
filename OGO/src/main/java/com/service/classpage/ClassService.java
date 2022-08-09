@@ -12,16 +12,17 @@ import com.dto.classpage.ClassDTO;
 public class ClassService {
 	ClassDAO dao;
 	
-	public ClassService() {
-		dao= new ClassDAO();
-	}
+//	public ClassService() {
+//		dao= new ClassDAO();
+//	}
 	
-	public ClassDTO select(int classNum) {
+	public ClassDTO selectClass(int classNum) {
 		
 		SqlSession session= MySqlSessionFactory.getSession();
 		ClassDTO dto= null;
 		try {
-			dto= dao.select(session, classNum);
+			dao= new ClassDAO();
+			dto= dao.selectClass(session, classNum);
 		} finally {
 			session.close();
 		}
@@ -29,9 +30,11 @@ public class ClassService {
 	}
 
 	public String selectNickName(String tuterId) {
+		
 		SqlSession session= MySqlSessionFactory.getSession();
 		String name="";
 		try {
+			dao= new ClassDAO();
 			name= dao.selectNickName(session, tuterId);
 		} finally {
 			session.close();
@@ -50,23 +53,27 @@ public class ClassService {
 //		return con_class;
 //	}
 	
-	public HashMap selectContent(int classNum) {
-		SqlSession session= MySqlSessionFactory.getSession();
-		HashMap con_class = null;
-		try {
-			con_class= dao.selectContent(session, classNum);
-		} finally {
-			session.close();
-		}
-		return con_class;
-	}
+
 
 	public int classOpen(ClassDTO cDTO) {
 		SqlSession session= MySqlSessionFactory.getSession();
 		int num=0;
 		try {
+			dao= new ClassDAO();
 			num= dao.classOpen(session, cDTO);
 			session.commit();
+		} finally {
+			session.close();
+		}
+		return num;
+	}
+
+	public int searchClassNum(HashMap<String, String> map) {
+		SqlSession session= MySqlSessionFactory.getSession();
+		int num=0;
+		try {
+			dao= new ClassDAO();
+			num= dao.searchClassNum(session, map);
 		} finally {
 			session.close();
 		}

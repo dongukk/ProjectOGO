@@ -17,6 +17,7 @@ import javax.websocket.Session;
 import com.dto.classpage.ClassDTO;
 import com.dto.login.MemberDTO;
 import com.service.classpage.ClassService;
+import com.service.classpage.ContentService;
 import com.service.classpage.HeartService;
 
 /**
@@ -29,19 +30,25 @@ public class ClassPageServlet extends HttpServlet {
 		
 		HttpSession session=request.getSession();
 		MemberDTO mDTO= (MemberDTO)session.getAttribute("login");
-		int classNum= 1; //나중에 클래스Num 받아오기
+		int classNum=73; //나중에 클래스Num 받아오기
 		
 		ClassService service= new ClassService();
 		//클래스 정보
-		ClassDTO cDTO= service.select(classNum); //class 정보
-			System.out.println(cDTO);//dto 확인
+		ClassDTO cDTO= service.selectClass(classNum); //class 정보
+			//System.out.println(cDTO);//dto 확인
 		
 		String tuterId= cDTO.getUserId(); //클래스의 튜터 아이디 - 나중에 변수명 바꾸기
+			//System.out.println(tuterId);//튜터 아이디 확인
+		//클래스 일정 정보
+		
 		
 		//튜터 닉네임
 		String nickName=service.selectNickName(tuterId);
+			//System.out.println(nickName);//튜터 닉네임 확인
 		//클래스소개,튜터소개,일정장소,유의사항,공지사항-resultMap
-		HashMap classContents =service.selectContent(classNum); 
+		ContentService conService= new ContentService();
+		HashMap classContents =conService.selectContent(classNum); 
+			//System.out.println(classContents);//content확인
 		
 		//찜 
 		String userId=""; //로그인이 되지 않은 경우에도 페이지 볼 수 있도록 처리하는 중
@@ -66,7 +73,7 @@ public class ClassPageServlet extends HttpServlet {
 		request.setAttribute("cDTO", cDTO);
 		request.setAttribute("nickName", nickName);
 		request.setAttribute("classContents", classContents);
-		request.setAttribute("userId2", userId); //나중에 session에서 userid 받아쓰기
+		//request.setAttribute("userId2", userId); 
 		
 		RequestDispatcher dis =request.getRequestDispatcher("ClassPage.jsp");
 		dis.forward(request, response);

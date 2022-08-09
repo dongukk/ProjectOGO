@@ -31,14 +31,17 @@
 			var className=$("#className").val();
 			var category=$("#category").val();
 			var subCategory=$("#subCategory").val();
-			var classDate=$("#classDate").val();
-			var classStartTime=$("#classStartTime").val();
-			var classEndTime=$("#classEndTime").val();
+			var schedule1=$("#schedule1").val();
 			var classPrice=$("#classPrice").val();
 			var post=$("#post").val();
 			var address1=$("#address1").val();
 			var address2=$("#address2").val();
 			var classPhoto1=$("#classPhoto1").val();
+			var textClassInfo=$("#textClassInfo").val();
+			var textTutorInfo=$("#textTutorInfo").val();
+			var textNotice=$("#textNotice").val();
+			var textAttention=$("#textAttention").val();
+			
 			
 			if (className.length==0) {
 				alert("클래스명을 입력해주세요");
@@ -49,17 +52,26 @@
 			}else if (subCategory.length==0) {
 				alert("서브카테고리를 선택해주세요");
 				event.preventDefault();
-			}else if (classDate.length==0) {
-				alert("클래스 날짜를 선택해주세요");
-				event.preventDefault();
-			}else if (classStartTime.length==0) {
-				alert("클래스 시작 시간을 입력해주세요");
-				event.preventDefault();
-			}else if (classEndTime.length==0) {
-				alert("클래스 종료 시간을 입력해주세요");
+			}else if (schedule1.length==0) {
+				alert("클래스 일정을 추가해주세요");
 				event.preventDefault();
 			}else if (classPrice.length==0) {
 				alert("클래스 가격을 입력해주세요");
+				event.preventDefault();
+			}else if (post.length==0 && address1.length==0 && address2.length==0) {
+				alert("주소를 입력해주세요");
+				event.preventDefault();
+			}else if (textClassInfo.length==0) {
+				alert("클래스 소개를 입력해주세요");
+				event.preventDefault();
+			}else if (textTutorInfo.length==0) {
+				alert("튜터 소개를 입력해주세요");
+				event.preventDefault();
+			}else if (textNotice.length==0) {
+				alert("클래스 공지사항을 입력해주세요");
+				event.preventDefault();
+			}else if (textAttention.length==0) {
+				alert("클래스 유희사항을 입력해주세요");
 				event.preventDefault();
 			}
 			
@@ -84,6 +96,7 @@
 					"<button class='close btn btn-outline-secondary' type='button' data-xxx='sched"+i+"' data-yyy='id"+i+"'>X</button><br>"+
 					"</div>"
 				}
+				$("#schedule"+idx).val(schedule);
 				
 			}else {
 				alert("클래스는 최대 10회차까지만 등록 가능합니다");
@@ -102,7 +115,7 @@
 						"<span class='input-group-text'>"+idx+"회차</span>"+
 						"<input type='text' class='form-control' value="+schedule+" readonly>"+
 						"<br></div>");
-				$("#schedule"+idx).val(schedule);
+				$("#schedule"+idx).val(schedule); //hidden에 value값 넣기 -> 파싱해야됨
 				console.log($("#schedule"+idx).val()); 
 				
 			}else {
@@ -125,9 +138,7 @@
   <body>
 <%
 	MemberDTO mDTO =(MemberDTO)session.getAttribute("login");
-	/* if(mDTO==null){
-		
-	} */
+
 	String userId=mDTO.getUserId(); //튜터가 될 유저의 아이디
 %>
   <div class="one">
@@ -137,16 +148,16 @@
   	<br>
     <!-- <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post" enctype="multipart/form-data"> -->
     <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post">
-     <input type="hidden" id="schedule1" name="schedule1" value="">
-     <input type="hidden" id="schedule2" name="schedule2" value="">
-     <input type="hidden" id="schedule3" name="schedule3" value="">
-     <input type="hidden" id="schedule4" name="schedule4" value="">
-     <input type="hidden" id="schedule5" name="schedule5" value="">
-     <input type="hidden" id="schedule6" name="schedule6" value="">
-     <input type="hidden" id="schedule7" name="schedule7" value="">
-     <input type="hidden" id="schedule8" name="schedule8" value="">
-     <input type="hidden" id="schedule9" name="schedule9" value="">
-     <input type="hidden" id="schedule10" name="schedule10" value="">
+	    <input type="hidden" id="schedule1" name="schedule1" value="">
+	    <input type="hidden" id="schedule2" name="schedule2" value="">
+	    <input type="hidden" id="schedule3" name="schedule3" value="">
+	    <input type="hidden" id="schedule4" name="schedule4" value="">
+	    <input type="hidden" id="schedule5" name="schedule5" value="">
+	    <input type="hidden" id="schedule6" name="schedule6" value="">
+	    <input type="hidden" id="schedule7" name="schedule7" value="">
+	    <input type="hidden" id="schedule8" name="schedule8" value="">
+	    <input type="hidden" id="schedule9" name="schedule9" value="">
+	    <input type="hidden" id="schedule10" name="schedule10" value="">
      
 	  <div class="col-md-12">
 	    <label for="tutorId" class="form-label">튜터 ID</label>
@@ -185,22 +196,6 @@
 	      <option class="subCategory" value="영상">영상</option>
 	    </select>
 	  </div>
-	  <!-- <div class="col-12">
-	    <label for="classDate" class="form-label">클래스 일자</label>
-	    <input type="date" class="form-control" id="classDate" name="classDate">
-	  </div>
-	  <div class="col-md-6">
-	       <label for="classStartTime" class="form-label">클래스 시작 시간</label>
-	       <input type="time" class="form-control" id="classStartTime" name="classStartTime">
-	  </div>
-	  <div class="col-md-6">
-	       <label for="classEndTime" class="form-label">클래스 종료 시간</label>
-	       <input type="time" class="form-control" id="classEndTime" name="classEndTime">
-	  </div>
-	  <div class="col-12">
-	    <button type="button" class="btn btn-primary" id="scheduleBtn">일정 추가하기</button>
-	  </div> -->
-	  
 	  <div class="col-12 mb-3" >
 	  	<label for="classSchedule" class="form-label">클래스 일정 (*최대 10회차까지 등록 가능합니다)</label><br>
 	  	<div class="btn-group mb-3" role="group">
@@ -217,7 +212,7 @@
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
-		        <form>
+		        <!-- <form class="classDateUpdate"> -->
 		          <div class="mb-3">
 		            <label for="classDate" class="form-label">클래스 일자</label>
 	    			<input type="date" class="form-control" id="classDate" name="classDate">
@@ -230,7 +225,7 @@
 				    <label for="classEndTime" class="form-label">클래스 종료 시간</label>
 				    <input type="time" class="form-control" id="classEndTime" name="classEndTime">
 				  </div>
-		        </form>
+		        <!-- </form> -->
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -21,7 +21,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	from content
     	where classid = #{classId}
     </select> -->
-
+	
+	<insert id="saveContent" parameterType="hashmap">
+		insert into 
+		content(classNum, con_class, con_tutor, con_attention, con_notice)
+		values(#{classNum}, #{conDTO.con_class},#{conDTO.con_tutor},
+		#{conDTO.con_attention},#{conDTO.con_notice})
+		
+	</insert>
     	
 
     
