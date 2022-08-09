@@ -30,7 +30,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</when>
 			
 		</choose> -->
-		select classnum, classname, userid, subcategory, price, place, schedule1
+		select classnum, classname, userid, subcategory, price, place, schedule1,
+		schedule2,schedule3,schedule4,schedule5,schedule6,schedule7,schedule8,schedule9,schedule10
 		from class
 		where classnum = #{classNum}
 	</select>
