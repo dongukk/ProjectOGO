@@ -38,6 +38,9 @@ public class ClassPageServlet extends HttpServlet {
 		
 		String tuterId= cDTO.getUserId(); //클래스의 튜터 아이디 - 나중에 변수명 바꾸기
 		
+		//클래스 일정 정보
+		
+		
 		//튜터 닉네임
 		String nickName=service.selectNickName(tuterId);
 		//클래스소개,튜터소개,일정장소,유의사항,공지사항-resultMap
@@ -66,7 +69,7 @@ public class ClassPageServlet extends HttpServlet {
 		request.setAttribute("cDTO", cDTO);
 		request.setAttribute("nickName", nickName);
 		request.setAttribute("classContents", classContents);
-		request.setAttribute("userId2", userId); //나중에 session에서 userid 받아쓰기
+		//request.setAttribute("userId2", userId); 
 		
 		RequestDispatcher dis =request.getRequestDispatcher("ClassPage.jsp");
 		dis.forward(request, response);

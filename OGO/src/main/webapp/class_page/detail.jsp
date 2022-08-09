@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%
 	ClassDTO cDTO = (ClassDTO)request.getAttribute("cDTO");
-	String schedule =cDTO.getSchedule();
+	String schedule1 =cDTO.getSchedule1();
 	String place =cDTO.getPlace();
 %>
 <div id="detail">
@@ -12,7 +12,7 @@
   </div>
 	<hr>
 		<div id="classDetail">
-			-일정 : <%=schedule %><br>
+			-일정 : <%=schedule1 %><br>
 			<br>
 			-장소 : <%= place %>
 			<br>

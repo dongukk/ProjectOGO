@@ -4,7 +4,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ClassMapper">
 	<select id="select" resultType="ClassDTO" parameterType="int">
-		select classnum, classname, userid, category, price, schedule, place
+		<!-- <choose>
+			<when test="schedule2 == null">
+				select classnum, classname, userid, subcategory, price, place,schedule1
+				from class
+				where classnum = #{classNum}
+			</when>
+			<when test="schedule3 == null">
+				select classnum, classname, userid, subcategory, price, place,
+				schedule1,schedule2
+				from class
+				where classnum = #{classNum}
+			</when>
+			<when test="schedule4 == null">
+				select classnum, classname, userid, subcategory, price, place,
+				schedule1,schedule2,schedule3
+				from class
+				where classnum = #{classNum}
+			</when>
+			<when test="schedule5 == null">
+				select classnum, classname, userid, subcategory, price, place,
+				schedule1,schedule2,schedule3,schedule4
+				from class
+				where classnum = #{classNum}
+			</when>
+			
+		</choose> -->
+		select classnum, classname, userid, subcategory, price, place, schedule1
 		from class
 		where classnum = #{classNum}
 	</select>
