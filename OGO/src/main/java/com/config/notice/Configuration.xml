@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    <typeAliases>
     <typeAlias type="com.dto.notice.NoticeDTO" alias="NoticeDTO"/>
     <typeAlias type="com.dto.notice.FaqDTO" alias="FaqDTO"/>
-    <typeAlias type="com.dto.notice.MemberDTO" alias="MemberDTO"/>
+    <typeAlias type="com.dto.login.MemberDTO" alias="MemberDTO"/>
    </typeAliases>
    
 	<environments default="development">
