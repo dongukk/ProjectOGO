@@ -16,13 +16,13 @@ public class ClassService {
 //		dao= new ClassDAO();
 //	}
 	
-	public ClassDTO select(int classNum) {
+	public ClassDTO selectClass(int classNum) {
 		
 		SqlSession session= MySqlSessionFactory.getSession();
 		ClassDTO dto= null;
 		try {
 			dao= new ClassDAO();
-			dto= dao.select(session, classNum);
+			dto= dao.selectClass(session, classNum);
 		} finally {
 			session.close();
 		}
@@ -53,17 +53,7 @@ public class ClassService {
 //		return con_class;
 //	}
 	
-	public HashMap selectContent(int classNum) {
-		SqlSession session= MySqlSessionFactory.getSession();
-		HashMap con_class = null;
-		try {
-			dao= new ClassDAO();
-			con_class= dao.selectContent(session, classNum);
-		} finally {
-			session.close();
-		}
-		return con_class;
-	}
+
 
 	public int classOpen(ClassDTO cDTO) {
 		SqlSession session= MySqlSessionFactory.getSession();
@@ -72,6 +62,18 @@ public class ClassService {
 			dao= new ClassDAO();
 			num= dao.classOpen(session, cDTO);
 			session.commit();
+		} finally {
+			session.close();
+		}
+		return num;
+	}
+
+	public int searchClassNum(HashMap<String, String> map) {
+		SqlSession session= MySqlSessionFactory.getSession();
+		int num=0;
+		try {
+			dao= new ClassDAO();
+			num= dao.searchClassNum(session, map);
 		} finally {
 			session.close();
 		}

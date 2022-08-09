@@ -176,22 +176,6 @@
 	      <option class="subCategory" value="영상">영상</option>
 	    </select>
 	  </div>
-	  <!-- <div class="col-12">
-	    <label for="classDate" class="form-label">클래스 일자</label>
-	    <input type="date" class="form-control" id="classDate" name="classDate">
-	  </div>
-	  <div class="col-md-6">
-	       <label for="classStartTime" class="form-label">클래스 시작 시간</label>
-	       <input type="time" class="form-control" id="classStartTime" name="classStartTime">
-	  </div>
-	  <div class="col-md-6">
-	       <label for="classEndTime" class="form-label">클래스 종료 시간</label>
-	       <input type="time" class="form-control" id="classEndTime" name="classEndTime">
-	  </div>
-	  <div class="col-12">
-	    <button type="button" class="btn btn-primary" id="scheduleBtn">일정 추가하기</button>
-	  </div> -->
-	  
 	  <div class="col-12 mb-3" >
 	  	<label for="classSchedule" class="form-label">클래스 일정 (*최대 10회차까지 등록 가능합니다)</label><br>
 	  	<div class="btn-group mb-3" role="group">

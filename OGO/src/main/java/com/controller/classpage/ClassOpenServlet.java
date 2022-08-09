@@ -1,6 +1,8 @@
 package com.controller.classpage;
 
 import java.io.IOException;
+import java.util.HashMap;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dto.classpage.ClassDTO;
+import com.dto.classpage.ContentDTO;
 import com.service.classpage.ClassService;
+import com.service.classpage.ContentService;
 
 import oracle.security.pki.ssl.ClassServer;
 
@@ -47,10 +51,12 @@ public class ClassOpenServlet extends HttpServlet {
 		String place= "("+post+")"+address1+address2;
 		//System.out.println(schedule1+"--"+schedule2+"--"+schedule3);
 		
-		String textClassInfo =request.getParameter("textClassInfo");
-		String textTutorInfo =request.getParameter("textTutorInfo");
-		String textNotice =request.getParameter("textNotice");
-		String textAttention =request.getParameter("textAttention");
+		String con_class =request.getParameter("textClassInfo");
+		String con_tutor =request.getParameter("textTutorInfo");
+		String con_notice =request.getParameter("textNotice");
+		String con_attention =request.getParameter("textAttention");
+		//System.out.println(con_class+"=="+con_tutor+"=="+con_notice+"=="+con_attention);
+		
 		
 		
 		//class테이블에 저장
@@ -60,8 +66,30 @@ public class ClassOpenServlet extends HttpServlet {
 				schedule7, schedule8, schedule9, schedule10, place);
 		ClassService service= new ClassService();
 		int result =service.classOpen(cDTO);
-		
 		System.out.println("클래스 등록 성공:"+result);
+		
+		//content 테이블에 저장
+		//1. classnum 먼저 받아오기
+		String cName=cDTO.getClassName();
+		String cID=cDTO.getUserId();
+		HashMap<String, String> map= new HashMap<String, String>();
+		map.put("cName", cName);
+		map.put("cID", cID);
+		ClassService cService= new ClassService();
+		int classNum=cService.searchClassNum(map);
+		System.out.println(cName+ "의 classNum:" + classNum);
+		
+		
+		//2. content 테이블에 저장하기
+		ContentService conService= new ContentService();
+		ContentDTO conDTO= new ContentDTO(classNum, con_class, con_tutor, con_attention, con_notice);
+		HashMap<String, Object> contentMap= new HashMap<String, Object>();
+		contentMap.put("conDTO", conDTO); //contentDTO 저장
+		contentMap.put("classNum", classNum); //classNum 저장
+		int result2 =conService.saveContent(contentMap);
+		System.out.println("content insert : "+ result2);
+		
+		
 		
 	}
 
