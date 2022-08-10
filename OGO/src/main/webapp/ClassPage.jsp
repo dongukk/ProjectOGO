@@ -38,7 +38,7 @@
 		
 		//찜 버튼 클릭
 		$("#heart").on("click", function() {
-			if (<%=userId%>==null) {
+			if ("<%=userId%>"==null) {
 				alert("로그인 후 사용가능합니다");
 			}else {
 				var heart =$("#heart");
@@ -49,7 +49,7 @@
 					dataType: "text",
 					async: false,
 					data: { //서버에 넘겨줄 데이터
-						userId : <%=userId%>,
+						userId : "<%=userId%>",
 						classNum : <%=classNum%>,
 						heartYN : <%=heartYN%>
 					},
