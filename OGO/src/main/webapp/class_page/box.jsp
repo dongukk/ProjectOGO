@@ -74,9 +74,7 @@
 	  <div class="row mb-1">
 		  <div class="col-md-12" >
 		  	<b >선택한 회차</b><br>
-		  	<!-- <input type="text" id="scheduleChoice" readonly="readonly"> -->
-		  	<!-- <textarea rows="5" cols="20" id="scheduleChoice2" readonly="readonly"></textarea> -->
-		  	<div id="scheduleChoice3" class="mt-2">
+		  	<div id="scheduleChoice" class="mt-2">
 		  		<div class='input-group mb-1' >
 		  		  <input type='text' class='form-control' value="선택 회차 : 날짜" readonly><br>
 		  		</div>

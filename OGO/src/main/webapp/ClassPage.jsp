@@ -137,14 +137,10 @@
 			//console.log($(this).text());
 			var selectSchedule = $(this).text();
 			var scheduleChoice =$("#scheduleChoice");
-			var scheduleChoice2 =$("#scheduleChoice2");
-			var scheduleChoice3 =$("#scheduleChoice3");
 			
 			var idx= selectSchedule.substring(0, 1);
 			
-			//scheduleChoice.val(selectSchedule);
-			//scheduleChoice2.append(selectSchedule+"\n");
-			scheduleChoice3.append("<div class='input-group mb-1' id='select"+idx+"'>"+
+			scheduleChoice.append("<div class='input-group mb-1' id='select"+idx+"'>"+
 					"<input type='text' class='form-control' value="+selectSchedule+" readonly>"+
 					"<button type='button' class='btn' id='close"+idx+"'>X</button>"+
 					"<br></div>");
@@ -154,6 +150,7 @@
 			$("#selectSched"+idx).val(selectSchedule.substring(4));
 			console.log("selectSched"+idx+"의 val:"+$("#selectSched"+idx).val());
 			
+			//선택회차 개별 삭제 기능
 			$("#close"+idx).on("click", function() {
 				$("#select"+idx).detach();
 				
