@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="loginMapper">
+    
+    <select id="userid" parameterType="String" resultType="MemberDTO">
+    select USERID,USERPASSWD,USERNAME,NICKNAME,GENDER,BIRTH,PHONE1,PHONE2,PHONE3,POST,ADDRESS1,ADDRESS2,EMAIL1,EMAIL2,PROFILEPHOTO,HOBBY
+    from member
+    where username = #{username}
+    </select>
+    
+  
+</mapper>

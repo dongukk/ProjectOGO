@@ -21,7 +21,6 @@
       });
     </script>
  <% List<FaqDTO> list = (List<FaqDTO>) request.getAttribute("faqList");
- 	System.out.print(list);
  %>
 <h1 >FAQ 자주 물어보는 질문</h1>
 <table>
