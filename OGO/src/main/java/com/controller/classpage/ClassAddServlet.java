@@ -19,8 +19,8 @@ import oracle.security.pki.ssl.ClassServer;
 /**
  * Servlet implementation class ClassOpenServlet
  */
-@WebServlet("/ClassOpenServlet")
-public class ClassOpenServlet extends HttpServlet {
+@WebServlet("/ClassAddServlet")
+public class ClassAddServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -89,6 +89,7 @@ public class ClassOpenServlet extends HttpServlet {
 		int result2 =conService.saveContent(contentMap);
 		System.out.println("content insert : "+ result2);
 		
+		//response.sendRedirect("");
 		
 		
 	}

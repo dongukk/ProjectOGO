@@ -73,8 +73,9 @@
 			}else if (textAttention.length==0) {
 				alert("클래스 유희사항을 입력해주세요");
 				event.preventDefault();
+			}else{
+				alert("클래스 등록이 완료되었습니다.");
 			}
-			
 			
 		}) 
 		
@@ -147,7 +148,7 @@
   	</div>
   	<br>
     <!-- <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post" enctype="multipart/form-data"> -->
-    <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post">
+    <form class="row g-3" id="classOpenForm" action="../ClassAddServlet" method="post">
 	    <input type="hidden" id="schedule1" name="schedule1" value="">
 	    <input type="hidden" id="schedule2" name="schedule2" value="">
 	    <input type="hidden" id="schedule3" name="schedule3" value="">
