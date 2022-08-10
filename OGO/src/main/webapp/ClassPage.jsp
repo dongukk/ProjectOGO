@@ -37,7 +37,7 @@
 	$(document).ready(function() {
 		
 		//찜 버튼 클릭
-		$("#like").on("click", function() {
+		$("#heart").on("click", function() {
 			if (<%=userId%>==null) {
 				alert("로그인 후 사용가능합니다");
 			}else {
@@ -132,6 +132,27 @@
 			}
 		}) 
 		
+		//수강회차 선택
+		$(".dropdown-item").on("click", function() {
+			//console.log($(this).text());
+			var selectSchedule = $(this).text();
+			var scheduleChoice =$("#scheduleChoice");
+			var scheduleChoice2 =$("#scheduleChoice2");
+			var scheduleChoice3 =$("#scheduleChoice3");
+			
+			//scheduleChoice.val(selectSchedule);
+			//scheduleChoice2.append(selectSchedule+"\n");
+			scheduleChoice3.append("<div class='input-group mb-1' >"+
+					"<input type='text' class='form-control' value="+selectSchedule+" readonly>"+
+					"<button type='button' class='btn'>X</button>"+
+					"<br></div>");
+			//console.log(selectSchedule.substring(0, 1));
+			//console.log(selectSchedule.substring(4));
+			var idx= selectSchedule.substring(0, 1);
+			$("#selectSched"+idx).val(selectSchedule.substring(4));
+			console.log("selectSched"+idx+"의 val:"+$("#selectSched"+idx).val());
+		})
+		
 	});//ready
 </script>
 </head>
@@ -159,7 +180,19 @@
     <a href="" class="navBar_btn"><img src="NAV/img/menu.png" alt=""></a>
     
   </nav> -->
-  
+<%
+String [] arr= new String [10];
+arr[0]= cDTO.getSchedule1();
+arr[1] = cDTO.getSchedule2();
+arr[2] = cDTO.getSchedule3();
+arr[3] = cDTO.getSchedule4();
+arr[4] = cDTO.getSchedule5();
+arr[5] = cDTO.getSchedule6();
+arr[6] = cDTO.getSchedule7();
+arr[7] = cDTO.getSchedule8();
+arr[8] = cDTO.getSchedule9();
+arr[9] = cDTO.getSchedule10();
+%>
 <div class="wrap">
   <div id="right">
 	<!-- 결제 박스 -->
@@ -194,6 +227,6 @@
 </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
- <script src="progressbar.js"></script>
+<!--  <script src="progressbar.js"></script> -->
 </body>
 </html>
