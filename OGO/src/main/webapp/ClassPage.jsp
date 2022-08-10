@@ -161,7 +161,9 @@
 			$("#close"+idx).on("click", function() {
 				$("#select"+idx).detach();
 				var del = idxArr.indexOf(idx);
-				idxArr.splice(del, 1);
+				if (del > -1) {
+					idxArr.splice(del, 1);
+				}
 				console.log(idxArr);
 				
 			})
