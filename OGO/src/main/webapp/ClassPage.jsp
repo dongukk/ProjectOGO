@@ -136,7 +136,7 @@
 </script>
 </head>
 <body>
-  <div class="header">
+<!--   <div class="header">
     <div class="progress-container">
       <div class="progress-bar"></div>
     </div>
@@ -151,14 +151,14 @@
       <li><a href="">공지사항&FAQ</a></li>
     </ul>
     <ul class="login">
-      <!-- 로그인 마이페이지 더미-->
+      로그인 마이페이지 더미
       <li><a href="#"><img src="NAV/img/login.png" alt="" style="height: 30px; width: 30px;"></a></li>
       <li><a href="#"><img src="NAV/img/mypage.png" alt="" style="height: 30px; width: 30px;"></a></li>
     </ul>
     
     <a href="" class="navBar_btn"><img src="NAV/img/menu.png" alt=""></a>
     
-  </nav>
+  </nav> -->
   
 <div class="wrap">
   <div id="right">
