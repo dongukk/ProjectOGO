@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.dto.login.MemberDTO"%>
 <%@page import="com.dto.notice.NoticeDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -17,45 +18,40 @@
 
 <% NoticeDTO dto = (NoticeDTO) request.getAttribute("dto");
 	MemberDTO Mdto = (MemberDTO) session.getAttribute("login");
-
 	
-	if ( Mdto != null || Mdto == null) {
+	if ( Mdto == null || !Mdto.getUserId().equals("admin") ) {
 	%>
-	
-	
-	<div>
-	<a href="NoticeListServlet">목록으로</a>
-</div>
 
-<table border='1'>
+<br><br><br><br><br>
+<table class="tablewidth">
 	<tr>
-	 <td>${dto.ntitle}</td><td>${dto.nickname}</td><td>${dto.ndate}</td>
+	 <td id="title">${dto.ntitle}</td><td>${dto.nickname}</td><td>${dto.ndate}</td>
 	</tr>
 	
 	<tr>
-	<td colspan="3">${dto.ncontent}<br><br><br><br></td>
+	<td colspan="3" id="noticeContent">${dto.ncontent}<br><br><br><br></td>
 	</tr>
 </table>
 	
 <% } else if (  Mdto.getUserId().equals("admin") && Mdto.getUserPasswd().equals("admin")  ) { %>
-
-<div>
-	<a href="NoticeListServlet">목록으로</a>
-	</div>
-	
+	<br><br><br><br><br>
 	<form method="get" action="#">
-	<table>
+	<table class="tablewidth">
   <tr>
-  	<td> <input type="hidden" name="nnum" value="<%= dto.getNnum() %>"> NO. ${dto.nnum} </td>
-    <td> <input type="text" name="ntitle" style="width: 400px;" value="${dto.ntitle}"> </td>
-    <td> ${dto.nickname} </td>
-    <td> ${dto.ndate} </td>
+  	<td id="nnum"> <input type="hidden" name="nnum" value="<%= dto.getNnum() %>"> NO. ${dto.nnum} </td>
+    <td id="Atitle"> <input id="titleC" type="text" name="ntitle"  value="${dto.ntitle}"> </td>
+    <td class="tds" > ${dto.nickname} </td>
+    <td class="tds" > ${dto.ndate} </td>
   </tr>
   <tr>
-    <td colspan="4"> <textarea style="width: 600px; height: 400px;" name="ncontent"><%=dto.getNcontent()%></textarea> </td>
+    <td colspan="4"> <textarea id="textarea" name="ncontent">&#10;&#10;<%=dto.getNcontent()%></textarea> </td>
   </tr>
 </table>
-<input type="button" value="수정" id="update"> <input type="button" value="삭제" onclick="window.location.href='Delete_NoticeServlet?nnum=<%= dto.getNnum() %>'">
+<input class="btn" type="button" value="수정" id="update"> 
+<input class="btn" type="button" value="삭제" onclick="window.location.href='Delete_NoticeServlet?nnum=<%= dto.getNnum() %>'">
 </form>
 
+
 <% }//else %>
+<br>
+<input class="btn" type="button" value="목록으로" onclick="location.href='NoticeListServlet'">

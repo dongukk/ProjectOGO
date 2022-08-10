@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+	input.btn {
+    background: #8041D9; 
+    color: #FFFFFF;
+    }
+    
+	.tds {
+		width: 20%;
+	}
+	#title {
+	width:100%;
+	border:0 solid black;
+	font-weight : bold ;
+	}
