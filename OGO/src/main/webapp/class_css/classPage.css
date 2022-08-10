@@ -21,33 +21,46 @@
 	
 	/* 오른쪽의 결제 box */
 	.box {
-		background-color: white;
+		/* background-color: white;
 		width: 180px;
 		height: 160px;
 		padding: 20px; 
 		border: 8px solid #6633FF;
 		border-radius: 20px 20px 20px 20px;
-		margin: 80px;
+		
+		text-align:right;*/
+		border: 3px solid #6633FF;
+		border-radius: 15px 15px 15px 15px;
+		margin: 80px; 
 		position : fixed;
-		text-align:center;
+		
 	}
 	
 	/* box.jsp의 price */
 	#price{
+		text-align: right;
 		font-size: 24px;
 		font-weight: bold;
+		/* 
 		text-align: right;
 		position: absolute;
 		top: 20%;
 		right: -15%;
-		transform: translate(-50%, -30%);
+		transform: translate(-50%, -30%); */
+	}
+	/* 회차 선택 드롭다운 */
+	#scheduleMenuButton{
+		color: #6633FF;
+		font-weight: bold;
 	}
 	/* 수강결제 버튼 */
 	#payBtn{ 
-		background-color: #6633FF; 
+		background-color: #6633FF;
+		outline-color: white;
+		font-weight: bold;
+		/* 
 		color: white; 
 		font-size: 18px; 
-		font-weight: bold;
 		width: 70%;
 		height: 25%;
 		text-align: center;
@@ -55,29 +68,26 @@
 		position: absolute;
 		top: 25%;
 		left: 50%;
-		transform: translate(-50%, 60%);
+		transform: translate(-50%, 60%); */
 	}
 	/* 수강결제 글자 */
 	#payBtn2{
-		position: absolute;
+		/* position: absolute;
 		top: 17%;
-		left: 18%;
+		left: 18%; */
 	}
 	/* 찜 버튼 */
-	#like{
+	#heart{
 		cursor : pointer;
-		position: absolute;
-		bottom: 8%;
-		left: 20%;
 	}
 	#heartCount{
-		position: absolute;
+		/* position: absolute;
 		bottom: 18%;
-		left: 125%;
+		left: 125%; */
 	}
  	
 	/* photo container */
-	.container{ 
+	.container > #photo{ 
 		display: flex;
 	}
 	/* photo 버튼 */

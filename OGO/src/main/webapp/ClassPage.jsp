@@ -37,8 +37,8 @@
 	$(document).ready(function() {
 		
 		//찜 버튼 클릭
-		$("#like").on("click", function() {
-			if (<%=userId%>==null) {
+		$("#heart").on("click", function() {
+			if ("<%=userId%>"==null) {
 				alert("로그인 후 사용가능합니다");
 			}else {
 				var heart =$("#heart");
@@ -49,7 +49,7 @@
 					dataType: "text",
 					async: false,
 					data: { //서버에 넘겨줄 데이터
-						userId : <%=userId%>,
+						userId : "<%=userId%>",
 						classNum : <%=classNum%>,
 						heartYN : <%=heartYN%>
 					},
@@ -132,11 +132,53 @@
 			}
 		}) 
 		
+		//수강회차 선택
+		var idxArr= [];
+		$(".dropdown-item").on("click", function() {
+			  //console.log($(this).text());
+			var selectSchedule = $(this).text();
+			var scheduleChoice =$("#scheduleChoice");
+			
+			var idx= selectSchedule.substring(0, 1);
+			console.log(idxArr.indexOf(idx, 0));
+			if (idxArr.indexOf(idx, 0)== -1) {
+				idxArr.push(idx);
+				
+				scheduleChoice.append("<div class='input-group mb-1' id='select"+idx+"'>"+
+						"<input type='text' class='form-control' value="+selectSchedule+" readonly>"+
+						"<button type='button' class='btn' id='close"+idx+"'>X</button>"+
+						"<br></div>");
+				  //console.log(selectSchedule.substring(0, 1));
+				  //console.log(selectSchedule.substring(4));
+				
+				$("#selectSched"+idx).val(selectSchedule.substring(4));
+				  //console.log("selectSched"+idx+"의 val:"+$("#selectSched"+idx).val());
+			}else {
+				alert("이미 선택한 회차입니다.");
+			}
+			
+			//선택회차 개별 삭제 기능
+			$("#close"+idx).on("click", function() {
+				$("#select"+idx).detach();
+				var del = idxArr.indexOf(idx);
+				idxArr.splice(del, 1);
+				console.log(idxArr);
+				
+			})
+			
+		})//end
+		
+		//수강결제 폼 submit
+		$("#payForm").on("submit", function() {
+			
+		})
+		
+		
 	});//ready
 </script>
 </head>
 <body>
-  <div class="header">
+<!--   <div class="header">
     <div class="progress-container">
       <div class="progress-bar"></div>
     </div>
@@ -151,15 +193,27 @@
       <li><a href="">공지사항&FAQ</a></li>
     </ul>
     <ul class="login">
-      <!-- 로그인 마이페이지 더미-->
+      로그인 마이페이지 더미
       <li><a href="#"><img src="NAV/img/login.png" alt="" style="height: 30px; width: 30px;"></a></li>
       <li><a href="#"><img src="NAV/img/mypage.png" alt="" style="height: 30px; width: 30px;"></a></li>
     </ul>
     
     <a href="" class="navBar_btn"><img src="NAV/img/menu.png" alt=""></a>
     
-  </nav>
-  
+  </nav> -->
+<%
+String [] arr= new String [10];
+arr[0]= cDTO.getSchedule1();
+arr[1] = cDTO.getSchedule2();
+arr[2] = cDTO.getSchedule3();
+arr[3] = cDTO.getSchedule4();
+arr[4] = cDTO.getSchedule5();
+arr[5] = cDTO.getSchedule6();
+arr[6] = cDTO.getSchedule7();
+arr[7] = cDTO.getSchedule8();
+arr[8] = cDTO.getSchedule9();
+arr[9] = cDTO.getSchedule10();
+%>
 <div class="wrap">
   <div id="right">
 	<!-- 결제 박스 -->
@@ -194,6 +248,6 @@
 </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
- <script src="progressbar.js"></script>
+<!--  <script src="progressbar.js"></script> -->
 </body>
 </html>
