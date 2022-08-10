@@ -43,7 +43,7 @@
 	<div class="box">
 	<div class="container">
 	  <div class="row mb-2">
-	  	<div class="col-md-12" id="price"><%=priceF %>원</div>
+	  	<div class="col-md-12 mt-2" id="price"><%=priceF %>원</div>
 	  </div>
 	  <div class="row mb-3 ">
 		  <div class="btn-group col-md-12" role="group" >
@@ -71,7 +71,7 @@
 			</div>	  
 	  </div>
 	  </div>
-	  <div class="row mb-2">
+	  <div class="row mb-1">
 		  <div class="col-md-12" >
 		  	<b >선택한 회차</b><br>
 		  	<!-- <input type="text" id="scheduleChoice" readonly="readonly"> -->
@@ -84,7 +84,7 @@
 		  </div>	  
 	  </div>
 	  <div class="row">
-		  <div class="col" id="like">
+		  <div class="col mb-3" id="like">
 		  	<img id="heart" <%if(heartYN==1){ %>src="class_img/heart2.png"<%}else{ %>src="class_img/heart1.png" <%} %> 
 		  	height="35px" width="35px">
 		  	<span id="heartCount" style="font-size: 17px;"><%=heartCount %></span> <!-- 찜 개수 -->
