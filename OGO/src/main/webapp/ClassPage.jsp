@@ -131,32 +131,47 @@
 				alert("로그인이 필요합니다");
 			}
 		}) 
-		//var idx=null;
+		
 		//수강회차 선택
+		var idxArr= [];
 		$(".dropdown-item").on("click", function() {
-			//console.log($(this).text());
+			  //console.log($(this).text());
 			var selectSchedule = $(this).text();
 			var scheduleChoice =$("#scheduleChoice");
 			
 			var idx= selectSchedule.substring(0, 1);
-			
-			scheduleChoice.append("<div class='input-group mb-1' id='select"+idx+"'>"+
-					"<input type='text' class='form-control' value="+selectSchedule+" readonly>"+
-					"<button type='button' class='btn' id='close"+idx+"'>X</button>"+
-					"<br></div>");
-			//console.log(selectSchedule.substring(0, 1));
-			//console.log(selectSchedule.substring(4));
-			
-			$("#selectSched"+idx).val(selectSchedule.substring(4));
-			console.log("selectSched"+idx+"의 val:"+$("#selectSched"+idx).val());
+			console.log(idxArr.indexOf(idx, 0));
+			if (idxArr.indexOf(idx, 0)== -1) {
+				idxArr.push(idx);
+				
+				scheduleChoice.append("<div class='input-group mb-1' id='select"+idx+"'>"+
+						"<input type='text' class='form-control' value="+selectSchedule+" readonly>"+
+						"<button type='button' class='btn' id='close"+idx+"'>X</button>"+
+						"<br></div>");
+				  //console.log(selectSchedule.substring(0, 1));
+				  //console.log(selectSchedule.substring(4));
+				
+				$("#selectSched"+idx).val(selectSchedule.substring(4));
+				  //console.log("selectSched"+idx+"의 val:"+$("#selectSched"+idx).val());
+			}else {
+				alert("이미 선택한 회차입니다.");
+			}
 			
 			//선택회차 개별 삭제 기능
 			$("#close"+idx).on("click", function() {
 				$("#select"+idx).detach();
+				var del = idxArr.indexOf(idx);
+				idxArr.splice(del, 1);
+				console.log(idxArr);
 				
 			})
-		})
+			
+		})//end
 		
+		//수강결제 폼 submit
+		$("#payForm").on("submit", function() {
+			
+		})
 		
 		
 	});//ready

@@ -79,7 +79,6 @@
 			
 		}) 
 		
-		//arr= [];
 		var idx= 0;
 		$("#scheduleBtn").on("click", function() {
 			var classDate= $("#classDate").val();
@@ -87,34 +86,16 @@
 			var classEndTime= $("#classEndTime").val();
 			var schedule= classDate+"&nbsp;"+classStartTime+"~"+classEndTime;
 			
-			//arr.push(schedule);
-			//var str= "";
-			/* if (arr.length < 11) {
-				for (var i = 1; i <= arr.length; i++) {
-					str = "<div class='input-group mb-3' id='sched"+i+"'>"+
-					"<span class='input-group-text'>"+i+"회차</span>"+
-					"<input type='text' class='form-control' id='id"+i+"' value="+schedule+" readonly>"+
-					"<button class='close btn btn-outline-secondary' type='button' data-xxx='sched"+i+"' data-yyy='id"+i+"'>X</button><br>"+
-					"</div>"
-				}
-				$("#schedule"+idx).val(schedule);
-				
-			}else {
-				alert("클래스는 최대 10회차까지만 등록 가능합니다");
-			}
-			$("#classSchedule").append(str); */
-			
 			idx++;
+			//var idx2=null;
+			
 			if (idx <= 10) {
 				// 개별 삭제는 나중에 다시 시도
-				/* $("#classSchedule").append("<div class='input-group mb-3' id='sched"+idx+"'>"+
-						"<span class='input-group-text'>"+idx+"회차</span>"+
-						"<input type='text' class='form-control' value="+schedule+" readonly>"+
-						"<button class='close btn btn-outline-secondary' type='button' data-xxx='sched"+idx+"'>X</button><br>"+
-						"</div>"); */
+				
 				$("#classSchedule").append("<div class='input-group mb-3' id='sched"+idx+"'>"+
 						"<span class='input-group-text'>"+idx+"회차</span>"+
 						"<input type='text' class='form-control' value="+schedule+" readonly>"+
+					//	"<button type='button' class='btn' id='close"+idx+"'>X</button>"+//버튼추가
 						"<br></div>");
 				$("#schedule"+idx).val(schedule); //hidden에 value값 넣기 -> 파싱해야됨
 				console.log($("#schedule"+idx).val()); 
@@ -122,7 +103,10 @@
 			}else {
 				alert("클래스는 최대 10회차까지만 등록 가능합니다")
 			} 
-			
+			//개별삭제
+			/* $("#close"+idx).on("click", function() {
+				$("#sched"+idx).detach();
+			})  */
 			
 		});//end scheduleBtn
 		

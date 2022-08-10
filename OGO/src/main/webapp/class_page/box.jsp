@@ -8,6 +8,7 @@
 	String heartCount = String.valueOf(request.getAttribute("heartCount"));
 	
 	ClassDTO cDTO = (ClassDTO)request.getAttribute("cDTO");
+	int classNum=cDTO.getClassNum();
 	int price= cDTO.getPrice();
 	NumberFormat numberFormat = NumberFormat.getInstance();
 	String priceF=numberFormat.format(price);
@@ -29,7 +30,9 @@
     
 <div >
 <aside>
-  <form action="#" id="payForm">
+  <form action="#" id="payForm" method="post">
+  <!-- 결제 페이지로 넘길 일정 정보 -->
+  <input type="hidden" id="classNumber" name="classNumber" value="<%=classNum%>">
   <input type="hidden" id="selectSched1" name="selectSched1">
   <input type="hidden" id="selectSched2" name="selectSched2">
   <input type="hidden" id="selectSched3" name="selectSched3">
@@ -50,7 +53,7 @@
 		  	<!-- 드롭다운 -->
 			<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
 			  <div class="btn-group" role="group">
-			    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="scheduleMenuButton" 
+			    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="scheduleMenuButton" 
 					 style="outline: #6633FF;" data-bs-toggle="dropdown" aria-expanded="false">
 					   회차 선택</button>
 				<ul class="dropdown-menu" aria-labelledby="scheduleMenuButton">
@@ -66,7 +69,7 @@
 				    %>
 				</ul>
 			  </div>
-			  <button type="submit" class="btn btn-primary" id="payBtn">수강결제</button>
+			  <button type="submit" class="btn btn-secondary" id="payBtn">수강결제</button>
 			  <!-- <div class="col" id="payBtn"><span id="payBtn2">수강결제</span></div> -->
 			</div>	  
 	  </div>
