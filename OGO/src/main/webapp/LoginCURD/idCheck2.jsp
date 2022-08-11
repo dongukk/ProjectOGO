@@ -5,6 +5,8 @@
  <%
  	String userId = (String) request.getAttribute("userId");
  	int count = (int) request.getAttribute("count");
+ 	System.out.println("userId"+userId);
+ 	System.out.println("count"+count);
  	if (count == 1){
  %>
 		 검색한 아이디 [<span style="color: red;"><%= userId %></span>] 는 중복된 아이디입니다. <br>

@@ -46,7 +46,7 @@ public class loginServlet extends HttpServlet {
 			response.sendRedirect("MainForm2.jsp");
 		} else {	// 회원아닌 경우			
 //			out.println("<script>alert('아이디 및 비밀번호를 확인해주세요.');</script>");
-			HttpSession session = request.getSession();
+//			HttpSession session = request.getSession();
 //			session.setAttribute("mesg", "아이디 및 비밀번호를 확인해주세요.");
 //			out.println("<script>alert(mesg); location.href='MainForm.jsp'; </script>");
 //			out.println("<script>alert('아이디 및 비밀번호를 확인해주세요.'); location.href='MainForm.jsp'; </script>");

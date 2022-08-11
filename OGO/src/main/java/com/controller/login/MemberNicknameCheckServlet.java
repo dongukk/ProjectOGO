@@ -22,7 +22,7 @@ public class MemberNicknameCheckServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
+
 		String nickname= request.getParameter("nickname");
 		System.out.println(nickname);
 		
