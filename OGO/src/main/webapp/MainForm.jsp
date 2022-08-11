@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="icon" href="common/img/OGO.ico">
 <meta charset="UTF-8">
 <title>O G O</title>
 </head>
