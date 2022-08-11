@@ -30,8 +30,8 @@
     
 <div >
 <aside>
-  <form action="#" id="payForm" method="post">
-  <!-- 결제 페이지로 넘길 일정 정보 -->
+  <form action="ClassOrderInfoServlet" id="payForm" method="post">
+  <!-- 결제 페이지로 넘길 정보 -->
   <input type="hidden" id="classNumber" name="classNumber" value="<%=classNum%>">
   <input type="hidden" id="selectSched1" name="selectSched1">
   <input type="hidden" id="selectSched2" name="selectSched2">
@@ -46,7 +46,7 @@
 	<div class="box">
 	<div class="container">
 	  <div class="row mb-2">
-	  	<div class="col-md-12 mt-2" id="price"><%=priceF %>원</div>
+	  	<div class="col-md-12 mt-2" id="price" name="price"><%=priceF %>원</div>
 	  </div>
 	  <div class="row mb-3 ">
 		  <div class="btn-group col-md-12" role="group" >

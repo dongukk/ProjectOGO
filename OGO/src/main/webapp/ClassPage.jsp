@@ -125,12 +125,6 @@
 			}
 		});//rightBtn end
 		
-		//수강결제 버튼 클릭
-		$("#payBtn").on("click", function() {
-			if (<%=userId%>==null) {
-				alert("로그인이 필요합니다");
-			}
-		}) 
 		
 		//수강회차 선택
 		var idxArr= [];
@@ -140,7 +134,7 @@
 			var scheduleChoice =$("#scheduleChoice");
 			
 			var idx= selectSchedule.substring(0, 1);
-			console.log(idxArr.indexOf(idx, 0));
+			//console.log(idxArr.indexOf(idx, 0)); //값이 -1인지 0인지 확인
 			if (idxArr.indexOf(idx, 0)== -1) {
 				idxArr.push(idx);
 				
@@ -164,15 +158,31 @@
 				if (del > -1) {
 					idxArr.splice(del, 1);
 				}
-				console.log(idxArr);
+				//console.log("idxArr:"+idxArr);
+				$("#selectSched"+idx).val(""); //hidden 태그 value도 삭제
+				//console.log("selectSched"+idx+"의 val:"+$("#selectSched"+idx).val());
 				
 			})
 			
 		})//end
 		
-		//수강결제 폼 submit
+		//수강결제 버튼 클릭
+		<%-- $("#payBtn").on("click", function() {
+			if (<%=userId%>==null) {
+				alert("로그인이 필요합니다");
+				event.preventDefault();
+			}
+		}) --%>
+		
+		//수강결제 폼 submit-수강결제 시 (수강결제 버튼 클릭)
 		$("#payForm").on("submit", function() {
-			
+			if (<%=userId%>==null) {
+				alert("로그인이 필요합니다");
+				event.preventDefault();
+			}else {
+				alert("수강신청 성공");
+				
+			}
 		})
 		
 		
