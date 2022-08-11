@@ -23,7 +23,7 @@
   </div>
 	<hr>
 		<div id="classDetail">
-			<b>-일정 :</b><br> 
+			<b style="font-size: 20px;">-일정 :</b><br> 
 			 &nbsp;&nbsp;1회차 - <%=schedule1 %><br>
 			 &nbsp;&nbsp;2회차 - <% if(schedule2!=null){out.print(schedule2);}else{%>해당 클래스의 2회차 일정은 없습니다.<%}%><br>
 			 &nbsp;&nbsp;3회차 - <% if(schedule3!=null){out.print(schedule3);}else{%>해당 클래스의 3회차 일정은 없습니다.<%}%><br>
@@ -35,7 +35,8 @@
 			 &nbsp;&nbsp;9회차 - <% if(schedule9!=null){out.print(schedule9);}else{%>해당 클래스의 9회차 일정은 없습니다.<%}%><br>
 			 &nbsp;&nbsp;10회차 - <% if(schedule10!=null){out.print(schedule10);}else{%>해당 클래스의 10회차 일정은 없습니다.<%}%><br>
 			<br>
-			<b>-장소 :</b> <%= place %>
+			<b style="font-size: 20px;">-장소 :</b><br>
+			&nbsp;&nbsp;<%= place %>
 			<br>
 		</div>
 	<!-- 아래에 지도 추가 -->

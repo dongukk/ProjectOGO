@@ -45,7 +45,7 @@
   <input type="hidden" id="selectSched10" name="selectSched10">
 	<div class="box">
 	<div class="container">
-	  <div class="row mb-2">
+	  <div class="row mb-2 ">
 	  	<div class="col-md-12 mt-2" id="price" name="price"><%=priceF %>원</div>
 	  </div>
 	  <div class="row mb-3 ">

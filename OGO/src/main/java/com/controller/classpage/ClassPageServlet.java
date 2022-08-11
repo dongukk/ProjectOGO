@@ -75,6 +75,9 @@ public class ClassPageServlet extends HttpServlet {
 		request.setAttribute("classContents", classContents);
 		//request.setAttribute("userId2", userId); 
 		
+		//클래스 등록 페이지 테스트 위한 session
+		session.setAttribute("cDTO", cDTO);
+		
 		RequestDispatcher dis =request.getRequestDispatcher("ClassPage.jsp");
 		dis.forward(request, response);
 		

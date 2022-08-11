@@ -1,3 +1,4 @@
+<%@page import="com.dto.classpage.ClassDTO"%>
 <%@page import="com.dto.login.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -23,6 +24,7 @@
     		text-align: center;
     	}
     </style>
+
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -103,10 +105,7 @@
 			}else {
 				alert("클래스는 최대 10회차까지만 등록 가능합니다")
 			} 
-			//개별삭제
-			/* $("#close"+idx).on("click", function() {
-				$("#sched"+idx).detach();
-			})  */
+			
 			
 		});//end scheduleBtn
 		
@@ -117,10 +116,12 @@
 			$("#classSchedule").empty();
 		})
 		
+
 	})//ready
 </script>
   </head>
   <body>
+   <jsp:include page="/common/NavBar.html" flush="true"></jsp:include>
 <%
 	MemberDTO mDTO =(MemberDTO)session.getAttribute("login");
 
@@ -285,8 +286,8 @@
 	  	<label for="textAttention" class="form-label">클래스 유의사항</label>
 	  	<textarea class="form-control" id="textAttention" name="textAttention" rows="5"></textarea>
 	  </div>
-	  <div class="col-12">
-	    <button type="submit" class="btn btn-primary">등록하기</button>
+	  <div class="d-grid gap-2 col-6 mx-auto">
+	    <button type="submit" class="btn btn-secondary" style="background-color: #6633FF;">등록하기</button>
 	  </div>
 	</form>
    

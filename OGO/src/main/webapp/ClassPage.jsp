@@ -31,6 +31,8 @@
 		userId = mDTO.getUserId();
 		//out.print(userId);
 	}
+	
+	
 %>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -165,23 +167,24 @@
 			})
 			
 		})//end
-		
-		//수강결제 버튼 클릭
-		<%-- $("#payBtn").on("click", function() {
-			if (<%=userId%>==null) {
-				alert("로그인이 필요합니다");
-				event.preventDefault();
-			}
-		}) --%>
+	
 		
 		//수강결제 폼 submit-수강결제 시 (수강결제 버튼 클릭)
 		$("#payForm").on("submit", function() {
-			if (<%=userId%>==null) {
+			var count=0;
+			for (var i = 1; i <= 10; i++) {
+				var value=$("#selectSched"+i).val();
+				if (value!="") {
+					count++;
+				}
+			}
+			
+			if (<%=userId%>==null) { //로그인을 하지 않은 경우
 				alert("로그인이 필요합니다");
 				event.preventDefault();
-			}else {
-				alert("수강신청 성공");
-				
+			}else if (count==0) { //회차를 선택하지 않은 경우
+				alert("원하는 수강 회차를 선택해주세요");
+				event.preventDefault();
 			}
 		})
 		
@@ -213,19 +216,7 @@
     <a href="" class="navBar_btn"><img src="NAV/img/menu.png" alt=""></a>
     
   </nav> -->
-<%
-String [] arr= new String [10];
-arr[0]= cDTO.getSchedule1();
-arr[1] = cDTO.getSchedule2();
-arr[2] = cDTO.getSchedule3();
-arr[3] = cDTO.getSchedule4();
-arr[4] = cDTO.getSchedule5();
-arr[5] = cDTO.getSchedule6();
-arr[6] = cDTO.getSchedule7();
-arr[7] = cDTO.getSchedule8();
-arr[8] = cDTO.getSchedule9();
-arr[9] = cDTO.getSchedule10();
-%>
+
 <div class="wrap">
   <div id="right">
 	<!-- 결제 박스 -->
