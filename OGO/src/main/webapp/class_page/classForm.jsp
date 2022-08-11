@@ -116,6 +116,39 @@
 			$("#classSchedule").empty();
 		})
 		
+		//카테고리
+		$("#category").on("change", function() {
+			var category= $("#category").val();
+			var subCategory = $("#subCategory");
+			
+			if (category=="뷰티") {
+				subCategory.empty();
+				subCategory.append("<option class='subCategory' value='메이크업'>메이크업</option>"+
+			      "<option class='subCategory' value='스타일링'>스타일링</option>");
+			}else if (category=="외국어") {
+				subCategory.empty();
+				subCategory.append('<option class="subCategory" value="영어">영어</option>'+
+					      '<option class="subCategory" value="일본어·중국어">일본어·중국어</option>'+
+					      '<option class="subCategory" value="기타외국어">기타 외국어</option>');
+			}else if (category=="댄스·뮤직") {
+				subCategory.empty();
+				subCategory.append('<option class="subCategory" value="댄스">댄스</option>'+
+					      '<option class="subCategory" value="뮤직">뮤직</option>');
+			}else if (category=="요리·공예") {
+				subCategory.empty();
+				subCategory.append('<option class="subCategory" value="요리·음료">요리·음료</option>'+
+					      '<option class="subCategory" value="공예·DIY">공예·DIY</option>')
+			}else if (category=="드로잉·디자인·영상") {
+				subCategory.empty();
+				subCategory.append('<option class="subCategory" value="디자인">디자인</option>'+
+					      '<option class="subCategory" value="영상">영상</option> ');
+			}else if (category=="Category") {
+				subCategory.empty();
+				subCategory.append('<option selected>Sub Category</option>');
+			}
+			
+		})
+		
 
 	})//ready
 </script>
@@ -133,7 +166,7 @@
   	</div>
   	<br>
     <!-- <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post" enctype="multipart/form-data"> -->
-    <form class="row g-3" id="classOpenForm" action="../ClassAddServlet" method="post">
+    <form class="row g-3" id="classOpenForm" action="ClassAddServlet" method="post">
 	    <input type="hidden" id="schedule1" name="schedule1" value="">
 	    <input type="hidden" id="schedule2" name="schedule2" value="">
 	    <input type="hidden" id="schedule3" name="schedule3" value="">
@@ -169,7 +202,7 @@
 	    <label for="subCategory" class="form-label">클래스 종류</label>
 	    <select id="subCategory" class="form-select" name="subCategory">
 	      <option selected>Sub Category</option>
-	      <option class="subCategory" value="메이크업">메이크업</option>
+	      <!-- <option class="subCategory" value="메이크업">메이크업</option>
 	      <option class="subCategory" value="스타일링">스타일링</option>
 	      <option class="subCategory" value="영어">영어</option>
 	      <option class="subCategory" value="일본어·중국어">일본어·중국어</option>
@@ -179,7 +212,7 @@
 	      <option class="subCategory" value="요리·음료">요리·음료</option>
 	      <option class="subCategory" value="공예·DIY">공예·DIY</option>
 	      <option class="subCategory" value="디자인">디자인</option>
-	      <option class="subCategory" value="영상">영상</option>
+	      <option class="subCategory" value="영상">영상</option> -->
 	    </select>
 	  </div>
 	  <div class="col-12 mb-3" >

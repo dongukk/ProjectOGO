@@ -25,6 +25,7 @@ public class ClassAddServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");
+		
 		String userId =request.getParameter("tutorId"); //나중에 tutorId로 수정
 		String className =request.getParameter("className");
 		String category =request.getParameter("category");
