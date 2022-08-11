@@ -9,7 +9,7 @@
 </head>
  
 <body>
-
+ 
 <%
 	String mesg = (String)session.getAttribute("mesg");
 	if(mesg!=null){
