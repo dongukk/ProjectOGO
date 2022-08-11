@@ -242,7 +242,8 @@ arr[9] = cDTO.getSchedule10();
 	<jsp:include page="class_page/attention.jsp" flush="true"></jsp:include>
 	<br>
 	<!-- 수강생 후기 아래에 추가 -->
-	
+	<jsp:include page="class_page/comment_main.html" flush="true"></jsp:include>
+	<br>
   </div>
 <br>
 </div>
