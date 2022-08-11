@@ -11,7 +11,6 @@
 	List<NoticeDTO> list = Pdto.getList();
 	
 	MemberDTO Mdto = (MemberDTO) session.getAttribute("login");
-	System.out.print(Mdto);
 %>
 <h1>공지사항</h1>
 <table>
@@ -54,7 +53,7 @@ for(int i=0; i< list.size(); i++){
 <%  if(Mdto != null) {
 
 if(Mdto.getUserId().equals("admin") && Mdto.getUserPasswd().equals("admin")){ %>
-	<input type="button" value="새 글작성" onclick="window.location.href='notice/NewNotice.jsp'">
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input id="btn" style="  color: #ffffff; background: #8041D9;" type="button" value="새 글작성" onclick="window.location.href='notice/NewNotice.jsp'">
 <% }
 }//if admin %>  </td> 
 </tr>
