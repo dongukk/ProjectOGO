@@ -1,7 +1,8 @@
 
 #cmt_form{
-   
-    width: 700px;
+    position:absolute;
+    left:22%;
+    width: 800px;
     height: 350px;
     
 
@@ -23,12 +24,12 @@
 
 .cmheader{
     grid-area: cmheader;
-    padding: 5px 0px;
-    margin:  5px;
 }
 
 .score{
     grid-area: score;
+    margin: 7px;
+    text-align: right;
     
    
 }
@@ -53,8 +54,6 @@
     background-position: 15px 30px;
     background-repeat: no-repeat;
     grid-area: img1;
-    margin: -10px;
-    right: 10px;
     
     
 }
@@ -65,7 +64,6 @@
     background-position: 15px 30px;
     background-repeat: no-repeat;
     grid-area: img2;
-    margin: -10px;
 }
 
 .img3{
@@ -74,7 +72,6 @@
     background-position: 15px 30px;
     background-repeat: no-repeat;
     grid-area: img3;
-    margin: -10px;
 }
 
 notice1{
@@ -153,6 +150,9 @@ button:hover{
 
 #cmt_button1{
     grid-area: button;
+    position :absolute;
+    top: 70%;
+    left: 88%;
     font-family:  'Nanum Gothic', sans-serif;
     font-weight: 700;
     font-size: 23px;
