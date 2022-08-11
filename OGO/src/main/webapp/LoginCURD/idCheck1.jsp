@@ -1,3 +1,4 @@
+<%@page import="javax.swing.text.Document"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,43 +26,68 @@ $("#idCheckBtn").click(function(){
 		dataType: 'json',
 		data: {userId:userId},
 		success: function(data, status, xhr) {
-			console.log("data"+data);
-			$("#count").val(data);	
+			console.log("중복된 아이디 수(data) : "+data);
+			
+			$("#result1").text(userId);
+			if(data == "1"){				
+				$("#result2").text(" 는 중복 아이디입니다.");
+				$("#result1").css("color","red");	
+				$("#useIdBtn").hide();
+			} else if (data == "0"){
+				$("#result2").text(" 는 사용 가능한 아이디입니다.");
+				$("#result1").css("color","green");
+				$("#useIdBtn").show();
+			}
 		},
 		error: function(xhr, status, error) {
 			console.log(error);
 		}			
-	}); // end ajax
-	
-	String userId = $("#userId").val();
-	String count =  $("#count").val();
- 	System.out.println("userId"+userId);
- 	System.out.println("count"+count); 
+	}); // end ajax	
 });	// end idCheck
+
+
+$("#useIdBtn").click(function(){
+	// 회원가입 창의 id에 찾은 데이터를 셋팅한다.
+	// opener - 나를 열게한 창
+	// opener.document - 나를 열게한 찬의 문서(HTML)
+	$(opener.document).find("#userId").val($("#userId").val());	
+	// 창닫기를 한다.
+	window.close();
+});	// end useIdBtn
+
 
 });	// end ready
 </script>
-  
-
+<style type="text/css">
+	h1{
+		text-align: center;
+	}
+	#result1{
+		font-size: 30px;
+		font-weight: bold;
+		font-style: italic;
+	}
+	
+</style >  
+	
 </head>
 <body>
 <div class="container">
 <h1>아이디 중복 체크</h1>
-<!-- hr - 수평선 그리기 태그 -->
 <hr>
 	<div class="form-group">
 		<label>아이디 입력</label>
 		<input name="userId" id="userId" type="text" class="form-control"
-		placeholder="입력 후 체크버튼 클릭" required="required">
-		<input type="hidden" id="count">
+		placeholder="입력 후 체크버튼 클릭" required="required">		
 		<button id="idCheckBtn">체크</button>
 	</div>
 
-<hr>
-<%-- <jsp:include page="idCheck2.jsp" flush="true"></jsp:include><br> --%>
-<!-- 검색한 아이디 <span id="result" style="color: red;"></span>는 중복된 아이디입니다. <br>
-다른 아이디를 입력해주세요. -->
-<div id="result"></div>
+	<hr>
+	
+	<span id="result1"></span>
+	<span id="result2"></span>
+	<button id="useIdBtn" style="display: none;">아이디 사용하기</button>
+
 </div>
 </body>
 </html>
