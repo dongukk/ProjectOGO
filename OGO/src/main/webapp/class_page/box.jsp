@@ -45,10 +45,10 @@
   <input type="hidden" id="selectSched10" name="selectSched10">
 	<div class="box">
 	<div class="container">
-	  <div class="row mb-2 ">
+	  <div class="row mb-2 mt-2">
 	  	<div class="col-md-12 mt-2" id="price" name="price"><%=priceF %>원</div>
 	  </div>
-	  <div class="row mb-3 ">
+	  <div class="row mb-1 ">
 		  <div class="btn-group col-md-12" role="group" >
 		  	<!-- 드롭다운 -->
 			<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -76,11 +76,10 @@
 	  </div>
 	  <div class="row mb-1">
 		  <div class="col-md-12" >
-		  	<b >선택한 회차</b><br>
 		  	<div id="scheduleChoice" class="mt-2">
-		  		<div class='input-group mb-1' >
+		  		<!-- <div class='input-group mb-1' >
 		  		  <input type='text' class='form-control' value="선택 회차 : 날짜" readonly><br>
-		  		</div>
+		  		</div> -->
 		  	</div>
 		  </div>	  
 	  </div>

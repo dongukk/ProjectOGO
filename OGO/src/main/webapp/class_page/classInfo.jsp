@@ -10,7 +10,7 @@
 <div id="classInfo">
   <div class="name">
     <!-- <h2>클래스 행성 소개</h2> -->
-    <p style="font-size: 32px; "><b>클래스 행성 소개</b></p>
+    <p style="font-size: 32px; ">클래스 행성 소개</p>
   </div>
   <hr>
   <div id="classInfo">

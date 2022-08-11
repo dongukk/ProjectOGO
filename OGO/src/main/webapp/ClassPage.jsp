@@ -137,6 +137,8 @@
 			
 			var idx= selectSchedule.substring(0, 1);
 			//console.log(idxArr.indexOf(idx, 0)); //값이 -1인지 0인지 확인
+			
+			
 			if (idxArr.indexOf(idx, 0)== -1) {
 				idxArr.push(idx);
 				
@@ -186,6 +188,16 @@
 				alert("원하는 수강 회차를 선택해주세요");
 				event.preventDefault();
 			}
+		})
+		//네비 탭 구현
+		$(".nav-item").on("click", function() {
+			$(".nav-item").children("a").attr("class", "nav-link");
+			$(".nav-item").children("a").attr("style", "color: black;");
+			var curTab= $(this).children("a");
+			curTab.attr("class", "nav-link active");
+			curTab.attr("aria-current", "page");
+			curTab.attr("style", "color: #6633FF; font-weight: bold;")
+			
 		})
 		
 		

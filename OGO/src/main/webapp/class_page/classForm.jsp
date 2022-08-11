@@ -116,7 +116,7 @@
 			$("#classSchedule").empty();
 		})
 		
-		//카테고리
+		//카테고리 선택
 		$("#category").on("change", function() {
 			var category= $("#category").val();
 			var subCategory = $("#subCategory");
@@ -202,17 +202,6 @@
 	    <label for="subCategory" class="form-label">클래스 종류</label>
 	    <select id="subCategory" class="form-select" name="subCategory">
 	      <option selected>Sub Category</option>
-	      <!-- <option class="subCategory" value="메이크업">메이크업</option>
-	      <option class="subCategory" value="스타일링">스타일링</option>
-	      <option class="subCategory" value="영어">영어</option>
-	      <option class="subCategory" value="일본어·중국어">일본어·중국어</option>
-	      <option class="subCategory" value="기타외국어">기타 외국어</option>
-	      <option class="subCategory" value="댄스">댄스</option>
-	      <option class="subCategory" value="뮤직">뮤직</option>
-	      <option class="subCategory" value="요리·음료">요리·음료</option>
-	      <option class="subCategory" value="공예·DIY">공예·DIY</option>
-	      <option class="subCategory" value="디자인">디자인</option>
-	      <option class="subCategory" value="영상">영상</option> -->
 	    </select>
 	  </div>
 	  <div class="col-12 mb-3" >
