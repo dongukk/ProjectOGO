@@ -1,10 +1,6 @@
 
 #cmt_form{
    
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
     width: 700px;
     height: 350px;
     
@@ -13,7 +9,7 @@
     grid-template-columns: 80px auto auto;
     grid-template-rows: 30px 1px 90px 1px 90px 1px 90px 1px 30px;
     grid-template-areas: 
-    "header header score"
+    "cmheader cmheader score"
     "line1 line1 line1"
     "img1 notice1 notice1"
     "line2 line2 line2"
@@ -25,43 +21,34 @@
     
 }
 
-.header{
-    grid-area: header;
+.cmheader{
+    grid-area: cmheader;
     padding: 5px 0px;
     margin:  5px;
 }
 
 .score{
     grid-area: score;
-    position: absolute;
-    right: 3%;
-    text-align: right;
-    margin: -4px;
-    
     
    
 }
 
 .line1{
     grid-area: line1;
-    margin: -3px 0px;
 }
 .line2{
     grid-area: line2;
-    margin: -3px 0px;
 }
 .line3{
     grid-area: line3;
-    margin: -3px 0px;
 }
 .line4{
     grid-area: line4;
-    margin: -3px 0px;
 }
 
 
 .img1{
-    background-image: url("OGO_favicon.png");
+    background-image: url("../class_img/comment_img/OGO_favicon.png");
     background-size: 60px;
     background-position: 15px 30px;
     background-repeat: no-repeat;
@@ -73,7 +60,7 @@
 }
 
 .img2{
-    background-image: url("OGO_favicon.png");
+    background-image: url("../class_img/comment_img/OGO_favicon.png");
     background-size: 60px;
     background-position: 15px 30px;
     background-repeat: no-repeat;
@@ -82,7 +69,7 @@
 }
 
 .img3{
-    background-image: url("OGO_favicon.png");
+    background-image: url("../class_img/comment_img/OGO_favicon.png");
     background-size: 60px;
     background-position: 15px 30px;
     background-repeat: no-repeat;
@@ -110,12 +97,10 @@ notice1{
 }
 
 .cmt_header{
+	
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 30px;
     font-weight: 900;
-    position: absolute;
-    bottom: 30%;
-    line-height: 9px;
     color: black;
 }
 
@@ -168,14 +153,11 @@ button:hover{
 
 #cmt_button1{
     grid-area: button;
-    position: absolute;
-    top: 30%;
-    left: 86%;
-   
     font-family:  'Nanum Gothic', sans-serif;
     font-weight: 700;
     font-size: 23px;
     color: rgb(159, 129, 192);
+    
 }
 #cmt_button1:hover{
 
