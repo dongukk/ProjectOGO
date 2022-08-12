@@ -47,13 +47,15 @@ for(int i=0; i< list.size(); i++){
 			out.print("<a href='NoticeListServlet?curPage="+i+"'>"+"&nbsp;"+i+"&nbsp;"+"</a>");
 		}//if
 	}//for
+	
 %>
+</td>
 
-
+<td>
 <%  if(Mdto != null) {
 
 if(Mdto.getUserId().equals("admin") && Mdto.getUserPasswd().equals("admin")){ %>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input id="btn" style="  color: #ffffff; background: #8041D9;" type="button" value="새 글작성" onclick="window.location.href='notice/NewNotice.jsp'">
+	 <input id="btn" style="  color: #ffffff; background: #8041D9; " type="button" value="새 글작성" onclick="window.location.href='notice/NewNotice.jsp'">
 <% }
 }//if admin %>  </td> 
 </tr>
