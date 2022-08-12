@@ -6,9 +6,14 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
    <properties resource="com/config/classpage/jdbc.properties" />
    
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
    <typeAliases>
     <typeAlias type="com.dto.classpage.ClassDTO" alias="ClassDTO"/>
     <typeAlias type="com.dto.classpage.ContentDTO" alias="ContentDTO"/>
+    <typeAlias type="com.dto.classpage.ClassOrderDTO" alias="ClassOrderDTO"/>
    </typeAliases>
    
 	<environments default="development">
@@ -26,7 +31,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/config/classpage/ClassMapper.xml" />
 		<mapper resource="com/config/classpage/ContentMapper.xml" />
 		<mapper resource="com/config/classpage/HeartMapper.xml" />
+		<mapper resource="com/config/classpage/ClassOrderMapper.xml" />
 	</mappers>
+	
+
 </configuration>
 
 
