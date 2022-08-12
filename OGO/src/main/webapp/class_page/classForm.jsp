@@ -268,6 +268,8 @@
 	  <div class="col-6 mb-3">
 	    <input type=text class="form-control" id="address2" name="address2" placeholder="지번주소">
 	  </div>
+	  <div id="map" style="width:100%;height:350px;"></div>
+	  
 	  <div class="col-12">
 	    <label class="form-label">클래스 소개 사진 업로드 (최대 5장까지 가능)</label>
 	    <div class="input-group mb-3">
@@ -329,6 +331,7 @@
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
+
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function execDaumPostcode() {
         new daum.Postcode({
@@ -361,7 +364,10 @@
                 document.getElementById('post').value = data.zonecode; //5자리 새우편번호 사용
                 document.getElementById('address1').value = fullRoadAddr;
                 document.getElementById('address2').value = data.jibunAddress;
-
+				
+                // 주소를 따로 함수로 빼준다.
+                MapAddress(fullRoadAddr);
+                
                 // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
                 if(data.autoRoadAddress) {
                     //예상되는 도로명 주소에 조합형 주소를 추가한다.
@@ -376,4 +382,58 @@
             }
         }).open();
     }
+   
+</script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=50c0d79ee2b49a1d798768425a5d4203&libraries=services"></script>	
+<script>
+
+
+function MapAddress(addr) {
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	mapOption = {
+	    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	    level: 1 // 지도의 확대 레벨
+	};  
+
+	// 지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+
+	// 주소로 좌표를 검색합니다
+	geocoder.addressSearch(addr, function(result, status) {
+
+	// 정상적으로 검색이 완료됐으면 
+	 if (status === kakao.maps.services.Status.OK) {
+
+	    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+	    // 결과값으로 받은 위치를 마커로 표시합니다
+	    var marker = new kakao.maps.Marker({
+	        map: map,
+	        position: coords
+	    });
+
+	     // 인포윈도우로 장소에 대한 설명을 표시합니다
+	    var infowindow = new kakao.maps.InfoWindow({
+	        content: '<div style="width:150px;text-align:center;padding:6px 0;">이 행성의 위치가 맞나요?</div>'
+	    });
+	    infowindow.open(map, marker);
+
+	    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	    map.setCenter(coords);
+	    
+	    //이미지 지정
+	    var markerImage = new kakao.maps.MarkerImage(
+	    	    'img/earth.png',
+	    	    new kakao.maps.Size(80, 80), new kakao.maps.Point(34, 34));
+	    	marker.setImage(markerImage);
+	    	
+	    	
+	} 
+	});
+}
+
 </script>
