@@ -40,7 +40,8 @@
 		
 		//찜 버튼 클릭
 		$("#heart").on("click", function() {
-			if ("<%=userId%>"==null) {
+			
+			if ("<%=userId%>" == null || "<%=userId%>"=="null") {
 				alert("로그인 후 사용가능합니다");
 			}else {
 				var heart =$("#heart");
@@ -176,7 +177,8 @@
 			var count=0;
 			for (var i = 1; i <= 10; i++) {
 				var value=$("#selectSched"+i).val();
-				if (value!="") {
+				console.log(value);
+				if (value!="" ) {
 					count++;
 				}
 			}

@@ -6,7 +6,7 @@
 	String className= cDTO.getClassName();
 %>   
  
-<div class="imgAll">
+<div class="imgAll ">
   <div>
 	<div id="bigImg" >
 	  <img src="class_img/1_01.jpg" height="70%" width="100%">

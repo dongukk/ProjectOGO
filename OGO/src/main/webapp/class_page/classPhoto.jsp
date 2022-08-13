@@ -6,7 +6,7 @@
   </div>
   <hr>
  
-<div class="classPhoto2">
+<div class="classPhoto2 mb-5">
 	<div class="container">
 	  <div id="photo">
     	<div class="photoBtn"> <!-- 왼쪽으로 넘기는 버튼 -->
