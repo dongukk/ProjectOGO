@@ -254,6 +254,7 @@
 	  	<label for="classPrice" class="form-label">클래스 가격</label>
 	  	<div class="input-group mb-3">
 		  <span class="input-group-text">₩</span>
+		  <!-- 0-9, . 제외한 문자 제거 후 ''으로 replace, .한번만 입력할 수 있음 -->
 		  <input type="text" class="form-control" id="classPrice" name="classPrice"
 		  style="text-align: right;" placeholder="99,999" 
 		  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"><!-- 숫자만 입력할 수 있도록 함 -->

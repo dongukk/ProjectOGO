@@ -139,7 +139,6 @@
 			var idx= selectSchedule.substring(0, 1);
 			//console.log(idxArr.indexOf(idx, 0)); //값이 -1인지 0인지 확인
 			
-			
 			if (idxArr.indexOf(idx, 0)== -1) {
 				idxArr.push(idx);
 				
@@ -206,6 +205,16 @@
 			
 		})
 		
+		//스크롤시 nav tab 고정
+		$(window).scroll(function() {
+	        let windowTop = $(this).scrollTop();
+	        //console.log(windowTop);
+	        if(windowTop > 700) {
+	            $('#classNav').attr("style","position:fixed;top:0;");
+	        } else {
+	            $('#classNav').attr("style","");
+	        }
+	    }); 
 		
 	});//ready
 </script>
