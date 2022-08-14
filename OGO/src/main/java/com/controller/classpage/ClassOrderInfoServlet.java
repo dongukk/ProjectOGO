@@ -22,6 +22,7 @@ public class ClassOrderInfoServlet extends HttpServlet {
 		System.out.println("ClassOrderServlet");
 		request.setCharacterEncoding("utf-8");
 		
+		//신청한 클래스번호,일정 정보
 		int classNumber=Integer.parseInt(request.getParameter("classNumber"));
 		String selectSched1= request.getParameter("selectSched1");
 		String selectSched2= request.getParameter("selectSched2");
@@ -33,23 +34,26 @@ public class ClassOrderInfoServlet extends HttpServlet {
 		String selectSched8= request.getParameter("selectSched8");
 		String selectSched9= request.getParameter("selectSched9");
 		String selectSched10= request.getParameter("selectSched10");
-		
+		//클래스 신청한 유저id
 		HttpSession session=request.getSession();
 		MemberDTO mDTO= (MemberDTO) session.getAttribute("login");
 		String userId = mDTO.getUserId();
-		
+		//파싱 확인
 		System.out.println("classNumber:"+classNumber);
 		System.out.println("selectSched:"+selectSched1+"\t"+selectSched2+"\t"+selectSched3+"\t"+selectSched4
 				+"\t"+selectSched5+"\t"+selectSched6+"\t"+selectSched7+"\t"+selectSched8+"\t"+selectSched9
 				+"\t"+selectSched10);
 		System.out.println("userId:"+userId);
-		
+		//classorderinfo에 insert
 		ClassOrderDTO oDTO= new ClassOrderDTO(userId, classNumber, null, selectSched1, selectSched2, 
 				selectSched3, selectSched4, selectSched5, selectSched6, selectSched7, selectSched8, 
 				selectSched9, selectSched10);
 		ClassOrderService oService= new ClassOrderService();
 		int result =oService.classOrder(oDTO);
 		System.out.println("classOrderInfo insert 성공:"+result);
+		
+		//ClassPage로 리다이렉트
+		response.sendRedirect("ClassPage");
 		
 	}
 
