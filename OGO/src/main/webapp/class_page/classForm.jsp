@@ -29,6 +29,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
+		//submit시 null이면 전송x
 		$("#classOpenForm").on("submit", function() {
 			var className=$("#className").val();
 			var category=$("#category").val();
@@ -43,7 +44,6 @@
 			var textTutorInfo=$("#textTutorInfo").val();
 			var textNotice=$("#textNotice").val();
 			var textAttention=$("#textAttention").val();
-			
 			
 			if (className.length==0) {
 				alert("클래스명을 입력해주세요");
@@ -80,7 +80,7 @@
 			}
 			
 		}) 
-		
+		//클래스 일정 추가
 		var idx= 0;
 		$("#scheduleBtn").on("click", function() {
 			var classDate= $("#classDate").val();
@@ -109,9 +109,8 @@
 			
 		});//end scheduleBtn
 		
-		//전체 삭제
+		//클래스 일정 전체 삭제
 		$("#allDelete").on("click", function() {
-			
 			idx=0;
 			$("#classSchedule").empty();
 		})
@@ -256,7 +255,8 @@
 	  	<div class="input-group mb-3">
 		  <span class="input-group-text">₩</span>
 		  <input type="text" class="form-control" id="classPrice" name="classPrice"
-		  style="text-align: right;" placeholder="99,999">
+		  style="text-align: right;" placeholder="99,999" 
+		  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"><!-- 숫자만 입력할 수 있도록 함 -->
 		  <span class="input-group-text">(원)</span>
 	  	</div>
 	  </div>
