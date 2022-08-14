@@ -40,7 +40,8 @@
 		
 		//찜 버튼 클릭
 		$("#heart").on("click", function() {
-			if ("<%=userId%>"==null) {
+			
+			if ("<%=userId%>" == null || "<%=userId%>"=="null") {
 				alert("로그인 후 사용가능합니다");
 			}else {
 				var heart =$("#heart");
@@ -138,7 +139,6 @@
 			var idx= selectSchedule.substring(0, 1);
 			//console.log(idxArr.indexOf(idx, 0)); //값이 -1인지 0인지 확인
 			
-			
 			if (idxArr.indexOf(idx, 0)== -1) {
 				idxArr.push(idx);
 				
@@ -173,22 +173,27 @@
 		
 		//수강결제 폼 submit-수강결제 시 (수강결제 버튼 클릭)
 		$("#payForm").on("submit", function() {
+			
 			var count=0;
 			for (var i = 1; i <= 10; i++) {
-				var value=$("#selectSched"+i).val();
-				if (value!="") {
+				var value=$("#selectSched"+i);
+				//console.log(value);  //check
+				if (value.val().length>0) {
 					count++;
+					//console.log(count);
 				}
 			}
 			
-			if (<%=userId%>==null) { //로그인을 하지 않은 경우
+			if ("<%=userId%>"==null || "<%=userId%>"=="null") { //로그인을 하지 않은 경우
 				alert("로그인이 필요합니다");
 				event.preventDefault();
 			}else if (count==0) { //회차를 선택하지 않은 경우
 				alert("원하는 수강 회차를 선택해주세요");
 				event.preventDefault();
 			}
-		})
+			
+		});
+		
 		//네비 탭 구현
 		$(".nav-item").on("click", function() {
 			$(".nav-item").children("a").attr("class", "nav-link");
@@ -200,6 +205,16 @@
 			
 		})
 		
+		//스크롤시 nav tab 고정
+		$(window).scroll(function() {
+	        let windowTop = $(this).scrollTop();
+	        //console.log(windowTop);
+	        if(windowTop > 700) {
+	            $('#classNav').attr("style","position:fixed;top:0;");
+	        } else {
+	            $('#classNav').attr("style","");
+	        }
+	    }); 
 		
 	});//ready
 </script>

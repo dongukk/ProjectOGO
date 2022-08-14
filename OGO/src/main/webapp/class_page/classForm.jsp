@@ -29,6 +29,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
+		//submit시 null이면 전송x
 		$("#classOpenForm").on("submit", function() {
 			var className=$("#className").val();
 			var category=$("#category").val();
@@ -43,7 +44,6 @@
 			var textTutorInfo=$("#textTutorInfo").val();
 			var textNotice=$("#textNotice").val();
 			var textAttention=$("#textAttention").val();
-			
 			
 			if (className.length==0) {
 				alert("클래스명을 입력해주세요");
@@ -80,7 +80,7 @@
 			}
 			
 		}) 
-		
+		//클래스 일정 추가
 		var idx= 0;
 		$("#scheduleBtn").on("click", function() {
 			var classDate= $("#classDate").val();
@@ -109,9 +109,8 @@
 			
 		});//end scheduleBtn
 		
-		//전체 삭제
+		//클래스 일정 전체 삭제
 		$("#allDelete").on("click", function() {
-			
 			idx=0;
 			$("#classSchedule").empty();
 		})
@@ -149,7 +148,13 @@
 			
 		})
 		
-
+		//클래스 위치 - 지도추가
+		$("#postButton").on("click", function() {
+			$("#classPlace").attr("class", "card");
+			$("#card").attr("class", "card-body");
+			$("#map").attr("style", "width:100%;height:350px;");
+		})
+	
 	})//ready
 </script>
   </head>
@@ -242,36 +247,45 @@
 		    </div>
 		  </div>
 		</div>
-	  	
 	  	<div id="classSchedule"></div>
 	  </div>
+	  
 	  <div class="col-12">
 	  	<label for="classPrice" class="form-label">클래스 가격</label>
 	  	<div class="input-group mb-3">
 		  <span class="input-group-text">₩</span>
+		  <!-- 0-9, . 제외한 문자 제거 후 ''으로 replace, .한번만 입력할 수 있음 -->
 		  <input type="text" class="form-control" id="classPrice" name="classPrice"
-		  style="text-align: right;" placeholder="99,999">
+		  style="text-align: right;" placeholder="99,999" 
+		  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"><!-- 숫자만 입력할 수 있도록 함 -->
 		  <span class="input-group-text">(원)</span>
 	  	</div>
 	  </div>
 	  <div class="col-12">
-	    <label for="classPlace" class="form-label">클래스 위치</label>
+	    <label class="form-label">클래스 위치</label>
 	    <div class="input-group">
 	      <label class="input-group-text" for="post">우편번호</label>
 	      <input type=text class="form-control" id="post" name="post">
-	      <button type="button" class="btn btn-secondary" onclick="execDaumPostcode()">우편번호찾기</button>
+	      <button type="button" id="postButton" class="btn btn-secondary" onclick="execDaumPostcode()">우편번호찾기</button>
+	  	  <span id="guide" style="color:#999"></span>
 	  	</div>
 	  </div>
-	  <div class="col-6 mb-3">
+	  <div class="col-6 mb-2">
 	    <input type=text class="form-control" id="address1" name="address1" placeholder="도로명주소">
 	  </div>
-	  <div class="col-6 mb-3">
+	  <div class="col-6 mb-2">
 	    <input type=text class="form-control" id="address2" name="address2" placeholder="지번주소">
 	  </div>
-	  <div id="map" style="width:100%;height:350px;"></div>
+	  <!-- 지도 -->
+	  <div id="classPlace"  >
+	    <div id="card" >
+	  	  <!-- <div id="map" style="width:100%;height:350px;"></div> -->
+	  	  <div id="map"></div>
+	    </div>
+	  </div>
 	  
-	  <div class="col-12">
-	    <label class="form-label">클래스 소개 사진 업로드 (최대 5장까지 가능)</label>
+	  <div class="col-12 mt-3">
+	    <label class="form-label">클래스 소개 사진 업로드 (*최대 5장까지 가능합니다)</label>
 	    <div class="input-group mb-3">
 	      <input type="file" class="form-control" id="classPhoto1">
 	      <label class="input-group-text" for="classPhoto1">Upload</label>
@@ -418,7 +432,7 @@ function MapAddress(addr) {
 
 	     // 인포윈도우로 장소에 대한 설명을 표시합니다
 	    var infowindow = new kakao.maps.InfoWindow({
-	        content: '<div style="width:150px;text-align:center;padding:6px 0;">이 행성의 위치가 맞나요?</div>'
+	        content: '<div style="width:150px;text-align:center;padding:6px 0;"><b>이 행성의 위치가 맞나요?</b></div>'
 	    });
 	    infowindow.open(map, marker);
 
@@ -427,7 +441,7 @@ function MapAddress(addr) {
 	    
 	    //이미지 지정
 	    var markerImage = new kakao.maps.MarkerImage(
-	    	    'img/earth.png',
+	    	    'class_img/map/earth.png',
 	    	    new kakao.maps.Size(80, 80), new kakao.maps.Point(34, 34));
 	    	marker.setImage(markerImage);
 	    	

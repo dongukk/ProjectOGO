@@ -61,7 +61,6 @@ public class ClassAddServlet extends HttpServlet {
 		
 		
 		//class테이블에 저장
-		//ClassDTO cDTO= new ClassDTO(0, className, userId, category, Integer.parseInt(price), schedule1, place);
 		ClassDTO cDTO= new ClassDTO(0, className, userId, subCategory, Integer.parseInt(price), 
 				schedule1, schedule2, schedule3, schedule4, schedule5, schedule6, 
 				schedule7, schedule8, schedule9, schedule10, place);
@@ -90,7 +89,8 @@ public class ClassAddServlet extends HttpServlet {
 		int result2 =conService.saveContent(contentMap);
 		System.out.println("content insert : "+ result2);
 		
-		//response.sendRedirect("");
+		//나중에 클래스 목록 페이지로 이동하도록 수정하기
+		response.sendRedirect("MainForm.jsp");
 		
 		
 	}
