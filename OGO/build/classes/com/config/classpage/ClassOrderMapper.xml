@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ClassOrderMapper">
+   
+	<insert id="classOrder" parameterType="ClassOrderDTO">
+		insert into
+		classorder(userId, classNum, orderStatus, 
+		schedule1,schedule2,schedule3,schedule4,schedule5,schedule6,schedule7,schedule8,schedule9,schedule10)
+		values(#{userId},#{classNum},#{orderStatus},
+	    		#{schedule1, jdbcType=VARCHAR},#{schedule2, jdbcType=VARCHAR},#{schedule3, jdbcType=VARCHAR},
+	    		#{schedule4, jdbcType=VARCHAR},#{schedule5, jdbcType=VARCHAR},#{schedule6, jdbcType=VARCHAR},
+	    		#{schedule7, jdbcType=VARCHAR},#{schedule8, jdbcType=VARCHAR},#{schedule9, jdbcType=VARCHAR},
+	    		#{schedule10, jdbcType=VARCHAR})
+	</insert>
+    	
+
+    
+</mapper>
