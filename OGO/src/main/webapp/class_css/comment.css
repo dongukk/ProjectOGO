@@ -1,13 +1,11 @@
 
 #cmt_form{
     position:absolute;
-    left:22%;
-    width: 800px;
-    height: 350px;
+    left:20%;
     
 
     display: grid;
-    grid-template-columns: 80px auto auto;
+    grid-template-columns: 90px 200px repeat(auto-fill, minmax(300px, 1fr)) ;
     grid-template-rows: 30px 1px 90px 1px 90px 1px 90px 1px 30px;
     grid-template-areas: 
     "cmheader cmheader score"
@@ -138,7 +136,7 @@ notice1{
 button{
     background-color: black;
     width: 90px;
-    height: 34px;
+    height: 40px;
     border: solid 3px; color: rgb(159, 129, 192);
     border-radius: 6px;
     cursor: pointer;
@@ -152,7 +150,7 @@ button:hover{
     grid-area: button;
     position :absolute;
     top: 70%;
-    left: 88%;
+    left: 84%;
     font-family:  'Nanum Gothic', sans-serif;
     font-weight: 700;
     font-size: 23px;
