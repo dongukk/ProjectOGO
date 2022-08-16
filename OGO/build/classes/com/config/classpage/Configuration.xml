@@ -14,7 +14,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <typeAlias type="com.dto.classpage.ClassDTO" alias="ClassDTO"/>
     <typeAlias type="com.dto.classpage.ContentDTO" alias="ContentDTO"/>
     <typeAlias type="com.dto.classpage.ClassOrderDTO" alias="ClassOrderDTO"/>
-     <typeAlias type="com.dto.heartlist.heartlistDTO" alias="heartlistDTO"/><!-- 마이페이지 찜!!!! 추가함 -->
    </typeAliases>
    
 	<environments default="development">
@@ -32,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/config/classpage/ClassMapper.xml" />
 		<mapper resource="com/config/classpage/ContentMapper.xml" />
 		<mapper resource="com/config/classpage/HeartMapper.xml" />
-		<mapper resource="com/config/classpage/heartlistMapper.xml" /><!-- 마이페이지 찜!!!! 추가함 -->
+		<mapper resource="com/config/classpage/heartlistMapper.xml.xml" />
 		<mapper resource="com/config/classpage/ClassOrderMapper.xml" />
 	</mappers>
 	
