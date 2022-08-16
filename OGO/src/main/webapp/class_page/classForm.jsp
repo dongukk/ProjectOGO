@@ -14,6 +14,9 @@
 
     <title>클래스 등록</title>
     <style type="text/css">
+    	/* body{
+    		background: #f1f2f3;
+    	} */
     	.one{
     		margin-top: 100px;
     		margin-left: 300px;
@@ -22,6 +25,9 @@
     	}
     	#two{
     		text-align: center;
+    	}
+    	#classFormButton{
+    		background-color: blueviolet;
     	}
     </style>
 
@@ -325,7 +331,7 @@
 	  	<textarea class="form-control" id="textAttention" name="textAttention" rows="5"></textarea>
 	  </div>
 	  <div class="d-grid gap-2 col-6 mx-auto">
-	    <button type="submit" class="btn btn-secondary" style="background-color: #6633FF;">등록하기</button>
+	    <button type="submit" class="btn btn-secondary" id="classFormButton">등록하기</button>
 	  </div>
 	</form>
    

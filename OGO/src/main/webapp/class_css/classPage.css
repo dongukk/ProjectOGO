@@ -4,6 +4,7 @@
 	}
 	#classNav{
 		background-color: white;
+		width: 100%;
 	}
 	.wrap{
 		min-width: 768px;
@@ -26,7 +27,6 @@
 		width: 22%;
 		float: right;
 	}
-	
 	/* 오른쪽의 결제 box */
 	.box {
 		/* background-color: white;
@@ -37,11 +37,15 @@
 		border-radius: 20px 20px 20px 20px;
 		
 		text-align:right;*/
-		border: 3px solid #6633FF;
+		/* border: 3px solid #6633FF; */
+		border: 3px solid blueviolet;
 		border-radius: 15px 15px 15px 15px;
 		margin: 80px; 
 		position : fixed;
 		
+	}
+	#bigImg{
+		text-align: center;
 	}
 	
 	/* box.jsp의 price */
@@ -58,12 +62,12 @@
 	}
 	/* 회차 선택 드롭다운 */
 	#scheduleMenuButton{
-		color: #6633FF;
+		color: blueviolet;
 		font-weight: bold;
 	}
 	/* 수강결제 버튼 */
 	#payBtn{ 
-		background-color: #6633FF;
+		background-color: blueviolet;
 		outline-color: white;
 		font-weight: bold;
 		/* 
@@ -116,5 +120,19 @@
 		width: 300px; 
 		height: 200px;
 	}
-	 
+	#photoPart{
+		margin-left: 10%;
+		margin-right: 10%;
+	}
+	#carouselExampleControls{
+		width: 100%;
+		height: 70%;
+		
+	}
+	.carousel-inner > .carousel-item >img{
+		top: 0;
+      	left: 0;
+     	min-width: 100%;
+     	min-height: 300px;
+	}
 	 

@@ -203,7 +203,7 @@
 			var curTab= $(this).children("a");
 			curTab.attr("class", "nav-link active");
 			curTab.attr("aria-current", "page");
-			curTab.attr("style", "color: #6633FF; font-weight: bold;")
+			curTab.attr("style", "color: blueviolet; font-weight: bold;")
 			
 		})
 		
