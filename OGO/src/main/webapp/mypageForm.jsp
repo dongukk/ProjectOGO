@@ -13,5 +13,6 @@
 	<body>
 	<hr>
 	<jsp:include page="LoginMypage/index.jsp" flush="true" /><br>
+	<%-- <jsp:include page="LoginMypage/index.jsp" flush="true" /><br> --%>
 </body>
 </html>
