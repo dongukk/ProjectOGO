@@ -147,7 +147,6 @@ String email1 = dto.getEmail1();
 String email2 = dto.getEmail2();
 String profilePhoto = dto.getProfilePhoto();
 String hobby = dto.getHobby();
-
 %>
 <style type="text/css">
 .profile_container {
@@ -205,10 +204,10 @@ String hobby = dto.getHobby();
        <section>
       <aside>
         <div class="side_bar">
-          <p><a href="#">프로필 관리</a></p>
-          <p><a href="#">나의 접수 강의 내역</a></p>
+          <p><a href="MyPageServlet">프로필 관리</a></p>
+          <p><a href="HeartListServlet">My 찜</a></p>
+          <p><a href="#">수강내역</a></p>
           <p><a href="#">튜터 등록</a></p>
-          <p><a href="#">클래스 등록</a></p>
         </div>
       </aside>  
                 <main>
