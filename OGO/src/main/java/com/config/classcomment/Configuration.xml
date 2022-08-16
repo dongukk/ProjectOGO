@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+   <properties resource="com/config/classcomment/jdbc.properties" />
+   
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
+   <typeAliases>
+    <typeAlias type="com.dto.classpage.ClassCommentDto" alias="ClassCommentDTO"/>
+   </typeAliases>
+   
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${xxx}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/config/classcomment/ClassCommentMapper.xml" />
+	</mappers>
+	
+
+</configuration>
+
+
+

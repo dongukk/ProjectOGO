@@ -1,3 +1,5 @@
+<%@page import="com.dto.classpage.ClassCommentDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,6 +31,10 @@
 	        <div class="img1"></div>
 	        <div class="img2"></div>
 	        <div class="img3"></div>
+<% List<ClassCommentDTO> list = (List<ClassCommentDTO>) request.getAttribute("commentlist");%>
+<% for ( int i =0; i<list.size(); i++ )  {%>
+ <%= list.get(i).getComment_notice() %>	
+ <% } %>        
 	        <notice1></notice1> <!--임시 text DB연동-->
 	        <!-- <div class="notice1"></div>  -->
 	        <div class="notice2"></div> <!--임시 text DB연동-->
