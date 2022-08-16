@@ -45,7 +45,7 @@ public class ClassOrderInfoServlet extends HttpServlet {
 				+"\t"+selectSched10);
 		System.out.println("userId:"+userId);
 		//classorderinfo에 insert
-		ClassOrderDTO oDTO= new ClassOrderDTO(userId, classNumber, null, selectSched1, selectSched2, 
+		ClassOrderDTO oDTO= new ClassOrderDTO(userId, classNumber, "결제 대기중", selectSched1, selectSched2, 
 				selectSched3, selectSched4, selectSched5, selectSched6, selectSched7, selectSched8, 
 				selectSched9, selectSched10);
 		ClassOrderService oService= new ClassOrderService();

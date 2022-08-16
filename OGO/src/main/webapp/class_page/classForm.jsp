@@ -14,6 +14,9 @@
 
     <title>클래스 등록</title>
     <style type="text/css">
+    	/* body{
+    		background: #f1f2f3;
+    	} */
     	.one{
     		margin-top: 100px;
     		margin-left: 300px;
@@ -22,6 +25,9 @@
     	}
     	#two{
     		text-align: center;
+    	}
+    	#classFormButton{
+    		background-color: blueviolet;
     	}
     </style>
 
@@ -254,10 +260,10 @@
 	  	<label for="classPrice" class="form-label">클래스 가격</label>
 	  	<div class="input-group mb-3">
 		  <span class="input-group-text">₩</span>
-		  <!-- 0-9, . 제외한 문자 제거 후 ''으로 replace, .한번만 입력할 수 있음 -->
+		  <!-- 0-9 제외한 문자 제거 후 ''으로 replace -->
 		  <input type="text" class="form-control" id="classPrice" name="classPrice"
 		  style="text-align: right;" placeholder="99,999" 
-		  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"><!-- 숫자만 입력할 수 있도록 함 -->
+		  oninput="this.value = this.value.replace(/[^0-9]/g, '');"><!-- 숫자만 입력할 수 있도록 함 -->
 		  <span class="input-group-text">(원)</span>
 	  	</div>
 	  </div>
@@ -325,7 +331,7 @@
 	  	<textarea class="form-control" id="textAttention" name="textAttention" rows="5"></textarea>
 	  </div>
 	  <div class="d-grid gap-2 col-6 mx-auto">
-	    <button type="submit" class="btn btn-secondary" style="background-color: #6633FF;">등록하기</button>
+	    <button type="submit" class="btn btn-secondary" id="classFormButton">등록하기</button>
 	  </div>
 	</form>
    

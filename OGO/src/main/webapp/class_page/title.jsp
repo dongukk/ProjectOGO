@@ -4,19 +4,21 @@
 <%
 	ClassDTO cDTO = (ClassDTO)request.getAttribute("cDTO");
 	String className= cDTO.getClassName();
+	String nickName = (String)request.getAttribute("nickName");
 %>   
- 
-<div class="imgAll ">
-  <div>
-	<div id="bigImg" >
-	  <img src="class_img/1_01.jpg" height="70%" width="100%">
-	</div>
-
-  </div> 
-</div>
 <div class="mt-4 mb-4">
 	<p style="font-size: 39px"><b><%=className%></b></p>
+	<img src="class_img/tutor_2.png" width="40px" height="40px">&nbsp;
+	<%=nickName %> 튜터
+</div> 
+<div class="imgAll mb-4">
+  <div>
+	<div id="bigImg" >
+	  <img src="class_img/1_01.jpg" height="70%" width="90%">
+	</div>
+  </div> 
 </div>
+
 <!-- 네비 탭 -->
 <div id="classNav">
 	<ul class="nav nav-tabs" >
