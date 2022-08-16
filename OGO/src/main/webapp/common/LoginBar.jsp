@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.dto.login.MemberDTO" %>
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.security.SecureRandom" %>
+<%@ page import="java.math.BigInteger" %>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 
 <!-- <link rel="stylesheet" href="LoginCSS/login.css"> -->
 <!-- <link rel="stylesheet" href="common/LoginBar.css"> -->
@@ -180,8 +184,7 @@ if(dto != null){
 	<a href="LoginCURD/createMember.jsp">회원가입</a>
 <% } // end if~else %>	
 	</div>
-	
-	
+  	
 <!-- Modal -->
 <div class="modal fade" id="lgoinModal" tabindex="-1" aria-labelledby="lgoinModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -213,7 +216,9 @@ if(dto != null){
 			</div>
 			<div class="btn-area">
 				<button type="submit">LOGIN</button><br><br>
-				<a class="btn btn1"href="https://www.naver.com/" target="_blank" onclick="window.close();">네이버 계정으로 로그인</a>
+				<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+				<div id="naverIdLogin"></div><br>
+				<%-- <a class="btn btn1"href="<%=apiURL%>" src="http://static.nid.naver.com/oauth/small_g_in.PNG">네이버 계정으로 로그인</a> --%>
                 <a class="btn btn2"href="https://www.kakaocorp.com/" target="_blank" onclick="window.close();">카카오 계정으로 로그인</a>
 			</div>
 			
@@ -222,7 +227,24 @@ if(dto != null){
     </div>
   </div>
 </div>
+<!-- //네이버아이디로로그인 버튼 노출 영역 -->
 
+<!-- 네이버아디디로로그인 초기화 Script -->
+<script type="text/javascript">
+	var naverLogin = new naver.LoginWithNaverId(
+		{
+			clientId: "ekZ3X4W9E8FY6vv_Y7AK",
+			callbackUrl: "http://localhost:8083/OGO/test.jsp",
+			isPopup: false, /* 팝업을 통한 연동처리 여부 */
+			loginButton: {color: "white", type: 3, height: 50} /* 로그인 버튼의 타입을 지정 */
+		}
+	);
+	
+	/* 설정정보를 초기화하고 연동을 준비 */
+	naverLogin.init();
+	
+</script>
+<!-- // 네이버아이디로로그인 초기화 Script -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 	
