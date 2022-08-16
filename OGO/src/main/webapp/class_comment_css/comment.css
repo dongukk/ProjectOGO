@@ -133,7 +133,7 @@ notice1{
     border-radius: 4px;
 }
 
-button{
+.button_body{
     background-color: black;
     width: 90px;
     height: 40px;
@@ -141,7 +141,7 @@ button{
     border-radius: 6px;
     cursor: pointer;
 }
-button:hover{
+.button_body:hover{
     color:rgb(133, 54, 218);
    
 }

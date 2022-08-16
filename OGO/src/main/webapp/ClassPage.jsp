@@ -18,7 +18,9 @@
 <title>클래스 신청</title>
   <jsp:include page="common/NavBar.html" flush="true"></jsp:include>
   
+  
 <link rel="stylesheet" href="class_css/classPage.css">
+<link rel='stylesheet' href='class_comment_css/comment.css'>
 <%
 	String heartYN = (String)request.getAttribute("heartYN");
 	String heartCount = String.valueOf(request.getAttribute("heartCount"));
