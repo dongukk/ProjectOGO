@@ -5,17 +5,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>좋아요</title>
-  <link rel="stylesheet" href="common/NavBar.css?">
-  <link rel="stylesheet" href="common/Bar.css?">
-  <link rel="stylesheet"  href="heart_01.css" />
-<link rel="stylesheet"  href="index6.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-  <script src="NavBar.js" defer></script> <!-- defer html 파싱 후에 js 파일 실행 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>좋아요</title>
+<link rel="stylesheet"  href="HeartList/heart_01.css" />
+<link rel="stylesheet"  href="HeartList/index6.css" />
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
   
+<!-- 여기서부턴 제이쿼리 -->  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -96,7 +92,7 @@ $("#delAllCart").on("click", function(){
     
       <a href="" class="navBar_btn"><img src="/img/menu.png" alt=""></a>
   </nav>
-   <script src="progressbar.js"></script> 
+  
    
      <section>
       <aside>
@@ -154,32 +150,22 @@ $("#delAllCart").on("click", function(){
 				<form name="myForm">
 
 
-					<% 
-  List<heartlistDTO> list = (List<heartlistDTO>)request.getAttribute("heartList");
-	  for(int i=0 ; i<list.size(); i++){
-			heartlistDTO dto=list.get(i);
-		  int classnum=dto.getClassNum();
-		  String classname=dto.getClassName();
-		  int price=dto.getPrice();
-		  String userid=dto.getUserId();
-		  int num=dto.getNum();
-  
-  %>
+<%
+List<heartlistDTO> list = (List<heartlistDTO>) request.getAttribute("heartList");
+for (int i = 0; i < list.size(); i++) {
+	heartlistDTO dto = list.get(i);
+	int classnum = dto.getClassNum();
+	String classname = dto.getClassName();
+	int price = dto.getPrice();
+	String userid = dto.getUserId();
+	int num = dto.getNum();
+%>
 
-					<!--  <input type="text" name="num81" value="81" id="num81"> -->
-					<!-- hidden부분 설정부분 	
-	<input type="text" name="gImage81" value="bottom1" id="gImage81">
-		 <input type="text" name="gName81" value="제나 레이스 스커트" id="gName81">
-		  <input type="text" name="gSize81" value="L" id="gSize81">
-		   <input type="text" name="gColor81" value="navy" id="gColor81"> 
-		   <input type="text" name="gPrice81" value="9800" id="gPrice81"> -->
 				<tr>
 					<td class="td_default" width="80">
 						<!-- checkbox는 체크된 값만 서블릿으로 넘어간다. 따라서 value에 삭제할 num값을 설정한다. --> 
 						<input type="checkbox" name="check" id="check81" class="check" value="<%=num %>"></td>
-
-
-					<%-- <td class="td_default" width="80"><%=num %></td> --%>
+						
 
 					<td class="td_default" width="80"><%=classnum %></td> 
 					<!-- <td class="td_default" width="80"><img
@@ -198,19 +184,8 @@ $("#delAllCart").on("click", function(){
 
 
 
-
-
-					<!-- 			<td class="td_default" align="center" width="80"
-				style='padding-left: 5px'><span id="sum81">
-				</span></td> -->
-
-
-
 					<td><input type="button" value="신청" onclick="order('81','a')"></td>
 
-
-					<!-- <td class="td_default" align="center"><input type="button"
-						value="삭제" onclick="delCart('81')"></td> -->
 
 
 					<td class="td_default" align="center" width="30" style='padding-left: 10px'>
@@ -251,14 +226,6 @@ $("#delAllCart").on("click", function(){
        <aside></aside>
       </section>
     
- <script type="text/javascript">
- 
- 
- </script>   
 
-    
-    
-    
 </body>
-
 </html>
