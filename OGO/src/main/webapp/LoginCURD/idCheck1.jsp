@@ -8,6 +8,7 @@
 <title>아이디 중복 체크</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   
 <script type="text/javascript">
 $(document).ready(function() {
@@ -38,6 +39,7 @@ $("#idCheckBtn").click(function(){
 				$("#result1").css("color","green");
 				$("#useIdBtn").show();
 			}
+			spinner.style.visibility = 'hidden';
 		},
 		error: function(xhr, status, error) {
 			console.log(error);
@@ -79,15 +81,29 @@ $("#useIdBtn").click(function(){
 		<label>아이디 입력</label>
 		<input name="userId" id="userId" type="text" class="form-control"
 		placeholder="입력 후 체크버튼 클릭" required="required">		
-		<button id="idCheckBtn">체크</button>
+		<button id="idCheckBtn">체크</button> 
 	</div>
 
 	<hr>
-	
+	<div class="d-flex justify-content-center">
+ 		<div class="spinner-border" role="status" id="spinner">	<!-- id 부여 -->
+    	<span class="visually-hidden">Loading...</span>
+		</div>
+	</div>
 	<span id="result1"></span>
 	<span id="result2"></span>
 	<button id="useIdBtn" style="display: none;">아이디 사용하기</button>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script type="text/javascript">	/* 이벤트 작성 */
+	let spinner = document.getElementById('spinner');
+	spinner.style.visibility = 'hidden';
+	$("#idCheckBtn").click(function() {
+		let spinner = document.getElementById('spinner');
+		spinner.style.visibility = 'visible';
+	})
+	
+</script>
 </body>
 </html>
