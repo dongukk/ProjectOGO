@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dto.classpage.ClassDTO;
+import com.dto.classpage.ClassImgDTO;
 import com.dto.classpage.ContentDTO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.service.classpage.ClassImgService;
 import com.service.classpage.ClassService;
 import com.service.classpage.ContentService;
 
@@ -26,38 +30,51 @@ public class ClassAddServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		
-		String userId =request.getParameter("tutorId"); //나중에 tutorId로 수정
-		String className =request.getParameter("className");
-		String category =request.getParameter("category");
-		String subCategory =request.getParameter("subCategory");
+		String savePath="C:\\Users\\sohyeon\\git\\ProjectOGO\\OGO\\src\\main\\webapp\\class_img";
+		
+		// 파일 크기 제한 - 20MB
+		int maxSize = 1024*1024*20;
+		
+		MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "utf-8" ,new DefaultFileRenamePolicy());
+		
+		String userId =multi.getParameter("tutorId"); //나중에 tutorId로 수정
+		String className =multi.getParameter("className");
+		String category =multi.getParameter("category");
+		String subCategory =multi.getParameter("subCategory");
 		//String classDate =request.getParameter("classDate");
-		String schedule1 =request.getParameter("schedule1").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule2 =request.getParameter("schedule2").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule3 =request.getParameter("schedule3").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule4 =request.getParameter("schedule4").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule5 =request.getParameter("schedule5").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule6 =request.getParameter("schedule6").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule7 =request.getParameter("schedule7").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule8 =request.getParameter("schedule8").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule9 =request.getParameter("schedule9").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule10 =request.getParameter("schedule10").replace("&nbsp;", " "); //1회차 일정 저장
-		String price =request.getParameter("classPrice");
+		String schedule1 =multi.getParameter("schedule1").replace("&nbsp;", " "); //1회차 일정 저장
+		String schedule2 =multi.getParameter("schedule2").replace("&nbsp;", " "); //1회차 일정 저장
+		String schedule3 =multi.getParameter("schedule3").replace("&nbsp;", " "); //1회차 일정 저장
+		String schedule4 =multi.getParameter("schedule4").replace("&nbsp;", " "); //1회차 일정 저장
+		String schedule5 =multi.getParameter("schedule5").replace("&nbsp;", " "); //1회차 일정 저장
+		String schedule6 =multi.getParameter("schedule6").replace("&nbsp;", " "); //1회차 일정 저장
+		String schedule7 =multi.getParameter("schedule7").replace("&nbsp;", " "); //1회차 일정 저장
+		String schedule8 =multi.getParameter("schedule8").replace("&nbsp;", " "); //1회차 일정 저장
+		String schedule9 =multi.getParameter("schedule9").replace("&nbsp;", " "); //1회차 일정 저장
+		String schedule10 =multi.getParameter("schedule10").replace("&nbsp;", " "); //1회차 일정 저장
+		String price =multi.getParameter("classPrice");
 		//String place =request.getParameter("classPlace"); //classPlace는 나중에 수정
-		String classStartTime =request.getParameter("classStartTime"); 
-		String classEndTime =request.getParameter("classEndTime"); 
-		String post =request.getParameter("post"); 
-		String address1 =request.getParameter("address1"); 
-		String address2 =request.getParameter("address2");
+		String classStartTime =multi.getParameter("classStartTime"); 
+		String classEndTime =multi.getParameter("classEndTime"); 
+		String post =multi.getParameter("post"); 
+		String address1 =multi.getParameter("address1"); 
+		String address2 =multi.getParameter("address2");
 		
 		String place= "("+post+")"+address1+address2;
 		//System.out.println(schedule1+"--"+schedule2+"--"+schedule3);
 		
-		String con_class =request.getParameter("textClassInfo");
-		String con_tutor =request.getParameter("textTutorInfo");
-		String con_notice =request.getParameter("textNotice");
-		String con_attention =request.getParameter("textAttention");
+		String con_class =multi.getParameter("textClassInfo");
+		String con_tutor =multi.getParameter("textTutorInfo");
+		String con_notice =multi.getParameter("textNotice");
+		String con_attention =multi.getParameter("textAttention");
 		//System.out.println(con_class+"=="+con_tutor+"=="+con_notice+"=="+con_attention);
 		
+		//업로드 파일 dto
+		String classPhoto1= multi.getFilesystemName("classPhoto1");
+		String classPhoto2= multi.getFilesystemName("classPhoto2");
+		String classPhoto3= multi.getFilesystemName("classPhoto3");
+		String classPhoto4= multi.getFilesystemName("classPhoto4");
+		String classPhoto5= multi.getFilesystemName("classPhoto5");
 		
 		
 		//class테이블에 저장
@@ -88,6 +105,13 @@ public class ClassAddServlet extends HttpServlet {
 		contentMap.put("classNum", classNum); //classNum 저장
 		int result2 =conService.saveContent(contentMap);
 		System.out.println("content insert : "+ result2);
+		
+		//3. classimg 테이블에 저장하기
+		ClassImgDTO iDTO= new ClassImgDTO(classNum, classPhoto1, classPhoto2, classPhoto3, classPhoto4, classPhoto5);
+		System.out.println(iDTO);
+		ClassImgService iService= new ClassImgService();
+		int result3=iService.uploadImg(iDTO); //파일 업로드 저장
+		System.out.println("파일 업로드 성공:"+result3);
 		
 		//나중에 클래스 목록 페이지로 이동하도록 수정하기
 		response.sendRedirect("MainForm.jsp");

@@ -177,7 +177,7 @@
   	</div>
   	<br>
     <!-- <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post" enctype="multipart/form-data"> -->
-    <form class="row g-3" id="classOpenForm" action="ClassAddServlet" method="post">
+    <form class="row g-3" id="classOpenForm" action="ClassAddServlet" method="post" enctype="multipart/form-data">
 	    <input type="hidden" id="schedule1" name="schedule1" value="">
 	    <input type="hidden" id="schedule2" name="schedule2" value="">
 	    <input type="hidden" id="schedule3" name="schedule3" value="">
@@ -293,23 +293,23 @@
 	  <div class="col-12 mt-3">
 	    <label class="form-label">클래스 소개 사진 업로드 (*최대 5장까지 가능합니다)</label>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="classPhoto1">
+	      <input type="file" class="form-control" id="classPhoto1" name="classPhoto1">
 	      <label class="input-group-text" for="classPhoto1">Upload</label>
 	  	</div>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="classPhoto2">
+	      <input type="file" class="form-control" id="classPhoto2" name="classPhoto2">
 	      <label class="input-group-text" for="classPhoto2">Upload</label>
 	  	</div>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="classPhoto3">
+	      <input type="file" class="form-control" id="classPhoto3" name="classPhoto3">
 	      <label class="input-group-text" for="classPhoto3">Upload</label>
 	  	</div>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="classPhoto4">
+	      <input type="file" class="form-control" id="classPhoto4" name="classPhoto4">
 	      <label class="input-group-text" for="classPhoto4">Upload</label>
 	  	</div>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="classPhoto5">
+	      <input type="file" class="form-control" id="classPhoto5" name="classPhoto5">
 	      <label class="input-group-text" for="classPhoto5">Upload</label>
 	  	</div>
 	  </div>
