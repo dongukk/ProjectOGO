@@ -25,8 +25,6 @@
 	<jsp:include page="common/LoginBar.jsp" flush="true" />	
 	<jsp:include page="common/ScrollAni.jsp" flush="false"/>
 	<jsp:include page="common/MainPage.html" flush="false"/>
-	<hr><br>
-	<h1 style="text-align: center;">로그인 전 main페이지</h1>
 
 </body>
 </html>

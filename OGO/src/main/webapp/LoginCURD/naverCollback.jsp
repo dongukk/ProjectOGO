@@ -12,7 +12,7 @@
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
-  var naver_id_login = new naver_id_login("ekZ3X4W9E8FY6vv_Y7AK", "http://localhost:8083/OGO/test.jsp");
+  var naver_id_login = new naver_id_login("ekZ3X4W9E8FY6vv_Y7AK", "http://localhost:8083/OGO/LoginCURD/naverCollback.jsp");
   // 접근 토큰 값 출력
  /*  alert(naver_id_login.oauthParams.access_token); */
   // 네이버 사용자 프로필 조회
@@ -23,16 +23,17 @@
 		    alert(naver_id_login.getProfileData('nickname'));
 		    alert(naver_id_login.getProfileData('age')); */
 		    
-		    var userId = naver_id_login.getProfileData('id');
-			 var name = naver_id_login.getProfileData('name');
+		     var userId = naver_id_login.getProfileData('id');
+			 var userName = naver_id_login.getProfileData('name');
 			 var nickname = naver_id_login.getProfileData('nickname');
 			 var email = naver_id_login.getProfileData('email');
 			 
 			 console.log(userId);
-			 console.log(name);
+			 console.log(userName);
 			 console.log(nickname);
 
-			 window.opener.location.href = "index.jsp?&nickname="+nickname+"&email="+email+"&name="+name;
+//			 window.opener.location.href = "index.jsp?&nickname="+nickname+"&email="+email+"&name="+name;
+			 window.opener.location.href = "../naverLogin?&nickname="+nickname+"&email="+email+"&userName="+userName;
 			 window.close();
 		  }
  
