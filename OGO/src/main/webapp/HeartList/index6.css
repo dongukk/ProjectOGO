@@ -37,6 +37,9 @@ a :active{
 	color: white;
 }
 
+a:hover {
+text-decoration: underline;
+} 
 
 .menu_container {
   margin-left: 20px;

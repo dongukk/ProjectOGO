@@ -9,8 +9,12 @@
 <title>좋아요</title>
 <link rel="stylesheet"  href="HeartList/heart_01.css" />
 <link rel="stylesheet"  href="HeartList/index6.css" />
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-  
+<!-- <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet"> -->
+
+<jsp:include page="NavBar.html" flush="true"></jsp:include>
+<jsp:include page="LoginBar.jsp" flush="true" />
+<hr>
+
 <!-- 여기서부턴 제이쿼리 -->  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -67,10 +71,32 @@ $("#delAllCart").on("click", function(){
 
   
 });
-</script>   
+</script> 
+<style type="text/css">
+
+a {
+text-decoration: none;
+}
+
+aside a:visited{
+	color: white;
+}
+
+a:visited{
+	color: black;
+}
+
+a :active{
+	color: white;
+}
+
+a:hover {
+text-decoration: underline;
+} 
+</style>  
 </head>
 <body>
-<div class="header">
+<!-- <div class="header">
     <div class="progress-container">
       <div class="progress-bar"></div>
     </div>
@@ -85,13 +111,13 @@ $("#delAllCart").on("click", function(){
       <li><a href="">공지사항&FAQ</a></li>
     </ul>
     <ul class="login">
-      <!-- 로그인 마이페이지 더미-->
+      로그인 마이페이지 더미
       <li><a href="#"><img src="img/login.png" alt="" style="height: 30px; width: 30px;"></a></li>
       <li><a href="#"><img src="img/mypage.png" alt="" style="height: 30px; width: 30px;"></a></li>
     </ul>
     
       <a href="" class="navBar_btn"><img src="/img/menu.png" alt=""></a>
-  </nav>
+  </nav> -->
   
    
      <section>
@@ -115,11 +141,11 @@ $("#delAllCart").on("click", function(){
 					<td height="5">
 				</tr>
 
-				<tr>
+<!-- 				<tr>
 					<td colspan="10">
 						<hr size="1" color="CCCCCC">
 					</td>
-				</tr>
+				</tr> -->
 
 				<tr>
 					<td height="7">
@@ -140,13 +166,6 @@ $("#delAllCart").on("click", function(){
 					<td height="7">
 				</tr>
 
-
-
-				<tr>
-					<td colspan="10">
-						<hr size="1" color="CCCCCC">
-					</td>
-				</tr>
 				<form name="myForm">
 
 
