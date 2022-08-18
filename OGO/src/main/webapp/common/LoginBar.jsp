@@ -163,18 +163,19 @@ MemberDTO dto = (MemberDTO)session.getAttribute("login");
 // 로그인시 회원인증 후 login 데이터 세션에 저장
 
 if(dto != null){
-		String userName = dto.getUserName();
+		String nickname = dto.getNickname();
 		String userId = dto.getUserId();
 %>
 
-안녕하세요. <%= userName %>님<br>
+안녕하세요. <%= nickname %>님<br>
 	<%  if(userId.equals("admin")){ // 이중 if문%>	
 		<a href="LoginMain/managementMember.jsp">회원관리 페이지</a><br>
-		<a href="logoutServlet">로그아웃</a>
+		<a href="" id="logout">로그아웃</a>
 		<a href="MyPageServlet">마이페이지<img src="common/img/mypage.png" id="img_a"></a>
 		<a href="#">장바구니</a>
 	<%  } else{ %>
-		<a href="logoutServlet">로그아웃</a>
+		<!-- <a href="" id="logout">로그아웃</a> -->
+		<a href="logoutServlet" id="logout">로그아웃</a>
 		<a href="MyPageServlet">마이페이지</a>
 		<a href="#">장바구니</a>
 <%	}} else{ %>
@@ -241,6 +242,13 @@ if(dto != null){
   		var naverLogin = document.getElementById("naver_id_login").firstChild;
         naverLogin.click();
 	});
+  	
+ // 로그아웃 처리
+  	 $("#logout").click(function() {
+	  	   testPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "width=1,height=1");
+	  	   testPopUp.close(); 
+	  	   location="logoutServlet";  
+  	});  
   </script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
