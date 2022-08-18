@@ -28,7 +28,7 @@
 			 console.log(userName);
 			 console.log(nickname);	 
 
-			 window.opener.location.href = "index.jsp?&nickname="+nickname+"&email="+email+"&name="+name;
+			 window.opener.location.href = "../naverLogin?&nickname="+nickname+"&email="+email+"&userName="+userName;
 			 window.close();
 		  }
  
