@@ -149,7 +149,7 @@ $(function(){
 	function idCheckWindowOpen(){
 		// window.open() - window객체로 창은 여는 메서드
 		// open(url, name, option)
-		window.open("idCheck1.jsp", "", "width=400, height=200, top=100, left=400");
+		window.open("idCheck1.jsp", "", "width=600, height=300, top=100, left=400");
 	}
 });
 

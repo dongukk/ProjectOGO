@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.dto.login.MemberDTO" %>
-
 <!-- <link rel="stylesheet" href="LoginCSS/login.css"> -->
 <!-- <link rel="stylesheet" href="common/LoginBar.css"> -->
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <style type="text/css">
@@ -57,13 +59,13 @@ a.btn2{
     border-width: 3px;
 }
 a.btn1:before {
-    content: url(../LoginImg/icon_naver.png);
+    content: url(LoginImg/icon_naver.png);
     position : absolute;
     left : 15px;
     top : 12px;
 }
 a.btn2:before {
-    content: url(../LoginImg/icon_kakao.png);
+    content: url(LoginImg/icon_kakao.png);
     position : absolute;
     left : 15px;
     top : 12px;
@@ -151,6 +153,9 @@ a.btn:active {	/* 마우스 누르는중 */
 	font-size: 15px; color: #999;
 	text-decoration: none;	/* 선 안보이게 */
 }	
+#naver_id_login{
+	display: none;
+}
 </style>
 	<div id="login_bar">
 <%
@@ -180,8 +185,7 @@ if(dto != null){
 	<a href="LoginCURD/createMember.jsp">회원가입</a>
 <% } // end if~else %>	
 	</div>
-	
-	
+  	
 <!-- Modal -->
 <div class="modal fade" id="lgoinModal" tabindex="-1" aria-labelledby="lgoinModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -213,8 +217,9 @@ if(dto != null){
 			</div>
 			<div class="btn-area">
 				<button type="submit">LOGIN</button><br><br>
-				<a class="btn btn1"href="https://www.naver.com/" target="_blank" onclick="window.close();">네이버 계정으로 로그인</a>
-                <a class="btn btn2"href="https://www.kakaocorp.com/" target="_blank" onclick="window.close();">카카오 계정으로 로그인</a>
+				<div id="naver_id_login"></div>
+				<a class="btn btn1" href="#" id="naverlogin">네이버 계정으로 로그인</a>
+                <a class="btn btn2" href="https://www.kakaocorp.com/" target="_blank" onclick="window.close();">카카오 계정으로 로그인</a>
 			</div>
 			
 		</form>
@@ -222,6 +227,21 @@ if(dto != null){
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  	var naver_id_login = new naver_id_login("ekZ3X4W9E8FY6vv_Y7AK", "http://localhost:8083/OGO/test.jsp");
+  	var state = naver_id_login.getUniqState();
+  	naver_id_login.setButton("white", 3,50);
+  	naver_id_login.setDomain("hbrMjKeDCL");
+  	naver_id_login.setState(state);
+  	naver_id_login.setPopup();
+  	naver_id_login.init_naver_id_login();
+  	
+  	$("#naverlogin").click(function() {
+  		var naverLogin = document.getElementById("naver_id_login").firstChild;
+        naverLogin.click();
+	});
+  </script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
