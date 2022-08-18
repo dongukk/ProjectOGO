@@ -13,8 +13,8 @@
 	String name = request.getParameter("name"); 
 
 %>
-	<%=nickname %>
-	<%=email %>
-	<%=name %>
+	닉네임 : <%=nickname %><br>
+	이메일 : <%=email %><br>
+	이름 : <%=name %>
 </body>
 </html>

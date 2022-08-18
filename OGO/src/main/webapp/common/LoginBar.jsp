@@ -59,13 +59,13 @@ a.btn2{
     border-width: 3px;
 }
 a.btn1:before {
-    content: url(../LoginImg/icon_naver.png);
+    content: url(LoginImg/icon_naver.png);
     position : absolute;
     left : 15px;
     top : 12px;
 }
 a.btn2:before {
-    content: url(../LoginImg/icon_kakao.png);
+    content: url(LoginImg/icon_kakao.png);
     position : absolute;
     left : 15px;
     top : 12px;
@@ -153,6 +153,9 @@ a.btn:active {	/* 마우스 누르는중 */
 	font-size: 15px; color: #999;
 	text-decoration: none;	/* 선 안보이게 */
 }	
+#naver_id_login{
+	display: none;
+}
 </style>
 	<div id="login_bar">
 <%
@@ -215,8 +218,8 @@ if(dto != null){
 			<div class="btn-area">
 				<button type="submit">LOGIN</button><br><br>
 				<div id="naver_id_login"></div>
-				<%-- <a class="btn btn1"href="<%=apiURL%>" src="http://static.nid.naver.com/oauth/small_g_in.PNG">네이버 계정으로 로그인</a> --%>
-                <a class="btn btn2"href="https://www.kakaocorp.com/" target="_blank" onclick="window.close();">카카오 계정으로 로그인</a>
+				<a class="btn btn1" href="#" id="naverlogin">네이버 계정으로 로그인</a>
+                <a class="btn btn2" href="https://www.kakaocorp.com/" target="_blank" onclick="window.close();">카카오 계정으로 로그인</a>
 			</div>
 			
 		</form>
@@ -233,6 +236,11 @@ if(dto != null){
   	naver_id_login.setState(state);
   	naver_id_login.setPopup();
   	naver_id_login.init_naver_id_login();
+  	
+  	$("#naverlogin").click(function() {
+  		var naverLogin = document.getElementById("naver_id_login").firstChild;
+        naverLogin.click();
+	});
   </script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
