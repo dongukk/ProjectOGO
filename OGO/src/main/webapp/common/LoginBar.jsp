@@ -237,6 +237,7 @@ if(dto != null){
   	naver_id_login.setPopup();
   	naver_id_login.init_naver_id_login();
   	
+ // 네이버 로그인 커스텀 버튼으로 작동
   	$("#naverlogin").click(function() {
   		var naverLogin = document.getElementById("naver_id_login").firstChild;
         naverLogin.click();
