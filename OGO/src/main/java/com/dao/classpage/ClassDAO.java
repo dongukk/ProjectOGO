@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.dto.classpage.ClassDTO;
+import com.dto.classpage.ClassImgDTO;
 
 public class ClassDAO {
 
@@ -27,6 +28,11 @@ public class ClassDAO {
 	public int searchClassNum(SqlSession session, HashMap<String, String> map) {
 		int classNum= session.selectOne("ClassMapper.searchClassNum", map);
 		return classNum;
+	}
+
+	public ClassImgDTO getImage(SqlSession session, int classNum) {
+		ClassImgDTO imgDTO= session.selectOne("ClassMapper.getImage", classNum);
+		return imgDTO;
 	}
 
 //	public String selectClass(SqlSession session, String classId) {
