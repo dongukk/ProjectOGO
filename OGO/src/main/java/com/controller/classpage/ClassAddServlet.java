@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dto.classpage.ClassDTO;
 import com.dto.classpage.ClassImgDTO;
@@ -17,8 +18,6 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.service.classpage.ClassImgService;
 import com.service.classpage.ClassService;
 import com.service.classpage.ContentService;
-
-import oracle.security.pki.ssl.ClassServer;
 
 /**
  * Servlet implementation class ClassOpenServlet
@@ -30,7 +29,24 @@ public class ClassAddServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		
-		String savePath="C:\\Users\\sohyeon\\git\\ProjectOGO\\OGO\\src\\main\\webapp\\class_img";
+		//카테고리별로 이미지 경로 수정, 저장
+		HttpSession session =request.getSession();
+		String sCategory=(String) session.getAttribute("sCategory");
+		System.out.println(sCategory);
+		session.removeAttribute("sCategory"); //세션에서 remove
+		
+		String savePath="";//저장경로
+		if (sCategory.equals("메이크업")||sCategory.equals("스타일링")) {
+			savePath="C:\\Users\\sohyeon\\git\\ProjectOGO\\OGO\\src\\main\\webapp\\class_img\\category\\A_뷰티";
+		}else if (sCategory.equals("영어")||sCategory.equals("일본어·중국어")||sCategory.equals("기타 외국어")) {
+			savePath="C:\\Users\\sohyeon\\git\\ProjectOGO\\OGO\\src\\main\\webapp\\class_img\\category\\B_외국어";
+		}else if (sCategory.equals("댄스")||sCategory.equals("뮤직")) {
+			savePath="C:\\Users\\sohyeon\\git\\ProjectOGO\\OGO\\src\\main\\webapp\\class_img\\category\\C_댄스,뮤직";
+		}else if (sCategory.equals("요리·음료")||sCategory.equals("공예·DIY")) {
+			savePath="C:\\Users\\sohyeon\\git\\ProjectOGO\\OGO\\src\\main\\webapp\\class_img\\category\\D_요리,공예";
+		}else if (sCategory.equals("디자인")||sCategory.equals("영상")) {
+			savePath="C:\\Users\\sohyeon\\git\\ProjectOGO\\OGO\\src\\main\\webapp\\class_img\\category\\E_드로잉,영상";
+		}
 		
 		// 파일 크기 제한 - 20MB
 		int maxSize = 1024*1024*20;
@@ -43,15 +59,15 @@ public class ClassAddServlet extends HttpServlet {
 		String subCategory =multi.getParameter("subCategory");
 		//String classDate =request.getParameter("classDate");
 		String schedule1 =multi.getParameter("schedule1").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule2 =multi.getParameter("schedule2").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule3 =multi.getParameter("schedule3").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule4 =multi.getParameter("schedule4").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule5 =multi.getParameter("schedule5").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule6 =multi.getParameter("schedule6").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule7 =multi.getParameter("schedule7").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule8 =multi.getParameter("schedule8").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule9 =multi.getParameter("schedule9").replace("&nbsp;", " "); //1회차 일정 저장
-		String schedule10 =multi.getParameter("schedule10").replace("&nbsp;", " "); //1회차 일정 저장
+		String schedule2 =multi.getParameter("schedule2").replace("&nbsp;", " "); 
+		String schedule3 =multi.getParameter("schedule3").replace("&nbsp;", " "); 
+		String schedule4 =multi.getParameter("schedule4").replace("&nbsp;", " "); 
+		String schedule5 =multi.getParameter("schedule5").replace("&nbsp;", " "); 
+		String schedule6 =multi.getParameter("schedule6").replace("&nbsp;", " "); 
+		String schedule7 =multi.getParameter("schedule7").replace("&nbsp;", " "); 
+		String schedule8 =multi.getParameter("schedule8").replace("&nbsp;", " "); 
+		String schedule9 =multi.getParameter("schedule9").replace("&nbsp;", " "); 
+		String schedule10 =multi.getParameter("schedule10").replace("&nbsp;", " "); 
 		String price =multi.getParameter("classPrice");
 		//String place =request.getParameter("classPlace"); //classPlace는 나중에 수정
 		String classStartTime =multi.getParameter("classStartTime"); 
@@ -67,16 +83,14 @@ public class ClassAddServlet extends HttpServlet {
 		String con_tutor =multi.getParameter("textTutorInfo");
 		String con_notice =multi.getParameter("textNotice");
 		String con_attention =multi.getParameter("textAttention");
-		//System.out.println(con_class+"=="+con_tutor+"=="+con_notice+"=="+con_attention);
 		
-		//업로드 파일 dto
+		//업로드 파일
 		String classPhoto1= multi.getFilesystemName("classPhoto1");
 		String classPhoto2= multi.getFilesystemName("classPhoto2");
 		String classPhoto3= multi.getFilesystemName("classPhoto3");
 		String classPhoto4= multi.getFilesystemName("classPhoto4");
 		String classPhoto5= multi.getFilesystemName("classPhoto5");
-		
-		
+
 		//class테이블에 저장
 		ClassDTO cDTO= new ClassDTO(0, className, userId, subCategory, Integer.parseInt(price), 
 				schedule1, schedule2, schedule3, schedule4, schedule5, schedule6, 
@@ -95,7 +109,6 @@ public class ClassAddServlet extends HttpServlet {
 		ClassService cService= new ClassService();
 		int classNum=cService.searchClassNum(map);
 		System.out.println(cName+ "의 classNum:" + classNum);
-		
 		
 		//2. content 테이블에 저장하기
 		ContentService conService= new ContentService();

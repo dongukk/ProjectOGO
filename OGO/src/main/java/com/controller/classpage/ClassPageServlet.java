@@ -71,6 +71,8 @@ public class ClassPageServlet extends HttpServlet {
 		request.setAttribute("heartYN", heartYN);//찜 여부 검사
 		request.setAttribute("heartCount", count);//찜 개수 count
 		request.setAttribute("cDTO", cDTO);
+		//test
+		session.setAttribute("cDTO", cDTO);
 		request.setAttribute("nickName", nickName);
 		request.setAttribute("classContents", classContents);
 		//request.setAttribute("userId2", userId); 

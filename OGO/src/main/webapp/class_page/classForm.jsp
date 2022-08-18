@@ -128,24 +128,29 @@
 			
 			if (category=="뷰티") {
 				subCategory.empty();
-				subCategory.append("<option class='subCategory' value='메이크업'>메이크업</option>"+
-			      "<option class='subCategory' value='스타일링'>스타일링</option>");
+				subCategory.append('<option selected>Sub Category</option>'+
+						"<option class='subCategory' value='메이크업'>메이크업</option>"+
+			      		"<option class='subCategory' value='스타일링'>스타일링</option>");
 			}else if (category=="외국어") {
 				subCategory.empty();
-				subCategory.append('<option class="subCategory" value="영어">영어</option>'+
+				subCategory.append('<option selected>Sub Category</option>'+
+						  '<option class="subCategory" value="영어">영어</option>'+
 					      '<option class="subCategory" value="일본어·중국어">일본어·중국어</option>'+
 					      '<option class="subCategory" value="기타외국어">기타 외국어</option>');
 			}else if (category=="댄스·뮤직") {
 				subCategory.empty();
-				subCategory.append('<option class="subCategory" value="댄스">댄스</option>'+
+				subCategory.append('<option selected>Sub Category</option>'+
+						  '<option class="subCategory" value="댄스">댄스</option>'+
 					      '<option class="subCategory" value="뮤직">뮤직</option>');
 			}else if (category=="요리·공예") {
 				subCategory.empty();
-				subCategory.append('<option class="subCategory" value="요리·음료">요리·음료</option>'+
+				subCategory.append('<option selected>Sub Category</option>'+
+						  '<option class="subCategory" value="요리·음료">요리·음료</option>'+
 					      '<option class="subCategory" value="공예·DIY">공예·DIY</option>')
 			}else if (category=="드로잉·디자인·영상") {
 				subCategory.empty();
-				subCategory.append('<option class="subCategory" value="디자인">디자인</option>'+
+				subCategory.append('<option selected>Sub Category</option>'+
+						  '<option class="subCategory" value="디자인">디자인</option>'+
 					      '<option class="subCategory" value="영상">영상</option> ');
 			}else if (category=="Category") {
 				subCategory.empty();
@@ -160,6 +165,32 @@
 			$("#card").attr("class", "card-body");
 			$("#map").attr("style", "width:100%;height:350px;");
 		})
+
+		//카테고리 정보 저장 - 카테고리별로 이미지 저장 위해서
+		$("#subCategory").on("change", function() {
+			var sCategory=$("#subCategory").val();
+			console.log("classForm.jsp "+$("#subCategory").val());
+			//ajax 
+				$.ajax({
+					type: "get",
+					url: "ClassCategoryServlet", //servlet에서 session에 카테고리 정보 저장
+					dataType: "text",
+					async: false,
+					data: { //서버에 넘겨줄 데이터
+						sCategory : sCategory
+					},
+					success: function(data, status, xhr) {
+						console.log("success");
+						console.log(data);
+					},
+					error: function(xhr, status, e) {
+						console.log("error");
+						console.log(e, status);
+					}
+				})//ajax end
+		})
+		//
+		
 	
 	})//ready
 </script>
@@ -168,7 +199,7 @@
    <jsp:include page="/common/NavBar.html" flush="true"></jsp:include>
 <%
 	MemberDTO mDTO =(MemberDTO)session.getAttribute("login");
-
+	
 	String userId=mDTO.getUserId(); //튜터가 될 유저의 아이디
 %>
   <div class="one">
