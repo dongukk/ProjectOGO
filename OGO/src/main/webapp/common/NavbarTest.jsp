@@ -1,19 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.dto.login.MemberDTO" %>
-<!-- <link rel="stylesheet" href="LoginCSS/login.css"> -->
-<!-- <link rel="stylesheet" href="common/LoginBar.css"> -->
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <style type="text/css">
-#login_bar{
-	text-align: right;
-	margin: 0px 30px 0px 30px ;
-	padding: 0px;
-}
 #img_a{
 	height: 30px; 
 	width: 30px;
@@ -156,8 +148,53 @@ a.btn:active {	/* 마우스 누르는중 */
 #naver_id_login{
 	display: none;
 }
+
+nav ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+nav li {
+    margin: 10px;
+    padding: 0;
+    border : 0;
+    text-align: center;
+}
+nav a{
+	text-align: center;
+	text-decoration: none;
+}
+nav img{
+	margin: 0 auto;
+	display:block; 
+	position:relative; 
+	height: 30px;
+	width: 30px;
+}
 </style>
-	<div id="login_bar">
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container-fluid">
+     <a class="navbar-brand" href="../MainForm.jsp">
+      <img src="img/OGOLogo.jpg" style="width: 100px; height: 50px;" >
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	  <ul class="navbar-nav me-auto mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="../ClassListServlet">행성카테고리</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="../MyPageServlet">MYSPACE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="../NoticeListServlet">공지사항&FAQ</a>
+        </li>
+      </ul>
+	  <ul class="navbar-nav col-md-2">
 <%
 MemberDTO dto = (MemberDTO)session.getAttribute("login");
 // 로그인시 회원인증 후 login 데이터 세션에 저장
@@ -166,23 +203,23 @@ if(dto != null){
 		String nickname = dto.getNickname();
 		String userId = dto.getUserId();
 %>
+	  안녕하세요. <%= nickname %>님<br>
+	<%  if(userId.equals("admin")){ // 이중 if문%>	<!-- 관리자 계정 로그인 -->
+		<li class="nav-item"><a class="nav-link active" aria-current="page" href="logoutServlet" id="logout"><img src="../common/img/logoutImg.png">로그아웃</a></li>
+		<li class="nav-item"><a class="nav-link active" aria-current="page" href="logoutServlet" id="logout"><img src="../common/img/logoutImg.png">회원관리</a></li>
+	<%  } else{ %>	<!-- 로그인한 경우 -->
+	    <li class="nav-item"><a class="nav-link active" aria-current="page" href="logoutServlet" id="logout"><img src="../common/img/logoutImg.png">로그아웃</a></li>
+	 <%	}} else{ %>	<!-- 로그인 안한 경우 -->
+	  	<li class="nav-item"><a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#lgoinModal"><img src="../common/img/login.png">로그인</a></li>
+	    <li class="nav-item"><a class="nav-link active" aria-current="page" href="LoginCURD/createMember.jsp"><img src="../common/img/createMember.png">회원가입</a></li>
+	 <% } // end if~else %>	   
+	  </ul>
+    </div>
+  </div>
+</nav>
 
-안녕하세요. <%= nickname %>님<br>
-	<%  if(userId.equals("admin")){ // 이중 if문%>	
-		<a href="LoginMain/managementMember.jsp">회원관리</a>
-		<a href="logoutServlet" id="logout">로그아웃</a>
-	<%  } else{ %>
-		<a href="logoutServlet" id="logout">로그아웃</a>
-<%	}} else{ %>
-	<!-- <a href="#" onclick="popUp()">로그인<img src="common/img/login.png" id="img_b"></a> -->
-	<!-- <a href="#" data-toggle="modal" data-target="#myModal">로그인<img src="common/img/login.png" id="img_b"></a> -->
-	<!-- Button trigger modal -->
-	<!-- <button type="button" data-bs-toggle="modal" data-bs-target="#lgoinModal">로그인</button> -->
-	<a href="#" data-bs-toggle="modal" data-bs-target="#lgoinModal">로그인</a>
-	<a href="LoginCURD/createMember.jsp">회원가입</a>
-<% } // end if~else %>	
-	</div>
-  	
+
+
 <!-- Modal -->
 <div class="modal fade" id="lgoinModal" tabindex="-1" aria-labelledby="lgoinModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -245,8 +282,5 @@ if(dto != null){
 	  	   logoutPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "width=1,height=1");
 	  	   logoutPopUp.close();
   	});  
-  </script>
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</head>
-	
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
