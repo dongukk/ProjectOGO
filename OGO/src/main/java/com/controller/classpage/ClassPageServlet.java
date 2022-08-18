@@ -3,7 +3,6 @@ package com.controller.classpage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,9 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import com.dto.classpage.ClassDTO;
+import com.dto.classpage.ClassImgDTO;
 import com.dto.login.MemberDTO;
 import com.service.classpage.ClassService;
 import com.service.classpage.ContentService;
@@ -30,7 +29,7 @@ public class ClassPageServlet extends HttpServlet {
 		
 		HttpSession session=request.getSession();
 		MemberDTO mDTO= (MemberDTO)session.getAttribute("login");
-		int classNum=1; //나중에 클래스Num 받아오기
+		int classNum=221; //나중에 클래스Num 받아오기
 		
 		ClassService service= new ClassService();
 		//클래스 정보
@@ -68,12 +67,15 @@ public class ClassPageServlet extends HttpServlet {
 		//찜 개수 count
 		int count =hservice.heartCount(classNum);
 		
+		//이미지 불러오기
+		ClassImgDTO imgDTO =service.getImage(classNum);
+		
 		request.setAttribute("heartYN", heartYN);//찜 여부 검사
 		request.setAttribute("heartCount", count);//찜 개수 count
 		request.setAttribute("cDTO", cDTO);
 		request.setAttribute("nickName", nickName);
 		request.setAttribute("classContents", classContents);
-		//request.setAttribute("userId2", userId); 
+		request.setAttribute("imgDTO", imgDTO); //클래스 별 이미지 
 		
 		//클래스 등록 페이지 테스트 위한 session
 		session.setAttribute("cDTO", cDTO);

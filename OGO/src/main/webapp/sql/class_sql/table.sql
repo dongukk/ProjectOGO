@@ -42,3 +42,11 @@ ALTER TABLE class RENAME COLUMN CATEGORY to SUBCATEGORY;
 --class테이블 PLACE 데이터 타입 수정
 ALTER TABLE class MODIFY place VARCHAR2(150);
 
+--classimg 테이블
+CREATE table classimg
+(classnum NUMBER CONSTRAINT classimg_classnum_fk REFERENCES class(classnum),
+classPhoto1 VARCHAR2(60),
+classPhoto2 VARCHAR2(60),
+classPhoto3 VARCHAR2(60),
+classPhoto4 VARCHAR2(60),
+classPhoto5 VARCHAR2(60));

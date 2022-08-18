@@ -1,5 +1,6 @@
 <%@page import="com.dto.login.MemberDTO"%>
 <%@page import="com.dto.classpage.ClassDTO"%>
+<%@page import="com.dto.classpage.ClassImgDTO"%>
 <%@page import="org.apache.ibatis.javassist.bytecode.stackmap.TypeData.ClassName"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -31,9 +32,8 @@
 	String userId=null;
 	if(mDTO!=null){
 		userId = mDTO.getUserId();
-		//out.print(userId);
 	}
-	
+
 	
 %>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -99,7 +99,7 @@
 		
 		//나중에 클래스별로 img 파일명 저장해서 받아오기 - 
 		//클래스 photo 왼쪽 버튼 클릭
-		var images = ["1_04.jpg","1_05.jpg","1_06.jpg","1_07.jpg","1_08.jpg"];
+		var images = ["1_01.jpg","1_02.jpg","1_03.jpg","1_04.jpg","1_05.jpg"];
 		var idx = 0;
 		$("#leftBtn").on("click", function() {
 			idx--;

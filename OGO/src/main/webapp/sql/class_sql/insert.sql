@@ -278,3 +278,8 @@ INSERT INTO heart(classnum,userid,num)
 VALUES (2, '1', HEART_SEQ.nextval);
 
 COMMIT;
+
+--classimg 1번 클래스 이미지 파일명
+INSERT INTO classimg 
+VALUES (1,'1_01.jpg','1_02.jpg','1_03.jpg','1_04.jpg','1_05.jpg');
+COMMIT;

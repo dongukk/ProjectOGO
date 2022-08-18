@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.config.classpage.MySqlSessionFactory;
 import com.dao.classpage.ClassDAO;
 import com.dto.classpage.ClassDTO;
+import com.dto.classpage.ClassImgDTO;
 
 public class ClassService {
 	ClassDAO dao;
@@ -78,6 +79,18 @@ public class ClassService {
 			session.close();
 		}
 		return num;
+	}
+
+	public ClassImgDTO getImage(int classNum) {
+		SqlSession session= MySqlSessionFactory.getSession();
+		ClassImgDTO imgDTO= null;
+		try {
+			dao= new ClassDAO();
+			imgDTO= dao.getImage(session, classNum);
+		} finally {
+			session.close();
+		}
+		return imgDTO;
 	}
 
 }
