@@ -174,7 +174,6 @@ if(dto != null){
 		<a href="MyPageServlet">마이페이지<img src="common/img/mypage.png" id="img_a"></a>
 		<a href="#">장바구니</a>
 	<%  } else{ %>
-		<!-- <a href="" id="logout">로그아웃</a> -->
 		<a href="logoutServlet" id="logout">로그아웃</a>
 		<a href="MyPageServlet">마이페이지</a>
 		<a href="#">장바구니</a>
@@ -245,9 +244,8 @@ if(dto != null){
   	
  // 로그아웃 처리
   	 $("#logout").click(function() {
-	  	   testPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "width=1,height=1");
-	  	   testPopUp.close(); 
-	  	   location="logoutServlet";  
+	  	   logoutPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "width=1,height=1");
+	  	   logoutPopUp.close();
   	});  
   </script>
 

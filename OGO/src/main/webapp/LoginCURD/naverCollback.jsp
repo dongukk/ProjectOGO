@@ -19,21 +19,16 @@
   naver_id_login.get_naver_userprofile("naverSignInCallback()");
   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
   function naverSignInCallback() {
-		   /*  alert(naver_id_login.getProfileData('email'));
-		    alert(naver_id_login.getProfileData('nickname'));
-		    alert(naver_id_login.getProfileData('age')); */
-		    
 		     var userId = naver_id_login.getProfileData('id');
 			 var userName = naver_id_login.getProfileData('name');
 			 var nickname = naver_id_login.getProfileData('nickname');
 			 var email = naver_id_login.getProfileData('email');
-			 
+			 var access_token = naver_id_login.oauthParams.access_token;
 			 console.log(userId);
 			 console.log(userName);
-			 console.log(nickname);
+			 console.log(nickname);	 
 
-//			 window.opener.location.href = "index.jsp?&nickname="+nickname+"&email="+email+"&name="+name;
-			 window.opener.location.href = "../naverLogin?&nickname="+nickname+"&email="+email+"&userName="+userName;
+			 window.opener.location.href = "index.jsp?&nickname="+nickname+"&email="+email+"&name="+name;
 			 window.close();
 		  }
  
