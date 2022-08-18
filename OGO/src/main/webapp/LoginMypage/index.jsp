@@ -5,8 +5,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="LoginMypage/index4.css??ver0.1" type="text/css" />
@@ -148,6 +146,7 @@ String email2 = dto.getEmail2();
 String profilePhoto = dto.getProfilePhoto();
 String hobby = dto.getHobby();
 %>
+
 <style type="text/css">
 .profile_container {
   position: relative;
@@ -159,8 +158,23 @@ String hobby = dto.getHobby();
   background-position: center;
   border-radius: 50%;
 }
+
+.info_input p {
+ height: 10px;
+}
+
+#nicknameCheckBtn {
+  color: white;
+  background-color: blueviolet;
+  border: none;
+  height: 30px;
+  border-radius: 4px;
+  padding: 0 5px;	
+  width: 150px;
+}
+
+
 </style>
-<link rel="stylesheet"  href="index4.css" />
 
  <!-- <header>b
       <div class="logo"></div>
@@ -205,7 +219,7 @@ String hobby = dto.getHobby();
       <aside>
         <div class="side_bar">
           <p><a href="MyPageServlet">프로필 관리</a></p>
-          <p><a href="HeartListServlet">My 찜</a></p>
+          <p><a href="HeartListServlet">MY 찜</a></p>
           <p><a href="#">수강내역</a></p>
           <p><a href="#">튜터 등록</a></p>
         </div>
@@ -242,17 +256,17 @@ String hobby = dto.getHobby();
 <div style="text-align: left; color: red;">* 항목은 필수입력 사항입니다.</div>
 		<div class="info_input">
 	<input type="hidden"  value="<%= userId%>"  name="userId" ><!-- hidden 을 이용한 id 전송 -->
-        	    <p>아이디</p>	<%= userId%>
+        	    <p style="width: 100px;">아이디</p>	<%= userId%>
 		</div>
 		
 		
   <div class="info_input">
-            <p>비밀번호 변경(*)</p>   
+             <p style="width: 300px;">비밀번호 변경(*)</p>   
             <input name="userPasswd" id="userPasswd" type="password" required="required"  value="<%= userPasswd%>"  class="form-control" 
 				placeholder="비밀번호를 입력해주세요.">		
 		</div>
 				<div class="info_input">
-					<p>비밀번호 변경 확인(*)</p>
+					 <p style="width: 300px;">비밀번호 변경 확인(*)</p>
 					<input name="userPasswd2" id="userPasswd2" type="password"  value="<%= userPasswd%>" 
 						required="required"  class="form-control"
 						placeholder="비밀번호를 재입력해주세요.">
@@ -264,12 +278,12 @@ String hobby = dto.getHobby();
 
 
 				<div class="info_input">			
-		               <p>닉네임(*)</p>		
+		               <p style="width: 150px;">닉네임(*)</p>		
 			<%-- <input name="nickname"  type="text"  required="required"  value="<%= nickname%>" > --%>
 				<input name="nickname" id="nickname" class="form-control" required="required" class="form-control" 
 					placeholder="힌트기능 : 닉네임 중복체크를 이용하세요." value="<%= nickname%>" > 
 				<div class="input-group-btn">
-					<button type="button" id="nicknameCheckBtn" class="btn btn-default">닉네임 중복체크</button>
+					<button type="button" id="nicknameCheckBtn" class="btn2">닉네임 중복체크</button>
 					
 				</div>
 			</div>
@@ -280,14 +294,14 @@ String hobby = dto.getHobby();
 		
 		
 		<div class="info_input">
-            <p>이름</p>
+            <p style="width: 100px;">이름</p>
            <%= userName %>
             <div></div>
           </div>      
           
           
 		 <div class="info_input">
-			<p>생년월일</p>
+			<p style="width: 100px;">생년월일</p>
 			<%-- <input name="birth" id="birth" type="date" class="form-control"  value="<%=birth.substring(0, 10)%>"> --%>	<!-- 생일을 수정하진 않을거니까.. -->
 			<%=birth.substring(0, 10)%>
 		</div>
@@ -296,7 +310,7 @@ String hobby = dto.getHobby();
 		
 		
 		       <div class="info_input">
-            <p>연락처</p>
+            <p style="width: 100px;">연락처</p>
          <div class="form-inline"><!-- phone1 해야됨 -->
 				<select name="phone1" style="height: 25px;" >
 					<option  value="010"  <% if("010".equals(phone1)) {%>  selected<%} %> >010</option>
@@ -314,7 +328,7 @@ String hobby = dto.getHobby();
 		
 		
 		      <div class="info_input3">
-            <p>주소(*)</p>
+            <p style="width: 100px; height: 15px;">주소(*)</p>
 			  <input type="text" name="post" id="post" placeholder="우편번호" value="<%= post %>">
 			<input type="button"  class="but"     onclick="execDaumPostcode()" value="우편번호 찾기"><br>
      </div> 
@@ -333,7 +347,7 @@ String hobby = dto.getHobby();
 		
 		
 		  <div class="info_input">
-            <p>이메일</p> 
+            <p style="width: 100px;">이메일</p> 
 			<!-- type : email - 모바일의 키패드가 email입력 패드로 바뀐다. 입력한 데이터가 이메일 양식에 맞는지 검사한다. -->
 			<input type="text" name="email1" id="email1" required="required" value="<%= email1%>">@
 	        <input type="text" name="email2" id="email2" required="required" placeholder="직접입력"  value="<%= email2%>">
@@ -345,10 +359,7 @@ String hobby = dto.getHobby();
 		        <option value="yahoo.com">yahoo.com</option>
 	       </select>
 		</div>
-	<!-- 	<div class="form-group">
-			<label for="profilePhoto">프로필 사진</label>
-			<input name="profilePhoto" type="file" id="profilePhoto" class="form-control" accept=".jpg, .png">
-		</div> -->
+
 		<label for="hobby">관심있는 클래스 분야</label><span> (복수선택 가능)</span>
 		<div class="checkbox-group">
 			<input type="checkbox" name="hobbyAll" id="hobbyAll"> 전체 선택<br>		
