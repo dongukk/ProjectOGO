@@ -23,7 +23,7 @@ public class naverLogin extends HttpServlet {
 		 // 이메일 나누기
 		 String email = request.getParameter("email");
 		 int emailSplit = email.indexOf("@");  // @의 문자의 위치 값을 얻는다.
-		 String email1 = email.substring(0, emailSplit-1);
+		 String email1 = email.substring(0, emailSplit);
 		 String email2 = email.substring(emailSplit+1, email.length());
 		 // 개인정보때문에 더미데이터 저장합니다.
 		 String userPasswd = "1";
@@ -38,11 +38,11 @@ public class naverLogin extends HttpServlet {
 		 String profilePhoto = "noImage.jpg";	
 		 String hobbys = "";
 		 
-//		 System.out.println(userId);
-//		 System.out.println(userName);
-//		 System.out.println(nickname);
-//		 System.out.println(email1);
-//		 System.out.println(email2);
+		 System.out.println(userId);
+		 System.out.println(userName);
+		 System.out.println(nickname);
+		 System.out.println(email1);
+		 System.out.println(email2);
 		 
 		 MemberDTO dto = new MemberDTO();
 			dto.setUserId(userId);
