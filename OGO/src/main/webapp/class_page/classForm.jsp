@@ -195,7 +195,34 @@
 				})//ajax end
 		})//카테고리end
 		
-		
+		//동일한 튜터, 클래스명 있는지 확인
+		$("#className").on("keyup", function() {
+			var className= $("#className").val();
+			//ajax 
+				$.ajax({
+					type: "get",
+					url: "ClassNameSearchServlet", //servlet에서 session에 카테고리 정보 저장
+					dataType: "text",
+					async: false,
+					data: { //서버에 넘겨줄 데이터
+						userid : "<%=userId%>",
+						className : className
+					},
+					success: function(data, status, xhr) {
+						console.log("success");
+						//console.log(data);
+						$("#classSearch").text(data);
+					},
+					error: function(xhr, status, e) {
+						console.log("error");
+						console.log(e, status);
+					}
+				})//ajax end
+				//클래스명 빈칸이면 classSearch 메세지 삭제
+				if (className.length==0) {
+					$("#classSearch").text("");
+				}
+		})//classSearch end
 	
 	})//ready
 </script>
@@ -229,6 +256,7 @@
 	  <div class="col-md-12">
 	    <label for="className" class="form-label">클래스명</label>
 	    <input type="text" class="form-control" id="className" name="className" placeholder="클래스명을 입력해주세요">
+	  	<span id="classSearch"></span>
 	  </div>
 	  <div class="col-md-6">
 	    <label for="category" class="form-label">클래스 종류</label>

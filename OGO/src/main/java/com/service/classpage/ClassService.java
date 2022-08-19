@@ -93,4 +93,16 @@ public class ClassService {
 		return imgDTO;
 	}
 
+	public int searchClassName(HashMap<String, Object> map) {
+		SqlSession session= MySqlSessionFactory.getSession();
+		int num=0;
+		try {
+			dao= new ClassDAO();
+			num= dao.searchClassName(session, map);
+		} finally {
+			session.close();
+		}
+		return num;
+	}
+
 }

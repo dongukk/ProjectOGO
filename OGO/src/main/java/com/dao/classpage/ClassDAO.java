@@ -35,6 +35,11 @@ public class ClassDAO {
 		return imgDTO;
 	}
 
+	public int searchClassName(SqlSession session, HashMap<String, Object> map) {
+		int num= session.selectOne("ClassMapper.searchClassName", map);
+		return num;
+	}
+
 //	public String selectClass(SqlSession session, String classId) {
 //		String con_class = session.selectOne("ClassMapper.selectClass", classId);
 //		return con_class;
