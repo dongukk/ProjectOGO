@@ -226,7 +226,7 @@ if(dto != null){
 </div>
 
 <script type="text/javascript">
-  	var naver_id_login = new naver_id_login("ekZ3X4W9E8FY6vv_Y7AK", "http://localhost:8083/OGO/LoginCURD/naverCollback.jsp");
+  	var naver_id_login = new naver_id_login("ekZ3X4W9E8FY6vv_Y7AK", "http://localhost:8097/OGO/LoginCURD/naverCollback.jsp");
   	var state = naver_id_login.getUniqState();
   	naver_id_login.setButton("white", 3,50);
   	naver_id_login.setDomain("hbrMjKeDCL");
