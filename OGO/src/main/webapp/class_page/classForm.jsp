@@ -156,6 +156,7 @@
 		
 		//클래스 위치 - 지도추가
 		$("#postButton").on("click", function() {
+			$("#map").empty();
 			$("#classPlace").attr("class", "card");
 			$("#card").attr("class", "card-body");
 			$("#map").attr("style", "width:100%;height:350px;");
