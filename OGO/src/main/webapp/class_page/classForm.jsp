@@ -30,7 +30,11 @@
     		background-color: blueviolet;
     	}
     </style>
-
+<%
+	MemberDTO mDTO =(MemberDTO)session.getAttribute("login");
+	
+	String userId=mDTO.getUserId(); //튜터가 될 유저의 아이디
+%>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -128,24 +132,29 @@
 			
 			if (category=="뷰티") {
 				subCategory.empty();
-				subCategory.append("<option class='subCategory' value='메이크업'>메이크업</option>"+
-			      "<option class='subCategory' value='스타일링'>스타일링</option>");
+				subCategory.append('<option selected>Sub Category</option>'+
+						"<option class='subCategory' value='메이크업'>메이크업</option>"+
+			      		"<option class='subCategory' value='스타일링'>스타일링</option>");
 			}else if (category=="외국어") {
 				subCategory.empty();
-				subCategory.append('<option class="subCategory" value="영어">영어</option>'+
+				subCategory.append('<option selected>Sub Category</option>'+
+						  '<option class="subCategory" value="영어">영어</option>'+
 					      '<option class="subCategory" value="일본어·중국어">일본어·중국어</option>'+
 					      '<option class="subCategory" value="기타외국어">기타 외국어</option>');
 			}else if (category=="댄스·뮤직") {
 				subCategory.empty();
-				subCategory.append('<option class="subCategory" value="댄스">댄스</option>'+
+				subCategory.append('<option selected>Sub Category</option>'+
+						  '<option class="subCategory" value="댄스">댄스</option>'+
 					      '<option class="subCategory" value="뮤직">뮤직</option>');
 			}else if (category=="요리·공예") {
 				subCategory.empty();
-				subCategory.append('<option class="subCategory" value="요리·음료">요리·음료</option>'+
+				subCategory.append('<option selected>Sub Category</option>'+
+						  '<option class="subCategory" value="요리·음료">요리·음료</option>'+
 					      '<option class="subCategory" value="공예·DIY">공예·DIY</option>')
 			}else if (category=="드로잉·디자인·영상") {
 				subCategory.empty();
-				subCategory.append('<option class="subCategory" value="디자인">디자인</option>'+
+				subCategory.append('<option selected>Sub Category</option>'+
+						  '<option class="subCategory" value="디자인">디자인</option>'+
 					      '<option class="subCategory" value="영상">영상</option> ');
 			}else if (category=="Category") {
 				subCategory.empty();
@@ -161,24 +170,73 @@
 			$("#card").attr("class", "card-body");
 			$("#map").attr("style", "width:100%;height:350px;");
 		})
+
+		//카테고리 정보 저장 - 카테고리별로 이미지 저장 위해서
+		$("#subCategory").on("change", function() {
+			var sCategory=$("#subCategory").val();
+			console.log("classForm.jsp "+$("#subCategory").val());
+			//ajax 
+				$.ajax({
+					type: "get",
+					url: "ClassCategoryServlet", //servlet에서 session에 카테고리 정보 저장
+					dataType: "text",
+					async: false,
+					data: { //서버에 넘겨줄 데이터
+						sCategory : sCategory
+					},
+					success: function(data, status, xhr) {
+						console.log("success");
+						console.log(data);
+					},
+					error: function(xhr, status, e) {
+						console.log("error");
+						console.log(e, status);
+					}
+				})//ajax end
+		})//카테고리end
+		
+		//동일한 튜터, 클래스명 있는지 확인
+		$("#className").on("keyup", function() {
+			var className= $("#className").val();
+			//ajax 
+				$.ajax({
+					type: "get",
+					url: "ClassNameSearchServlet", //servlet에서 session에 카테고리 정보 저장
+					dataType: "text",
+					async: false,
+					data: { //서버에 넘겨줄 데이터
+						userid : "<%=userId%>",
+						className : className
+					},
+					success: function(data, status, xhr) {
+						console.log("success");
+						//console.log(data);
+						$("#classSearch").text(data);
+					},
+					error: function(xhr, status, e) {
+						console.log("error");
+						console.log(e, status);
+					}
+				})//ajax end
+				//클래스명 빈칸이면 classSearch 메세지 삭제
+				if (className.length==0) {
+					$("#classSearch").text("");
+				}
+		})//classSearch end
 	
 	})//ready
 </script>
   </head>
   <body>
    <jsp:include page="/common/NavBar.html" flush="true"></jsp:include>
-<%
-	MemberDTO mDTO =(MemberDTO)session.getAttribute("login");
 
-	String userId=mDTO.getUserId(); //튜터가 될 유저의 아이디
-%>
   <div class="one">
   	<div id="two">
   		<h1>클래스 등록</h1>
   	</div>
   	<br>
     <!-- <form class="row g-3" id="classOpenForm" action="../ClassOpenServlet" method="post" enctype="multipart/form-data"> -->
-    <form class="row g-3" id="classOpenForm" action="ClassAddServlet" method="post">
+    <form class="row g-3" id="classOpenForm" action="ClassAddServlet" method="post" enctype="multipart/form-data">
 	    <input type="hidden" id="schedule1" name="schedule1" value="">
 	    <input type="hidden" id="schedule2" name="schedule2" value="">
 	    <input type="hidden" id="schedule3" name="schedule3" value="">
@@ -198,6 +256,7 @@
 	  <div class="col-md-12">
 	    <label for="className" class="form-label">클래스명</label>
 	    <input type="text" class="form-control" id="className" name="className" placeholder="클래스명을 입력해주세요">
+	  	<span id="classSearch"></span>
 	  </div>
 	  <div class="col-md-6">
 	    <label for="category" class="form-label">클래스 종류</label>
@@ -294,23 +353,23 @@
 	  <div class="col-12 mt-3">
 	    <label class="form-label">클래스 소개 사진 업로드 (*최대 5장까지 가능합니다)</label>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="classPhoto1">
+	      <input type="file" class="form-control" id="classPhoto1" name="classPhoto1">
 	      <label class="input-group-text" for="classPhoto1">Upload</label>
 	  	</div>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="classPhoto2">
+	      <input type="file" class="form-control" id="classPhoto2" name="classPhoto2">
 	      <label class="input-group-text" for="classPhoto2">Upload</label>
 	  	</div>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="classPhoto3">
+	      <input type="file" class="form-control" id="classPhoto3" name="classPhoto3">
 	      <label class="input-group-text" for="classPhoto3">Upload</label>
 	  	</div>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="classPhoto4">
+	      <input type="file" class="form-control" id="classPhoto4" name="classPhoto4">
 	      <label class="input-group-text" for="classPhoto4">Upload</label>
 	  	</div>
 	    <div class="input-group mb-3">
-	      <input type="file" class="form-control" id="classPhoto5">
+	      <input type="file" class="form-control" id="classPhoto5" name="classPhoto5">
 	      <label class="input-group-text" for="classPhoto5">Upload</label>
 	  	</div>
 	  </div>

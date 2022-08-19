@@ -38,4 +38,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	from classimg
     	where classNum= #{classNum}
 	</select>
+	
+	<select id="searchClassName" parameterType="hashmap" resultType="int">
+		select count(*)
+		from class
+		where userid= #{userid} and className= #{className}
+	</select>
 </mapper>
