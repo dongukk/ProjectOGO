@@ -7,10 +7,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
+		
 		$("#update").click(function () {
-			 $("form").attr("action", "Update_NoticeServlet"); 
-			 $("form").submit();
-			
+			if ($("textarea").value == null || $("#titleC").value == null) {
+				event.preventDefault();
+				alert("내용을 입력해 주세요");
+			} else {
+				 $("form").attr("action", "Update_NoticeServlet"); 
+				 $("form").submit();
+			} //else
+			 
 		});//수정
 			
 	});
