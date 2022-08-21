@@ -32,4 +32,15 @@
     var date = today.toLocaleDateString();
 	console.log(date);
 	$("#today").text(date);
+	
+	$("form").submit(function() {
+		console.log($("textarea").value);
+		console.log($("#title").value);
+		
+ 		if ($("textarea").value == null || $("#title").value == null) {
+			event.preventDefault();
+			alert("내용을 입력해 주세요");
+		}  
+
+	});
 	</script>
