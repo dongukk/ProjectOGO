@@ -22,7 +22,7 @@
 	} 
 %>
 
-	<jsp:include page="common/nav.jsp" flush="true" />	
+	<jsp:include page="common/nav.jsp" flush="false"/>	
 	<jsp:include page="common/ScrollAni.jsp" flush="false"/>
 	<jsp:include page="common/MainPage.html" flush="false"/>
 

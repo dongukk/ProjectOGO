@@ -8,10 +8,10 @@
 
 
 
-	<jsp:include page="common/nav.jsp" flush="true" />
+	<jsp:include page="common/nav.jsp" flush="false"/>
 	</head>
 	<body>
 	<hr>
-	<jsp:include page="LoginMypage/index.jsp" flush="true" /><br>
+	<jsp:include page="LoginMypage/index.jsp" flush="false" /><br>
 </body>
 </html>
