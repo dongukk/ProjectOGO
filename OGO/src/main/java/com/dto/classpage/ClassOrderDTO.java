@@ -1,8 +1,11 @@
 package com.dto.classpage;
 
 public class ClassOrderDTO {
+	public int orderNum;
 	public String userId;
 	public int classNum;
+	public int price;
+	public String orderDate;
 	public String orderStatus;
 	public String schedule1;
 	public String schedule2;
@@ -20,12 +23,15 @@ public class ClassOrderDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ClassOrderDTO(String userId, int classNum, String orderStatus, String schedule1, String schedule2,
-			String schedule3, String schedule4, String schedule5, String schedule6, String schedule7, String schedule8,
-			String schedule9, String schedule10) {
+	public ClassOrderDTO(int orderNum, String userId, int classNum, int price, String orderDate, String orderStatus,
+			String schedule1, String schedule2, String schedule3, String schedule4, String schedule5, String schedule6,
+			String schedule7, String schedule8, String schedule9, String schedule10) {
 		super();
+		this.orderNum = orderNum;
 		this.userId = userId;
 		this.classNum = classNum;
+		this.price = price;
+		this.orderDate = orderDate;
 		this.orderStatus = orderStatus;
 		this.schedule1 = schedule1;
 		this.schedule2 = schedule2;
@@ -142,16 +148,38 @@ public class ClassOrderDTO {
 	public void setSchedule10(String schedule10) {
 		this.schedule10 = schedule10;
 	}
+	
+	public int getOrderNum() {
+		return orderNum;
+	}
+
+	public void setOrderNum(int orderNum) {
+		this.orderNum = orderNum;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public String getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
+	}
 
 	@Override
 	public String toString() {
-		return "ClassOrderDTO [userId=" + userId + ", classNum=" + classNum + ", orderStatus=" + orderStatus
-				+ ", schedule1=" + schedule1 + ", schedule2=" + schedule2 + ", schedule3=" + schedule3 + ", schedule4="
-				+ schedule4 + ", schedule5=" + schedule5 + ", schedule6=" + schedule6 + ", schedule7=" + schedule7
-				+ ", schedule8=" + schedule8 + ", schedule9=" + schedule9 + ", schedule10=" + schedule10 + "]";
+		return "ClassOrderDTO [orderNum=" + orderNum + ", userId=" + userId + ", classNum=" + classNum + ", price="
+				+ price + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", schedule1=" + schedule1
+				+ ", schedule2=" + schedule2 + ", schedule3=" + schedule3 + ", schedule4=" + schedule4 + ", schedule5="
+				+ schedule5 + ", schedule6=" + schedule6 + ", schedule7=" + schedule7 + ", schedule8=" + schedule8
+				+ ", schedule9=" + schedule9 + ", schedule10=" + schedule10 + "]";
 	}
-
-
-	
 
 }
