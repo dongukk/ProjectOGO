@@ -1,0 +1,180 @@
+/* nav바 css */
+nav{ position: fixed; left: 0; top: 0; width:100%; background: white; box-shadow: 0 0 5px rgba(0,0,0,.5); font-family: 'Noto Sans KR', sans-serif;}
+nav div{ display:flex; position:relative; float:left;}
+#nav_logo{ margin: 10px 350px 20px 20px; text-align: right; width: 100px; height: 50px;}
+#nav_Menu{ margin: 20px; width:600px; font-size: 20px;}
+#nav_Menu a:hover{font-size: 25px; transition: 0.5s; border-bottom: solid; border-color: blueviolet; color: black;}
+#nav_Menu a{flex: 1; display: block; height: 40px; line-height: 40px; text-align: center; color: gray; text-decoration: none;}
+#nav_Menu a.on{color: black;}
+nav div > span { position: absolute; left: 0; bottom: 0; width:100px; height: 3px; 
+background: #279d76; opacity: 0; transition: all .5s;}
+#nav_Menu a:nth-child(1).on ~ span {left: 50px; opacity: 1; background-color: green;}
+#nav_Menu a:nth-child(2).on ~ span {left: 250px; opacity: 1; background-color: orange;}
+#nav_Menu a:nth-child(3).on ~ span {left: 450px; opacity: 1; background-color: blue;}
+
+/* 프로그래스바 */
+.scrollindicator{
+  width: 100%;
+  height: 7px; /* height of progress bar */
+  display: block;
+  background: white;
+  left: 0;
+  top: 0; /* dock progress bar to bottom of page (change to "top" for top instead) */
+  cursor: pointer;
+  position: fixed;
+  z-index: 1000000;
+  visibility: hidden;
+  -webkit-transition: height .2s ease;
+  transition: height .2s ease;
+}
+
+.scrollprogress{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: purple; /* background color of progress bar */
+  -webkit-transform: translate3d(-100%,0,0);
+  transform: translate3d(-100%,0,0);
+  -webkit-transition: -webkit-transform .4s ease; 
+  transition: transform .4s ease; /* animate progress bar? Remove to disable */
+}
+
+/* 로그인바css */
+#loginName{ color:blueviolet; margin: 20px; }
+#nav_login{ margin: 20px; padding: 0; float: right;}
+#nav_login img{ height: 30px; width: 30px; margin: 0px 15px; display:block;}
+#nav_login a{ margin: 0px 5px; text-align: center;}
+
+/* 모달css */
+/* 네이버로그인 기본버튼 숨기고 커스텀버튼 사용 */
+#naver_id_login{ display: none;}
+#modal_logo { display: block; margin: 10px auto; width: 150px;height: 150px;}
+#modal_close{ display: block; width: 30px; height: 30px;}
+.int-area label {
+	position: absolute; left: 10px; top: 15px;
+	font-size: 18px; color: #999;	/* 이벤트 효과전 설정 */
+	transition:top .5s ease;		/* 애니메이션효과(위로, 0.5초에 걸쳐,느리게시작 점점빨라졌다가 느려지면서 종료) */
+}
+
+a.btn {
+    text-align: center;
+    display: block;
+    width: 380px;
+    text-decoration: none;	/* a태그 밑줄 삭제 */
+    border-radius: 5px;
+    line-height: 20px;
+    color: white;
+    font-size: 14px;
+    padding: 13px;
+    opacity: 0.8;	/* 불투명 설정(0에 가까울수록 투명하다) */
+    margin-left: 10px;
+    margin-bottom: 10px;
+    position: relative;	/* 요소 자기 자신의 원래 위치(static일 때의 위치)를 기준으로 배치 */
+}
+a.btn:hover { 
+    opacity:1;	/* 마우스올려둘시 투명도 없어짐 */
+}
+a.btn1{
+    border: 1px solid rgb(66, 192, 66);
+    border-width: 3px;
+}
+a.btn2{
+    border: 1px solid rgb(219, 206, 19);
+    border-width: 3px;
+}
+a.btn1:before {
+    content: url(LoginImg/icon_naver.png);
+    position : absolute;
+    left : 15px;
+    top : 12px;
+}
+a.btn2:before {
+    content: url(LoginImg/icon_kakao.png);
+    position : absolute;
+    left : 15px;
+    top : 12px;
+}
+/* a태그 링크 이벤트 */
+a.btn:visited {	/* 클릭전 */
+  color : white;
+}
+a.btn:hover {	/* 마우스 위에 올려뒀을때 */
+  color : red;
+}
+a.btn:active {	/* 마우스 누르는중 */
+  color : green
+}    
+#a_create:hover {	/* 마우스 위에 올려뒀을때 */
+  color : red;
+}
+.modal-body {
+	font-family: 'Noto Sans KR', sans-serif;	/* 구글폰트에서 글자스타일 가져옴 */	
+	margin: auto;	
+} 
+.modal-content {
+	background-color: rgba(0,0,0,.7);
+}
+.login-form {position: relative; z-index: 2;}
+.login-form h1 {
+	font-size: 32px; color: rgb(128, 128, 128);
+	text-align: center;
+	margin-bottom: 60px;
+}    
+
+.int-area {
+	width: 400px; 
+	position: relative;	/* 요소 자기 자신을 기준으로 배치 */
+	margin-top: 20px; 
+}
+.int-area:first-child {margin-top: 0;}	/* 부모 요소 안에 있는 첫번째 자식만을 선택 */
+.int-area input {
+	width: 100%;
+	padding: 20px 10px 10px;
+	background-color: transparent;	/*  미리 다른 배경 색상이 설정되어 있을 경우 filter 메서드와 충돌할 가능성이 있기 때문에 설정해놨음 */
+	border: none;
+	border-bottom: 1px solid #999;
+	font-size: 18px; color: white;
+	outline: none;		/* 외곽선 없음 */
+}
+.int-area label {
+	position: absolute; left: 10px; top: 15px;
+	font-size: 18px; color: #999;	/* 이벤트 효과전 설정 */
+	transition:top .5s ease;		/* 애니메이션효과(위로, 0.5초에 걸쳐,느리게시작 점점빨라졌다가 느려지면서 종료) */
+}
+
+/* id,pw 입력시 텍스트 올라가는 애니메이션 위치*/
+.int-area input:focus + label,	/* focus 했을때 */
+.int-area input:valid + label {	/* 값입력안하고 로그인 눌렀을때 */
+	 top: -2px;		/* 정해진 공간에서 2px정도 위로 */
+	 font-size: 13px; color: #166cea;	/* 13포인트까지, 파랑색으로 */
+}
+
+.btn-area {
+	margin-top: 30px;
+}
+
+/* 로그인버튼 이미지설정 */
+.btn-area button {
+	width: 100%;
+	height: 50px;
+	background:rgb(255, 0, 255);
+	color: #fff;
+	font-size: 20px;
+	border: none;			/* 선없게 */
+	border-radius: 10px; 	/* 테두리 꼭지점 둥글게 */
+	cursor: pointer;		/* 마우스를 경고창뜨는 글자 위로 커서이동 */
+	opacity: 0.6;
+}
+.btn-area button:hover{
+	opacity: 1;
+}
+/* caption태그 이미지설정 */
+.caption {
+	margin-top:20px;
+	text-align: center;
+}
+.caption a {
+	font-size: 15px; color: #999;
+	text-decoration: none;	/* 선 안보이게 */
+}	
+

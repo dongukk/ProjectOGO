@@ -2,10 +2,10 @@
   margin: 0;
   font-family: 'Nanum Gothic', sans-serif;
 }
-/* 
-a {
+
+nav a {
   text-decoration: black;
-} */
+}
 
 .navBar{
   display: flex;
