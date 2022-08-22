@@ -7,8 +7,7 @@
 <title>마이 페이지</title>
 
 
-	<%-- <jsp:include page="common/NavBar.html" flush="true" />
-	<jsp:include page="common/LoginBar.jsp" flush="true" /> --%>
+
 	<jsp:include page="common/nav.jsp" flush="true" />
 	</head>
 	<body>

@@ -8,6 +8,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="common/nav.css">
 
+
+
 <nav>
 	<div id="nav_logo">
 		<a href="MainForm.jsp"><img src="common/img/OGOLogo.jpg"></a>
@@ -21,34 +23,32 @@
 	</div>
 	
 	<div id="nav_login">
-<%
-MemberDTO dto = (MemberDTO)session.getAttribute("login");
-// 로그인시 회원인증 후 login 데이터 세션에 저장
-
-if(dto != null){
-		String nickname = dto.getNickname();
-		String userId = dto.getUserId();
-%>
-	<div id="loginName">
-		<%= nickname %>님
+		<%
+		MemberDTO dto = (MemberDTO)session.getAttribute("login");
+		// 로그인시 회원인증 후 login 데이터 세션에 저장
+		
+		if(dto != null){
+				String nickname = dto.getNickname();
+				String userId = dto.getUserId();
+		%>
+		<div id="loginName">
+			<%= nickname %>님
+		</div>
+		<div id="loginBar">
+		<%  if(userId.equals("admin")){ // 이중 if문%>	
+			<a href="logoutServlet" id="logout"><img src="common/img/logOut.png">로그아웃</a>
+			<a href="LoginMain/managementMember.jsp"><img src="common/img/member.png">회원관리</a>
+			<%  } else{ %>
+				<a href="logoutServlet" id="logout"><img src="common/img/logOut.png">로그아웃</a>
+		<%	}} else{ %>
+			<a href="" data-bs-toggle="modal" data-bs-target="#lgoinModal"><img src="common/img/logIn.png">로그인</a>
+			<a href="LoginCURD/createMember.jsp"><img src="common/img/signUp.png">회원가입</a>
+		<% } // end if~else %>	
+		</div>
 	</div>
-	<div id="loginBar">
-	<%  if(userId.equals("admin")){ // 이중 if문%>	
-		<a href="logoutServlet" id="logout"><img src="common/img/logOut.png">로그아웃</a>
-		<a href="LoginMain/managementMember.jsp"><img src="common/img/member.png">회원관리</a>
-	<%  } else{ %>
-		<a href="logoutServlet" id="logout">로그아웃</a>
-<%	}} else{ %>
-	<!-- <a href="#" onclick="popUp()">로그인<img src="common/img/login.png" id="img_b"></a> -->
-	<!-- <a href="#" data-toggle="modal" data-target="#myModal">로그인<img src="common/img/login.png" id="img_b"></a> -->
-	<!-- Button trigger modal -->
-	<!-- <button type="button" data-bs-toggle="modal" data-bs-target="#lgoinModal">로그인</button> -->
-	<!-- 로그인 -->
-	<a href="#" data-bs-toggle="modal" data-bs-target="#lgoinModal"><img src="common/img/logIn.png">로그인</a>
-	<!-- 회원가입 -->
-	<a href="LoginCURD/createMember.jsp"><img src="common/img/signUp.png">회원가입</a>
-<% } // end if~else %>	
-	</div>
+	<div class="scrollindicator">
+		<div class="scrollprogress">
+		</div>
 	</div>
 </nav>	
 	
@@ -98,7 +98,7 @@ if(dto != null){
 <script type="text/javascript">
 // 네비 메뉴바 애니메이션 효과부여
 $(document).ready(function() {
-	$("nav a").click(function() {
+	$("#nav_Menu a").click(function() {
 		console.log("클릭");
 		$(this).addClass("on");
 		$(this).siblings().removeAttr("class");
@@ -125,7 +125,59 @@ $(document).ready(function() {
 	  	   logoutPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "width=1,height=1");
 	  	   logoutPopUp.close();
   	});  
-  </script>
+ 
+// 프로그래스바
+jQuery(function($){
+  var growmouseover = [true, '25px'] // magnify progress bar onmouseover? [Boolean, newheight]
+
+///////// No need to edit beyond here /////////
+
+  var $indicatorparts = $(document.body).append('<div class="scrollindicator"><div class="scrollprogress"></div></div>')
+  var $indicatorMain = $indicatorparts.find('div.scrollindicator')
+  var $scrollProgress = $indicatorparts.find('div.scrollprogress')
+  var indicatorHeight = $indicatorMain.outerHeight()
+  var transformsupport = $scrollProgress.css('transform')
+  transformsupport = (transformsupport == "none" || transformsupport =="")? false: true
+
+  function syncscrollprogress(){
+      var winheight = $(window).height()
+      var docheight = $(document).height()
+      var scrollTop = $(window).scrollTop()
+      var trackLength = docheight - winheight
+      var pctScrolled = Math.floor(scrollTop/trackLength * 100) // gets percentage scrolled (ie: 80 NaN if tracklength == 0)
+      $scrollProgress.css('transform', 'translate3d(' + (-100 + pctScrolled) + '%,0,0)')
+  }
+  
+  if (transformsupport){
+    $indicatorMain.css('visibility', 'visible')
+  
+    $indicatorMain.on('click', function(e){
+      var trackLength = $(document).height() - $(window).height()
+      var scrollamt = e.clientX/($(window).width()-32) * trackLength
+      $('html,body').animate({scrollTop: scrollamt}, 'fast')
+    })
+  
+    if (growmouseover[0]){
+      $indicatorMain.on('mouseenter touchstart', function(e){
+        $(this).css('height', growmouseover[1])
+        e.stopPropagation()
+      })
+    
+      $indicatorMain.on('mouseleave', function(e){
+        $(this).css('height', indicatorHeight)
+      })
+      
+      $(document).on('touchstart', function(e){
+        $indicatorMain.css('height', indicatorHeight)
+      })
+    }
+    
+    $(window).on("scroll load", function(){
+      requestAnimationFrame(syncscrollprogress)
+    })
+  }
+})
+</script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

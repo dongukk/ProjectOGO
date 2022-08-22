@@ -7,8 +7,7 @@
 <title>로그인 후 main페이지</title>
 </head>
 <body>
-<%-- 	<jsp:include page="common/NavBar.html" flush="true" />
-	<jsp:include page="common/LoginBar.jsp" flush="true" />	 --%>
+
 	<jsp:include page="common/nav.jsp" flush="true" />
 	<jsp:include page="common/ScrollAni.jsp" flush="false"/>
 	<jsp:include page="common/MainPage.html" flush="false"/>

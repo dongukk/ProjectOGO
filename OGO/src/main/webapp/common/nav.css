@@ -1,22 +1,49 @@
 /* nav바 css */
-nav{ margin:0; position: fixed; left: 0; top: 0; width:100%; background: #fff; box-shadow: 0 0 5px rgba(0,0,0,.5); font-family: 'Noto Sans KR', sans-serif;}
+nav{ position: fixed; left: 0; top: 0; width:100%; background: white; box-shadow: 0 0 5px rgba(0,0,0,.5); font-family: 'Noto Sans KR', sans-serif;}
 nav div{ display:flex; position:relative; float:left;}
 #nav_logo{ margin: 10px 350px 20px 20px; text-align: right; width: 100px; height: 50px;}
-#nav_Menu{ margin: 20px; width:600px; }
-#nav_Menu a:hover{font-size: 20px; transition: 0.5s; border-bottom: solid; border-color: blueviolet;}
-#nav_login{ margin: 20px; padding: 0; float: right;}
-#nav_login img{ height: 30px; width: 30px; margin: 0px 15px; display:block;}
-nav div a{flex: 1; display: block; height: 40px; line-height: 40px; text-align: center; color: gray; text-decoration: none;}
-nav div a.on{color: black;}
+#nav_Menu{ margin: 20px; width:600px; font-size: 20px;}
+#nav_Menu a:hover{font-size: 25px; transition: 0.5s; border-bottom: solid; border-color: blueviolet; color: black;}
+#nav_Menu a{flex: 1; display: block; height: 40px; line-height: 40px; text-align: center; color: gray; text-decoration: none;}
+#nav_Menu a.on{color: black;}
 nav div > span { position: absolute; left: 0; bottom: 0; width:100px; height: 3px; 
 background: #279d76; opacity: 0; transition: all .5s;}
-nav div a:nth-child(1).on ~ span {left: 50px; opacity: 1; background-color: green;}
-nav div a:nth-child(2).on ~ span {left: 250px; opacity: 1; background-color: orange;}
-nav div a:nth-child(3).on ~ span {left: 450px; opacity: 1; background-color: blue;}
+#nav_Menu a:nth-child(1).on ~ span {left: 50px; opacity: 1; background-color: green;}
+#nav_Menu a:nth-child(2).on ~ span {left: 250px; opacity: 1; background-color: orange;}
+#nav_Menu a:nth-child(3).on ~ span {left: 450px; opacity: 1; background-color: blue;}
+
+/* 프로그래스바 */
+.scrollindicator{
+  width: 100%;
+  height: 7px; /* height of progress bar */
+  display: block;
+  background: white;
+  left: 0;
+  top: 0; /* dock progress bar to bottom of page (change to "top" for top instead) */
+  cursor: pointer;
+  position: fixed;
+  z-index: 1000000;
+  visibility: hidden;
+  -webkit-transition: height .2s ease;
+  transition: height .2s ease;
+}
+
+.scrollprogress{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: purple; /* background color of progress bar */
+  -webkit-transform: translate3d(-100%,0,0);
+  transform: translate3d(-100%,0,0);
+  -webkit-transition: -webkit-transform .4s ease; 
+  transition: transform .4s ease; /* animate progress bar? Remove to disable */
+}
 
 /* 로그인바css */
-#loginName{ color:blueviolet; margin: 10px;}
-#loginBar a{ margin: 0 5px;}
+#loginName{ color:blueviolet; margin: 20px; }
+#nav_login{ margin: 20px; padding: 0; float: right;}
+#nav_login img{ height: 30px; width: 30px; margin: 0px 15px; display:block;}
+#nav_login a{ margin: 0px 5px; text-align: center;}
 
 /* 모달css */
 /* 네이버로그인 기본버튼 숨기고 커스텀버튼 사용 */
@@ -29,12 +56,6 @@ nav div a:nth-child(3).on ~ span {left: 450px; opacity: 1; background-color: blu
 	transition:top .5s ease;		/* 애니메이션효과(위로, 0.5초에 걸쳐,느리게시작 점점빨라졌다가 느려지면서 종료) */
 }
 
-/* id,pw 입력시 텍스트 올라가는 애니메이션 위치*/
-.int-area input:focus + label,	/* focus 했을때 */
-.int-area input:valid + label {	/* 값입력안하고 로그인 눌렀을때 */
-	 top: -2px;		/* 정해진 공간에서 2px정도 위로 */
-	 font-size: 13px; color: #166cea;	/* 13포인트까지, 파랑색으로 */
-}
 a.btn {
     text-align: center;
     display: block;
