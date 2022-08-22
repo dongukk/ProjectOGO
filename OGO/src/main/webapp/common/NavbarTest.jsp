@@ -145,6 +145,8 @@ a.btn:active {	/* 마우스 누르는중 */
 	font-size: 15px; color: #999;
 	text-decoration: none;	/* 선 안보이게 */
 }	
+
+/* 네이버 아이디로 로그인 커스텀버튼으로 사용하기위함 */
 #naver_id_login{
 	display: none;
 }
