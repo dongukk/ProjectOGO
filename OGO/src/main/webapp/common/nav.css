@@ -43,7 +43,8 @@ background: #279d76; opacity: 0; transition: all .5s;}
 #loginName{ color:blueviolet; margin: 20px; }
 #nav_login{ margin: 20px; padding: 0; float: right;}
 #nav_login img{ height: 30px; width: 30px; margin: 0px 15px; display:block;}
-#nav_login a{ margin: 0px 5px; text-align: center;}
+#nav_login a{ margin: 0px 5px; text-align: center; text-decoration-line: none; color: gray;}
+#nav_login a:hover{ color: black;}
 
 /* 모달css */
 /* 네이버로그인 기본버튼 숨기고 커스텀버튼 사용 */
