@@ -43,10 +43,11 @@
   <input type="hidden" id="selectSched8" name="selectSched8">
   <input type="hidden" id="selectSched9" name="selectSched9">
   <input type="hidden" id="selectSched10" name="selectSched10">
+  <input type="hidden" id="classPrice" name="classPrice" value="<%=price%>">
 	<div class="box">
 	<div class="container">
 	  <div class="row mb-2 mt-2">
-	  	<div class="col-md-12 mt-2" id="price" name="price"><%=priceF %>원</div>
+	  	<div class="col-md-12 mt-2" id="price"><%=priceF %>원</div>
 	  </div>
 	  <div class="row mb-1 ">
 		  <div class="btn-group col-md-12" role="group" >

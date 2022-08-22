@@ -34,6 +34,7 @@ public class ClassOrderInfoServlet extends HttpServlet {
 		String selectSched8= request.getParameter("selectSched8");
 		String selectSched9= request.getParameter("selectSched9");
 		String selectSched10= request.getParameter("selectSched10");
+		int price= Integer.parseInt(request.getParameter("classPrice"));
 		//클래스 신청한 유저id
 		HttpSession session=request.getSession();
 		MemberDTO mDTO= (MemberDTO) session.getAttribute("login");
@@ -45,9 +46,12 @@ public class ClassOrderInfoServlet extends HttpServlet {
 				+"\t"+selectSched10);
 		System.out.println("userId:"+userId);
 		//classorderinfo에 insert
-		ClassOrderDTO oDTO= new ClassOrderDTO(userId, classNumber, "결제 대기중", selectSched1, selectSched2, 
-				selectSched3, selectSched4, selectSched5, selectSched6, selectSched7, selectSched8, 
-				selectSched9, selectSched10);
+//		ClassOrderDTO oDTO= new ClassOrderDTO(userId, classNumber, "결제 대기중", selectSched1, selectSched2, 
+//				selectSched3, selectSched4, selectSched5, selectSched6, selectSched7, selectSched8, 
+//				selectSched9, selectSched10);
+		ClassOrderDTO oDTO= new ClassOrderDTO(0, userId, classNumber, price, null, "결제 대기중", selectSched1, 
+				selectSched2, selectSched3, selectSched4, selectSched5, selectSched6, selectSched7, 
+				selectSched8, selectSched9, selectSched10);
 		ClassOrderService oService= new ClassOrderService();
 		int result =oService.classOrder(oDTO);
 		System.out.println("classOrderInfo insert 성공:"+result);

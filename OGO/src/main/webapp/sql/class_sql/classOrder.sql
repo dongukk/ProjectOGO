@@ -23,4 +23,11 @@ ALTER TABLE classorder ADD SCHEDULE8 VARCHAR2(50 BYTE);
 ALTER TABLE classorder ADD SCHEDULE9 VARCHAR2(50 BYTE);
 ALTER TABLE classorder ADD SCHEDULE10 VARCHAR2(50 BYTE);
 
+--ordernum, price, orderdate add
+ALTER TABLE classorder ADD ordernum NUMBER(6,0) CONSTRAINT classorder_ordernum_nn not null;
+ALTER TABLE classorder ADD price NUMBER(6,0) CONSTRAINT classorder_price_nn not null;
+ALTER TABLE classorder ADD orderdate date CONSTRAINT classorder_orderdate_nn not null;
+--primary key
+ALTER TABLE classorder ADD PRIMARY KEY (ordernum);
+
 drop table classorder;
