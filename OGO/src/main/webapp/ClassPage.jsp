@@ -17,8 +17,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <title>클래스 신청</title>
-  <jsp:include page="common/NavBar.html" flush="true"></jsp:include>
-  
   
 <link rel="stylesheet" href="class_css/classPage.css">
 <link rel='stylesheet' href='class_comment_css/comment.css'>
@@ -210,9 +208,9 @@
 		//스크롤시 nav tab 고정
 		$(window).scroll(function() {
 	        let windowTop = $(this).scrollTop();
-	        //console.log(windowTop);
+	        console.log(windowTop);
 	        if(windowTop > 700) {
-	            $('#classNav').attr("style","position:fixed;top:0;");
+	            $('#classNav').attr("style","position:fixed;top:10;");
 	        } else {
 	            $('#classNav').attr("style","");
 	        }
@@ -222,29 +220,10 @@
 </script>
 </head>
 <body>
-<!--   <div class="header">
-    <div class="progress-container">
-      <div class="progress-bar"></div>
-    </div>
-  </div>
-  <nav class="navBar">
-    <div class="navBar_logo" >
-      <a href="#"><img src="NAV/img/OGOLogo.jpg" alt=""></a>
-    </div>
-    <ul class="navBar_menu">
-      <li><a href="">BEST</a></li>
-      <li><a href="">MYSPACE</a></li>
-      <li><a href="">공지사항&FAQ</a></li>
-    </ul>
-    <ul class="login">
-      로그인 마이페이지 더미
-      <li><a href="#"><img src="NAV/img/login.png" alt="" style="height: 30px; width: 30px;"></a></li>
-      <li><a href="#"><img src="NAV/img/mypage.png" alt="" style="height: 30px; width: 30px;"></a></li>
-    </ul>
-    
-    <a href="" class="navBar_btn"><img src="NAV/img/menu.png" alt=""></a>
-    
-  </nav> -->
+<!-- 네비바 -->
+<jsp:include page="common/nav.jsp" flush="false"/>
+<!-- 네비탭 -->
+<jsp:include page="class_page/classNavtab.jsp"></jsp:include>
 
 <div class="wrap">
   <div id="right">
