@@ -29,7 +29,7 @@
 			<a class="nav_menu" href="NoticeListServlet"><span>공지사항&FAQ</span></a>
 		</li>
       </ul>
-      <span></span>
+      <!-- <span></span> -->
       
       
         <div id="nav_login">
@@ -111,13 +111,13 @@
 
 <script type="text/javascript">
 // 네비 메뉴바 애니메이션 효과부여
-$(document).ready(function() {
+/* $(document).ready(function() {
 	$("#nav_Menu a").click(function() {
 		console.log("클릭");
 		$(this).addClass("on");
 		$(this).siblings().removeAttr("class");
 	});
-});
+}); */
 
 // 네이버 아이디로 로그인
   	var naver_id_login = new naver_id_login("ekZ3X4W9E8FY6vv_Y7AK", "http://localhost:8097/OGO/LoginCURD/naverCollback.jsp");

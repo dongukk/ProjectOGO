@@ -7,13 +7,13 @@ nav div{ display:flex; position:relative; }
 #nav_Menu li{ margin: 0 auto;} 
 #nav_Menu a:hover{font-size: 30px; transition: 0.5s; border-bottom: solid; border-color: blueviolet; color: black;}
 #nav_Menu a{flex: 1; display: block; height: 40px; line-height: 40px; text-align: center; color: gray; text-decoration: none;}
-#nav_Menu a.on{color: black;}
+/* #nav_Menu a.on{color: black;}
 nav div > span { position: absolute; left: 0; bottom: 0; width:100px; height: 3px; 
 				background: #279d76; opacity: 0; transition: all .5s;}
 #nav_Menu a:nth-child(1).on ~ span {left: 50px; opacity: 1; background-color: green;}
 #nav_Menu a:nth-child(2).on ~ span {left: 250px; opacity: 1; background-color: orange;}
 #nav_Menu a:nth-child(3).on ~ span {left: 450px; opacity: 1; background-color: blue;}
-
+ */
 /* 프로그래스바 */
 .scrollindicator{
   width: 100%;
