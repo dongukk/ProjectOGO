@@ -6,23 +6,33 @@
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link rel="stylesheet" href="common/nav.css">
+<link rel="stylesheet" href="common/nav2.css">
 
-
-
-<nav>
-	<div id="nav_logo">
-		<a href="MainForm.jsp"><img src="common/img/OGOLogo.jpg"></a>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <div class="nav-item" id="nav_logo">
+		<a  class="navbar-brand" href="MainForm.jsp"><img src="common/img/OGOLogo.jpg"></a>
     </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     
-	<div id="nav_Menu">
-		<a class="nav_menu" href="ClassListServlet"><span>행성카테고리</span></a>
-		<a class="nav_menu" href="MyPageServlet"><span>MYSPACE</span></a>
-		<a class="nav_menu" href="NoticeListServlet"><span>공지사항&FAQ</span></a>
-		<span></span>
-	</div>
-	
-	<div id="nav_login">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">      
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav_Menu">
+        <li class="nav-item">
+			<a class="nav_menu" href="ClassListServlet"><span>행성카테고리</span></a>
+		</li>
+		<li class="nav-item">
+			<a class="nav_menu" href="MyPageServlet"><span>MYSPACE</span></a>
+		</li>
+		<li class="nav-item">
+			<a class="nav_menu" href="NoticeListServlet"><span>공지사항&FAQ</span></a>
+		</li>
+      </ul>
+      <span></span>
+      
+      
+        <div id="nav_login">
 		<%
 		MemberDTO dto = (MemberDTO)session.getAttribute("login");
 		// 로그인시 회원인증 후 login 데이터 세션에 저장
@@ -31,26 +41,30 @@
 				String nickname = dto.getNickname();
 				String userId = dto.getUserId();
 		%>
-		<div id="loginName">
-			<%= nickname %>님
-		</div>
-		<div id="loginBar">
-		<%  if(userId.equals("admin")){ // 이중 if문%>	
-			<a href="logoutServlet" id="logout"><img src="common/img/logOut.png">로그아웃</a>
-			<a href="LoginMain/managementMember.jsp"><img src="common/img/member.png">회원관리</a>
-			<%  } else{ %>
+			<div id="loginName">
+				<%= nickname %>님
+			</div>
+			<div id="loginBar">
+			<%  if(userId.equals("admin")){ // 이중 if문%>	
 				<a href="logoutServlet" id="logout"><img src="common/img/logOut.png">로그아웃</a>
-		<%	}} else{ %>
-			<a href="" data-bs-toggle="modal" data-bs-target="#lgoinModal"><img src="common/img/logIn.png">로그인</a>
-			<a href="LoginCURD/createMember.jsp"><img src="common/img/signUp.png">회원가입</a>
-		<% } // end if~else %>	
-		</div>
-	</div>
-	<div class="scrollindicator">
+				<a href="LoginMain/managementMember.jsp"><img src="common/img/member.png">회원관리</a>
+				<%  } else{ %>
+					<a href="logoutServlet" id="logout"><img src="common/img/logOut.png">로그아웃</a>
+			<%	}} else{ %>
+				<a href="" data-bs-toggle="modal" data-bs-target="#lgoinModal"><img src="common/img/logIn.png">로그인</a>
+				<a href="LoginCURD/createMember.jsp"><img src="common/img/signUp.png">회원가입</a>
+			<% } // end if~else %>	
+			</div>
+	  	 </div>
+    	</div>    
+  </div>
+  
+  <div class="scrollindicator">
 		<div class="scrollprogress">
 		</div>
-	</div>
-</nav>	
+  </div>
+	
+</nav>
 	
 	
 	<!-- Modal -->
