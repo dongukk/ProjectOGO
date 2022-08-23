@@ -42,7 +42,7 @@
 				String userId = dto.getUserId();
 		%>
 			<div id="loginName">
-				<%=nickname%>
+				<%=nickname%><a style="color: black;">님</a>
 			</div>
 			<div id="loginBar">
 			<%  if(userId.equals("admin")){ // 이중 if문%>	
