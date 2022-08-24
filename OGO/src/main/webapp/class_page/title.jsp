@@ -37,7 +37,7 @@
 </div>
 
 <!-- 네비 탭 -->
-<div id="classNav">
+<!-- <div id="classNav">
 	<ul class="nav nav-tabs" >
 	  <li class="nav-item">
 	    <a class="nav-link" href="#classInfo">클래스 행성 소개</a>
@@ -58,4 +58,4 @@
 	    <a class="nav-link" href="#attention">유의사항</a>
 	  </li>
 	</ul>
-</div>
+</div> -->

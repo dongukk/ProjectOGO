@@ -2,10 +2,6 @@
 		color: black;
 		
 	}
-	#classNav{
-		background-color: white;
-		width: 100%;
-	}
 	.wrap{
 		min-width: 768px;
 		margin-left: 150px;
@@ -13,7 +9,6 @@
 		margin-top: 100px;
 	}
 
-	
 	.tutor{
 		margin-top: 15px;
 	}
@@ -134,5 +129,10 @@
       	left: 0;
      	min-width: 100%;
      	min-height: 300px;
+	}
+	#classNav{
+		background-color: white;
+		width: 100%;
+		z-index: 2;
 	}
 	 

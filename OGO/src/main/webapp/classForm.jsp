@@ -228,7 +228,8 @@
 </script>
   </head>
   <body>
-   <jsp:include page="/common/NavBar.html" flush="true"></jsp:include>
+<!-- 네비바 -->
+<jsp:include page="/common/nav.jsp" flush="false"/>
 
   <div class="one">
   	<div id="two">
