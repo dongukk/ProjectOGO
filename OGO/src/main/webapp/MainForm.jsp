@@ -3,13 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
-<title>O G O</title>
-</head>
- 
-<body>
+<title>Main 페이지</title>
 
+<!-- 로그인처리 -->
 <%
 	String mesg = (String)session.getAttribute("mesg");
 	if(mesg!=null){
@@ -22,7 +19,11 @@
 	} 
 %>
 
-	<jsp:include page="common/nav.jsp" flush="false"/>	
+	<jsp:include page="common/nav.jsp" flush="false"/>
+	
+</head>
+<body>
+
 	<jsp:include page="common/ScrollAni.jsp" flush="false"/>
 	<jsp:include page="common/MainPage.html" flush="false"/>
 
