@@ -20,6 +20,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">      
       <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav_Menu">
         <li class="nav-item">
+			<a class="nav_menu" href="MainForm.jsp"><span>HOME</span></a>
+		</li>
+        <li class="nav-item">
 			<a class="nav_menu" href="ClassListServlet"><span>행성카테고리</span></a>
 		</li>
 		<li class="nav-item">
@@ -71,11 +74,7 @@
 <div class="modal fade" id="lgoinModal" tabindex="-1" aria-labelledby="lgoinModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <!-- <div class="modal-header">
-       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div> -->
-        <div class="modal-body">   
-             
+        <div class="modal-body">                
          <img src="LoginImg/closeBtn.png"  id="modal_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close" align="right">
         	<br><br>
        
@@ -110,14 +109,18 @@
 </div>
 
 <script type="text/javascript">
-// 네비 메뉴바 애니메이션 효과부여
-$(document).ready(function() {
-	$("#nav_Menu a").click(function() {
-		console.log("클릭");
-		$(this).addClass("on");
-		$(this).siblings().removeAttr("class");
-	});
-});
+// 네비바 active 토글이벤트
+// 현재 페이지의 경로이름을 반환하는 함수 선언
+var url = window.location.pathname.substring(5);
+console.log(url);
+// nav-item 클래스 안에 있는 a 태그를 찾고, for-each함수를 통해 순환
+$(".nav-item").find("a").each(function() {
+	$(this).toggleClass("active",$(this).attr("href") == url);
+}); 
+// this 선택자를 통해 해당 객체를 선택 (a)
+// class 값을 넣었다 뺄 수 있는 toggleClass 선택 >> active라는 클래스 토글 기능으로 사용
+// 선택된 객체와 pathname이 같은 a태그의 href 속성을 선택, active 클래스를 토글시켜준다.
+
 
 // 네이버 아이디로 로그인
   	var naver_id_login = new naver_id_login("ekZ3X4W9E8FY6vv_Y7AK", "http://localhost:8097/OGO/LoginCURD/naverCollback.jsp");
@@ -142,9 +145,7 @@ $(document).ready(function() {
  
 // 프로그래스바
 jQuery(function($){
-  var growmouseover = [true, '25px'] // magnify progress bar onmouseover? [Boolean, newheight]
-
-///////// No need to edit beyond here /////////
+  var growmouseover = [true, '25px']
 
   var $indicatorparts = $(document.body).append('<div class="scrollindicator"><div class="scrollprogress"></div></div>')
   var $indicatorMain = $indicatorparts.find('div.scrollindicator')
@@ -158,7 +159,7 @@ jQuery(function($){
       var docheight = $(document).height()
       var scrollTop = $(window).scrollTop()
       var trackLength = docheight - winheight
-      var pctScrolled = Math.floor(scrollTop/trackLength * 100) // gets percentage scrolled (ie: 80 NaN if tracklength == 0)
+      var pctScrolled = Math.floor(scrollTop/trackLength * 100) 
       $scrollProgress.css('transform', 'translate3d(' + (-100 + pctScrolled) + '%,0,0)')
   }
   
