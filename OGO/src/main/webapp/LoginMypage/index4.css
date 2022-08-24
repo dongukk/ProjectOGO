@@ -21,23 +21,23 @@ header {
   background-position: center;
 }
 
-a{
+section a{
 text-decoration: none;
 } 
 
-aside a:visited{
+section aside a:visited{
 	color: white;
 }
 
-a:visited{
+section a:visited{
 	color: black;
 }
 
-a:hover {
+section a:hover {
 text-decoration: underline;
 } 
 
-a:active{
+section a:active{
 	color: white;
 }
 

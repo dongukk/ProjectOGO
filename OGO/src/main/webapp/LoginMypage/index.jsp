@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="LoginMypage/index4.css??ver0.1" type="text/css" />
+<link rel="stylesheet" href="LoginMypage/index4.css"/>
 <script type="text/javascript">
 
 
@@ -175,45 +175,6 @@ String hobby = dto.getHobby();
 
 
 </style>
-
- <!-- <header>b
-      <div class="logo"></div>
-      <div class="menu_container">
-       <p><a href="#">행성 카테고리</a></p>
-        <p><a href="#">BEST</a></p>
-        <p><a href="#">MY SPACE</a></p>
-        <p><a href="#">공지사항&FAQ</a></p>
-      </div>
-      <img class="mode" />
-    </header>
-          <div class="auth">
-      <p><a href="createMember.jsp">회원가입</a></p>
-      <p><a href="loginTest.html">로그인</a></p>
-    </div> -->
-    
-   <!--  <div class="header_b">
-    <div class="progress-container">
-      <div class="progress-bar"></div>
-    </div>
-  </div> -->
-<!--   <nav class="navBar">
-    <div class="navBar_logo" >
-      <a href="#"><img src="img2/OGOLogo.jpg" alt=""></a>
-    </div>
-    <ul class="navBar_menu">
-      <li><a href="">BEST</a></li>
-      <li><a href="">MYSPACE</a></li>
-      <li><a href="">공지사항&FAQ</a></li>
-    </ul>
-    <ul class="login">
-      로그인 마이페이지 더미
-      <li><a href="#"><img src="img2/login.png" alt="" style="height: 30px; width: 30px;"></a></li>
-      <li><a href="#"><img src="img2/mypage.png" alt="" style="height: 30px; width: 30px;"></a></li>
-    </ul>
-    
-    <a href="" class="navBar_btn"><img src="img2/menu.png" alt=""></a>
-    
-  </nav> -->
 
        <section>
       <aside>

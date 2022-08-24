@@ -40,7 +40,7 @@ nav div{ display:flex; position:relative; }
 }
 
 /* 로그인바css */
-#loginName{ color:blueviolet; margin: 20px; }
+#loginName{ color:blueviolet; margin: 20px; font-weight: bold;}
 #nav_login{ margin: 20px; padding: 0; text-align: center;}
 #nav_login img{ height: 35px; width: 35px; margin: 10px 15px 0px 15px; display:block;}
 #nav_login a{ margin: 0px 5px; text-align: center; text-decoration-line: none; color: gray;}
