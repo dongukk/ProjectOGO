@@ -11,7 +11,6 @@
 	<jsp:include page="common/nav.jsp" flush="false"/>
 	</head>
 	<body>
-	<hr>
 	<jsp:include page="LoginMypage/index.jsp" flush="false" /><br>
 </body>
 </html>
