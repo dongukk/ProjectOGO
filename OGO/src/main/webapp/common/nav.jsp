@@ -20,6 +20,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">      
       <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav_Menu">
         <li class="nav-item">
+			<a class="nav_menu" href="MainForm.jsp"><span>HOME</span></a>
+		</li>
+        <li class="nav-item">
 			<a class="nav_menu" href="ClassListServlet"><span>행성카테고리</span></a>
 		</li>
 		<li class="nav-item">
@@ -110,6 +113,18 @@
 </div>
 
 <script type="text/javascript">
+// 현재 페이지의 경로이름을 반환하는 함수 선언
+var url = window.location.pathname.substring(5);
+console.log(url);
+// nav-item 클래스 안에 있는 a 태그를 찾고, for-each함수를 통해 순환
+$(".nav-item").find("a").each(function() {
+	$(this).toggleClass("active",$(this).attr("href") == url);
+}); 
+// this 선택자를 통해 해당 객체를 선택 (a)
+// class 값을 넣었다 뺄 수 있는 toggleClass 선택 >> active라는 클래스 토글 기능으로 사용
+// 선택된 객체와 pathname이 같은 a태그의 href 속성을 선택, active 클래스를 토글시켜준다.
+
+
 // 네비 메뉴바 애니메이션 효과부여
 /* $(document).ready(function() {
 	$("#nav_Menu a").click(function() {
