@@ -1,15 +1,17 @@
 @charset "UTF-8";
-*{
+.classList{
 	font-family: 'Noto Sans KR', sans-serif;
-	list-style: none; 
+	/* list-style: none !important; *//* css적용안되서 아래에서 하위항목으로 다시적용 */ 
 	text-decoration: none; 
 	border-collapse:collapse; 
 	margin : 0px;
 	padding:0px;
 	color : #000;
 }
-
-h1{
+.classList li {
+	list-style: none;
+}
+.ClassList h1{
 	font-size:48px;
 	font-weight:100;
 }

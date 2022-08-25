@@ -5,12 +5,13 @@
 <head>
 <!-- 네비게이션 헤드바  -->
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="Stylesheet">
-<link rel="stylesheet" type="text/css" href="ClassList_css/style.css">
+<link rel="stylesheet" type="text/css" href="ClassList_css/style1.css">
 <meta charset="UTF-8">
 <title>OGO : 행성 카테고리</title>
 <jsp:include page="common/nav.jsp" flush="false"/>
 </head>
 <body>
+<section class="classList">	<!-- nav바 css충돌 전체 감싸고 classlist안으로 css 수정했습니다 -->
 	<div class="wrap">
 		<div class="intro_bg">
 		<!-- 임시 nav 막아놓음 -->
@@ -151,5 +152,6 @@
 	</div>
 	</footer>
 <a href="#">페이지 위로 이동</a>
+</section>
 </body>
 </html>
