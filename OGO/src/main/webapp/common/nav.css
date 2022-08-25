@@ -5,9 +5,9 @@
 	position: fixed !important; top: 0; left: 0; right: 0; transition: 0.5s;}	
 nav.negative{transition: 0.5s; filter: invert(100%);}
 .navbar div{ display:flex; position:relative; } 
-.navbar #nav_logo img{ padding: 10px 10px; width: 150px; height: 70px;}
+.navbar #nav_logo img{ padding: 0px 10px; width: 150px; height: 60px;}
 .navbar #nav_Menu{ font-size: 25px; display: flex; list-style: none; padding-left: 0; padding-top: 10px;}
-.navbar #nav_Menu li{ padding : 10px 20px;} 
+.navbar #nav_Menu li{ padding : 0px 20px;} 
 .navbar .nav-item a:hover{font-size: 30px; border-bottom: solid; border-color: black; color: black; transition: 0.5s; opacity: 1;}
 .navbar .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; text-align: black; color: black; text-decoration: none;
 					transition: 0.5s; opacity: .8;}
@@ -18,7 +18,7 @@ nav.negative{transition: 0.5s; filter: invert(100%);}
 .navbar #nav_login{ display: flex; list-style: none;  padding-left: 0; margin: 0; padding: 0; text-align: center;}
 .navbar #nav_login img{ height: 35px; width: 35px; margin: 10px 15px 0px 15px; display:block;}
 .navbar #nav_login ul{ margin: 0; padding: 0;}
-.navbar #nav_login li{padding: 8px 10px; display: flex; list-style: none; padding: 0; text-align: center;  border : 0; float: left;}
+.navbar #nav_login li{padding: 0px 10px; display: flex; list-style: none; padding: 0; text-align: center;  border : 0; float: left;}
 .navbar #nav_login a{ margin: 0px 5px; text-align: center; text-decoration-line: none; color: black; opacity: .8;}
 .navbar #nav_login a:hover{ color: black; opacity: 1;}
 

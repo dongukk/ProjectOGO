@@ -8,7 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
 <link rel="stylesheet" href="common/nav.css">
-<script src="common/nav.js" defer></script>
+
 <!-- 프로그레스바 -->
 <div class="scrollindicator">
 	<div class="scrollprogress">
@@ -214,6 +214,16 @@ $(window).scroll(function(){
     } else {
       $(".navbar").removeClass("negative");
     }
+});
+
+/*메뉴바 토글이벤트 부여*/
+var toggleBtn = document.querySelector('.navbar-menu-Btn');
+var menu = document.querySelector('#nav_Menu');
+var login = document.querySelector('#nav_login');
+
+toggleBtn.addEventListener("click", () => { //클릭시 이벤트
+  menu.classList.toggle("navActive");
+  login.classList.toggle("navActive"); // 설정너비 이하로 줄어들면 active 클래스 토글 설정
 });
 </script>
 
