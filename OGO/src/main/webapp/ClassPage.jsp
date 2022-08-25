@@ -210,7 +210,7 @@
 	        let windowTop = $(this).scrollTop();
 	        console.log(windowTop);
 	        if(windowTop > 700) {
-	            $('#classNav').attr("style","position:fixed;top:10;");
+	            $('#classNav').attr("style","position:fixed;top:0;");
 	        } else {
 	            $('#classNav').attr("style","");
 	        }
@@ -222,8 +222,6 @@
 <body>
 <!-- 네비바 -->
 <jsp:include page="common/nav.jsp" flush="false"/>
-<!-- 네비탭 -->
-<jsp:include page="class_page/classNavtab.jsp"></jsp:include>
 
 <div class="wrap">
   <div id="right">
@@ -233,6 +231,9 @@
   <div id="left">
 	<!-- 클래스 이미지, 클래스 이름 -->
 	<jsp:include page="class_page/title.jsp" flush="true"></jsp:include>
+	<br>
+	<!-- 네비탭 -->
+	<jsp:include page="class_page/classNavtab.jsp"></jsp:include>
 	<br>
 	<!-- 클래스 소개 -->
 	<jsp:include page="class_page/classInfo.jsp" flush="true"></jsp:include>

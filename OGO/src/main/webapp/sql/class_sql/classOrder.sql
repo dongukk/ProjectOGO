@@ -30,4 +30,7 @@ ALTER TABLE classorder ADD orderdate date CONSTRAINT classorder_orderdate_nn not
 --primary key
 ALTER TABLE classorder ADD PRIMARY KEY (ordernum);
 
+--ordernum 데이터 타입 변경
+ALTER TABLE classorder MODIFY ordernum VARCHAR2(20);
+
 drop table classorder;
