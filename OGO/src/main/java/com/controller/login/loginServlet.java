@@ -43,7 +43,7 @@ public class loginServlet extends HttpServlet {
 			session.setMaxInactiveInterval(60*60);
 			// 팝업창 닫으면서 부모창 이동
 			// out.println("<script>opener.parent.location='MainForm2.jsp'; window.close();</script>");
-			response.sendRedirect("MainForm2.jsp");
+			response.sendRedirect("MainForm.jsp");
 		} else {	// 회원아닌 경우			
 			out.println("<script>alert('아이디 및 비밀번호를 확인해주세요.');</script>");
 //			out.println("<script>alert('아이디 및 비밀번호를 확인해주세요.');location.href='loginUIServlet';</script>");
