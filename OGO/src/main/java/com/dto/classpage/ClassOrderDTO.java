@@ -1,7 +1,7 @@
 package com.dto.classpage;
 
 public class ClassOrderDTO {
-	public int orderNum;
+	public String orderNum;
 	public String userId;
 	public int classNum;
 	public int price;
@@ -23,7 +23,7 @@ public class ClassOrderDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ClassOrderDTO(int orderNum, String userId, int classNum, int price, String orderDate, String orderStatus,
+	public ClassOrderDTO(String orderNum, String userId, int classNum, int price, String orderDate, String orderStatus,
 			String schedule1, String schedule2, String schedule3, String schedule4, String schedule5, String schedule6,
 			String schedule7, String schedule8, String schedule9, String schedule10) {
 		super();
@@ -45,6 +45,14 @@ public class ClassOrderDTO {
 		this.schedule10 = schedule10;
 	}
 
+	public String getOrderNum() {
+		return orderNum;
+	}
+
+	public void setOrderNum(String orderNum) {
+		this.orderNum = orderNum;
+	}
+
 	public String getUserId() {
 		return userId;
 	}
@@ -59,6 +67,22 @@ public class ClassOrderDTO {
 
 	public void setClassNum(int classNum) {
 		this.classNum = classNum;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public String getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
 	}
 
 	public String getOrderStatus() {
@@ -148,30 +172,6 @@ public class ClassOrderDTO {
 	public void setSchedule10(String schedule10) {
 		this.schedule10 = schedule10;
 	}
-	
-	public int getOrderNum() {
-		return orderNum;
-	}
-
-	public void setOrderNum(int orderNum) {
-		this.orderNum = orderNum;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
-	public String getOrderDate() {
-		return orderDate;
-	}
-
-	public void setOrderDate(String orderDate) {
-		this.orderDate = orderDate;
-	}
 
 	@Override
 	public String toString() {
@@ -181,5 +181,7 @@ public class ClassOrderDTO {
 				+ schedule5 + ", schedule6=" + schedule6 + ", schedule7=" + schedule7 + ", schedule8=" + schedule8
 				+ ", schedule9=" + schedule9 + ", schedule10=" + schedule10 + "]";
 	}
+
+	
 
 }
