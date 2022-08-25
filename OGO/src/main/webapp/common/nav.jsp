@@ -46,7 +46,7 @@
 		%>
 		
 			<div id="loginName">
-				<%=nickname%><a style="color: black;">님</a>
+				<%=nickname%><a style="color: white;">님</a>
 			</div>
 
 			<ul id="loginBar">
@@ -57,7 +57,7 @@
 				<li><a href="logoutServlet" id="logout"><img src="common/img/logOut.png">로그아웃</a></li>
 			<%	}} else{ %>
 				<li><a href="" data-bs-toggle="modal" data-bs-target="#loginModal"><img src="common/img/logIn.png">로그인</a></li>
-				<li><a href="LoginCURD/createMember.jsp"><img src="common/img/signUp1.png">회원가입</a></li>
+				<li><a href="LoginCURD/createMember.jsp"><img src="common/img/signUp.png">회원가입</a></li>
 			<% } // end if~else %>	
 			</ul>  	 
   		</div>
