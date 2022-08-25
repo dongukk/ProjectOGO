@@ -56,7 +56,7 @@
 				<%  } else{ %>
 				<li><a href="logoutServlet" id="logout"><img src="common/img/logOut.png">로그아웃</a></li>
 			<%	}} else{ %>
-				<li><a href="" data-bs-toggle="modal" data-bs-target="#lgoinModal"><img src="common/img/logIn.png">로그인</a></li>
+				<li><a href="" data-bs-toggle="modal" data-bs-target="#loginModal"><img src="common/img/logIn.png">로그인</a></li>
 				<li><a href="LoginCURD/createMember.jsp"><img src="common/img/signUp.png">회원가입</a></li>
 			<% } // end if~else %>	
 			</ul> 
@@ -69,17 +69,18 @@
 	
 	
 	<!-- Modal -->
-<div class="modal fade" id="lgoinModal" tabindex="-1" aria-labelledby="lgoinModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-body">                
-         <img src="LoginImg/closeBtn.png"  id="modal_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close" align="right">
+    <div class="modal-content" id="login_modalcontent">
+        <div class="modal-body" id="login_modalbody">                
+         <img src="LoginImg/closeBtn.png"  id="loginmodal_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close" align="right">
         	<br><br>
        
-		<img src="LoginImg/login.jpg" id="modal_logo">
-		<h1 style="text-align: center;"><a href="createMemberServlet" style="text-decoration: none;" id="a_create">OGO가 처음이신가요?</a><br></h1>	
+		<img src="LoginImg/login.jpg" id="loginmodal_logo">
+		<h1 style="text-align: center;"><a href="createMemberServlet" style="text-decoration: none;" id="createmember_Btn">OGO가 처음이신가요?</a><br></h1>	
 			<br>
-		<form action="loginServlet">	<!-- 로그인하면 가는 페이지 삽입할것-->
+		<form action="loginServlet" id="loginform">	<!-- 로그인하면 가는 페이지 삽입할것-->
 			<div class="int-area">	<!-- div(전체적인 틀을 잡아줌, 각각의 블럭을 알맞게 배치) -->
 				<input type="text" name="userId" id="userId"
 				autocomplete="off" required>	<!-- autocomplete(이전에 입력한 비슷한값들 드롭다운 옵션), required(폼 데이터(form data)가 서버로 제출되기 전 반드시 채워져 있어야 하는 입력 필드를 명시) -->
@@ -90,14 +91,14 @@
 				autocomplete="off" required>
 				<label for="userPasswd">PASSWORD</label>				
 			</div>
-			<div class="caption" style="text-align: right;">			
+			<div class="forgot" style="text-align: right;">			
 				<a href="">Forgot Id, password?</a>
 			</div>
-			<div class="btn-area">
-				<button type="submit">LOGIN</button><br><br>
+			<div class="btn-area" id="sublogin_btnarea">
+				<button type="submit" id="login_modalBtn">LOGIN</button><br><br>
 				<div id="naver_id_login"></div>
-				<a class="btn btn1" href="#" id="naverlogin">네이버 계정으로 로그인</a>
-                <a class="btn btn2" href="https://www.kakaocorp.com/" target="_blank" onclick="window.close();">카카오 계정으로 로그인</a>
+				<a class="subloingBtn" id="naverlogin" href="#"><img src="LoginImg/icon_naver.png" id="naverloginimg">네이버 계정으로 로그인</a>
+                <a class="subloingBtn" id="kakaologin" href="https://www.kakaocorp.com/" target="_blank" onclick="window.close();"><img src="LoginImg/icon_kakao.png" id="kakaologinimg">카카오 계정으로 로그인</a>
 			</div>
 			
 		</form>
@@ -118,9 +119,6 @@ $(".nav-item").find("a").each(function() {
 // class 값을 넣었다 뺄 수 있는 toggleClass 선택 >> active라는 클래스 토글 기능으로 사용
 // 선택된 객체와 pathname이 같은 a태그의 href 속성을 선택, active 클래스를 토글시켜준다.
 
-$(".fas").click(function() {
-	console.log("버튼클릭");
-});
 
 // 네이버 아이디로 로그인
   	var naver_id_login = new naver_id_login("ekZ3X4W9E8FY6vv_Y7AK", "http://localhost:8097/OGO/LoginCURD/naverCollback.jsp");
