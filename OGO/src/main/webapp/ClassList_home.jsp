@@ -5,7 +5,7 @@
 <head>
 <!-- 네비게이션 헤드바  -->
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="Stylesheet">
-<link rel="stylesheet" type="text/css" href="ClassList_css/style.css">
+<link rel="stylesheet" type="text/css" href="ClassList_css/style1.css">
 <meta charset="UTF-8">
 <title>OGO : 행성 카테고리</title>
 <jsp:include page="common/nav.jsp" flush="false"/>
