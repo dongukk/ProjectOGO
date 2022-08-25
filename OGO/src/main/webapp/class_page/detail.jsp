@@ -17,7 +17,7 @@
 	
 	String place =cDTO.getPlace();
 %>
-<div id="detail" class="mb-5">
+<div id="detail" class="page mb-5">
   <div class="name">
     <h2>일정 및 장소 안내</h2>
   </div>

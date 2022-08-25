@@ -8,7 +8,7 @@
 	String con_tutor =classContents.get("con_tutor");
 	con_tutor=con_tutor.replaceAll("(\r\n|\r|\n|\n\r)", "<br>");//개행 작업
 %>
-<div id="classTutor" class="mb-5">
+<div id="classTutor" class="page mb-5">
   <div class="name">
     <h2>클래스 행성 튜터 소개</h2>
   </div>

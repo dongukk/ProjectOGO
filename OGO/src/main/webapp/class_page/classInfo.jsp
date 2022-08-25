@@ -7,7 +7,7 @@
 	String con_class =classContents.get("con_class");
 	con_class=con_class.replaceAll("(\r\n|\r|\n|\n\r)", "<br>");//개행 작업
 %>
-<div id="classInfo" class="mb-5">
+<div id="classInfo" class="page mb-5">
   <div>
     <!-- <h2>클래스 행성 소개</h2> -->
     <p style="font-size: 32px; ">클래스 행성 소개</p>
