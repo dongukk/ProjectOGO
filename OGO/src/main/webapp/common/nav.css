@@ -1,14 +1,16 @@
 /* nav바 css */
-.navbar{ background: white; box-shadow: 0 0 5px rgba(0,0,0); 
+.navbar{ background-color: white; box-shadow: 0 0 5px rgba(0,0,0); 
 	font-family: ‘SUIT Variable’, sans-serif; z-index: 2; margin: 0;
 	display: flex; justify-content: space-between; align-items: center; 
-	position: fixed !important; top: 0; left: 0; right: 0;}
+	position: fixed !important; top: 0; left: 0; right: 0; transition: 0.5s;}	
+nav.negative{transition: 0.5s; filter: invert(100%);}
 .navbar div{ display:flex; position:relative; } 
-.navbar #nav_logo{ padding: 8px 10px;}
-.navbar #nav_Menu{ font-size: 25px; display: flex; list-style: none; padding-left: 0; padding-top: 8px;}
-.navbar #nav_Menu li{ padding : 8px 20px;} 
-.navbar .nav-item a span:hover{font-size: 30px; transition: 0.5s; border-bottom: solid; border-color: black; color:  black;}
-.navbar .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; text-align: center; color: gray; text-decoration: none;}
+.navbar #nav_logo img{ padding: 10px 10px; width: 150px; height: 70px;}
+.navbar #nav_Menu{ font-size: 25px; display: flex; list-style: none; padding-left: 0; padding-top: 10px;}
+.navbar #nav_Menu li{ padding : 10px 20px;} 
+.navbar .nav-item a:hover{font-size: 30px; border-bottom: solid; border-color: black; color: black; transition: 0.5s; opacity: 1;}
+.navbar .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; text-align: black; color: black; text-decoration: none;
+					transition: 0.5s; opacity: .8;}
 .navbar .nav-item a.on span{ color: #8000ff; font-weight: bold; border-bottom: solid; border-color: blueviolet;}
 
 /* login바css */
@@ -17,8 +19,8 @@
 .navbar #nav_login img{ height: 35px; width: 35px; margin: 10px 15px 0px 15px; display:block;}
 .navbar #nav_login ul{ margin: 0; padding: 0;}
 .navbar #nav_login li{padding: 8px 10px; display: flex; list-style: none; padding: 0; text-align: center;  border : 0; float: left;}
-.navbar #nav_login a{ margin: 0px 5px; text-align: center; text-decoration-line: none; color: gray;}
-.navbar #nav_login a:hover{ color: black;}
+.navbar #nav_login a{ margin: 0px 5px; text-align: center; text-decoration-line: none; color: black; opacity: .8;}
+.navbar #nav_login a:hover{ color: black; opacity: 1;}
 
 /* 반응형 폰트 */
 @media screen and (max-width: 1140px){
@@ -32,6 +34,7 @@
     flex-direction: column;
     align-items: flex-start;
     min-width: 300px;
+    background: linear-gradient(45deg, lightCyan, skyBlue, deepSkyBlue);
   }
   .navbar #nav_Menu{
   	font-size: 25px;

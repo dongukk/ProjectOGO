@@ -17,7 +17,7 @@
 <!-- 네비바 -->
 <nav class="navbar">
     <div class="navBar_logo" id="nav_logo">
-		<a class="navbar-brand" href="MainForm.jsp"><img src="common/img/OGOLogo.jpg"></a>
+		<a class="navbar-brand" href="MainForm.jsp"><img src="common/img/OGOLogo2.png"></a>
     </div>
       <ul id="nav_Menu">
         <li class="nav-item">
@@ -115,13 +115,8 @@
 // 현재 페이지의 경로이름을 반환하는 함수 선언
 var url = window.location.pathname.substring(5);
 // nav-item 클래스 안에 있는 a 태그를 찾고, for-each함수를 통해 순환
-/* $(".nav-item").find("a").each(function() {
+$(".nav-item").find("a").each(function() {
 	$(this).toggleClass("on",$(this).attr("href") == url);
-});   */
-$(document).ready(function() {
-	$(".nav-item").find("a").each(function() {
-		$(this).toggleClass("on",$(this).attr("href") == url);
-	});
 });
 // this 선택자를 통해 해당 객체를 선택 (a)
 // class 값을 넣었다 뺄 수 있는 toggleClass 선택 >> active라는 클래스 토글 기능으로 사용
@@ -203,6 +198,23 @@ jQuery(function($){
 function navbarmenuChange(x) {
   x.classList.toggle("change");
 }
+
+//네비바에 마우스 올려둘시 이벤트발생
+$(".navbar").mouseover(function(event) {
+	 $(".navbar").addClass("negative");
+});
+$(".navbar").mouseout(function(event) {
+	$(".navbar").removeClass("negative");
+});
+
+// 네비바 스크롤 이벤트
+$(window).scroll(function(){
+	if ($(document).scrollTop() > 0) {
+      $(".navbar").addClass("negative");
+    } else {
+      $(".navbar").removeClass("negative");
+    }
+});
 </script>
 
 
