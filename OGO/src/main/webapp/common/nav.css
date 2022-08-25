@@ -1,7 +1,8 @@
 /* nav바 css */
-.navbar{ background: white; box-shadow: 0 0 5px rgba(0,0,0,.5); 
+.navbar{ background: white; box-shadow: 0 0 5px rgba(0,0,0); 
 	font-family: ‘SUIT Variable’, sans-serif; z-index: 2; margin: 0;
-	display: flex; justify-content: space-between; align-items: center;}
+	display: flex; justify-content: space-between; align-items: center; 
+	position: fixed; top: 0; left: 0; right: 0;}
 .navbar div{ display:flex; position:relative; } 
 .navbar #nav_logo{ padding: 8px 10px;}
 .navbar #nav_Menu{ font-size: 25px; display: flex; list-style: none; padding-left: 0; padding-top: 8px;}

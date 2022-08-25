@@ -1,5 +1,5 @@
 @charset "UTF-8";
-*{
+.classList{
 	font-family: 'Noto Sans KR', sans-serif;
 	list-style: none; 
 	text-decoration: none; 
@@ -9,7 +9,7 @@
 	color : #000;
 }
 
-h1{
+.ClassList h1{
 	font-size:48px;
 	font-weight:100;
 }
