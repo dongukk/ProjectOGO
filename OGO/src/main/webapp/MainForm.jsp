@@ -19,7 +19,7 @@
 	} 
 %>
 
-	<jsp:include page="common/nav.jsp" flush="false"/>
+    <jsp:include page="common/nav.jsp" flush="false"/>
 	
 </head>
 <body>

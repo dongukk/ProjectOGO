@@ -7,18 +7,18 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="common/nav.css">
-
-<nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container-fluid">
-    <div class="nav-item" id="nav_logo">
-		<a  class="navbar-brand" href="MainForm.jsp"><img src="common/img/OGOLogo.jpg"></a>
+<script src="common/nav.js" defer></script>
+<!-- 프로그레스바 -->
+<div class="scrollindicator">
+	<div class="scrollprogress">
+	</div>
+</div>
+<!-- 네비바 -->
+<nav class="navbar">
+    <div class="navBar_logo" id="nav_logo">
+		<a class="navbar-brand" href="MainForm.jsp"><img src="common/img/OGOLogo.jpg"></a>
     </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">      
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav_Menu">
+      <ul id="nav_Menu">
         <li class="nav-item">
 			<a class="nav_menu" href="MainForm.jsp"><span>HOME</span></a>
 		</li>
@@ -32,8 +32,7 @@
 			<a class="nav_menu" href="NoticeListServlet"><span>공지사항&FAQ</span></a>
 		</li>
       </ul>
-      <span></span>
-      
+     
       
         <div id="nav_login">
 		<%
@@ -44,28 +43,26 @@
 				String nickname = dto.getNickname();
 				String userId = dto.getUserId();
 		%>
+		
 			<div id="loginName">
 				<%=nickname%><a style="color: black;">님</a>
 			</div>
-			<div id="loginBar">
+
+			<ul id="loginBar">
 			<%  if(userId.equals("admin")){ // 이중 if문%>	
-				<a href="logoutServlet" id="logout"><img src="common/img/logOut.png">로그아웃</a>
-				<a href="LoginMain/managementMember.jsp"><img src="common/img/member.png">회원관리</a>
+				<li><a href="logoutServlet" id="logout"><img src="common/img/logOut.png">로그아웃</a></li>
+				<li><a href="LoginMain/managementMember.jsp"><img src="common/img/member.png">회원관리</a></li>
 				<%  } else{ %>
-					<a href="logoutServlet" id="logout"><img src="common/img/logOut.png">로그아웃</a>
+				<li><a href="logoutServlet" id="logout"><img src="common/img/logOut.png">로그아웃</a></li>
 			<%	}} else{ %>
-				<a href="" data-bs-toggle="modal" data-bs-target="#lgoinModal"><img src="common/img/logIn.png">로그인</a>
-				<a href="LoginCURD/createMember.jsp"><img src="common/img/signUp.png">회원가입</a>
+				<li><a href="" data-bs-toggle="modal" data-bs-target="#lgoinModal"><img src="common/img/logIn.png">로그인</a></li>
+				<li><a href="LoginCURD/createMember.jsp"><img src="common/img/signUp.png">회원가입</a></li>
 			<% } // end if~else %>	
-			</div>
-	  	 </div>
-    	</div>    
-  </div>
-  
-  <div class="scrollindicator">
-		<div class="scrollprogress">
-		</div>
-  </div>
+			</ul> 
+			
+		 	 
+  		</div>
+  	   <i class="menuBtn"><img src="common/img/menu.png"></i>
 	
 </nav>
 	
@@ -112,15 +109,17 @@
 // 네비바 active 토글이벤트
 // 현재 페이지의 경로이름을 반환하는 함수 선언
 var url = window.location.pathname.substring(5);
-console.log(url);
 // nav-item 클래스 안에 있는 a 태그를 찾고, for-each함수를 통해 순환
 $(".nav-item").find("a").each(function() {
-	$(this).toggleClass("active",$(this).attr("href") == url);
+	$(this).toggleClass("on",$(this).attr("href") == url);
 }); 
 // this 선택자를 통해 해당 객체를 선택 (a)
 // class 값을 넣었다 뺄 수 있는 toggleClass 선택 >> active라는 클래스 토글 기능으로 사용
 // 선택된 객체와 pathname이 같은 a태그의 href 속성을 선택, active 클래스를 토글시켜준다.
 
+$(".fas").click(function() {
+	console.log("버튼클릭");
+});
 
 // 네이버 아이디로 로그인
   	var naver_id_login = new naver_id_login("ekZ3X4W9E8FY6vv_Y7AK", "http://localhost:8097/OGO/LoginCURD/naverCollback.jsp");
