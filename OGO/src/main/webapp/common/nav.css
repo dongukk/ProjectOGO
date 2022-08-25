@@ -1,12 +1,12 @@
 /* nav바 css */
 nav{ background: white; box-shadow: 0 0 5px rgba(0,0,0,.5); 
-	font-family: 'Noto Sans KR', sans-serif; z-index: 2; margin: 0;
+	font-family: ‘SUIT Variable’, sans-serif; z-index: 2; margin: 0;
 	display: flex; justify-content: space-between; align-items: center;}
 nav div{ display:flex; position:relative; } 
 #nav_logo{ padding: 8px 10px;}
-#nav_Menu{ font-size: 25px; display: flex; list-style: none; padding-left: 0;}
+#nav_Menu{ font-size: 25px; display: flex; list-style: none; padding-left: 0; padding-top: 8px;}
 #nav_Menu li{ padding : 8px 20px;} 
-.nav-item a span:hover{font-size: 30px; transition: 0.5s; border-bottom: solid; border-color: blueviolet; color: blueviolet;}
+.nav-item a span:hover{font-size: 30px; transition: 0.5s; border-bottom: solid; border-color: black; color:  black;}
 .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; text-align: center; color: gray; text-decoration: none;}
 .nav-item a.on span{
 	color: #8000ff;
@@ -15,7 +15,7 @@ nav div{ display:flex; position:relative; }
 }
 
 /* login바css */
-#loginName{ color:blueviolet; margin: 20px; font-weight: bold;}
+#loginName{ color:blueviolet; margin: 20px;}
 #nav_login{ display: flex; list-style: none;  padding-left: 0; margin: 0; padding: 0; text-align: center;}
 #nav_login img{ height: 35px; width: 35px; margin: 10px 15px 0px 15px; display:block;}
 #nav_login ul{ margin: 0; padding: 0;}
@@ -34,21 +34,34 @@ nav div{ display:flex; position:relative; }
   display: none;
   cursor:pointer;
 }
+
+/* 반응형 폰트 */
+@media screen and (max-width: 1015px){
+	#nav_Menu{
+		font-size: 20px;
+	}
+	#nav_Menu li{
+		padding: 8px 10px;
+	}
+	.nav-item a span:hover{font-size: 25px;}
+}
 /* 반응형Nav바 css */
-@media screen and (max-width: 1135px){
+@media screen and (max-width: 835px){
   nav{
     flex-direction: column;
     align-items: flex-start;
   }
   #nav_Menu{
+  	font-size: 25px;
     display: none;
     flex-direction: column;
     width: 100%;
     justify-content: center;
     align-items: center;
   }
+  .nav-item a span:hover{font-size: 30px;}
   #nav_Menu li{
-    padding: 20px 0;
+    padding: 10px 0;
   }
   #nav_login {  
     display: none;
