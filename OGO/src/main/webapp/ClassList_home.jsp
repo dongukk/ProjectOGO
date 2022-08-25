@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="ClassList_css/style.css">
 <meta charset="UTF-8">
 <title>OGO : 행성 카테고리</title>
-<jsp:include page="common/NavBar.html" flush="true"></jsp:include>
+<jsp:include page="common/nav.jsp" flush="false"/>
 </head>
 <body>
 	<div class="wrap">
