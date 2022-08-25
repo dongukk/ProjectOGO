@@ -185,7 +185,21 @@ $(function(){
 		margin-top: 5%;
 		margin-right: 10%;
 		margin-bottom: 10%;
+		/* 이미지 날라오기 애니메이션 */
+		animation-duration: 3s;
+  		animation-name: slidein;  
 	}
+	@keyframes slidein {
+	  from {
+	    margin-left: 100%;
+	    width: 300%
+	  }
+	
+	  to {
+	    margin-left: 0%;
+	    width: 100%;
+	  } 
+	  
 	.checkbox-group{
 		border:1px solid; 
 		padding:10px;
