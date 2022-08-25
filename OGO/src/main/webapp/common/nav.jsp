@@ -4,8 +4,8 @@
 
 <meta charset="UTF-8">
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
 <link rel="stylesheet" href="common/nav.css">
 <script src="common/nav.js" defer></script>
@@ -115,9 +115,14 @@
 // 현재 페이지의 경로이름을 반환하는 함수 선언
 var url = window.location.pathname.substring(5);
 // nav-item 클래스 안에 있는 a 태그를 찾고, for-each함수를 통해 순환
-$(".nav-item").find("a").each(function() {
+/* $(".nav-item").find("a").each(function() {
 	$(this).toggleClass("on",$(this).attr("href") == url);
-}); 
+});   */
+$(document).ready(function() {
+	$(".nav-item").find("a").each(function() {
+		$(this).toggleClass("on",$(this).attr("href") == url);
+	});
+});
 // this 선택자를 통해 해당 객체를 선택 (a)
 // class 값을 넣었다 뺄 수 있는 toggleClass 선택 >> active라는 클래스 토글 기능으로 사용
 // 선택된 객체와 pathname이 같은 a태그의 href 속성을 선택, active 클래스를 토글시켜준다.
