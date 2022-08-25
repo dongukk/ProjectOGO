@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ClassImgMapper">
+   
+	<insert id="uploadImg" parameterType="ClassImgDTO">
+		insert into
+		classimg(classNum, classPhoto1, classPhoto2, classPhoto3, classPhoto4, classPhoto5)
+		values(#{classNum},#{classPhoto1},#{classPhoto2},#{classPhoto3},#{classPhoto4},#{classPhoto5})
+	</insert>
+	
+    	
+
+    
+</mapper>
