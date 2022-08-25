@@ -8,11 +8,8 @@ nav div{ display:flex; position:relative; }
 #nav_Menu li{ padding : 8px 20px;} 
 .nav-item a span:hover{font-size: 30px; transition: 0.5s; border-bottom: solid; border-color: black; color:  black;}
 .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; text-align: center; color: gray; text-decoration: none;}
-.nav-item a.on span{
-	color: #8000ff;
-	font-weight: bold;
-	border-bottom: solid; border-color: blueviolet;
-}
+.nav-item a.on span{ color: #8000ff; font-weight: bold; border-bottom: solid; border-color: blueviolet;}
+.menuBtn { display: none; cursor:pointer;}
 
 /* login바css */
 #loginName{ color:blueviolet; margin: 20px;}
@@ -22,31 +19,15 @@ nav div{ display:flex; position:relative; }
 #nav_login li{padding: 8px 10px; display: flex; list-style: none; padding: 0; text-align: center;  border : 0; float: left;}
 #nav_login a{ margin: 0px 5px; text-align: center; text-decoration-line: none; color: gray;}
 #nav_login a:hover{ color: black;}
-/* .navBar_btn{ display: none; position: absolute; right: 32px; padding-top: 18px;} */
-/* .navbar__toggleBtn {
-        display: none;
-        position: absolute;
-        right: 32px;
-        font-size: 24px;
-        color: var(--accent-color);
-} */
-.menuBtn {
-  display: none;
-  cursor:pointer;
-}
 
 /* 반응형 폰트 */
-@media screen and (max-width: 1015px){
-	#nav_Menu{
-		font-size: 20px;
-	}
-	#nav_Menu li{
-		padding: 8px 10px;
-	}
+@media screen and (max-width: 1048px){
+	#nav_Menu{ font-size: 20px;}
+	#nav_Menu li{ padding: 8px 10px;}
 	.nav-item a span:hover{font-size: 25px;}
 }
 /* 반응형Nav바 css */
-@media screen and (max-width: 835px){
+@media screen and (max-width: 868px){
   nav{
     flex-direction: column;
     align-items: flex-start;
