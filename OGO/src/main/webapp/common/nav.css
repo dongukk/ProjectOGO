@@ -10,7 +10,6 @@
 .navbar .nav-item a span:hover{font-size: 30px; transition: 0.5s; border-bottom: solid; border-color: black; color:  black;}
 .navbar .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; text-align: center; color: gray; text-decoration: none;}
 .navbar .nav-item a.on span{ color: #8000ff; font-weight: bold; border-bottom: solid; border-color: blueviolet;}
-.navbar .menuBtn { display: none; cursor:pointer;}
 
 /* login바css */
 .navbar #loginName{ color:blueviolet; margin: 20px;}
@@ -32,6 +31,7 @@
   .navbar{
     flex-direction: column;
     align-items: flex-start;
+    min-width: 300px;
   }
   .navbar #nav_Menu{
   	font-size: 25px;
@@ -40,6 +40,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    min-width: 300px;
   }
   .navbar .nav-item a span:hover{font-size: 30px;}
   .navbar #nav_Menu li{ padding: 10px 0;}
@@ -48,10 +49,11 @@
     width: 100%;
     justify-content: center;
     padding: 10px 0;
+    min-width: 300px;
   }
 
-  .navbar .menuBtn {
-    display: block;
+  .navbar .navbar-menu-Btn {
+    display: block !important;
     font-size: 25px;
     color: var(--text-color);
     position: absolute;
@@ -214,4 +216,31 @@
   transform: translate3d(-100%,0,0);
   -webkit-transition: -webkit-transform .4s ease; 
   transition: transform .4s ease; /* animate progress bar? Remove to disable */
+}
+
+/* 네비바 햄버거 메뉴 버튼 */
+.navbar-menu-Btn {
+  display: inline-block !important; 
+  display: none !important;
+  cursor: pointer; 
+}
+
+.navbar-menu-bar1, .navbar-menu-bar2, .navbar-menu-bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .navbar-menu-bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .navbar-menu-bar2 {opacity: 0;}
+
+.change .navbar-menu-bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
 }

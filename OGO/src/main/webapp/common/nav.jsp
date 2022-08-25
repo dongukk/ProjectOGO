@@ -59,11 +59,14 @@
 				<li><a href="" data-bs-toggle="modal" data-bs-target="#loginModal"><img src="common/img/logIn.png">로그인</a></li>
 				<li><a href="LoginCURD/createMember.jsp"><img src="common/img/signUp.png">회원가입</a></li>
 			<% } // end if~else %>	
-			</ul> 
-			
-		 	 
+			</ul>  	 
   		</div>
-  	   <i class="menuBtn"><img src="common/img/menu.png"></i>
+  		
+  		<div class="navbar-menu-Btn" onclick="navbarmenuChange(this)">
+		  <div class="navbar-menu-bar1"></div>
+		  <div class="navbar-menu-bar2"></div>
+		  <div class="navbar-menu-bar3"></div>
+		</div>
 	
 </nav>
 	
@@ -190,6 +193,11 @@ jQuery(function($){
     })
   }
 })
+
+// 네비바 메뉴버튼
+function navbarmenuChange(x) {
+  x.classList.toggle("change");
+}
 </script>
 
 
