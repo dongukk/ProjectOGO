@@ -64,7 +64,7 @@ public class ClassOrderInfoServlet extends HttpServlet {
 		System.out.println("classOrderInfo insert 성공:"+result);
 		
 		//ClassPage로 리다이렉트
-		response.sendRedirect("ClassPage");
+		//response.sendRedirect("ClassPage");
 		
 	}
 
