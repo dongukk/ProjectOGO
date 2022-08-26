@@ -142,7 +142,7 @@
 				alert("원하는 수강 회차를 선택해주세요");
 				event.preventDefault();
 			}else{ //로그인 되어있고, 수강회차도 선택한 경우
-				//ajax 
+				//수강결제정보 ajax
 				$.ajax({
 					type: "post",
 					url: "ClassOrderInfoServlet",
@@ -176,43 +176,43 @@
 		//스크롤시 nav tab 고정
 		$(window).scroll(function() {
 	        var windowTop = $(this).scrollTop();
+	        var scrollTop = $(window).scrollTop();
 	        if(windowTop > 700) {
 	            $('#classNav').attr("style","position:fixed;bottom:0;"); //네비탭 고정
 	          	//스크롤 위치 test
-		        var scrollTop = $(window).scrollTop();
 		        if (scrollTop >= ($("#classInfo").offset().top-300)) {
 		        	$(".nav-link").removeAttr("style");
 					$(".nav-link").removeClass("active");
 					$("#classInfoNav").addClass("active");
-					$("#classInfoNav").attr("style","font-weight:bold;background-color:rgb(204,162,242);");
+					$("#classInfoNav").attr("style","font-weight:bold;background-color:blueviolet;color:white;");
 				}if (scrollTop >= ($("#classTutor").offset().top-300)) {
 					$(".nav-link").removeAttr("style");
 					$(".nav-link").removeClass("active");
 					$("#classTutorNav").addClass("active");
-					$("#classTutorNav").attr("style","font-weight:bold;background-color:rgb(204,162,242);");
+					$("#classTutorNav").attr("style","font-weight:bold;background-color:blueviolet;color:white;");
 				}if (scrollTop >= ($("#detail").offset().top-300)) {
 					$(".nav-link").removeAttr("style");
 					$(".nav-link").removeClass("active");
 					$("#detailNav").addClass("active");
-					$("#detailNav").attr("style","font-weight:bold;background-color:rgb(204,162,242);");
+					$("#detailNav").attr("style","font-weight:bold;background-color:blueviolet;color:white;");
 				}if (scrollTop >= ($("#classPhoto").offset().top-300)) {
 					$(".nav-link").removeAttr("style");
 					$(".nav-link").removeClass("active");
 					$("#classPhotoNav").addClass("active");
-					$("#classPhotoNav").attr("style","font-weight:bold;background-color:rgb(204,162,242);");
+					$("#classPhotoNav").attr("style","font-weight:bold;background-color:blueviolet;color:white;");
 				}if (scrollTop >= ($("#notice").offset().top-300)) {
 					$(".nav-link").removeAttr("style");
 					$(".nav-link").removeClass("active");
 					$("#noticeNav").addClass("active");
-					$("#noticeNav").attr("style","font-weight:bold;background-color:rgb(204,162,242);");
+					$("#noticeNav").attr("style","font-weight:bold;background-color:blueviolet;color:white;");
 				}if (scrollTop >= ($("#attention").offset().top-300)) {
 					$(".nav-link").removeAttr("style");
 					$(".nav-link").removeClass("active");
 					$("#attentionNav").addClass("active");
-					$("#attentionNav").attr("style","font-weight:bold;background-color:rgb(204,162,242);");
-				}if (scrollTop < $("#classInfo").offset().top-200) {
-					$(".nav-link").attr("style","");
+					$("#attentionNav").attr("style","font-weight:bold;background-color:blueviolet;color:white;");
+				}if (scrollTop < $("#classInfo").offset().top) {
 					$(".nav-link").removeClass("active");
+					$(".nav-link").attr("style","");
 				}
 	        } else {
 	        	$('#classNav').attr("style",""); //네비탭 고정 해제
