@@ -180,7 +180,7 @@
 	        if(windowTop > 700) {
 	            $('#classNav').attr("style","position:fixed;bottom:0;"); //네비탭 고정
 	          	//스크롤 위치 test
-		        if (scrollTop >= ($("#classInfo").offset().top-300)) {
+		        if (scrollTop >= ($("#classInfo").offset().top-400)) {
 		        	$(".nav-link").removeAttr("style");
 					$(".nav-link").removeClass("active");
 					$("#classInfoNav").addClass("active");
