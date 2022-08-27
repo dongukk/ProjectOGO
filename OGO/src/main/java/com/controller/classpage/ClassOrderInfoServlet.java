@@ -3,6 +3,7 @@ package com.controller.classpage;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,6 +49,37 @@ public class ClassOrderInfoServlet extends HttpServlet {
 				+"\t"+selectSched5+"\t"+selectSched6+"\t"+selectSched7+"\t"+selectSched8+"\t"+selectSched9
 				+"\t"+selectSched10);
 		System.out.println("userId:"+userId);
+		//유저가 이전에 같은 클래스 신청한 적 있는지 검사
+		ClassOrderService oService= new ClassOrderService();
+//		ClassOrderDTO prevDTO= new ClassOrderDTO();
+//		prevDTO.setClassNum(classNumber);
+//		prevDTO.setUserId(userId);
+//		int findResult = oService.findOrder(prevDTO);
+//		  System.out.println(findResult);
+//		if (findResult == 1) { //이전에 신청한 적이 있음
+//			//신청한 수강회차 찾기
+//			String[] schedules= {selectSched1,selectSched2,selectSched3,selectSched4,selectSched5,
+//					selectSched6,selectSched7,selectSched8,selectSched9,selectSched10};
+//			for (String str : schedules) {
+//				if (str != null) { //not null인 경우->수강신청한 회차임, null인 경우 신청X
+//					HashMap<String, Object> map= new HashMap<String, Object>();
+//					map.put("classNum", classNumber);
+//					map.put("userId", userId);
+//					map.put("sched", str);
+//					int findSchedResult=oService.findSched(map);
+//					  System.out.println(findSchedResult);
+//					if (findSchedResult == 1) { //이미 신청한 회차
+//						//'이미 결제한/수강한 회차입니다. 다른 회차를 선택해주세요' 메세지 띄우기
+//					}else { //신청하지 않은 회차
+//						//DB에 insert
+//					}
+//				}
+//			}
+//		}else { //이전에 신청한 적이 없음
+//			//DB에 insert
+//		}
+		
+		
 		//오늘 날짜구하기
 		LocalDate now =LocalDate.now();
 		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyMMdd");
@@ -59,12 +91,8 @@ public class ClassOrderInfoServlet extends HttpServlet {
 		ClassOrderDTO oDTO= new ClassOrderDTO(orderNum, userId, classNumber, price, null, "결제 대기중", selectSched1, 
 				selectSched2, selectSched3, selectSched4, selectSched5, selectSched6, selectSched7, 
 				selectSched8, selectSched9, selectSched10);
-		ClassOrderService oService= new ClassOrderService();
 		int result =oService.classOrder(oDTO);
 		System.out.println("classOrderInfo insert 성공:"+result);
-		
-		//ClassPage로 리다이렉트
-		//response.sendRedirect("ClassPage");
 		
 	}
 
