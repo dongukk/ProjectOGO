@@ -129,7 +129,7 @@
 		});//rightBtn end
 		
 		
-		//수강회차 선택
+		// 선택
 		var idxArr= [];
 		$(".dropdown-item").on("click", function() {
 			  //console.log($(this).text());
@@ -255,7 +255,10 @@
 	<!-- 수강생 후기 아래에 추가 -->
 	<jsp:include page="class_page/comment_index.jsp" flush="true"></jsp:include>
 	<br>
-	
+	<!-- 결제버튼 -->
+	<jsp:include page="Pay/Pay.jsp" flush="true"></jsp:include>
+	<br>
+	<h1><%= cDTO.getClassName() %></h1>
   </div>
 <br>
 </div>
