@@ -9,7 +9,7 @@
 	String attention=classContents.get("con_attention");
 	attention=attention.replaceAll("(\r\n|\r|\n|\n\r)", "<br>");//개행 작업
 %>
-<div class="attention mb-5" id="attention">
+<div class="page attention mb-5" id="attention">
   <div class="name">
     <h2>유의사항</h2>
   </div>

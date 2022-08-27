@@ -1,6 +1,9 @@
 package com.controller.classpage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,8 +48,15 @@ public class ClassOrderInfoServlet extends HttpServlet {
 				+"\t"+selectSched5+"\t"+selectSched6+"\t"+selectSched7+"\t"+selectSched8+"\t"+selectSched9
 				+"\t"+selectSched10);
 		System.out.println("userId:"+userId);
+		//오늘 날짜구하기
+		LocalDate now =LocalDate.now();
+		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyMMdd");
+		String today= now.format(formatter);
+		//System.out.println(formatedNow);
+		String orderNum= userId+classNumber+today;
+		
 		//classorderinfo에 insert
-		ClassOrderDTO oDTO= new ClassOrderDTO(0, userId, classNumber, price, null, "결제 대기중", selectSched1, 
+		ClassOrderDTO oDTO= new ClassOrderDTO(orderNum, userId, classNumber, price, null, "결제 대기중", selectSched1, 
 				selectSched2, selectSched3, selectSched4, selectSched5, selectSched6, selectSched7, 
 				selectSched8, selectSched9, selectSched10);
 		ClassOrderService oService= new ClassOrderService();
@@ -54,7 +64,7 @@ public class ClassOrderInfoServlet extends HttpServlet {
 		System.out.println("classOrderInfo insert 성공:"+result);
 		
 		//ClassPage로 리다이렉트
-		response.sendRedirect("ClassPage");
+		//response.sendRedirect("ClassPage");
 		
 	}
 

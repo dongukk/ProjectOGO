@@ -30,7 +30,7 @@
     
 <div >
 <aside>
-  <form action="ClassOrderInfoServlet" id="payForm" method="post">
+  <form id="payForm" method="post">
   <!-- 결제 페이지로 넘길 정보 -->
   <input type="hidden" id="classNumber" name="classNumber" value="<%=classNum%>">
   <input type="hidden" id="selectSched1" name="selectSched1">

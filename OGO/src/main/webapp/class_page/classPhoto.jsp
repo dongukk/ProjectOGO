@@ -26,7 +26,7 @@
 	}
 	
 %>
-<div class="classPhoto" id="classPhoto">
+<div class="page classPhoto" id="classPhoto">
   <div class="name">
     <h2>클래스 Photo</h2>
   </div>

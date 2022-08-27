@@ -1,36 +1,41 @@
 /* nav바 css */
-.navbar{ background: white; box-shadow: 0 0 5px rgba(0,0,0,.5); 
+.navbar{ box-shadow: 0 0 5px black;
 	font-family: ‘SUIT Variable’, sans-serif; z-index: 2; margin: 0;
-	display: flex; justify-content: space-between; align-items: center;}
+	display: flex; justify-content: space-between; align-items: center; 
+	position: fixed !important; top: 0; left: 0; right: 0; transition: 0.5s;
+	background: linear-gradient(45deg, #0000a0, #8000ff, black);}	
+nav.negative{transition: 0.5s; filter: invert(100%);}
 .navbar div{ display:flex; position:relative; } 
-.navbar #nav_logo{ padding: 8px 10px;}
-.navbar #nav_Menu{ font-size: 25px; display: flex; list-style: none; padding-left: 0; padding-top: 8px;}
-.navbar #nav_Menu li{ padding : 8px 20px;} 
-.navbar .nav-item a span:hover{font-size: 30px; transition: 0.5s; border-bottom: solid; border-color: black; color:  black;}
-.navbar .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; text-align: center; color: gray; text-decoration: none;}
-.navbar .nav-item a.on span{ color: #8000ff; font-weight: bold; border-bottom: solid; border-color: blueviolet;}
-.navbar .menuBtn { display: none; cursor:pointer;}
+.navbar #nav_logo img{ padding: 0px 10px; width: 150px; height: 60px;}
+.navbar #nav_Menu{ font-size: 25px; display: flex; list-style: none; padding-left: 0; padding-top: 10px;}
+.navbar #nav_Menu li{ padding : 0px 20px; margin-top: 8px;} 
+.navbar .nav-item a:hover{font-size: 30px; border-bottom: solid; border-color: white; color: white; transition: 0.5s; opacity: 1;}
+.navbar .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; text-align: white; color: white; text-decoration: none;
+					transition: 0.5s; opacity: .8;}			
+.navbar .nav-item a.on span{ color: #ff8000; font-weight: bold; border-bottom: solid; border-color: #ff8000;}
 
 /* login바css */
-.navbar #loginName{ color:blueviolet; margin: 20px;}
+.navbar #loginName{ color: white; margin: 28px 20px 20px 20px; }
 .navbar #nav_login{ display: flex; list-style: none;  padding-left: 0; margin: 0; padding: 0; text-align: center;}
 .navbar #nav_login img{ height: 35px; width: 35px; margin: 10px 15px 0px 15px; display:block;}
 .navbar #nav_login ul{ margin: 0; padding: 0;}
-.navbar #nav_login li{padding: 8px 10px; display: flex; list-style: none; padding: 0; text-align: center;  border : 0; float: left;}
-.navbar #nav_login a{ margin: 0px 5px; text-align: center; text-decoration-line: none; color: gray;}
-.navbar #nav_login a:hover{ color: black;}
+.navbar #nav_login li{padding: 0px 10px; display: flex; list-style: none; padding: 0; text-align: center;  border : 0; float: left;}
+.navbar #nav_login a{ margin: 0px 5px; text-align: center; text-decoration-line: none; color: white; opacity: .8;}
+.navbar #nav_login a:hover{ color: white; opacity: 1;}
 
 /* 반응형 폰트 */
-@media screen and (max-width: 1048px){
+@media screen and (max-width: 1140px){
 	.navbar #nav_Menu{ font-size: 20px;}
 	.navbar #nav_Menu li{ padding: 8px 10px;}
 	.navbar .nav-item a span:hover{font-size: 25px;}
 }
 /* 반응형Nav바 css */
-@media screen and (max-width: 868px){
+@media screen and (max-width: 960px){
   .navbar{
     flex-direction: column;
     align-items: flex-start;
+    min-width: 300px;
+    background: linear-gradient(45deg, #0000a0, #8000ff, white);
   }
   .navbar #nav_Menu{
   	font-size: 25px;
@@ -39,6 +44,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    min-width: 300px;
   }
   .navbar .nav-item a span:hover{font-size: 30px;}
   .navbar #nav_Menu li{ padding: 10px 0;}
@@ -47,19 +53,21 @@
     width: 100%;
     justify-content: center;
     padding: 10px 0;
+    min-width: 300px;
   }
 
-  .navbar .menuBtn {
-    display: block;
+  .navbar .navbar-menu-Btn {
+    display: block !important;
     font-size: 25px;
     color: var(--text-color);
     position: absolute;
     right: 30px;
     top: 30px;
+    
   }
   .navbar .navActive { display: flex !important;}
-  
-}
+
+}/* end 반영형 nav바 */
 
 
 /* 모달css */
@@ -213,4 +221,32 @@
   transform: translate3d(-100%,0,0);
   -webkit-transition: -webkit-transform .4s ease; 
   transition: transform .4s ease; /* animate progress bar? Remove to disable */
+}
+
+
+/* 네비바 햄버거 메뉴 버튼 */
+.navbar-menu-Btn {
+  display: inline-block !important; 
+  display: none !important;
+  cursor: pointer; 
+}
+
+.navbar-menu-bar1, .navbar-menu-bar2, .navbar-menu-bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .navbar-menu-bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .navbar-menu-bar2 {opacity: 0;}
+
+.change .navbar-menu-bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
 }
