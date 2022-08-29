@@ -8,7 +8,7 @@
 .navbar #nav_logo img{ padding: 0px 10px; width: 150px; height: 60px;}
 .navbar #nav_Menu{ font-size: 25px; display: flex; list-style: none; padding-left: 0; padding-top: 10px;}
 .navbar #nav_Menu li{ padding : 0px 20px; margin-top: 8px;} 
-.navbar .nav-item a:hover{ border-bottom: solid; border-color: white; color: white; transition: 0.5s; opacity: 1;}
+.navbar .nav-item a:hover{ font-size: 30px; border-bottom: solid; border-color: white; color: white; transition: 0.5s; opacity: 1;}
 .navbar .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; color: white; text-decoration: none;
 					transition: 0.5s; opacity: .8;}			
 .navbar .nav-item a.on span{ border-bottom: solid; border-color: black; color:black;  font-weight: bold; }
