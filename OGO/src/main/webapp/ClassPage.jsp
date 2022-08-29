@@ -93,7 +93,7 @@
 			}
 		});//like click
 		
-		//수강회차 선택
+
 		var idxArr= [];
 		$(".dropdown-item").on("click", function() {
 			var selectSchedule = $(this).text();
@@ -128,7 +128,6 @@
 		
 		//수강결제 폼 submit-수강결제 시 (수강결제 버튼 클릭)
 		$("#payForm").on("submit", function() {
-			
 			var count=0;
 			for (var i = 1; i <= 10; i++) {
 				var value=$("#selectSched"+i);
@@ -142,26 +141,85 @@
 			}else if (count==0) { //회차를 선택하지 않은 경우
 				alert("원하는 수강 회차를 선택해주세요");
 				event.preventDefault();
+			}else{ //로그인 되어있고, 수강회차도 선택한 경우
+				//수강결제정보 ajax
+				$.ajax({
+					type: "post",
+					url: "ClassOrderInfoServlet",
+					dataType: "text",
+					async: false,
+					data: { //서버에 넘겨줄 데이터
+						classNumber : $("#classNumber").val(),
+						selectSched1 : $("#selectSched1").val(),
+						selectSched2 : $("#selectSched2").val(),
+						selectSched3 : $("#selectSched3").val(),
+						selectSched4 : $("#selectSched4").val(),
+						selectSched5 : $("#selectSched5").val(),
+						selectSched6 : $("#selectSched6").val(),
+						selectSched7 : $("#selectSched7").val(),
+						selectSched8 : $("#selectSched8").val(),
+						selectSched9 : $("#selectSched9").val(),
+						selectSched10 : $("#selectSched10").val(),
+						classPrice : $("#classPrice").val()
+					},
+					success: function(data, status, xhr) {
+						console.log("orderInfo success");
+					},
+					error: function(xhr, status, e) {
+						console.log("orderInfo error");
+						console.log(e, status);
+					}
+				})//ajax end
 			}
 		}) //결제 폼 end
 		
 		//스크롤시 nav tab 고정
 		$(window).scroll(function() {
 	        var windowTop = $(this).scrollTop();
-	        if(windowTop > 700) {
-	            $('#classNav').attr("style","position:fixed;bottom:0;");
-	        } else {
-	        	//$(".nav-link").removeClass("active");
-	        	$('#classNav').attr("style","");
-	        }
-	        //스크롤 위치 test
 	        var scrollTop = $(window).scrollTop();
-	        console.log("scrollTop:"+scrollTop);
-	        var arr=$(".nav-link").get();
-	        //0:classinfo,1:classtutor,2:detail,3:classphoto,4:notice,5:attention
+	        if(windowTop > 700) {
+	            $('#classNav').attr("style","position:fixed;bottom:0;"); //네비탭 고정
+	          	//스크롤 위치 test
+		        if (scrollTop >= ($("#classInfo").offset().top-400)) {
+		        	$(".nav-link").removeAttr("style");
+					$(".nav-link").removeClass("active");
+					$("#classInfoNav").addClass("active");
+					$("#classInfoNav").attr("style","font-weight:bold;background-color:blueviolet;color:white;");
+				}if (scrollTop >= ($("#classTutor").offset().top-300)) {
+					$(".nav-link").removeAttr("style");
+					$(".nav-link").removeClass("active");
+					$("#classTutorNav").addClass("active");
+					$("#classTutorNav").attr("style","font-weight:bold;background-color:blueviolet;color:white;");
+				}if (scrollTop >= ($("#detail").offset().top-300)) {
+					$(".nav-link").removeAttr("style");
+					$(".nav-link").removeClass("active");
+					$("#detailNav").addClass("active");
+					$("#detailNav").attr("style","font-weight:bold;background-color:blueviolet;color:white;");
+				}if (scrollTop >= ($("#classPhoto").offset().top-300)) {
+					$(".nav-link").removeAttr("style");
+					$(".nav-link").removeClass("active");
+					$("#classPhotoNav").addClass("active");
+					$("#classPhotoNav").attr("style","font-weight:bold;background-color:blueviolet;color:white;");
+				}if (scrollTop >= ($("#notice").offset().top-300)) {
+					$(".nav-link").removeAttr("style");
+					$(".nav-link").removeClass("active");
+					$("#noticeNav").addClass("active");
+					$("#noticeNav").attr("style","font-weight:bold;background-color:blueviolet;color:white;");
+				}if (scrollTop >= ($("#attention").offset().top-300)) {
+					$(".nav-link").removeAttr("style");
+					$(".nav-link").removeClass("active");
+					$("#attentionNav").addClass("active");
+					$("#attentionNav").attr("style","font-weight:bold;background-color:blueviolet;color:white;");
+				}if (scrollTop < $("#classInfo").offset().top) {
+					$(".nav-link").removeClass("active");
+					$(".nav-link").attr("style","");
+				}
+	        } else {
+	        	$('#classNav').attr("style",""); //네비탭 고정 해제
+	        }
+	        
 	    })
-		
-		//navtab test
+		//navtab 이동
 		$('#classNav > ul > li > a').click(function(e) {
 		    var href = $(this).attr('href');
 		    var targetTop = $(href).offset().top;
@@ -209,12 +267,14 @@
 	<!-- 수강생 후기 아래에 추가 -->
 	<jsp:include page="class_page/comment_index.jsp" flush="true"></jsp:include>
 	<br>
-	
+	<!-- 결제버튼 -->
+	<jsp:include page="Pay/Pay.jsp" flush="true"></jsp:include>
+	<br>
+	<h1><%= cDTO.getClassName() %></h1>
   </div>
 <br>
 </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
-<!--  <script src="progressbar.js"></script> -->
 </body>
 </html>

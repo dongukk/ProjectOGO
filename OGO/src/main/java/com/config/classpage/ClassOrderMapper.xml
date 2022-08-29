@@ -14,7 +14,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    		#{schedule7, jdbcType=VARCHAR},#{schedule8, jdbcType=VARCHAR},#{schedule9, jdbcType=VARCHAR},
 	    		#{schedule10, jdbcType=VARCHAR})
 	</insert>
-    	
+    <select id="findOrder" parameterType="ClassOrderDTO" resultType="int">
+    	select count(*)
+		from classorder
+		where classNum= #{classNum} and userId= #{userId}
+    </select>
+    <select id="findSched" parameterType="hashmap" resultType="int">
+    	select count(*)
+		from classorder
+		where classNum= #{classNum} and userId= #{userId} and #{sched} is null
+    </select>
 
     
 </mapper>
