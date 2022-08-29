@@ -3,16 +3,20 @@
 	font-family: ‘SUIT Variable’, sans-serif; z-index: 2; margin: 0;
 	display: flex; justify-content: space-between; align-items: center; 
 	position: fixed !important; top: 0; left: 0; right: 0; transition: 0.5s;
-	background: linear-gradient(45deg, #0000a0, #8000ff, black);}	
-nav.negative{transition: 0.5s; filter: invert(100%);}
+	background: linear-gradient(180deg, rgb(0, 0, 64), rgb(128, 128, 128), black);}	
 .navbar div{ display:flex; position:relative; } 
 .navbar #nav_logo img{ padding: 0px 10px; width: 150px; height: 60px;}
 .navbar #nav_Menu{ font-size: 25px; display: flex; list-style: none; padding-left: 0; padding-top: 10px;}
 .navbar #nav_Menu li{ padding : 0px 20px; margin-top: 8px;} 
-.navbar .nav-item a:hover{font-size: 30px; border-bottom: solid; border-color: white; color: white; transition: 0.5s; opacity: 1;}
-.navbar .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; text-align: white; color: white; text-decoration: none;
+.navbar .nav-item a:hover{ font-size: 30px; border-bottom: solid; border-color: white; color: white; transition: 0.5s; opacity: 1;}
+.navbar .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; color: white; text-decoration: none;
 					transition: 0.5s; opacity: .8;}			
-.navbar .nav-item a.on span{ color: #ff8000; font-weight: bold; border-bottom: solid; border-color: #ff8000;}
+.navbar .nav-item a.on span{ border-bottom: solid; border-color: black; color:black;  font-weight: bold; }
+
+/* 네비바 반전효과 */
+.navbar.negative #nav_Menu{ transition: 0.5s; filter: invert(100%);}
+.navbar.negative #nav_login{ transition: 0.5s; filter: invert(100%);}
+.navbar.negative{ transition: 0.5s; background: linear-gradient(180deg, rgb(0, 0, 64), gray, white); }
 
 /* login바css */
 .navbar #loginName{ color: white; margin: 28px 20px 20px 20px; }
@@ -35,7 +39,6 @@ nav.negative{transition: 0.5s; filter: invert(100%);}
     flex-direction: column;
     align-items: flex-start;
     min-width: 300px;
-    background: linear-gradient(45deg, #0000a0, #8000ff, white);
   }
   .navbar #nav_Menu{
   	font-size: 25px;
@@ -59,7 +62,6 @@ nav.negative{transition: 0.5s; filter: invert(100%);}
   .navbar .navbar-menu-Btn {
     display: block !important;
     font-size: 25px;
-    color: var(--text-color);
     position: absolute;
     right: 30px;
     top: 30px;
@@ -234,7 +236,7 @@ nav.negative{transition: 0.5s; filter: invert(100%);}
 .navbar-menu-bar1, .navbar-menu-bar2, .navbar-menu-bar3 {
   width: 35px;
   height: 5px;
-  background-color: #333;
+  background-color: #ffffff;
   margin: 6px 0;
   transition: 0.4s;
 }
