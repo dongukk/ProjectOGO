@@ -43,10 +43,8 @@ public class loginServlet extends HttpServlet {
 			session.setMaxInactiveInterval(60*60);
 			response.sendRedirect(request.getHeader("referer"));	// 로그인한 페이지로 이동
 		} else {	// 회원아닌 경우			
-			out.println("<script>alert('아이디 및 비밀번호를 확인해주세요.');</script>");
-//			out.println("<script>alert('아이디 및 비밀번호를 확인해주세요.');location.href='loginUIServlet';</script>");
-//			out.flush();
-			response.sendRedirect("loginUIServlet");
+			out.println("<script>alert('아이디 및 비밀번호를 확인해주세요.'); window.history.go(-1); </script>");
+			out.flush();
 		}
 		
 	}

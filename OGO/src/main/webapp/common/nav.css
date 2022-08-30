@@ -12,7 +12,7 @@
 .navbar .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; color:black; text-decoration: none;
 					transition: 0.5s; opacity: .7;}	
 .navbar .nav-item a:hover{ opacity: 1;}		
-.navbar .nav-item a.on span{ color: violet; }
+.navbar .nav-item a.on span{ color: #a45bba; }
 
 /* login바css */
 .navbar #loginName{ color: white; float: right;}

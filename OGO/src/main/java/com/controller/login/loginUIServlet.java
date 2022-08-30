@@ -24,10 +24,10 @@ public class loginUIServlet extends HttpServlet {
 		if(mesg!=null){			
 			out.println("<script> alert('mesg'); </script>"); 
 			session.removeAttribute("mesg");
-			out.close();
-			
+			out.close();	
 		} 
-		response.sendRedirect("MainForm.jsp");
+		out.println("<script>alert('로그인 하세요.'); window.history.go(-1);</script>");
+		out.flush();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

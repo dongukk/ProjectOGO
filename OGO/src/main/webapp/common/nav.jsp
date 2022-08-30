@@ -123,7 +123,6 @@ $(".nav-item").find("a").each(function() {
 // class 값을 넣었다 뺄 수 있는 toggleClass 선택 >> active라는 클래스 토글 기능으로 사용
 // 선택된 객체와 pathname이 같은 a태그의 href 속성을 선택, active 클래스를 토글시켜준다.
 
-
 // 네이버 아이디로 로그인
   	var naver_id_login = new naver_id_login("ekZ3X4W9E8FY6vv_Y7AK", "http://localhost:8097/OGO/LoginCURD/naverCollback.jsp");
   	var state = naver_id_login.getUniqState();
@@ -145,7 +144,7 @@ $(".nav-item").find("a").each(function() {
 	  	   logoutPopUp.close();
   	});  
  
-// 프로그래스바
+ // 프로그래스바
 jQuery(function($){
   var growmouseover = [true, '25px']
 
