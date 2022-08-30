@@ -7,7 +7,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
-<link rel="stylesheet" href="common/nav2.css">
+<link rel="stylesheet" href="common/nav.css?after">
 
 <!-- 프로그레스바 -->
 <div class="scrollindicator">
@@ -200,24 +200,8 @@ function navbarmenuChange(x) {
   x.classList.toggle("change");
 }
 
-//네비바에 마우스 올려둘시 이벤트발생
-$(".navbar").mouseenter(function(event) {
-	 $(".navbar").addClass("negative");
-});
-$(".navbar").mouseleave(function(event) {
-	$(".navbar").removeClass("negative");
-});
 
-// 네비바 스크롤 이벤트
-$(window).scroll(function(){
-	if ($(document).scrollTop() > 0) {
-      $(".navbar").addClass("negative");
-    } else {
-      $(".navbar").removeClass("negative");
-    }
-});
-
-/*메뉴바 토글이벤트 부여*/
+// 반응형 네비바 이벤트
 var toggleBtn = document.querySelector('.navbar-menu-Btn');
 var menu = document.querySelector('#nav_Menu');
 var login = document.querySelector('#nav_login');
