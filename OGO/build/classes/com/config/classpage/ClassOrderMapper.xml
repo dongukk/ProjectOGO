@@ -17,12 +17,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="findOrder" parameterType="ClassOrderDTO" resultType="int">
     	select count(*)
 		from classorder
-		where classNum= #{classNum} and userId= #{userId}
+		where classNum= #{classNum} and userId= #{userId} 
     </select>
     <select id="findSched" parameterType="hashmap" resultType="int">
     	select count(*)
 		from classorder
-		where classNum= #{classNum} and userId= #{userId} and #{sched} is null
+		where classNum= #{classNum} and userId= #{userId} and #{idx}= is not null
+    </select>
+    <select id="findSched2" parameterType="hashmap" resultType="ClassOrderDTO">
+    	select *
+		from classorder
+		where classNum= #{classNum} and userId= #{userId}
     </select>
 
     

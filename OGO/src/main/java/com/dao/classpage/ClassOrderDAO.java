@@ -23,4 +23,9 @@ public class ClassOrderDAO {
 		return num;
 	}
 
+	public ClassOrderDTO findSched2(SqlSession session, HashMap<String, Object> map) {
+		ClassOrderDTO orderDTO= session.selectOne("ClassOrderMapper.findSched2", map);
+		return orderDTO;
+	}
+
 }
