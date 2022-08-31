@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+/* footer css 시작 */
+
+
+
+
+
+footer{
+   display:flex;
+   background:#1f1f1f;
+   position: absolute;
+   top: 100%;
+  
+}
+
+footer .container{
+   width:880px;
+   height:170px;
+   }
+
+.f_top{margin-bottom:5px;}
+.f_top > ul{
+	display:flex;
+	text-align: left;
+	position: relative;
+	bottom: 30px;
+}
+.f_nav .depth1 .tit {
+   padding:0 110px 20px 0;
+   font-weight: 500;
+   font-size:24px;
+   color:#fff;
+   letter-spacing: -0.4px;
+   position: relative;
+   left: 18%;
+}
+.f_nav .depth2 li {
+   margin-bottom: 10px;
+   line-height:20px;
+   font-size:18px;
+   color:inherit #fff;
+   letter-spacing: -0.35px;
+   list-style: none;
+   
+}
+.f_nav .depth2 li:last-child{
+   margin-bottom:0;
+   color:#fff;
+   }
+
+.container2 {display:flex};
+
+.container2 .f_info{
+   width: calc(100% - 320px); 
+   margin-right: 29px;
+   }
+
+.container2 .f_info p{
+   margin-bottom: 5px;
+   font-size: 12px;
+   line-height: 18px;
+   color: #5a5a5a ;
+   letter-spacing: -0.3px;}
+   
+.container2 .f_info p:last-child{
+   margin-bottom: 0; margin-top: 20px;
+   }
+
+
+.depth1{
+	list-style: none;
+	position: relative;
+	right:10%;
+}
+
+.footer_font{
+	color: white;
+	text-decoration: none;
+}  
+	

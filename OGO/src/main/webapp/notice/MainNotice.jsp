@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>OGO: Notice&FAQ</title>
 	<jsp:include page="../common/nav.jsp" flush="false"/>
  <style type="text/css">
 	/* NavBar */
@@ -65,6 +65,7 @@ a {
 <br>
 
 <jsp:include page="../NoticeMains/Faq.jsp"></jsp:include>
-
+<br>
+<jsp:include page="../common/OGO_footer.jsp"></jsp:include>>
 </body>
 </html>

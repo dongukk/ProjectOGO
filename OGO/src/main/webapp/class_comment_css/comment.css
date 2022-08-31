@@ -72,24 +72,30 @@
     grid-area: img3;
 }
 
-notice1{
+.notice1{
     grid-area: notice1;
-    margin:  5px;
-    overflow: hidden;
-    font-family: 'Nanum Gothic Coding', monospace;
-    font-size: 20px;
     color: black;
 }
 
 .notice2{
     grid-area: notice2;
-    margin:  5px;
+    margin:  20px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 20px;
+    color: black;
 }
 
 .notice3{
     grid-area: notice3;
     margin:  5px;
 }
+
+#notice_detail{
+	font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 20px;
+	
+}
+
 
 .cmt_header{
 	

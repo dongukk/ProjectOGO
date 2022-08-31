@@ -1,8 +1,8 @@
 @charset "UTF-8";
-.faq {
+/* .faq {
 	background: #8041D9;
 	color: #FFFFFF;
-	}
+	} */
 	
 	.faq_A{
 	display: none;
@@ -20,3 +20,4 @@
 	 body {
   text-align: center; 
 	}
+	
