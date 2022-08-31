@@ -1,17 +1,53 @@
 @charset "UTF-8";
+	
+	
+	#notice_table1{
+		border: 2px solid #c4c4c4;
+		border-radius: 30px;
+		width: 900px;
+		height: 270px;
+		font-family: 'Noto Sans KR', sans-serif;
+		font-size: 16px;
+	}
 
-	h1 {
-    color: #3F0099;
-    }
     #tr1{
-    color: #ffffff; 
-    background: #8041D9;
+    height: 40px;
+    color: #000000; 
+    background: rgb(250, 248, 247);
+    border: 2px solid #c4c4c4;
+    box-shadow: 0px 2px 3px 0px  #a0a6af;
+    font-weight: 700;
+    font-size: 22px;
+    
+    
     }
+    
+    #td2{
+    width: 400px;
+    
+    }
+    #td3{
+    width: 300px;
+    }
+    
     #a1 {
-    color: #8041D9; 
+    color: #000000; 
     text-decoration: none;
     } 
+    
+    #notice_table2{
+    width: 	900px;	
+    }
+    
+    #notice_perage1{
+    font-size: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    }
+    
 	#btn{
-	 color: #ffffff; 
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 22px;
+	color: #000000; 
     background: #8041D9;
+    border-radius: 15px;
 	}
