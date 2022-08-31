@@ -17,7 +17,7 @@
 		$("#Pay_button1").click(function() {
 			$.ajax({
 				type: "get",
-				url: "../PayMain",
+				url: "PayMain",
 				data: {
 					"ordernum" : "3221220825"
 					},

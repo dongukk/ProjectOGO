@@ -7,7 +7,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
-<link rel="stylesheet" href="common/nav1.css">
+<link rel="stylesheet" href="common/nav.css?after">
 
 <!-- 프로그레스바 -->
 <div class="scrollindicator">
@@ -16,13 +16,13 @@
 </div>
 <!-- 네비바 -->
 <nav class="navbar">
-    <div class="navBar_logo" id="nav_logo">
-		<a class="navbar-brand" href="MainForm.jsp"><img src="common/img/OGOLogo2.png"></a>
-    </div>
+      <div class="navBar_logo" id="nav_logo">
+		<a class="navbar-brand" href="MainForm.jsp"><img src="common/img/OGOLogo3.png"></a>
+      </div>
       <ul id="nav_Menu">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
 			<a class="nav_menu" href="MainForm.jsp"><span>HOME</span></a>
-		</li>
+		</li> -->
         <li class="nav-item">
 			<a class="nav_menu" href="ClassListServlet"><span>행성카테고리</span></a>
 		</li>
@@ -45,19 +45,20 @@
 				String userId = dto.getUserId();
 		%>
 		
-			<div id="loginName">
-				<%=nickname%><a style="color: white;">님</a>
-			</div>
-
+			
+			
 			<ul id="loginBar">
+				<div id="loginName">
+					<%=nickname%><a style="opacity: 1;">님</a>
+				</div><br>
 			<%  if(userId.equals("admin")){ // 이중 if문%>	
-				<li><a href="logoutServlet" id="logout"><img src="common/img/logOut.png">로그아웃</a></li>
-				<li><a href="LoginMain/managementMember.jsp"><img src="common/img/member.png">회원관리</a></li>
+				<li><a href="logoutServlet" id="logout">Logout</a></li>
+				<li><a href="LoginMain/managementMember.jsp">management</a></li>
 				<%  } else{ %>
-				<li><a href="logoutServlet" id="logout"><img src="common/img/logOut.png">로그아웃</a></li>
+				<li><a href="logoutServlet" id="logout">Logout</a></li>
 			<%	}} else{ %>
-				<li><a href="" data-bs-toggle="modal" data-bs-target="#loginModal"><img src="common/img/logIn.png">로그인</a></li>
-				<li><a href="LoginCURD/createMember.jsp"><img src="common/img/signUp.png">회원가입</a></li>
+				<li><a href="" data-bs-toggle="modal" data-bs-target="#loginModal">Log in</a></li>
+				<li><a href="LoginCURD/createMember.jsp">Sign up</a></li>
 			<% } // end if~else %>	
 			</ul>  	 
   		</div>
@@ -122,7 +123,6 @@ $(".nav-item").find("a").each(function() {
 // class 값을 넣었다 뺄 수 있는 toggleClass 선택 >> active라는 클래스 토글 기능으로 사용
 // 선택된 객체와 pathname이 같은 a태그의 href 속성을 선택, active 클래스를 토글시켜준다.
 
-
 // 네이버 아이디로 로그인
   	var naver_id_login = new naver_id_login("ekZ3X4W9E8FY6vv_Y7AK", "http://localhost:8097/OGO/LoginCURD/naverCollback.jsp");
   	var state = naver_id_login.getUniqState();
@@ -144,7 +144,7 @@ $(".nav-item").find("a").each(function() {
 	  	   logoutPopUp.close();
   	});  
  
-// 프로그래스바
+ // 프로그래스바
 jQuery(function($){
   var growmouseover = [true, '25px']
 
@@ -199,24 +199,8 @@ function navbarmenuChange(x) {
   x.classList.toggle("change");
 }
 
-//네비바에 마우스 올려둘시 이벤트발생
-$(".navbar").mouseenter(function(event) {
-	 $(".navbar").addClass("negative");
-});
-$(".navbar").mouseleave(function(event) {
-	$(".navbar").removeClass("negative");
-});
 
-// 네비바 스크롤 이벤트
-$(window).scroll(function(){
-	if ($(document).scrollTop() > 0) {
-      $(".navbar").addClass("negative");
-    } else {
-      $(".navbar").removeClass("negative");
-    }
-});
-
-/*메뉴바 토글이벤트 부여*/
+// 반응형 네비바 이벤트
 var toggleBtn = document.querySelector('.navbar-menu-Btn');
 var menu = document.querySelector('#nav_Menu');
 var login = document.querySelector('#nav_login');

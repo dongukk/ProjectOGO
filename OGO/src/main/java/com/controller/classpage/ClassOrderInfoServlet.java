@@ -1,7 +1,9 @@
 package com.controller.classpage;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
@@ -23,7 +25,6 @@ import com.service.classpage.ClassOrderService;
 public class ClassOrderInfoServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("ClassOrderServlet");
 		request.setCharacterEncoding("utf-8");
 		
 		//신청한 클래스번호,일정 정보
@@ -44,55 +45,54 @@ public class ClassOrderInfoServlet extends HttpServlet {
 		MemberDTO mDTO= (MemberDTO) session.getAttribute("login");
 		String userId = mDTO.getUserId();
 		//파싱 확인
-		System.out.println("classNumber:"+classNumber);
-		System.out.println("selectSched:"+selectSched1+"\t"+selectSched2+"\t"+selectSched3+"\t"+selectSched4
-				+"\t"+selectSched5+"\t"+selectSched6+"\t"+selectSched7+"\t"+selectSched8+"\t"+selectSched9
-				+"\t"+selectSched10);
-		System.out.println("userId:"+userId);
-		//유저가 이전에 같은 클래스 신청한 적 있는지 검사
-		ClassOrderService oService= new ClassOrderService();
-//		ClassOrderDTO prevDTO= new ClassOrderDTO();
-//		prevDTO.setClassNum(classNumber);
-//		prevDTO.setUserId(userId);
-//		int findResult = oService.findOrder(prevDTO);
-//		  System.out.println(findResult);
-//		if (findResult == 1) { //이전에 신청한 적이 있음
-//			//신청한 수강회차 찾기
-//			String[] schedules= {selectSched1,selectSched2,selectSched3,selectSched4,selectSched5,
-//					selectSched6,selectSched7,selectSched8,selectSched9,selectSched10};
-//			for (String str : schedules) {
-//				if (str != null) { //not null인 경우->수강신청한 회차임, null인 경우 신청X
-//					HashMap<String, Object> map= new HashMap<String, Object>();
-//					map.put("classNum", classNumber);
-//					map.put("userId", userId);
-//					map.put("sched", str);
-//					int findSchedResult=oService.findSched(map);
-//					  System.out.println(findSchedResult);
-//					if (findSchedResult == 1) { //이미 신청한 회차
-//						//'이미 결제한/수강한 회차입니다. 다른 회차를 선택해주세요' 메세지 띄우기
-//					}else { //신청하지 않은 회차
-//						//DB에 insert
-//					}
-//				}
-//			}
-//		}else { //이전에 신청한 적이 없음
-//			//DB에 insert
-//		}
-		
+//		System.out.println("classNumber:"+classNumber);
+//		System.out.println("selectSched:"+selectSched1+"\t"+selectSched2+"\t"+selectSched3+"\t"+selectSched4
+//				+"\t"+selectSched5+"\t"+selectSched6+"\t"+selectSched7+"\t"+selectSched8+"\t"+selectSched9
+//				+"\t"+selectSched10);
+//		System.out.println("userId:"+userId);
 		
 		//오늘 날짜구하기
-		LocalDate now =LocalDate.now();
-		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyMMdd");
-		String today= now.format(formatter);
-		//System.out.println(formatedNow);
-		String orderNum= userId+classNumber+today;
+		LocalDate nowD =LocalDate.now();
+		DateTimeFormatter dateFormatter=DateTimeFormatter.ofPattern("yyMMdd");
+		String today= nowD.format(dateFormatter);
+		LocalTime nowT =LocalTime.now();
+		DateTimeFormatter timeFormatter=DateTimeFormatter.ofPattern("HHmmss");
+		String time= nowT.format(timeFormatter);
+		  //System.out.println(formatedNow);
+		//주문번호 orderNum
+		int idIndex =userId.indexOf("@");
+		String orderUserId=userId;
+		if (idIndex > -1) {
+			orderUserId=userId.substring(0, idIndex);
+		}
+		String orderNum= today+time+classNumber+orderUserId;
 		
-		//classorderinfo에 insert
-		ClassOrderDTO oDTO= new ClassOrderDTO(orderNum, userId, classNumber, price, null, "결제 대기중", selectSched1, 
-				selectSched2, selectSched3, selectSched4, selectSched5, selectSched6, selectSched7, 
-				selectSched8, selectSched9, selectSched10);
-		int result =oService.classOrder(oDTO);
-		System.out.println("classOrderInfo insert 성공:"+result);
+		//유저가 이전에 같은 클래스 신청한 적 있는지 검사
+		ClassOrderService oService= new ClassOrderService();
+		ClassOrderDTO prevDTO= new ClassOrderDTO();
+		prevDTO.setClassNum(classNumber);
+		prevDTO.setUserId(userId);
+		int findResult = oService.findOrder(prevDTO);
+		  System.out.println("findResult: "+findResult);
+
+		String mesg="";
+		int findSchedResult=0;
+		if (findResult == 1) { //이전에 신청한 적이 있음
+			
+			//mesg= "이미 결제(수강)한 클래스입니다. 다른 클래스를 신청해주세요";
+			mesg= "이전에 수강한 클래스입니다. 회차를 잘 확인하고 신청해주세요";
+		}else { //해당 클래스를 이전에 신청한 적이 없거나, 새로운 회차를 신청한 경우
+			//classorderinfo에 insert
+			ClassOrderDTO oDTO= new ClassOrderDTO(orderNum, userId, classNumber, price, null, "결제 대기중", selectSched1, 
+					selectSched2, selectSched3, selectSched4, selectSched5, selectSched6, selectSched7, 
+					selectSched8, selectSched9, selectSched10);
+			int result =oService.classOrder(oDTO);
+			System.out.println("classOrderInfo insert 성공:"+result);
+			mesg= "성공";
+		}
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+		out.print(mesg);//mesg 전송
 		
 	}
 

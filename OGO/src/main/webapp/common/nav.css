@@ -2,39 +2,33 @@
 .navbar{ box-shadow: 0 0 5px black;
 	font-family: ‘SUIT Variable’, sans-serif; z-index: 2; margin: 0;
 	display: flex; justify-content: space-between; align-items: center; 
-	position: fixed !important; top: 0; left: 0; right: 0; transition: 0.5s;
-	background: linear-gradient(180deg, rgb(0, 0, 64), rgb(128, 128, 128), black);}	
-.navbar div{ display:flex; position:relative; } 
+	position: fixed !important; width: 100%; transition: 0.5s;
+	background: black; align-items: center !important;}	
+.navbar div{ display:flex; position:relative; align-items: center !important;} 
 .navbar #nav_logo img{ padding: 0px 10px; width: 150px; height: 60px;}
-.navbar #nav_Menu{ font-size: 25px; display: flex; list-style: none; padding-left: 0; padding-top: 10px;}
-.navbar #nav_Menu li{ padding : 0px 20px; margin-top: 8px;} 
-.navbar .nav-item a:hover{ font-size: 30px; border-bottom: solid; border-color: white; color: white; transition: 0.5s; opacity: 1;}
-.navbar .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; color: white; text-decoration: none;
-					transition: 0.5s; opacity: .8;}			
-.navbar .nav-item a.on span{ border-bottom: solid; border-color: black; color:black;  font-weight: bold; }
-
-/* 네비바 반전효과 */
-.navbar.negative #nav_Menu{ transition: 0.5s; filter: invert(100%);}
-.navbar.negative #nav_login{ transition: 0.5s; filter: invert(100%);}
-.navbar.negative{ transition: 0.5s; background: linear-gradient(180deg, rgb(0, 0, 64), gray, white); }
+.navbar #nav_Menu{ font-size: 25px; display: flex; list-style: none;   margin: 0 !important;
+					padding: 5px; background-color: white; border-radius: 30px; }
+.navbar #nav_Menu li{ padding : 0px 20px; } 
+.navbar .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; color:black; text-decoration: none;
+					transition: 0.5s; opacity: .7;}	
+.navbar .nav-item a:hover{ opacity: 1;}		
+.navbar .nav-item a.on span{ color: #a45bba; }
 
 /* login바css */
-.navbar #loginName{ color: white; margin: 28px 20px 20px 20px; }
-.navbar #nav_login{ display: flex; list-style: none;  padding-left: 0; margin: 0; padding: 0; text-align: center;}
-.navbar #nav_login img{ height: 35px; width: 35px; margin: 10px 15px 0px 15px; display:block;}
+.navbar #loginName{ color: white; float: right;}
+.navbar #nav_login{ display: flex; list-style: none;  padding-left: 0; margin: 0; padding: 0; text-align: center; }
 .navbar #nav_login ul{ margin: 0; padding: 0;}
-.navbar #nav_login li{padding: 0px 10px; display: flex; list-style: none; padding: 0; text-align: center;  border : 0; float: left;}
-.navbar #nav_login a{ margin: 0px 5px; text-align: center; text-decoration-line: none; color: white; opacity: .8;}
-.navbar #nav_login a:hover{ color: white; opacity: 1;}
+.navbar #nav_login li{ display: flex; list-style: none; padding: 0; text-align: center;  border : 0; float: right; }
+.navbar #nav_login a{ margin: 0px 10px; text-align: center; text-decoration-line: none; color: white; opacity: .8;}
+.navbar #nav_login a:hover{ opacity: 1;}
 
 /* 반응형 폰트 */
-@media screen and (max-width: 1140px){
+@media screen and (max-width: 1100px){
 	.navbar #nav_Menu{ font-size: 20px;}
 	.navbar #nav_Menu li{ padding: 8px 10px;}
-	.navbar .nav-item a span:hover{font-size: 25px;}
 }
-/* 반응형Nav바 css */
-@media screen and (max-width: 960px){
+/* 반응형nav바 css */
+@media screen and (max-width: 900px){
   .navbar{
     flex-direction: column;
     align-items: flex-start;
@@ -49,7 +43,6 @@
     align-items: center;
     min-width: 300px;
   }
-  .navbar .nav-item a span:hover{font-size: 30px;}
   .navbar #nav_Menu li{ padding: 10px 0;}
   .navbar #nav_login {  
     display: none;
