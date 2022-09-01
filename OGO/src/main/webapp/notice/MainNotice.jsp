@@ -49,15 +49,6 @@ a {
 
 
 <body>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
 <jsp:include page="../NoticeMains/NoticeTable.jsp"></jsp:include>
 <br>
 <br>

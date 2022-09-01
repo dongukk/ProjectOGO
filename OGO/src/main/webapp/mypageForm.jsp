@@ -6,11 +6,11 @@
 <meta charset="UTF-8">
 <title>마이 페이지</title>
 
-	<jsp:include page="common/nav.jsp" flush="false"/>
+	
 	
 </head>
 <body>
-	
+	<jsp:include page="common/nav.jsp" flush="false"/>
 	<jsp:include page="LoginMypage/index.jsp" flush="false" /><br>
 	
 </body>
