@@ -166,8 +166,6 @@
 						console.log("orderInfo success");
 						if (data!="성공") {
 							alert(data);
-						}else if (data=="성공") {
-							////////여기에 trigger//////////////
 						}
 					},
 					error: function(xhr, status, e) {

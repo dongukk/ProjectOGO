@@ -2,8 +2,9 @@ package com.pay.main;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -35,11 +36,29 @@ public class PayMain extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String ordernum = request.getParameter("ordernum"); //데이터 받기
-		System.out.println("넘어온 데이터 확인"+ordernum); //데이터 확인
+		//String ordernum = request.getParameter("ordernum"); //데이터 받기
+		String userId = request.getParameter("userId");
+		String classNum = request.getParameter("classNum");
+		System.out.println("\n\n\n\n\n"+ userId+ classNum);
+
 		
+		
+		//오늘 날짜구하기
+	      LocalDate now =LocalDate.now();
+	      DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyMMdd");
+	      String today= now.format(formatter);
+	        //System.out.println(formatedNow);
+	      //주문번호 orderNum
+	      String orderNum= userId+classNum+today;
+		
+		
+		
+		
+		
+		
+		//ordernum 만든 후 데이터 가져오기
 		PayService Pservice = new PayService();
-		PayDTO dto = Pservice.selectOrder(ordernum);		
+		PayDTO dto = Pservice.selectOrder(orderNum);		
 		System.out.println(dto);
 		
 		List<String> list = new ArrayList<>();
@@ -78,9 +97,7 @@ public class PayMain extends HttpServlet {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

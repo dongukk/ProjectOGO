@@ -27,7 +27,8 @@
 <h1 >FAQ 자주 물어보는 질문</h1>
 
 <% for ( int i =0; i<list.size(); i++ )  {%>
- <div class="accordion-item w-75" >
+<div class="accordion accordion-flush" id="accordionFlushExample">
+ <div class="accordion-item" >
     <h2 class="accordion-header" id="flush-heading<%=i%>">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%=i%>" aria-expanded="false" aria-controls="flush-collapse<%=i%>" style="background: #8041D9; color: #FFFFFF">
         <%= list.get(i).getFaqtitle() %>

@@ -1,3 +1,6 @@
+<%@page import="com.dto.pay.TestDTO"%>
+<%@page import="com.dto.login.MemberDTO"%>
+<%@page import="com.dto.classpage.ClassDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,15 +15,25 @@
 <!-- ajax cdn -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
+	<% ClassDTO cdto =(ClassDTO) request.getAttribute("cDTO"); 
+		MemberDTO mdto = (MemberDTO) session.getAttribute("login");
+	%>
+	<%-- <% TestDTO dto = new TestDTO("김민제", 30);
+		System.out.print(dto);
+	%> --%>
+	
 	$(document).ready(function() {
-		
 		$("#Pay_button1").click(function() {
+			console.log('<%= cdto %>'); /* 잘 넘어옴 */
+			console.log('<%= mdto %>');
 			$.ajax({
 				type: "get",
-				url: "../PayMain",
+				url: "PayMain",
 				data: {
-					"ordernum" : "3221220825"
-					},
+					/* "ordernum" : "9221220828", */
+					"userId" : "<%=mdto.getUserId()%>",
+					"classNum" : "<%=cdto.getClassNum()%>"
+					}, 
 				dataType: "json",
 				success: function (data, status, xhr) {
 					$("#Pay_span1_CLASSNAME").html(data.CLASSNAME);
@@ -43,6 +56,7 @@
 <body>
 <!-- 부트스트랩 번들 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 
 <button id="Pay_button1" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">결제</button>
 
