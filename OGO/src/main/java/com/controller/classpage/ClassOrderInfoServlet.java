@@ -77,19 +77,26 @@ public class ClassOrderInfoServlet extends HttpServlet {
 
 		String mesg="";
 		int findSchedResult=0;
-		if (findResult == 1) { //이전에 신청한 적이 있음
+		if (findResult > 0) { //이전에 신청한 적이 있음
 			
 			//mesg= "이미 결제(수강)한 클래스입니다. 다른 클래스를 신청해주세요";
-			mesg= "이전에 수강한 클래스입니다. 회차를 잘 확인하고 신청해주세요";
+			//mesg= "이전에 수강한 클래스입니다. 회차를 잘 확인하고 신청해주세요";
+			mesg= "수강이력O";
 		}else { //해당 클래스를 이전에 신청한 적이 없거나, 새로운 회차를 신청한 경우
 			//classorderinfo에 insert
-			ClassOrderDTO oDTO= new ClassOrderDTO(orderNum, userId, classNumber, price, null, "결제 대기중", selectSched1, 
-					selectSched2, selectSched3, selectSched4, selectSched5, selectSched6, selectSched7, 
-					selectSched8, selectSched9, selectSched10);
-			int result =oService.classOrder(oDTO);
-			System.out.println("classOrderInfo insert 성공:"+result);
+//			ClassOrderDTO oDTO= new ClassOrderDTO(orderNum, userId, classNumber, price, null, "결제 대기중", selectSched1, 
+//					selectSched2, selectSched3, selectSched4, selectSched5, selectSched6, selectSched7, 
+//					selectSched8, selectSched9, selectSched10);
+//			int result =oService.classOrder(oDTO);
+//			System.out.println("classOrderInfo insert 성공:"+result);
 			mesg= "성공";
 		}
+		ClassOrderDTO oDTO= new ClassOrderDTO(orderNum, userId, classNumber, price, null, "결제 대기중", selectSched1, 
+				selectSched2, selectSched3, selectSched4, selectSched5, selectSched6, selectSched7, 
+				selectSched8, selectSched9, selectSched10);
+		int result =oService.classOrder(oDTO);
+		System.out.println("classOrderInfo insert 성공:"+result);
+		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
 		out.print(mesg);//mesg 전송
