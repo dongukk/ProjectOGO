@@ -3,6 +3,7 @@ package com.pay.main;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,12 +45,20 @@ public class PayMain extends HttpServlet {
 		
 		
 		//오늘 날짜구하기
-	      LocalDate now =LocalDate.now();
-	      DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyMMdd");
-	      String today= now.format(formatter);
+	      LocalDate nowD =LocalDate.now();
+	      DateTimeFormatter dateFormatter=DateTimeFormatter.ofPattern("yyMMdd");
+	      String today= nowD.format(dateFormatter);
+	      LocalTime nowT =LocalTime.now();
+	      DateTimeFormatter timeFormatter=DateTimeFormatter.ofPattern("HHmmss");
+	      String time= nowT.format(timeFormatter);
 	        //System.out.println(formatedNow);
 	      //주문번호 orderNum
-	      String orderNum= userId+classNum+today;
+	      int idIndex =userId.indexOf("@");
+	      String orderUserId=userId;
+	      if (idIndex > -1) {
+	         orderUserId=userId.substring(0, idIndex);
+	      }
+	      String orderNum= today+time+classNum+orderUserId;
 		
 		
 		

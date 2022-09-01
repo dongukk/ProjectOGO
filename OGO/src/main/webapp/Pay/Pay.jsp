@@ -15,8 +15,8 @@
 <!-- ajax cdn -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-	<% ClassDTO cdto =(ClassDTO) request.getAttribute("cDTO"); 
-		MemberDTO mdto = (MemberDTO) session.getAttribute("login");
+	<% ClassDTO cDTO =(ClassDTO) request.getAttribute("cDTO"); 
+		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
 	%>
 	<%-- <% TestDTO dto = new TestDTO("김민제", 30);
 		System.out.print(dto);
@@ -24,15 +24,15 @@
 	
 	$(document).ready(function() {
 		$("#Pay_button1").click(function() {
-			console.log('<%= cdto %>'); /* 잘 넘어옴 */
-			console.log('<%= mdto %>');
+			console.log('<%= cDTO %>'); /* 잘 넘어옴 */
+			console.log('<%= mDTO %>');
 			$.ajax({
 				type: "get",
 				url: "PayMain",
 				data: {
 					/* "ordernum" : "9221220828", */
-					"userId" : "<%=mdto.getUserId()%>",
-					"classNum" : "<%=cdto.getClassNum()%>"
+					"userId" : "<%=mDTO.getUserId()%>",
+					"classNum" : "<%=cDTO.getClassNum()%>"
 					}, 
 				dataType: "json",
 				success: function (data, status, xhr) {
