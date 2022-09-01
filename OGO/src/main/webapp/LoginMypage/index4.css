@@ -3,7 +3,6 @@ main {
   padding: 0;
   box-sizing: border-box;
 }
-
 header {
   width: 100%;
   height: 90px;
@@ -20,7 +19,7 @@ header {
   background-repeat: no-repeat;
   background-position: center;
 }
-
+section{padding-top: 66px;}
 section a{
 text-decoration: none;
 } 

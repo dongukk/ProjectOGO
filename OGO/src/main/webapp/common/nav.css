@@ -1,32 +1,28 @@
 /* nav바 css */
 .navbar{ box-shadow: 0 0 5px black;
-	font-family: ‘SUIT Variable’, sans-serif; z-index: 2; margin: 0;
+	font-family: 'Nanum Gothic', sans-serif !important; font-weight : bold;
+	z-index: 2; margin: 0;
 	display: flex; justify-content: space-between; align-items: center; 
-	position: fixed !important; width: 100%; transition: 0.5s;
+	position: fixed; width: 100%; transition: 0.5s;
 	background: black; align-items: center !important;}	
 .navbar div{ display:flex; position:relative; align-items: center !important;} 
-.navbar #nav_logo img{ padding: 0px 10px; width: 150px; height: 60px;}
-.navbar #nav_Menu{ font-size: 25px; display: flex; list-style: none;   margin: 0 !important;
+.navbar #nav_logo img{ padding: 0 10px; width: 160px; height: 40px;}
+.navbar #nav_Menu{ font-size: 20px; display: flex; list-style: none;   margin: 0 !important;
 					padding: 5px; background-color: white; border-radius: 30px; }
 .navbar #nav_Menu li{ padding : 0px 20px; } 
 .navbar .nav-item a{flex: 1; display: block; height: 40px; line-height: 40px; color:black; text-decoration: none;
-					transition: 0.5s; opacity: .7;}	
-.navbar .nav-item a:hover{ opacity: 1;}		
+					transition: 0.5s; }		
 .navbar .nav-item a.on span{ color: #a45bba; }
 
 /* login바css */
-.navbar #loginName{ color: white; float: right;}
+.navbar #loginName{ color: white; float: right; font-size: 15px;}
 .navbar #nav_login{ display: flex; list-style: none;  padding-left: 0; margin: 0; padding: 0; text-align: center; }
 .navbar #nav_login ul{ margin: 0; padding: 0;}
 .navbar #nav_login li{ display: flex; list-style: none; padding: 0; text-align: center;  border : 0; float: right; }
 .navbar #nav_login a{ margin: 0px 10px; text-align: center; text-decoration-line: none; color: white; opacity: .8;}
 .navbar #nav_login a:hover{ opacity: 1;}
 
-/* 반응형 폰트 */
-@media screen and (max-width: 1100px){
-	.navbar #nav_Menu{ font-size: 20px;}
-	.navbar #nav_Menu li{ padding: 8px 10px;}
-}
+
 /* 반응형nav바 css */
 @media screen and (max-width: 900px){
   .navbar{
@@ -196,7 +192,7 @@
   width: 100%;
   height: 7px; /* height of progress bar */
   display: block;
-  background: white;
+  background: black;
   left: 0;
   top: 0; /* dock progress bar to bottom of page (change to "top" for top instead) */
   cursor: pointer;

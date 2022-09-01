@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.dto.login.MemberDTO" %>
+
+<!DOCTYPE html>
+<html>
+<head>
 <link rel="shortcut icon" href="common/img/OGO.ico">
 <meta charset="UTF-8">
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
-<link rel="stylesheet" href="common/nav.css?after">
-
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common/nav.css?after2">
+</head>
+<body>
 <!-- 프로그레스바 -->
 <div class="scrollindicator">
 	<div class="scrollprogress">
@@ -27,7 +32,7 @@
 			<a class="nav_menu" href="ClassListServlet"><span>행성카테고리</span></a>
 		</li>
 		<li class="nav-item">
-			<a class="nav_menu" href="MyPageServlet"><span>MYSPACE</span></a>
+			<a class="nav_menu" href="MyPageServlet"><span>MY SPACE</span></a>
 		</li>
 		<li class="nav-item">
 			<a class="nav_menu" href="NoticeListServlet"><span>공지사항&FAQ</span></a>
@@ -110,6 +115,7 @@
     </div>
   </div>
 </div>
+
 
 <script type="text/javascript">
 // 네비바 active 토글이벤트
@@ -213,4 +219,5 @@ toggleBtn.addEventListener("click", () => { //클릭시 이벤트
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+</body>
+</html>

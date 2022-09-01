@@ -4,8 +4,8 @@
 	/* list-style: none !important; *//* css적용안되서 아래에서 하위항목으로 다시적용 */ 
 	text-decoration: none; 
 	border-collapse:collapse; 
-	margin : 0px;
-	padding:0px;
+	margin : 0 ;
+	padding: 66px 0 0 0;
 	color : #000;
 }
 .classList li {
