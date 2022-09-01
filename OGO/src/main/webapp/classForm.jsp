@@ -13,17 +13,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <title>클래스 등록</title>
+    <!-- 네비바 -->
+	<jsp:include page="common/nav.jsp" flush="false"/>
     <style type="text/css">
-    	/* body{
-    		background: #f1f2f3;
-    	} */
-    	.one{
+    	.classCreate{
     		margin-top: 100px;
     		margin-left: 300px;
     		margin-right: 300px;
     		margin-bottom: 200px;
     	}
-    	#two{
+    	#classCreateTitle{
     		text-align: center;
     	}
     	#classFormButton{
@@ -228,11 +227,9 @@
 </script>
   </head>
   <body>
-<!-- 네비바 -->
-<jsp:include page="/common/nav.jsp" flush="false"/>
 
-  <div class="one">
-  	<div id="two">
+  <div class="classCreate">
+  	<div id="classCreateTitle">
   		<h1>클래스 등록</h1>
   	</div>
   	<br>

@@ -4,7 +4,7 @@ public class ClassDTO {
 	int classNum;
 	String className;
 	String userId;
-	String subcategory;
+	String SUBCATE_ID;
 	int price;
 	String schedule1;
 	String schedule2;
@@ -23,14 +23,14 @@ public class ClassDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ClassDTO(int classNum, String className, String userId, String subcategory, int price, String schedule1,
+	public ClassDTO(int classNum, String className, String userId, String sUBCATE_ID, int price, String schedule1,
 			String schedule2, String schedule3, String schedule4, String schedule5, String schedule6, String schedule7,
 			String schedule8, String schedule9, String schedule10, String place) {
 		super();
 		this.classNum = classNum;
 		this.className = className;
 		this.userId = userId;
-		this.subcategory = subcategory;
+		SUBCATE_ID = sUBCATE_ID;
 		this.price = price;
 		this.schedule1 = schedule1;
 		this.schedule2 = schedule2;
@@ -69,12 +69,12 @@ public class ClassDTO {
 		this.userId = userId;
 	}
 
-	public String getSubcategory() {
-		return subcategory;
+	public String getSUBCATE_ID() {
+		return SUBCATE_ID;
 	}
 
-	public void setSubcategory(String subcategory) {
-		this.subcategory = subcategory;
+	public void setSUBCATE_ID(String sUBCATE_ID) {
+		SUBCATE_ID = sUBCATE_ID;
 	}
 
 	public int getPrice() {
@@ -175,12 +175,14 @@ public class ClassDTO {
 
 	@Override
 	public String toString() {
-		return "ClassDTO [classNum=" + classNum + ", className=" + className + ", userId=" + userId + ", subcategory="
-				+ subcategory + ", price=" + price + ", schedule1=" + schedule1 + ", schedule2=" + schedule2
+		return "ClassDTO [classNum=" + classNum + ", className=" + className + ", userId=" + userId + ", SUBCATE_ID="
+				+ SUBCATE_ID + ", price=" + price + ", schedule1=" + schedule1 + ", schedule2=" + schedule2
 				+ ", schedule3=" + schedule3 + ", schedule4=" + schedule4 + ", schedule5=" + schedule5 + ", schedule6="
 				+ schedule6 + ", schedule7=" + schedule7 + ", schedule8=" + schedule8 + ", schedule9=" + schedule9
 				+ ", schedule10=" + schedule10 + ", place=" + place + "]";
 	}
+
+	
 
 	
 }
