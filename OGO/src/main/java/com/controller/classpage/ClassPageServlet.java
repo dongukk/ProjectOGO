@@ -26,7 +26,7 @@ import com.service.classpage.HeartService;
 public class ClassPageServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		//로그인 세션 받기
 		HttpSession session=request.getSession();
 		MemberDTO mDTO= (MemberDTO)session.getAttribute("login");
 		int classNum=221; //나중에 클래스Num 받아오기
@@ -40,7 +40,6 @@ public class ClassPageServlet extends HttpServlet {
 			//System.out.println(tuterId);//튜터 아이디 확인
 		//클래스 일정 정보
 		
-		
 		//튜터 닉네임
 		String nickName=service.selectNickName(tuterId);
 			//System.out.println(nickName);//튜터 닉네임 확인
@@ -50,7 +49,7 @@ public class ClassPageServlet extends HttpServlet {
 			//System.out.println(classContents);//content확인
 		
 		//찜 
-		String userId=""; //로그인이 되지 않은 경우에도 페이지 볼 수 있도록 처리하는 중
+		String userId=""; //로그인이 되지 않은 경우에도 페이지 볼 수 있도록 처리하는 중 //로그인 되지 않은 경우
 		if (mDTO!=null) { //로그인 된 경우
 			userId=mDTO.getUserId(); //유저 아이디 
 		}
