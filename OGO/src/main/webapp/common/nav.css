@@ -1,7 +1,7 @@
 /* nav바 css */
 .navbar{ box-shadow: 0 0 5px black;
 	font-family: 'Nanum Gothic', sans-serif !important; font-weight : bold;
-	z-index: 2; margin: 0;
+	z-index: 2; margin: 0; top:0;
 	display: flex; justify-content: space-between; align-items: center; 
 	position: fixed; width: 100%; transition: 0.5s;
 	background: black; align-items: center !important;}	
