@@ -15,7 +15,7 @@
 	
 	MemberDTO Mdto = (MemberDTO) session.getAttribute("login");
 %>
-<div style="font-size: 80px;   font-family: 'Secular One', sans-serif; color: black;" >NOTICE</div>
+<div style="font-size: 80px;   font-family: 'Secular One', sans-serif; color: black; padding-top: 66px;"  >NOTICE</div>
 <table id="notice_table1">
 <tr id="tr1"> <td>No.</td><td id="td2">제목</td><td id="td3">작성일</td><td>작성자</td> </tr>
 <% 
