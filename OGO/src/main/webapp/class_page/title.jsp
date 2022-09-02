@@ -9,7 +9,7 @@
 	ClassImgDTO imgDTO =(ClassImgDTO)request.getAttribute("imgDTO");
 	String ClassPhoto1=imgDTO.getClassPhoto1();
 	//카테고리별로 경로설정
-	String sCategory=cDTO.getSUBCATE_ID();
+	String sCategory=cDTO.getSubCategory();
 	String imgSrc="class_img/category/";
 	if (sCategory.equals("메이크업")||sCategory.equals("스타일링")){
 		imgSrc +="A_뷰티/";
