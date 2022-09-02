@@ -16,10 +16,4 @@
   <div id="classInfo" class="m-2">
 		<%= con_class %><br> 
   </div>
-  <%-- <div  class="row mb-5">
-	  <div class="col-sm-1"></div>
-	  <div id="classInfo" class="col-sm-11 name">
-		<%= con_class %><br> 
-	  </div>
-  </div> --%>
 </div>
