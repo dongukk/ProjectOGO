@@ -3,6 +3,7 @@ package com.controller.classpage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
@@ -43,20 +44,27 @@ public class ClassOrderInfoServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		MemberDTO mDTO= (MemberDTO) session.getAttribute("login");
 		String userId = mDTO.getUserId();
-		//파싱 확인
-//		System.out.println("classNumber:"+classNumber);
-//		System.out.println("selectSched:"+selectSched1+"\t"+selectSched2+"\t"+selectSched3+"\t"+selectSched4
-//				+"\t"+selectSched5+"\t"+selectSched6+"\t"+selectSched7+"\t"+selectSched8+"\t"+selectSched9
-//				+"\t"+selectSched10);
-//		System.out.println("userId:"+userId);
+		//확인
+		System.out.println("신청정보 classNumber:"+classNumber+" userId:"+userId+" selectSched:"+selectSched1
+				+"\t"+selectSched2+"\t"+selectSched3+"\t"+selectSched4+"\t"+selectSched5+"\t"+selectSched6
+				+"\t"+selectSched7+"\t"+selectSched8+"\t"+selectSched9+"\t"+selectSched10);
 		
 		//오늘 날짜구하기
-		LocalDate now =LocalDate.now();
-		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyMMdd");
-		String today= now.format(formatter);
+		LocalDate nowD =LocalDate.now();
+		DateTimeFormatter dateFormatter=DateTimeFormatter.ofPattern("yyMMdd");
+		String today= nowD.format(dateFormatter);
+		LocalTime nowT =LocalTime.now();
+		DateTimeFormatter timeFormatter=DateTimeFormatter.ofPattern("HH");
+		String time= nowT.format(timeFormatter);
 		  //System.out.println(formatedNow);
+		
 		//주문번호 orderNum
-		String orderNum= userId+classNumber+today;
+		int idIndex =userId.indexOf("@");
+		String orderUserId=userId;
+		if (idIndex > -1) {//userId에 @가 포함된 경우
+			orderUserId=userId.substring(0, idIndex);//@앞부분까지만 저장
+		}
+		String orderNum= today+time+classNumber+orderUserId;
 		
 		//유저가 이전에 같은 클래스 신청한 적 있는지 검사
 		ClassOrderService oService= new ClassOrderService();
@@ -67,12 +75,10 @@ public class ClassOrderInfoServlet extends HttpServlet {
 		  System.out.println("findResult: "+findResult);
 
 		String mesg="";
-		int findSchedResult=0;
-		if (findResult == 1) { //이전에 신청한 적이 있음
-			
-			mesg= "이미 결제(수강)한 클래스입니다. 다른 회차를 선택해주세요";
-		}else { //해당 클래스를 이전에 신청한 적이 없거나, 새로운 회차를 신청한 경우
-			//classorderinfo에 insert
+		if (findResult > 0) { //이전에 신청한 적이 있음
+			mesg= "이전에 수강한 클래스입니다. 다른 클래스를 신청해주세요";
+		}else { //해당 클래스를 이전에 신청한 적이 없는 경우
+			//classOrderInfo에 insert
 			ClassOrderDTO oDTO= new ClassOrderDTO(orderNum, userId, classNumber, price, null, "결제 대기중", selectSched1, 
 					selectSched2, selectSched3, selectSched4, selectSched5, selectSched6, selectSched7, 
 					selectSched8, selectSched9, selectSched10);
@@ -80,6 +86,7 @@ public class ClassOrderInfoServlet extends HttpServlet {
 			System.out.println("classOrderInfo insert 성공:"+result);
 			mesg= "성공";
 		}
+		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
 		out.print(mesg);//mesg 전송

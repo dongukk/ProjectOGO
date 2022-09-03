@@ -129,6 +129,10 @@
 			
 		})//수강회차 선택 end
 		
+		
+		
+		
+		
 		//수강결제 폼 submit-수강결제 시 (수강결제 버튼 클릭)
 		$("#payForm").on("submit", function() {
 			var count=0;
@@ -182,15 +186,15 @@
 		
 		
 		$("#Pay_button1").click(function() {
-			console.log('<%= cDTO %>'); /* 잘 넘어옴 */
-			console.log('<%= mDTO %>');
+		  
+		if (<%=userId%> != null) {			
 			$.ajax({
 				type: "get",
 				url: "PayMain",
 				data: {
-					/* "ordernum" : "9221220828", */
-					"userId" : "<%=mDTO.getUserId()%>",
-					"classNum" : "<%=cDTO.getClassNum()%>"
+					/* "ordernum" : "제발 지랄좀 하지마" */
+					"userId" : "<%=userId%>",
+					"classNum" : "<%=classNum%>"
 					}, 
 				dataType: "json",
 				success: function (data, status, xhr) {
@@ -206,9 +210,15 @@
 					/* console.log(status+error); */
 				}
 			});//ajax
+			
+			
+		}else {
+			e.preventDefault();
+			alert("로그인 후 이용해주세요");
+		}//else
+			
 		});//button.click
-
-		
+	
 		
 		
 		//스크롤시 nav tab 고정
@@ -306,7 +316,7 @@
 	<jsp:include page="class_page/comment_index.jsp" flush="true"></jsp:include>
 	<br>
 	<!-- 결제버튼 -->
-	<button id="Pay_button1" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">결제</button>
+<button id="Pay_button1" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">결제</button>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">
@@ -327,6 +337,8 @@
  	<br> 
  	<input type="hidden" id="customerName" value="">
  	<input type="hidden" id="orderNum" value="">
+ 	
+ 	
  	<section>
       <!-- ... -->
       <span>총 주문금액</span>
@@ -353,7 +365,7 @@
           orderId: CorderNum.value,
           orderName: Cname.innerText,
           customerName: Cusername.value,
-          successUrl:'http://localhost:8097/Pay/success.jsp',
+          successUrl:'http://localhost:8097/OGO/PaySuccess',
           failUrl: 'http://localhost:8097/Pay/fail.jsp',
         })
       })

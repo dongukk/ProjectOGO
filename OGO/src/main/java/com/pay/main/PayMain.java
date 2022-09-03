@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dto.pay.PayDTO;
 import com.service.pay.PayService;
@@ -37,10 +38,8 @@ public class PayMain extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//String ordernum = request.getParameter("ordernum"); //데이터 받기
 		String userId = request.getParameter("userId");
 		String classNum = request.getParameter("classNum");
-		System.out.println("\n\n\n\n\n"+ userId+ classNum);
 
 		
 		
@@ -49,7 +48,7 @@ public class PayMain extends HttpServlet {
 	      DateTimeFormatter dateFormatter=DateTimeFormatter.ofPattern("yyMMdd");
 	      String today= nowD.format(dateFormatter);
 	      LocalTime nowT =LocalTime.now();
-	      DateTimeFormatter timeFormatter=DateTimeFormatter.ofPattern("HHmmss");
+	      DateTimeFormatter timeFormatter=DateTimeFormatter.ofPattern("HH");
 	      String time= nowT.format(timeFormatter);
 	        //System.out.println(formatedNow);
 	      //주문번호 orderNum
@@ -60,7 +59,10 @@ public class PayMain extends HttpServlet {
 	      }
 	      String orderNum= today+time+classNum+orderUserId;
 		
-		
+	      
+	      
+	      HttpSession session = request.getSession();
+	      session.setAttribute("orderNum", orderNum);
 		
 		
 		
