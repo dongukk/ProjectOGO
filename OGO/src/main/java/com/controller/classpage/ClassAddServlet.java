@@ -80,7 +80,7 @@ public class ClassAddServlet extends HttpServlet {
 		//System.out.println(schedule1+"--"+schedule2+"--"+schedule3);
 		
 		String con_class =multi.getParameter("textClassInfo");
-		String con_tutor =multi.getParameter("textTutorInfo");
+		String con_tutor =multi.getParameter("textTutorInfo"); //나중에 튜터테이블에서 받아오기
 		String con_notice =multi.getParameter("textNotice");
 		String con_attention =multi.getParameter("textAttention");
 		
