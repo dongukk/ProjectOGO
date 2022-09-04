@@ -54,7 +54,7 @@ public class ClassOrderInfoServlet extends HttpServlet {
 		DateTimeFormatter dateFormatter=DateTimeFormatter.ofPattern("yyMMdd");
 		String today= nowD.format(dateFormatter);
 		LocalTime nowT =LocalTime.now();
-		DateTimeFormatter timeFormatter=DateTimeFormatter.ofPattern("HHmmss");
+		DateTimeFormatter timeFormatter=DateTimeFormatter.ofPattern("HH");
 		String time= nowT.format(timeFormatter);
 		  //System.out.println(formatedNow);
 		
