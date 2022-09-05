@@ -25,6 +25,22 @@
     </script>
  <% List<FaqDTO> list = (List<FaqDTO>) request.getAttribute("faqList");%>
  
+<<<<<<< HEAD
+<h1 >FAQ 자주 물어보는 질문</h1>
+
+<% for ( int i =0; i<list.size(); i++ )  {%>
+<div class="accordion accordion-flush" id="accordionFlushExample">
+ <div class="accordion-item" >
+    <h2 class="accordion-header" id="flush-heading<%=i%>">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%=i%>" aria-expanded="false" aria-controls="flush-collapse<%=i%>" style="background: #8041D9; color: #FFFFFF">
+        <%= list.get(i).getFaqtitle() %>
+      </button>
+    </h2>
+    <div id="flush-collapse<%=i%>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%=i%>" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body"><%= list.get(i).getFaqcontent() %></div>
+    </div>
+<% } %>
+=======
 <div style="display: flex; width: 1200px; height: 300px; position: absolute; left:18%; right:auto;">
 	<div>
 		<table>
@@ -57,4 +73,5 @@
 			
 			
 </div>
+>>>>>>> branch 'master' of https://github.com/dongukk/ProjectOGO.git
 
