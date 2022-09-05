@@ -19,9 +19,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <title>클래스 신청</title>
-<!-- 네비바 -->
-<jsp:include page="common/nav.jsp" flush="false"/>
-
+  
 <link rel="stylesheet" href="class_css/classPage.css">
 <link rel='stylesheet' href='class_comment_css/comment.css'>
 <%
@@ -173,9 +171,10 @@
 					},
 					success: function(data, status, xhr) {
 						console.log("orderInfo success");
-						if (data!="성공") {
+						if (data =="성공") {
 							alert(data);
-							/* 나의 버튼 트리거 */
+							$("#Pay_button1").trigger("click");
+							console.log("성공 제발");
 						}
 					},
 					error: function(xhr, status, e) {
@@ -194,7 +193,7 @@
 				type: "get",
 				url: "PayMain",
 				data: {
-					/* "ordernum" : "제발 지랄좀 하지마" */
+					/* "ordernum" :  */
 					"userId" : "<%=userId%>",
 					"classNum" : "<%=classNum%>"
 					}, 
@@ -279,10 +278,10 @@
 			
 	})//script
 </script>
-
 </head>
 <body>
-
+<!-- 네비바 -->
+<jsp:include page="common/nav.jsp" flush="false"/>
 
 <div class="wrap">
   <div id="right">
