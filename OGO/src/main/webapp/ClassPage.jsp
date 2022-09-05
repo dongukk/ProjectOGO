@@ -19,7 +19,9 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <title>클래스 신청</title>
-  
+<!-- 네비바 -->
+<jsp:include page="common/nav.jsp" flush="false"/>
+
 <link rel="stylesheet" href="class_css/classPage.css">
 <link rel='stylesheet' href='class_comment_css/comment.css'>
 <%
@@ -277,10 +279,10 @@
 			
 	})//script
 </script>
+
 </head>
 <body>
-<!-- 네비바 -->
-<jsp:include page="common/nav.jsp" flush="false"/>
+
 
 <div class="wrap">
   <div id="right">

@@ -80,9 +80,6 @@
 	  <div class="row mb-1">
 		  <div class="col-md-12" >
 		  	<div id="scheduleChoice" class="mt-2">
-		  		<!-- <div class='input-group mb-1' >
-		  		  <input type='text' class='form-control' value="선택 회차 : 날짜" readonly><br>
-		  		</div> -->
 		  	</div>
 		  </div>	  
 	  </div>

@@ -11,7 +11,7 @@
 	String ClassPhoto5=imgDTO.getClassPhoto5();
 	//카테고리별로 경로설정
 	ClassDTO cDTO=(ClassDTO)request.getAttribute("cDTO");
-	String sCategory=cDTO.getSubcategory();
+	String sCategory=cDTO.getSubCategory();
 	String imgSrc="class_img/category/";
 	if (sCategory.equals("메이크업")||sCategory.equals("스타일링")){
 		imgSrc +="A_뷰티/";
@@ -33,24 +33,6 @@
   <hr>
  
  <div class="classPhoto2 mb-5">
-	<!-- <div class="container">
-	  <div id="photo">
-    	<div class="photoBtn"> 왼쪽으로 넘기는 버튼
-    	  <img class="photoBtn2" id="leftBtn" src="class_img/leftbutton.png" width= "50px">
-    	</div>
-    	<div class="photo"> 이미지1
-    	  <img class="photoSize" id="photo1" src="class_img/1_04.jpg">
-    	</div>
-    	<div class="photo"> 이미지2
-    	  <img class="photoSize" id="photo2" src="class_img/1_05.jpg">
-    	</div>
-    	<div class="photoBtn"> 오른쪽으로 넘기는 버튼
-    	  <img class="photoBtn2" id="rightBtn" src="class_img/rightbutton.png" width= "50px">
-    	</div>
-      </div>
-    </div>  -->
-    
-    <!-- 부트스트랩 -->
     <div id="photoPart">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
