@@ -4,6 +4,11 @@
 	color: #FFFFFF;
 	} */
 	
+	#faq_flexbox{
+	text-align: center;
+	}
+	
+	
 	.faq_A{
 	display: none;
 	}

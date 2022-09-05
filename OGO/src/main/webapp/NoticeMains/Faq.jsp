@@ -25,25 +25,9 @@
     </script>
  <% List<FaqDTO> list = (List<FaqDTO>) request.getAttribute("faqList");%>
  
-<<<<<<< HEAD
-<h1 >FAQ 자주 물어보는 질문</h1>
-
-<% for ( int i =0; i<list.size(); i++ )  {%>
-<div class="accordion accordion-flush" id="accordionFlushExample">
- <div class="accordion-item" >
-    <h2 class="accordion-header" id="flush-heading<%=i%>">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%=i%>" aria-expanded="false" aria-controls="flush-collapse<%=i%>" style="background: #8041D9; color: #FFFFFF">
-        <%= list.get(i).getFaqtitle() %>
-      </button>
-    </h2>
-    <div id="flush-collapse<%=i%>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%=i%>" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body"><%= list.get(i).getFaqcontent() %></div>
-    </div>
-<% } %>
-=======
-<div style="display: flex; width: 1200px; height: 300px; position: absolute; left:18%; right:auto;">
+<div  id="faq_flexbox" style="display: flex; position:resize; width: 1200px; height: 300px; left:20%; right:20%; ">
 	<div>
-		<table>
+		<table class="faq_flex">
 			<tr>
 				<td style="font-family: 'Urbanist', sans-serif; font-size: 200px; color: black; line-height: 180px;">FAQ</td>
 			</tr>
@@ -54,7 +38,7 @@
 	</div>
 	
 				
-			<div style="position: relative; left: 10%; right:auto; width: 400px; ">
+			<div  class="faq_flex" style="position: relative; left: 10%; right:auto; width: 400px; ">
 			<% for ( int i =0; i<list.size(); i++ )  {%>
 			<div class="accordion accordion-flush" id="accordionFlushExample" style="border: 3px solid #c4c4c4; border-radius: 5px;">
 			 <div class="accordion-item w-75" ></div>
@@ -73,5 +57,4 @@
 			
 			
 </div>
->>>>>>> branch 'master' of https://github.com/dongukk/ProjectOGO.git
 
