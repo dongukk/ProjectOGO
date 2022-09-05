@@ -22,4 +22,18 @@ public class PayService {
 		return dto;
 	}
 
+	public int COS(String orderNum) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int COS = 0;
+		try {
+			COS = dao.COS(session, orderNum);
+		} finally {
+			session.commit();
+			session.close();
+		}
+		return COS;
+	}
+
+
+	
 }
