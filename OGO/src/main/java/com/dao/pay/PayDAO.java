@@ -10,5 +10,10 @@ public class PayDAO {
 		PayDTO dto = session.selectOne("PayMapper.selectOrder",ordernum);
 		return dto;
 	}
+	
+	public int COS(SqlSession session, String orderNum) {
+		int COS = session.update("PayMapper.ChangeStatus", orderNum);
+		return COS;
+	}
 
 }

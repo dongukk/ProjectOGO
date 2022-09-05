@@ -41,11 +41,11 @@ public class ClassNameSearchServlet extends HttpServlet {
 		map.put("userid", userid);
 		map.put("className", className);
 		ClassService service= new ClassService();
-		int result =service.searchClassName(map);
+		int result =service.searchClassName(map); //튜터의 클래스 중 동일 클래스명이 있는지 검색
 		String mesg="";
-		if (result > 0) {
+		if (result > 0) { //있는 경우
 			mesg="이미 등록한 클래스명입니다. 다른 클래스명을 입력해주세요";
-		}else {
+		}else { //없는 경우
 			mesg="등록 가능한 클래스명입니다";
 		}
 		response.setContentType("text/html;charset=utf-8");

@@ -26,6 +26,8 @@
 	arr[9] = cDTO.getSchedule10();
 	String s= null;
 %>
+<!-- 부트스트랩 번들 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     
 <div >
@@ -78,9 +80,6 @@
 	  <div class="row mb-1">
 		  <div class="col-md-12" >
 		  	<div id="scheduleChoice" class="mt-2">
-		  		<!-- <div class='input-group mb-1' >
-		  		  <input type='text' class='form-control' value="선택 회차 : 날짜" readonly><br>
-		  		</div> -->
 		  	</div>
 		  </div>	  
 	  </div>
