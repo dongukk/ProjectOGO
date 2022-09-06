@@ -175,6 +175,8 @@
 							alert(data);
 							$("#Pay_button1").trigger("click");
 							console.log("성공 제발");
+						}else {
+							alert(data);
 						}
 					},
 					error: function(xhr, status, e) {
