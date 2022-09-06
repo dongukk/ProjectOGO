@@ -138,6 +138,21 @@ public class MemberService {
 		return n;
 	}
 
+	public MemberDTO findId(HashMap<String, String> map) {
+		MemberDAO dao = new MemberDAO();
+		 SqlSession session = MySqlSessionFactory.getSession();
+		 MemberDTO dto = null; 
+		 try {
+		      dto = dao.findId(session, map);
+		 }catch (Exception e) {
+			e.printStackTrace();
+	      }finally {
+			session.close();
+	      }
+	      return dto;
+	}
+
+
 
 	
 	

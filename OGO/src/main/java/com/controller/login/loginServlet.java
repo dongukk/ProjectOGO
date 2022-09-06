@@ -1,19 +1,16 @@
 package com.controller.login;
 
-import java.awt.Window;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dao.login.MemberDAO;
 import com.dto.login.MemberDTO;
 import com.service.login.MemberService;
 
