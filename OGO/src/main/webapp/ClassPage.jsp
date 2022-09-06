@@ -172,7 +172,6 @@
 					success: function(data, status, xhr) {
 						console.log("orderInfo success");
 						if (data =="성공") {
-							alert(data);
 							$("#Pay_button1").trigger("click");
 							console.log("성공 제발");
 						}else {
