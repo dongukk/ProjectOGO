@@ -104,6 +104,10 @@ public class MemberDAO {
 		return result;  
 		  
 	  }
+	public MemberDTO findId(SqlSession session, HashMap<String, String> map) {
+		MemberDTO dto =  session.selectOne("MemberMapper.findId", map );
+		return dto;
+	}
 	  
 	  
 	  

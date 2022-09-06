@@ -101,7 +101,7 @@
 				<label for="userPasswd">PASSWORD</label>				
 			</div>
 			<div class="forgot" style="text-align: right;">			
-				<a href="#" onclick="location.href='LoginCURD/findId.jsp'">Forgot Id, password?</a>
+				<a href="#" onclick="location.href='LoginCURD/findId_Pw.jsp'">Forgot Id, password?</a>
 			</div>
 			<div class="btn-area" id="sublogin_btnarea">
 				<button type="submit" id="login_modalBtn">LOGIN</button><br><br>
