@@ -9,10 +9,12 @@
 	con_tutor=con_tutor.replaceAll("(\r\n|\r|\n|\n\r)", "<br>");//개행 작업
 %>
 <div id="classTutor" class="page mb-5">
-  <div class="name">
-    <h2>클래스 행성 튜터 소개</h2>
-  </div>
-	<hr>
+	<div class="classpage_tab2">
+	  <div class="name">
+	    <h2 class="tab_menu">클래스 행성 튜터 소개</h2>
+	  </div>
+	</div>  
+<div id="tab_scrollbar" class="classpage_tab2n">		
   <div class="row">
     <div class="col-sm-2">
 		<div class="tutor ProfileImg" id="tutor ProfileImg" style="text-align: center;">
@@ -28,4 +30,5 @@
 		</div>
 	</div>
   </div>
+ </div>
 </div>

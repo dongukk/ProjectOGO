@@ -11,7 +11,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="common/nav.css?after4">
+<link rel="stylesheet" href="common/nav.css?after5">
 </head>
 <body>
 <!-- 프로그레스바 -->
@@ -36,6 +36,9 @@
 		</li>
 		<li class="nav-item">
 			<a class="nav_menu" href="NoticeListServlet"><span>공지사항&FAQ</span></a>
+		</li>
+		<li class="nav-item">
+			<a class="nav_menu" href="ClassPage"><span>Class</span></a>
 		</li>
       </ul>
      

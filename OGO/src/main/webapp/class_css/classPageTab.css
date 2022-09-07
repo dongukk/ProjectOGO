@@ -1,0 +1,149 @@
+@charset "UTF-8";
+
+.classpage_box1{
+	position: relative;
+	width: 900px;
+	height: 490px;
+	
+}
+.classpage_box2{
+	position: relative;
+	width: 900px;
+	height: 490px;
+	bottom: 50px;
+}
+
+.classpage_tab1{
+	width: 280px;
+	height: 450px;
+	border: 2px solid rgb(200, 200, 200);
+	border-radius: 30px;
+	background-color: rgb(255, 255, 255);	
+	float: left;
+	z-index: 9;
+}
+
+.classpage_tab1-1{
+	position: absolute;
+	width: 280px;
+	height: 60px;
+	top: 80px;
+	
+}
+.classpage_tab2{
+	width: 280px;
+	height: 450px;
+	border: 2px solid rgb(200, 200, 200);
+	border-radius: 30px;
+	background-color: rgb(255, 255, 255);	
+	float: left;
+	z-index: 9;
+}
+.classpage_tab2-1{
+	position: absolute;
+	width: 280px;
+	height: 40px;
+	top: 120px;
+	
+}
+.classpage_tab2-2{
+	position: absolute;
+	width: 280px;
+	height: 60px;
+	top: 180px;
+	
+}
+
+.classpage_tab1n{
+	position: absolute;
+	left : 310px;
+	border: 2px solid rgb(200, 200, 200);
+	border-radius: 30px;
+    background-color: rgb(242,225,206);
+    width: 700px;
+	height: 450px;
+	padding: 8px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+
+.classpage_tab1-1n{
+	position: absolute;
+	left : 310px;
+	bottom: 40px;
+	border: 2px solid rgb(200, 200, 200);
+	border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    width: 700px;
+	height: 450px;
+	padding: 8px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+.classpage_tab2n{
+	position: absolute;
+	left : 310px;
+	border: 2px solid rgb(200, 200, 200);
+	border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    width: 700px;
+	height: 450px;
+	padding: 8px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+.classpage_tab2-1n{
+	position: absolute;
+	left : 310px;
+	bottom: 40px;
+	border: 2px solid rgb(200, 200, 200);
+	border-radius: 30px;
+    background-color: rgb(242,225,206);
+    width: 700px;
+	height: 450px;
+	padding: 8px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+.classpage_tab2-2n{
+	position: absolute;
+	left : 310px;
+	bottom: 40px;
+	border: 2px solid rgb(200, 200, 200);
+	border-radius: 30px;
+    background-color: rgb(235,225,253);
+    width: 700px;
+	height: 450px;
+	padding: 8px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+
+.tab_menu{
+	font-family: 'Jua', sans-serif;
+	text-align: center;
+}
+
+#tab_scrollbar::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+}
+
+/* 스크롤바 막대 설정*/
+#tab_scrollbar::-webkit-scrollbar-thumb{
+    background-color: rgb(138,43,226);
+    /* 스크롤바 둥글게 설정    */
+    border-radius: 40px;    
+}
+
+/* 스크롤바 뒷 배경 설정*/
+#tab_scrollbar::-webkit-scrollbar-track{
+    background-color: rgba(0,0,0,0);
+}
+	
+
+
+
+.classpageTab_hidden{
+	visibility: hidden;	
+}

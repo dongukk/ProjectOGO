@@ -11,7 +11,7 @@
 	String mesg = (String)session.getAttribute("mesg");
 	if(mesg!=null){
 %>
-	<script type="text/javascript">s
+	<script type="text/javascript">
 		alert("<%= mesg %>");
 	</script>
 <% 
