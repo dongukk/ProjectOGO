@@ -54,24 +54,5 @@
 	</form>
  
 </body>
-<script type="text/javascript">
-	function id_search() {
-		var frm = document.idfindscreen;
-	 	if (frm.member_name.value.length < 1) {
-		  alert("이름을 입력해주세요");
-		  return;
-		 }
-
-		 if (frm.member_phone.value.length != 13) {
-			  alert("핸드폰번호를 정확하게 입력해주세요");
-			  return;
-		 }
-
-		 frm.method = "post";
-		 frm.action = "findIdResult.jsp"; //넘어간화면
-		 frm.submit();  
-	 }
-
-</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </html>

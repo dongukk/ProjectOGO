@@ -98,7 +98,7 @@ public class MemberAddServlet extends HttpServlet {
 		
 			if(n==1) {
 				HttpSession session = request.getSession();
-				session.setAttribute("memberAdd",nickname+"님 회원가입성공");
+				session.setAttribute("mesg",nickname+"님 회원가입성공");
 				session.setAttribute("login",dto);
 				session.setMaxInactiveInterval(60*30);
 				response.sendRedirect("MainForm.jsp");

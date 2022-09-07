@@ -11,8 +11,8 @@
 	String mesg = (String)session.getAttribute("mesg");
 	if(mesg!=null){
 %>
-	<script type="text/javascript">s
-		alert("<%= mesg %>");
+	<script type="text/javascript">
+		alert(" <%= mesg %> "); 
 	</script>
 <% 
 	session.removeAttribute("mesg");

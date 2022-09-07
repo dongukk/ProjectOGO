@@ -75,8 +75,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	select *
     	from member
     	where userName = #{findName} and email1 = #{findEmail1} and email2 = #{findEmail2}
-    </select>
+     </select>
  	 
+ 	 <select id="findPw" parameterType="HashMap" resultType="MemberDTO" >
+    	select *
+    	from member
+    	where userId = #{findId} and email1 = #{findEmail1} and email2 = #{findEmail2}
+     </select>
  	 
- 	 
+ 	 <update id="newPw"  parameterType="HashMap">
+ 	 	update member set
+ 	 	userPasswd = #{newPw}
+ 	 	where userId = #{userId}
+ 	 </update>
 </mapper>

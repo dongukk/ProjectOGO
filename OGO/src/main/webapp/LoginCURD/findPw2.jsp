@@ -8,16 +8,30 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <style type="text/css">
+.newPw-form{
+	text-align: center;
+	margin: 200px; auto;
+	min-width: 400px;	
+}
+.newPw-section{
+	display: inline-block;
+	border: solid;
+	padding: 10px;
+	margin: 10px;
+}	
+.newPw-section div{
+	margin: 10px;
+	top : 10px;
+	padding: 10px 0px;
+}
+.input-group label{ margin: auto; padding-right: 10px;}
+.newPw{ padding-top: 20px !important;}
+.newPw2{ padding-bottom: 0px !important;}
+
 .container{
 	text-align: center;
 	margin-top: 300px;
-	min-width: 400px;	
-		
-}
-.found-success{
-	display: inline-block;
-	padding: 10px;
-	margin: 10px;
+	min-width: 400px;		
 }
 .found-fail{
 	display: inline-block;
@@ -27,23 +41,39 @@
 </style>
 </head>
 <body>
-<% String userId = (String)request.getAttribute("userId"); %>
- <form name="idsearch" method="post">
+<% 
+	String userId = (String)request.getAttribute("userId"); 
+%>
+ 
       <%
        if (userId != null) {
       %>
       
-      <div class = "container">
-      	<div class = "found-success">
-	      <h4>  회원님의 아이디는 <%=userId%> 입니다</h4> 
-	     </div>
-	     <div class = "found-login">
- 		    <input type="button" id="btnLogin" class="btn btn-dark" value="로그인" onClick="location.href='MainFormServlet'"/>
-       	</div>
-       </div>
+      <form class="newPw-form" method = "POST" action="PwUpdateServlet">
+      	<input type="hidden" name="userId" value="<%=userId%>">
+			<div class = "search-title">
+				<h3>비밀번호 찾기</h3>
+			</div>
+		<section class = "newPw-section">
+			<div class = "newPw">
+				<label>새 비밀번호</label>
+				<input type="text" name="newPw" size=25>
+			<br>
+			</div>
+			<div class = "newPw2">
+				<label>비밀번호 확인</label>
+				<input type="text" name="newPw2" size=25>
+			</div>
+			<br>
+		</section>
+		<div class ="btnSearch">
+			<button type="submit" class="btn btn-dark" name="enter">비밀번호 변경하기</button>
+	 	</div>
+	</form>
       <%
   } else {
  %>
+ 	<form name="idsearch" method="post">
         <div class = "container">
       	<div class = "found-fail">
 	      <h4>  등록된 정보가 없습니다 </h4>  
