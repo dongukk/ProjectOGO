@@ -28,7 +28,7 @@ public class ClassListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 RequestDispatcher dis =request.getRequestDispatcher("ClassList_home.jsp"); 
+		 RequestDispatcher dis =request.getRequestDispatcher("ClassList_home2(0907).jsp"); 
 		 dis.forward(request,response);
 	
 	}
