@@ -129,7 +129,7 @@
 			<li>
 			<div><h1>클래스 등록</h1></div>
 			<div>어떤 분야든 전문성을 갖고있다면, 지금 바로 클래스를 등록해주세요</div>
-			<div class="more2" onclick="location.href='ClassPage'">
+			<div class="more2" onclick="location.href='ClassCreateServlet'">
 			클래스 등록하기
 			</div>
 			</li>
