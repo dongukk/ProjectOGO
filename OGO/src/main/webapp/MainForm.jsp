@@ -12,7 +12,7 @@
 	if(mesg!=null){
 %>
 	<script type="text/javascript">
-		alert(" <%= mesg %> "); 
+		alert("<%= mesg %>");
 	</script>
 <% 
 	session.removeAttribute("mesg");

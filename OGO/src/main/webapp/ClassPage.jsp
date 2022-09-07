@@ -19,8 +19,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <title>클래스 신청</title>
-  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">  
 <link rel="stylesheet" href="class_css/classPage.css">
+<link rel="stylesheet" href="class_css/classPageTab.css">
 <link rel='stylesheet' href='class_comment_css/comment.css'>
 <%
 	String heartYN = (String)request.getAttribute("heartYN");
@@ -285,38 +288,44 @@
 <jsp:include page="common/nav.jsp" flush="false"/>
 
 <div class="wrap">
+	<!-- 탭 -->
+	<jsp:include page="class_page/class_pagetab.jsp" flush="true"></jsp:include>
   <div id="right">
 	<!-- 결제 박스 -->
 	<jsp:include page="class_page/box.jsp" flush="true"></jsp:include>
   </div>
   <div id="left">
-	<!-- 클래스 이미지, 클래스 이름 -->
-	<jsp:include page="class_page/title.jsp" flush="true"></jsp:include>
-	<br>
 	<!-- 네비탭 -->
-	<jsp:include page="class_page/classNavtab.jsp"></jsp:include>
+<%-- 	<jsp:include page="class_page/classNavtab.jsp"></jsp:include> --%>
 	<br>
-	<!-- 클래스 소개 -->
-	<jsp:include page="class_page/classInfo.jsp" flush="true"></jsp:include>
-	<br>
-	<!-- 튜터 소개 -->
-	<jsp:include page="class_page/tutorInfo.jsp" flush="true"></jsp:include>
-	<br>
-	<!-- 일정 및 장소 안내 -->
-	<jsp:include page="class_page/detail.jsp" flush="true"></jsp:include>
-	<br>
-	<!-- 클래스 포토 -->
-	<jsp:include page="class_page/classPhoto.jsp" flush="true"></jsp:include>
-	<br>
-	<!-- 공지사항 -->
-	<jsp:include page="class_page/notice.jsp" flush="true"></jsp:include>
-	<br>
-	<!-- 유의사항 -->
-	<jsp:include page="class_page/attention.jsp" flush="true"></jsp:include>
-	<br>
-	<!-- 수강생 후기 아래에 추가 -->
-	<jsp:include page="class_page/comment_index.jsp" flush="true"></jsp:include>
-	<br>
+		<!-- 클래스 이미지, 클래스 이름 -->
+		<jsp:include page="class_page/title.jsp" flush="true"></jsp:include>
+		<br>
+	<div class="classpage_box1">
+		<!-- 클래스 소개 -->
+		<jsp:include page="class_page/classInfo.jsp" flush="true"></jsp:include>
+		<br>
+		<!-- 일정 및 장소 안내 -->
+		<jsp:include page="class_page/detail.jsp" flush="true"></jsp:include>
+		<br>
+	</div>
+	<div class="classpage_box2">	
+		<!-- 튜터 소개 -->
+		<jsp:include page="class_page/tutorInfo.jsp" flush="true"></jsp:include>
+		<br>
+		<!-- 공지사항 -->
+		<jsp:include page="class_page/notice.jsp" flush="true"></jsp:include>
+		<br>
+		<!-- 유의사항 -->
+		<jsp:include page="class_page/attention.jsp" flush="true"></jsp:include>
+		<br>
+	</div>	
+		<!-- 클래스 포토 -->
+		<jsp:include page="class_page/classPhoto.jsp" flush="true"></jsp:include>
+		<br>
+		<!-- 수강생 후기 아래에 추가 -->
+		<jsp:include page="class_page/comment_index.jsp" flush="true"></jsp:include>
+		<br>
 	<!-- 결제버튼 -->
 <button id="Pay_button1" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">결제</button>
 

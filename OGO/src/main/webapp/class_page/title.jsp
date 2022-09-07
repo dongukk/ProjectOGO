@@ -31,7 +31,7 @@
 <div class="imgAll mb-4">
   <div>
 	<div id="bigImg" >
-	  <img src="<%=imgSrc+ClassPhoto1%>" height="70%" width="90%">
+	  <%-- <img src="<%=imgSrc+ClassPhoto1%>" height="70%" width="90%"> --%>
 	</div>
   </div> 
 </div>

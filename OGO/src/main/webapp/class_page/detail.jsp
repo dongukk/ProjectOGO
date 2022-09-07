@@ -19,9 +19,11 @@
 %>
 <div id="detail" class="page mb-5">
   <div class="name">
-    <h2>일정 및 장소 안내</h2>
+  	<div class="classpage_tab1-1">
+   	 <h2 class="tab_menu">일정 및 장소 안내</h2>
+    </div>
   </div>
-	<hr>
+   <div id="tab_scrollbar" class="classpage_tab1-1n classpageTab_hidden">
 	<div class="row">
 	  <div class="col-sm-2" id="classDetail1" style="text-align: center;">
 	  	<b style="font-size: 20px;">-일정 </b><br>
@@ -62,7 +64,7 @@
 		</div>
 		</div>
 	</div>
-			
+   </div>		
 		
 		
 		
