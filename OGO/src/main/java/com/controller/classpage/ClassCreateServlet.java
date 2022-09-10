@@ -30,7 +30,7 @@ public class ClassCreateServlet extends HttpServlet {
 			//나중에 alert mesg request나 session에 저장해서 전달 ("로그인 후 이용 가능합니다");
 			//나중에 튜터 인증 수단이 생기면 튜터인 경우에만 등록할 수 있도록 하고, 아닌 경우에는 
 				//"튜터 인증 후 클래스를 등록할 수 있습니다" 경고창 띄우기
-			nextPage= "MainForm.jsp";
+			nextPage= "ClassListServlet";
 		}
 		
 		RequestDispatcher dis =request.getRequestDispatcher(nextPage);
