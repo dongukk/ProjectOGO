@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ClassListCategoryMapper">
+	<select id="classB" resultType="ClassListCategoryDto" parameterType="string">
+	 	select classNum, className, userId ,price, schedule1, place, subcategory,cate_id
+    from CLASS class inner join sub_category s_cate on class.subcategory= s_cate.name 
+        inner join category cate on s_cate.cate_id = cate.id
+        where subcategory = #{subcategory}
+	</select>
+</mapper>

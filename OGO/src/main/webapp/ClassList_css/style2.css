@@ -210,6 +210,7 @@ text-align:center;
 	margin:10px auto;
 	position:sticky;
 	top:1000px;
+	font:#fff;
 }
 
 .category > li {
@@ -217,9 +218,14 @@ text-align:center;
 	text-align:center;
 	line-height:40px;
 	background-color:#9400D3;
-	font-size:18px;
 	transition: all .5s;
 	/*transition(애니메이션 속도 조절)은 효과가 필요한 대상에 직접 줘야함*/
+}
+.cate{
+	font:#fff;
+	font-size:16px;
+	border:none;
+	background-color:transparent;
 }
 
 .category a {

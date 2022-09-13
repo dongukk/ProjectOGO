@@ -1,3 +1,4 @@
+<%@page import="com.dto.ClassList.ClassListCategoryDto"%>
 <%@page import="java.util.List"%>
 <%@page import="com.dto.ClassList.ClassListDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -71,12 +72,11 @@
 <div class=filter>
 <div style="display:flex; justify-content:center; ">
 <!-- 버튼 요소 -->
-	<button data-value="all">all</button>
-	<button data-value="A">뷰티</button>
-	<button data-value="B">외국어</button>
-	<button data-value="C">댄스·뮤직</button>
-	<button data-value="D">요리·DIY</button>
-	<button data-value="E">드로잉·영상</button>
+	<button data-value="all" onclick="location.href='ClassListCategoryServlet'" >all</button>
+	<button data-value="new">최신순</button>
+	<button data-value="best">인기순</button>
+	<button data-value="desc">금액 높은 순</button>
+	<button data-value="asc">금액 낮은 순</button>
 </div>
 	
 	
@@ -102,7 +102,15 @@
 						</tr>
 		
 						<tr>
-						<% List<ClassListDto> listDTO = (List<ClassListDto>) request.getAttribute("listDTO"); %>
+						<%
+						 		List<ClassListCategoryDto> listcate = (List<ClassListCategoryDto>) request.getAttribute("listDTO");
+						 		List<ClassListDto> listall = (List<ClassListDto>) request.getAttribute("listall");	
+						%>
+							<%
+							if(listall!=null){
+								List<ClassListDto> listDTO=listall;
+							
+							%>
 						<% for(int i=0; i<listDTO.size(); i++){ %>
 						<td>
 						 	<table style=padding:15px>
@@ -163,7 +171,76 @@
 		<%
 			}//end for
 		%>
-						
+		<%
+			}else if(listcate!=null){
+				List<ClassListCategoryDto> listDTO=listcate;
+			
+		%>
+				<% for(int i=0; i<listDTO.size(); i++){ %>
+						<td>
+						 	<table style=padding:15px>
+										<tr>
+											<td>
+												
+											</td>
+										</tr>
+										<tr>
+										
+											<td height="10">
+										</tr>
+										<tr>
+											<td class= "td_default" align ="center">
+												<a class= "a_black" href=""> 
+												<br>
+												</a>
+												<font color="gray">
+												<!-- 이미지 더미// 나중에 이미지 연결 수정할 것 -->
+												<a href="#">
+												 <img src="classimg/B_lan/lan1_1.jpg" width="250" height="200">
+												</a>
+												</font>
+											</td>
+											
+										</tr>
+										<tr>
+											<td height="10">
+										</tr>
+										<tr>
+											<td class="td_name" align ="center" width='220px' height='45px' style="word-break:break-all"><strong>
+											<%= listDTO.get(i).getClassName() %></strong>
+											</td>
+										</tr>
+										<tr>
+											<td height="10">
+										</tr>
+										<tr>
+											<td class="td_price" align ="center">
+												<font color="red">
+													<%= listDTO.get(i).getPrice() %>	
+												</font>
+											</td>
+										</tr>
+									</table>
+								</td>
+							<!-- 한줄에 3개씩 보여주기 -->	
+						   <%
+						      if(i%3==0){
+						   %>
+						       <tr>
+						        <td height="30">
+						       </tr>
+						   <% 
+						      }//end if
+						   %>		
+								
+		<%
+			}//end for
+		%>
+			
+			
+		<%
+			}
+		%>
 					</table>
 				</td>
 			</tr>
@@ -207,39 +284,39 @@
 		<!-- 좌측 카테고리 -->
 		<ul class="category">
 		<li>
-			<a href="#">뷰티</a>
+			<button class=cate>뷰티</button>
 			<ul class="subcate">
-				<li><a href="#">메이크업</a></li>
-				<li><a href="#">스타일링</a></li>
+				<li><a href="ClassListCategoryServlet?subcategory=메이크업">메이크업</a></li>
+				<li><a href="ClassListCategoryServlet?subcategory=스타일링">스타일링</a></li>
 			</ul>
 		</li>
 		<li>
-			<a href="#">외국어</a>
+			외국어
 			<ul class="subcate">
-				<li><a href="#">영어</a>	
-				<li><a href="#">일본어·중국어</a>	
-				<li><a href="#">기타 외국어</a>	
+				<li><a href="ClassListCategoryServlet?subcategory=영어">영어</a>	
+				<li><a href="ClassListCategoryServlet?subcategory=일본어·중국어">일본어·중국어</a>	
+				<li><a href="ClassListCategoryServlet?subcategory=기타 외국어">기타 외국어</a>	
 			</ul>
 		</li>
 		<li>
-			<a href="#">댄스·뮤직</a>
+			댄스·뮤직
 			<ul class="subcate">
-				<li><a href="#">댄스</a>	
-				<li><a href="#">뮤직</a>	
+				<li><a href="ClassListCategoryServlet?subcategory=댄스">댄스</a>	
+				<li><a href="ClassListCategoryServlet?subcategory=뮤직">뮤직</a>	
 			</ul>
 		</li>
 		<li>
-			<a href="#">요리·공예</a>
+			요리·공예
 			<ul class="subcate">
-				<li><a href="#">요리·음료</a>	
-				<li><a href="#">공예·DIY</a>		
+				<li><a href="ClassListCategoryServlet?subcategory=요리·음료">요리·음료</a>	
+				<li><a href="ClassListCategoryServlet?subcategory=공예·DIY">공예·DIY</a>		
 			</ul>
 		</li>
 		<li>
-			<a href="#">드로잉·디자인·영상</a>
+			드로잉·디자인·영상
 			<ul class="subcate">
-				<li><a href="#">디자인</a>	
-				<li><a href="#">영상</a>	
+				<li><a href="ClassListCategoryServlet?subcategory=디자인">디자인</a>	
+				<li><a href="ClassListCategoryServlet?subcategory=영상">영상</a>	
 			</ul>
 		</li>
 		</ul>
