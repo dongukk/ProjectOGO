@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dto.login.MemberDTO;
+import com.service.classpage.ClassService;
 
 /**
  * Servlet implementation class ClassCreateServlet
@@ -25,12 +26,17 @@ public class ClassCreateServlet extends HttpServlet {
 		
 		String nextPage=null;
 		if (mDTO != null) {
+			ClassService cService= new ClassService();
+			String userId=mDTO.getUserId();
+			String tintroduce= cService.getTintroduce(userId).trim();
+			System.out.println(tintroduce);
+			request.setAttribute("tintroduce", tintroduce);
 			nextPage= "classForm.jsp";
 		}else {
 			//나중에 alert mesg request나 session에 저장해서 전달 ("로그인 후 이용 가능합니다");
 			//나중에 튜터 인증 수단이 생기면 튜터인 경우에만 등록할 수 있도록 하고, 아닌 경우에는 
 				//"튜터 인증 후 클래스를 등록할 수 있습니다" 경고창 띄우기
-			nextPage= "MainForm.jsp";
+			nextPage= "ClassListServlet";
 		}
 		
 		RequestDispatcher dis =request.getRequestDispatcher(nextPage);

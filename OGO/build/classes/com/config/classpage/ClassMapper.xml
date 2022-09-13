@@ -44,4 +44,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from class
 		where userid= #{userid} and className= #{className}
 	</select>
+	
+	<select id="getTintroduce" parameterType="string" resultType="string">
+		select tintroduce
+		from tutor
+		where userid= #{userId}
+	</select>
 </mapper>

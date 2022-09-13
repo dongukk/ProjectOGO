@@ -31,7 +31,7 @@
     </style>
 <%
 	MemberDTO mDTO =(MemberDTO)session.getAttribute("login");
-	
+	String tintroduce=(String)request.getAttribute("tintroduce");
 	String userId=mDTO.getUserId(); //튜터가 될 유저의 아이디
 %>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -378,7 +378,8 @@
 	  </div>
 	  <div class="mb-3">
 	  	<label for="textTutorInfo" class="form-label">튜터 소개</label>
-	  	<textarea class="form-control" id="textTutorInfo" name="textTutorInfo" rows="5"></textarea>
+	  	<textarea class="form-control" id="textTutorInfo" name="textTutorInfo" 
+	  	rows="5"><%if(tintroduce!=null){ %><%=tintroduce %><%} %></textarea><!-- tutor에 저장된 tintroduce 불러옴 -->
 	  </div>
 	  <div class="mb-3">
 	  	<label for="textNotice" class="form-label">클래스 공지사항</label>
