@@ -40,6 +40,11 @@ public class ClassDAO {
 		return num;
 	}
 
+	public String getTintroduce(SqlSession session, String userId) {
+		String tintroduce= session.selectOne("ClassMapper.getTintroduce", userId);
+		return tintroduce;
+	}
+
 //	public String selectClass(SqlSession session, String classId) {
 //		String con_class = session.selectOne("ClassMapper.selectClass", classId);
 //		return con_class;

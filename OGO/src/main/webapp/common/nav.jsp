@@ -11,7 +11,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="common/nav.css?after4">
+<link rel="stylesheet" href="common/nav.css?after5">
 </head>
 <body>
 <!-- 프로그레스바 -->
@@ -29,13 +29,16 @@
 			<a class="nav_menu" href="MainForm.jsp"><span>HOME</span></a>
 		</li> -->
         <li class="nav-item">
-			<a class="nav_menu" href="ClassListServlet"><span>행성카테고리</span></a>
+			<a class="nav_menu" href="ClassListCategoryServlet"><span>행성카테고리</span></a>
 		</li>
 		<li class="nav-item">
 			<a class="nav_menu" href="MyPageServlet"><span>MY SPACE</span></a>
 		</li>
 		<li class="nav-item">
 			<a class="nav_menu" href="NoticeListServlet"><span>공지사항&FAQ</span></a>
+		</li>
+		<li class="nav-item">
+			<a class="nav_menu" href="ClassPage"><span>Class</span></a>
 		</li>
       </ul>
      
@@ -101,7 +104,7 @@
 				<label for="userPasswd">PASSWORD</label>				
 			</div>
 			<div class="forgot" style="text-align: right;">			
-				<a href="">Forgot Id, password?</a>
+				<a href="#" onclick="location.href='LoginCURD/findId_Pw.jsp'">Forgot Id, password?</a>
 			</div>
 			<div class="btn-area" id="sublogin_btnarea">
 				<button type="submit" id="login_modalBtn">LOGIN</button><br><br>

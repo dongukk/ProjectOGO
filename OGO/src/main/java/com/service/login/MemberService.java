@@ -138,6 +138,49 @@ public class MemberService {
 		return n;
 	}
 
+	public MemberDTO findId(HashMap<String, String> map) {
+		MemberDAO dao = new MemberDAO();
+		 SqlSession session = MySqlSessionFactory.getSession();
+		 MemberDTO dto = null; 
+		 try {
+		      dto = dao.findId(session, map);
+		 }catch (Exception e) {
+			e.printStackTrace();
+	      }finally {
+			session.close();
+	      }
+	      return dto;
+	}
+
+	public MemberDTO findPw(HashMap<String, String> map) {
+		MemberDAO dao = new MemberDAO();
+		 SqlSession session = MySqlSessionFactory.getSession();
+		 MemberDTO dto = null; 
+		 try {
+		      dto = dao.findPw(session, map);
+		 }catch (Exception e) {
+			e.printStackTrace();
+	      }finally {
+			session.close();
+	      }
+	      return dto;
+	}
+
+	public int newPw(HashMap<String, String> map) {
+		SqlSession session=MySqlSessionFactory.getSession();
+		int n=0;
+		try {
+			MemberDAO dao=new MemberDAO();
+			n=dao.newPw(session, map);
+			session.commit();
+		
+		}finally {
+			session.close();
+		}
+		return n;
+	}
+
+
 
 	
 	

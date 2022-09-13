@@ -87,7 +87,7 @@
     margin-bottom: 10px;
     position: relative;	/* 요소 자기 자신의 원래 위치(static일 때의 위치)를 기준으로 배치 */
 }
-#createmember_Btn{ color: blue;}
+#createmember_Btn{ color: rgb(255,120,120);}
 #loginModal .subloingBtn:hover { opacity:1;}
 #naverlogin{
     border: 1px solid rgb(66, 192, 66);
@@ -116,10 +116,13 @@
 
 #login_modalbody {
 	font-family: 'Noto Sans KR', sans-serif;	/* 구글폰트에서 글자스타일 가져옴 */	
+	
 	margin: auto;	
 } 
 #login_modalcontent {
-	background-color: rgba(0,0,0,.7);
+	/* 보라색 */
+	background: linear-gradient(black,rgb(80,80,150),rgb(160,80,100),#17141d);  
+	border-radius: 20px;  
 }
 
 
@@ -155,7 +158,7 @@
 #loginModal .int-area input:focus + label,	/* focus 했을때 */
 #loginModal .int-area input:valid + label {	/* 값입력안하고 로그인 눌렀을때 */
 	 top: -2px;		/* 정해진 공간에서 2px정도 위로 */
-	 font-size: 13px; color: #166cea;	/* 13포인트까지, 파랑색으로 */
+	 font-size: 13px; color: #fff;	/* 13포인트까지, 파랑색으로 */
 }
 
 #sublogin_btnarea {
@@ -166,7 +169,7 @@
 #login_modalBtn {
 	width: 100%;
 	height: 50px;
-	background:rgb(255, 0, 255);
+	background:#999;
 	color: #fff;
 	font-size: 20px;
 	border: none;			/* 선없게 */

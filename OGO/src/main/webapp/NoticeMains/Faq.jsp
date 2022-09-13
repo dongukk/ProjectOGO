@@ -25,9 +25,9 @@
     </script>
  <% List<FaqDTO> list = (List<FaqDTO>) request.getAttribute("faqList");%>
  
-<div style="display: flex; width: 1200px; height: 300px; position: absolute; left:18%; right:auto;">
+<div  id="faq_flexbox" style="display: flex; position:resize; width: 1200px; height: 300px; left:20%; right:20%; ">
 	<div>
-		<table>
+		<table class="faq_flex">
 			<tr>
 				<td style="font-family: 'Urbanist', sans-serif; font-size: 200px; color: black; line-height: 180px;">FAQ</td>
 			</tr>
@@ -38,7 +38,7 @@
 	</div>
 	
 				
-			<div style="position: relative; left: 10%; right:auto; width: 400px; ">
+			<div  class="faq_flex" style="position: relative; left: 10%; right:auto; width: 400px; ">
 			<% for ( int i =0; i<list.size(); i++ )  {%>
 			<div class="accordion accordion-flush" id="accordionFlushExample" style="border: 3px solid #c4c4c4; border-radius: 5px;">
 			 <div class="accordion-item w-75" ></div>

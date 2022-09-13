@@ -351,9 +351,9 @@ $(function(){
 		<span id="tserviceOK2" style="color: gray;">내용을 모두 확인하였고 동의합니다.</span>
 		<br><br>
 		<div class="div_submit">
-			<button class="btn btn-default" type="submit">가입</button>	<!-- 임시로 로그인후 페이지 출력 -->
+			<button class="btn btn-default" type="submit">가입</button>
 			<button class="btn btn-default" type="reset">새로고침</button>
-			<button class="btn btn-default closeBtn" type="button" onclick="window.close();" id="close">닫기</button>
+			<button class="btn btn-default closeBtn" type="button" onclick="location.href='../MainFormServlet'" id="close">닫기</button>
 		</div>
 		
 		

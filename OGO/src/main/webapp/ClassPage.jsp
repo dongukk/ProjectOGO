@@ -13,14 +13,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- tosspayment -->
+<script src="https://js.tosspayments.com/v1"></script>
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <title>클래스 신청</title>
-<!-- 네비바 -->
-<jsp:include page="common/nav.jsp" flush="false"/>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">  
 <link rel="stylesheet" href="class_css/classPage.css">
+<link rel="stylesheet" href="class_css/classPageTab.css">
 <link rel='stylesheet' href='class_comment_css/comment.css'>
 <%
 	String heartYN = (String)request.getAttribute("heartYN");
@@ -36,6 +39,7 @@
 
 	
 %>
+<!-- ajax cdn -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -128,6 +132,10 @@
 			
 		})//수강회차 선택 end
 		
+		
+		
+		
+		
 		//수강결제 폼 submit-수강결제 시 (수강결제 버튼 클릭)
 		$("#payForm").on("submit", function() {
 			var count=0;
@@ -166,10 +174,11 @@
 					},
 					success: function(data, status, xhr) {
 						console.log("orderInfo success");
-						if (data!="성공") {
+						if (data =="성공") {
+							$("#Pay_button1").trigger("click");
+							console.log("성공 제발");
+						}else {
 							alert(data);
-						}else if (data=="성공") {
-							////////여기에 trigger//////////////
 						}
 					},
 					error: function(xhr, status, e) {
@@ -179,6 +188,43 @@
 				})//ajax end
 			}
 		}) //결제 폼 end
+		
+		
+		$("#Pay_button1").click(function() {
+		  
+		if (<%=userId%> != null) {			
+			$.ajax({
+				type: "get",
+				url: "PayMain",
+				data: {
+					/* "ordernum" :  */
+					"userId" : "<%=userId%>",
+					"classNum" : "<%=classNum%>"
+					}, 
+				dataType: "json",
+				success: function (data, status, xhr) {
+					$("#Pay_span1_CLASSNAME").html(data.CLASSNAME);
+					$("#Pay_span2_PLACE").html(data.PLACE);
+					$("#Pay_span3_countDate").html( data.countDate+"회");
+					$(".Pay_span4_price").html(data.price);
+					$("#customerName").val(data.customerName);
+					$("#orderNum").val(data.orderNum);
+					
+				},
+				error: function(xhr, status, error) {
+					/* console.log(status+error); */
+				}
+			});//ajax
+			
+			
+		}else {
+			e.preventDefault();
+			alert("로그인 후 이용해주세요");
+		}//else
+			
+		});//button.click
+	
+		
 		
 		//스크롤시 nav tab 고정
 		$(window).scroll(function() {
@@ -236,48 +282,109 @@
 			
 	})//script
 </script>
-
 </head>
 <body>
-
+<!-- 네비바 -->
+<jsp:include page="common/nav.jsp" flush="false"/>
 
 <div class="wrap">
+	<!-- 탭 -->
+	<jsp:include page="class_page/class_pagetab.jsp" flush="true"></jsp:include>
   <div id="right">
 	<!-- 결제 박스 -->
 	<jsp:include page="class_page/box.jsp" flush="true"></jsp:include>
   </div>
   <div id="left">
-	<!-- 클래스 이미지, 클래스 이름 -->
-	<jsp:include page="class_page/title.jsp" flush="true"></jsp:include>
-	<br>
 	<!-- 네비탭 -->
-	<jsp:include page="class_page/classNavtab.jsp"></jsp:include>
+<%-- 	<jsp:include page="class_page/classNavtab.jsp"></jsp:include> --%>
 	<br>
-	<!-- 클래스 소개 -->
-	<jsp:include page="class_page/classInfo.jsp" flush="true"></jsp:include>
-	<br>
-	<!-- 튜터 소개 -->
-	<jsp:include page="class_page/tutorInfo.jsp" flush="true"></jsp:include>
-	<br>
-	<!-- 일정 및 장소 안내 -->
-	<jsp:include page="class_page/detail.jsp" flush="true"></jsp:include>
-	<br>
-	<!-- 클래스 포토 -->
-	<jsp:include page="class_page/classPhoto.jsp" flush="true"></jsp:include>
-	<br>
-	<!-- 공지사항 -->
-	<jsp:include page="class_page/notice.jsp" flush="true"></jsp:include>
-	<br>
-	<!-- 유의사항 -->
-	<jsp:include page="class_page/attention.jsp" flush="true"></jsp:include>
-	<br>
-	<!-- 수강생 후기 아래에 추가 -->
-	<jsp:include page="class_page/comment_index.jsp" flush="true"></jsp:include>
-	<br>
+		<!-- 클래스 이미지, 클래스 이름 -->
+		<jsp:include page="class_page/title.jsp" flush="true"></jsp:include>
+		<br>
+	<div class="classpage_box1">
+		<!-- 클래스 소개 -->
+		<jsp:include page="class_page/classInfo.jsp" flush="true"></jsp:include>
+		<br>
+		<!-- 일정 및 장소 안내 -->
+		<jsp:include page="class_page/detail.jsp" flush="true"></jsp:include>
+		<br>
+	</div>
+	<div class="classpage_box2">	
+		<!-- 튜터 소개 -->
+		<jsp:include page="class_page/tutorInfo.jsp" flush="true"></jsp:include>
+		<br>
+		<!-- 공지사항 -->
+		<jsp:include page="class_page/notice.jsp" flush="true"></jsp:include>
+		<br>
+		<!-- 유의사항 -->
+		<jsp:include page="class_page/attention.jsp" flush="true"></jsp:include>
+		<br>
+	</div>	
+		<!-- 클래스 포토 -->
+		<jsp:include page="class_page/classPhoto.jsp" flush="true"></jsp:include>
+		<br>
+		<!-- 수강생 후기 아래에 추가 -->
+		<jsp:include page="class_page/comment_index.jsp" flush="true"></jsp:include>
+		<br>
 	<!-- 결제버튼 -->
-	<jsp:include page="Pay/Pay.jsp" flush="true"></jsp:include>
-	<br>
-	<h1><%= cDTO.getClassName() %></h1>
+<button id="Pay_button1" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">결제</button>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h4 id="offcanvasRightLabel">결제 목록을 확인해 주세요</h4>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <span id="Pay_span1_CLASSNAME"></span>
+    <br>
+    <br>
+    <span id="Pay_span2_PLACE"></span>
+    <br>
+    <br>
+    <span id="Pay_span3_countDate"></span> &nbsp;&nbsp;    
+    <span id="Pay_price" class="Pay_span4_price"></span>
+    <span>원</span>
+ 	<br>
+ 	<br> 
+ 	<input type="hidden" id="customerName" value="">
+ 	<input type="hidden" id="orderNum" value="">
+ 	
+ 	
+ 	<section>
+      <!-- ... -->
+      <span>총 주문금액</span>
+      <span class="Pay_span4_price" id="Pay_span4_price"></span>
+      <span>원</span>
+      <button id="payment-button">결제하기</button>
+    </section>
+    
+    <script>
+      var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
+      var tossPayments = TossPayments(clientKey)
+      var button = document.getElementById('payment-button') // 결제하기 버튼
+	  var Cname = document.getElementById("Pay_span1_CLASSNAME"); //결제할 class이름
+	  var Cprice = document.getElementById("Pay_span4_price");
+      var CnameT = Cname.innerText/* +"외 3건" */;
+      var Cusername = document.getElementById("customerName");
+      var CorderNum = document.getElementById("orderNum");
+	  
+      button.addEventListener('click', function () {
+    	  console.log(CnameT); //????????????????????????????????왜때문 빈칸????????????????
+
+        tossPayments.requestPayment('카드', {
+          amount: Cprice.innerText,
+          orderId: CorderNum.value,
+          orderName: Cname.innerText,
+          customerName: Cusername.value,
+          successUrl:'http://localhost:8097/OGO/PaySuccess',
+          failUrl: 'http://localhost:8097/Pay/fail.jsp',
+        })
+      })
+    </script>
+
+  </div>
+</div>
+ 	
   </div>
 <br>
 </div>

@@ -57,6 +57,6 @@ a {
 
 <jsp:include page="../NoticeMains/Faq.jsp"></jsp:include>
 <br>
-<jsp:include page="../common/OGO_footer.jsp"></jsp:include>>
+<jsp:include page="../common/OGO_footer.jsp"></jsp:include>
 </body>
 </html>

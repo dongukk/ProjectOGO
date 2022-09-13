@@ -45,15 +45,14 @@ public class MemberDAO {
 		return n;
 	}
     public MemberDTO mypage(SqlSession session, String userid) {
-		MemberDTO n =session.selectOne("MemberMapper.mypage", userid);
+		MemberDTO n = session.selectOne("MemberMapper.mypage", userid);
 		return n;
 	}
 	
-	  public int memberUpdate(SqlSession session, MemberDTO dto) {
-	  
-	  int n=session.update("MemberMapper.memberUpdate", dto); 
+    public int memberUpdate(SqlSession session, MemberDTO dto) {  
+	  int n = session.update("MemberMapper.memberUpdate", dto); 
 	  return n; 
-	  }
+	}
 	 
 	  public boolean deleteID(String id, String pw) {
 		  String driver = "oracle.jdbc.driver.OracleDriver";
@@ -104,6 +103,18 @@ public class MemberDAO {
 		return result;  
 		  
 	  }
+	public MemberDTO findId(SqlSession session, HashMap<String, String> map) {
+		MemberDTO dto =  session.selectOne("MemberMapper.findId", map );
+		return dto;
+	}
+	public MemberDTO findPw(SqlSession session, HashMap<String, String> map) {
+		MemberDTO dto =  session.selectOne("MemberMapper.findPw", map );
+		return dto;
+	}
+	public int newPw(SqlSession session, HashMap<String, String> map) {
+		int n = session.update("MemberMapper.newPw", map); 
+		return n; 
+	}
 	  
 	  
 	  
