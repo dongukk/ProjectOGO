@@ -105,4 +105,16 @@ public class ClassService {
 		return num;
 	}
 
+	public String getTintroduce(String userId) {
+		SqlSession session= MySqlSessionFactory.getSession();
+		String tintroduce= null;
+		try {
+			dao= new ClassDAO();
+			tintroduce= dao.getTintroduce(session, userId);
+		} finally {
+			session.close();
+		}
+		return tintroduce;
+	}
+
 }
