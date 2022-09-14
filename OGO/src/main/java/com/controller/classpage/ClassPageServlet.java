@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.dto.classpage.ClassCommentDTO;
 import com.dto.classpage.ClassDTO;
 import com.dto.classpage.ClassImgDTO;
 import com.dto.login.MemberDTO;
+import com.service.classpage.ClassCommentService;
 import com.service.classpage.ClassService;
 import com.service.classpage.ContentService;
 import com.service.classpage.HeartService;
@@ -78,6 +80,10 @@ public class ClassPageServlet extends HttpServlet {
 		
 		//클래스 등록 페이지 테스트 위한 session
 		session.setAttribute("cDTO", cDTO);
+		
+		List<ClassCommentDTO> cmtlist = ClassCommentService.view();
+		request.setAttribute("commentlist", cmtlist);
+		System.out.println(cmtlist);
 		
 		RequestDispatcher dis =request.getRequestDispatcher("ClassPage.jsp");
 		dis.forward(request, response);

@@ -32,14 +32,17 @@ public class ClassCommentListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
-		String comment_notice =request.getParameter("comment_notice");
-		System.out.println(comment_notice);
+		/*
+		 * String comment_notice =request.getParameter("comment_notice");
+		 * System.out.println(comment_notice);
+		 */
 		
 		 
 		
 		//조회
 		List<ClassCommentDTO> cmtlist = ClassCommentService.view();
 		request.setAttribute("commentlist", cmtlist);
+		System.out.println(cmtlist);
 		
 		request.getRequestDispatcher("class_page/comment_index.jsp").forward(request, response);
 	}
