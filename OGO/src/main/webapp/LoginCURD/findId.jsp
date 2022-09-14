@@ -27,6 +27,25 @@
 	.find-name{ padding-top: 20px !important;}
 	.find-email{ padding-bottom: 0px !important;}
 </style>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#enter").click(function(){
+		var findName = $("#findName").val();
+		var findEmail = $("#findEmail").val();
+
+		if(findName.length==0){
+			event.preventDefault();	
+			alert("아이디를 입력해주세요.");
+		} else if(findEmail.length==0) {
+			event.preventDefault();	
+			alert("이메일을 입력해주세요.");	
+		} else if (!findEmail.includes('@')) {
+			event.preventDefault();	
+			alert("이메일에 @ 필수입력 하세요.");
+		}
+	});	// end enter
+}); // end ready
+</script>
 </head>
 
 <body>
@@ -38,17 +57,17 @@
 		<section class = "form-search">
 			<div class = "find-name">
 				<label>이름</label>
-				<input type="text" name="findName" placeholder = "username" size=25>
+				<input type="text" name="findName" id="findName" placeholder = "username" size=25>
 			<br>
 			</div>
 			<div class = "find-email">
 				<label>이메일</label>
-				<input type="text" name="findEmail" placeholder = "@email" size=25>
+				<input type="text" name="findEmail" id="findEmail" placeholder = "@email" size=25>
 			</div>
 			<br>
 		</section>
 		<div class ="btnSearch">
-			<button type="submit" class="btn btn-dark" name="enter">찾기</button>
+			<button type="submit" class="btn btn-dark" name="enter" id="enter">찾기</button>
 			<button type="button" class="btn btn-dark" name="cancle" onClick="history.back()">취소</button>
 	 	</div>
 	</form>
