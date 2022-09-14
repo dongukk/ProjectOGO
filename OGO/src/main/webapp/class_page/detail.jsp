@@ -29,16 +29,12 @@
 	  	<b style="font-size: 20px;">-일정 </b><br>
 	  </div>
 	  <div class="col-sm-10">
-	  		1회차 - <%=schedule1 %><br>
-			2회차 - <% if(schedule2!=null){out.print(schedule2);}else{%>해당 클래스의 2회차 일정은 없습니다.<%}%><br>
-			3회차 - <% if(schedule3!=null){out.print(schedule3);}else{%>해당 클래스의 3회차 일정은 없습니다.<%}%><br>
-			4회차 - <% if(schedule4!=null){out.print(schedule4);}else{%>해당 클래스의 4회차 일정은 없습니다.<%}%><br>
-			5회차 - <% if(schedule5!=null){out.print(schedule5);}else{%>해당 클래스의 5회차 일정은 없습니다.<%}%><br>
-			6회차 - <% if(schedule6!=null){out.print(schedule6);}else{%>해당 클래스의 6회차 일정은 없습니다.<%}%><br>
-			7회차 - <% if(schedule7!=null){out.print(schedule7);}else{%>해당 클래스의 7회차 일정은 없습니다.<%}%><br>
-			8회차 - <% if(schedule8!=null){out.print(schedule8);}else{%>해당 클래스의 8회차 일정은 없습니다.<%}%><br>
-			9회차 - <% if(schedule9!=null){out.print(schedule9);}else{%>해당 클래스의 9회차 일정은 없습니다.<%}%><br>
-			10회차 - <% if(schedule10!=null){out.print(schedule10);}else{%>해당 클래스의 10회차 일정은 없습니다.<%}%><br>
+	  	<%	String[] schedArr= {schedule1,schedule2,schedule3,schedule4,schedule5,
+	  			schedule6,schedule7,schedule8,schedule9,schedule10}; 
+	  		for(int i=0;i<schedArr.length;i++){
+	  			String sched=schedArr[i];%>
+	  			<%=(i+1)%>회차 - <%if(sched!=null){out.print(sched);}else{%>해당 클래스의 <%=(i+1)%>회차 일정은 없습니다.<%} %><br>
+	  	<%	}	%>	
 			<br><br>
 	  </div>
 	</div>
