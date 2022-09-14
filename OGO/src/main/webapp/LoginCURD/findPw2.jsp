@@ -39,6 +39,28 @@
 	margin: 10px;
 }
 </style>
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$("#enter").click(function(){
+		var newPw = $("#newPw").val();
+		var newPw2 = $("#newPw2").val();
+		
+		if(newPw.length==0){
+			event.preventDefault();	
+			alert("변경할 비밀번호를 입력하세요");
+		} else if(newPw2.length==0){
+			event.preventDefault();	
+			alert("비밀번호 확인을 입력하세요");
+		} 
+		if(newPw != newPw2){
+			event.preventDefault();	
+			alert("비밀번호가 일치하지않습니다.");
+		}
+	});	// end enter
+	
+});	// end ready
+</script>
 </head>
 <body>
 <% 
@@ -57,17 +79,17 @@
 		<section class = "newPw-section">
 			<div class = "newPw">
 				<label>새 비밀번호</label>
-				<input type="text" name="newPw" size=25>
+				<input type="text" name="newPw" id="newPw" size=25>
 			<br>
 			</div>
 			<div class = "newPw2">
 				<label>비밀번호 확인</label>
-				<input type="text" name="newPw2" size=25>
+				<input type="text" name="newPw2" id="newPw2" size=25><br>
 			</div>
 			<br>
 		</section>
 		<div class ="btnSearch">
-			<button type="submit" class="btn btn-dark" name="enter">비밀번호 변경하기</button>
+			<button type="submit" class="btn btn-dark" name="enter" id="enter">비밀번호 변경하기</button>
 	 	</div>
 	</form>
       <%
