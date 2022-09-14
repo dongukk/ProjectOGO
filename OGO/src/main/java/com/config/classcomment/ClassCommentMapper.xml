@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="ClassCommentMapper">
 	<select id="view" resultType="ClassCommentDTO">
 	 	select comment_no, comment_notice, comment_date ,USERID, CLASSNUM
-	 	from class_comment;
+	 	from class_comment
 	
 	</select>
 	

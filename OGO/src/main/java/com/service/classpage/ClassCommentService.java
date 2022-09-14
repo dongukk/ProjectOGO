@@ -25,20 +25,6 @@ public class ClassCommentService {
 
 	
 
-	public ClassComment_rowDTO selectPage(int currentPage) {
-		SqlSession session = MySqlSessionFactory.getSession();
-		ClassComment_rowDTO cmt_rowDTO = null;
-		try {
-			cmt_rowDTO = dao.selectPage(session,currentPage);
-		} finally {
-			session.close();
-		}
-		return cmt_rowDTO;
-
-	}
-
-
-	
 	
 	
 }//end class

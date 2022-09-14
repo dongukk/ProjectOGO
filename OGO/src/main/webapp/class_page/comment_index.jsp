@@ -9,10 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Jua&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@900&family=Sunflower:wght@300&display=swap" rel="stylesheet">
 	<link rel='stylesheet' href='comment.css'>
     <form id="cmt_form">
-    
-    <% 
-	List<ClassCommentDTO> list = (List<ClassCommentDTO>) request.getAttribute("commentlist"); 
-%>
+
     
 	        <div class="cmt_header cmheader">수강생 후기
 	        </div> <!--header-->
@@ -29,7 +26,30 @@
 	        <div class="img1"></div>
 	        <div class="img2"></div>
 	        <div class="img3"></div>
-	    
+	        
+	        <%
+	List<ClassCommentDTO> cmtlist = (List<ClassCommentDTO>) request.getAttribute("commentlist"); 
+	for(int i=0; i< cmtlist.size(); i++){
+%>
+		 
+	<%if(i==0||i%3==0) { %>
+	        <div class="notice1"><br>
+	        	<p id="notice_detail"><b>&nbsp&nbsp<%=cmtlist.get(i).getComment_notice()%></b></p>
+	        </div> <!--임시 text DB연동-->
+	<%} %>
+	<%if(i==1||i%3==1) { %>
+	        <div class="notice2"><br>
+	        	<p id="notice_detail"><b>&nbsp&nbsp<%=cmtlist.get(i).getComment_notice()%></b></p>
+	        </div> <!--임시 text DB연동-->
+	<%} %>
+	<%if(i==2||i%3==2) { %>
+	        <div class="notice3"><br>
+	        	<p id="notice_detail"><b>&nbsp&nbsp<%=cmtlist.get(i).getComment_notice()%></b></p>
+	        </div> <!--임시 text DB연동-->
+	<%} %>
+	<% 
+	} 
+%>		        	    
 
 	        <button class="button_body" id="cmt_button1">글쓰기</button>
         

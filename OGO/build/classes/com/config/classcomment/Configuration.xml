@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</settings>
 
    <typeAliases>
-    <typeAlias type="com.dto.classpage.ClassCommentDto" alias="ClassCommentDTO"/>
+    <typeAlias type="com.dto.classpage.ClassCommentDTO" alias="ClassCommentDTO"/>
    </typeAliases>
    
 	<environments default="development">
