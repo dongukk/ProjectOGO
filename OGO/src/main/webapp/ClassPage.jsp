@@ -173,10 +173,10 @@
 						classPrice : $("#classPrice").val()
 					},
 					success: function(data, status, xhr) {
+						event.preventDefault();
 						console.log("orderInfo success");
 						if (data =="성공") {
 							$("#Pay_button1").trigger("click");
-							console.log("성공 제발");
 						}else {
 							alert(data);
 						}
@@ -327,7 +327,7 @@
 		<jsp:include page="class_page/comment_index.jsp" flush="true"></jsp:include>
 		<br>
 	<!-- 결제버튼 -->
-<button id="Pay_button1" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">결제</button>
+<button id="Pay_button1" class="btn btn-primary" type="button" hidden="hidden" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">결제</button>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">
