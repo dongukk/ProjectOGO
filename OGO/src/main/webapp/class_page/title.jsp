@@ -8,6 +8,7 @@
 	String nickName = (String)request.getAttribute("nickName");
 	ClassImgDTO imgDTO =(ClassImgDTO)request.getAttribute("imgDTO");
 	String ClassPhoto1=imgDTO.getClassPhoto1();
+	String tutorProfile= (String)request.getAttribute("tutorProfile");
 	//카테고리별로 경로설정
 	String sCategory=cDTO.getSubCategory();
 	String imgSrc="class_img/category/";
@@ -25,7 +26,7 @@
 %>   
 <div class="mt-4 mb-4">
 	<p style="font-size: 39px"><b><%=className%></b></p>
-	<img src="class_img/tutor_2.png" width="40px" height="40px">&nbsp;
+	<img src="upload/member/<%=tutorProfile %>" width="40px" height="40px">&nbsp;
 	<%=nickName %> 튜터
 </div> 
 <div class="imgAll mb-4">

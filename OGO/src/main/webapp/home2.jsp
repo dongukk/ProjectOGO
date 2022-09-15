@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="ClassList_css/style2.css">
 <meta charset="UTF-8">
 <title>OGO : 행성 카테고리</title>
+<jsp:include page="class_page/classOpenLogin.jsp"></jsp:include>
 </head>
 <body>
 	<div class="wrap">
