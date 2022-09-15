@@ -38,13 +38,16 @@ public class ClassPageServlet extends HttpServlet {
 		ClassDTO cDTO= service.selectClass(classNum); //class 정보
 			//System.out.println(cDTO);//dto 확인
 		
-		String tuterId= cDTO.getUserId(); //클래스의 튜터 아이디 - 나중에 변수명 바꾸기
+		String tutorId= cDTO.getUserId(); //클래스의 튜터 아이디 - 나중에 변수명 바꾸기
 			//System.out.println(tuterId);//튜터 아이디 확인
 		//클래스 일정 정보
 		
 		//튜터 닉네임
-		String nickName=service.selectNickName(tuterId);
+		String nickName=service.selectNickName(tutorId);
 			//System.out.println(nickName);//튜터 닉네임 확인
+		//튜터 프로필 이미지
+		String tutorProfile= service.userProfilePhoto(tutorId);
+			System.out.println(tutorId+" tutorProfile: "+tutorProfile);//튜터 프로필 이미지 확인
 		//클래스소개,튜터소개,일정장소,유의사항,공지사항-resultMap
 		ContentService conService= new ContentService();
 		HashMap classContents =conService.selectContent(classNum); 
@@ -77,6 +80,7 @@ public class ClassPageServlet extends HttpServlet {
 		request.setAttribute("nickName", nickName);
 		request.setAttribute("classContents", classContents);
 		request.setAttribute("imgDTO", imgDTO); //클래스 별 이미지 
+		request.setAttribute("tutorProfile", tutorProfile); //튜터 프로필 이미지
 		
 		//클래스 등록 페이지 테스트 위한 session
 		session.setAttribute("cDTO", cDTO);

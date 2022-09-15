@@ -82,7 +82,7 @@
 				alert("클래스 공지사항을 입력해주세요");
 				event.preventDefault();
 			}else if (textAttention.length==0) {
-				alert("클래스 유희사항을 입력해주세요");
+				alert("클래스 유의사항을 입력해주세요");
 				event.preventDefault();
 			}else{
 				alert("클래스 등록이 완료되었습니다.");

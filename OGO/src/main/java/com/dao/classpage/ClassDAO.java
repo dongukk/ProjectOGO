@@ -45,6 +45,11 @@ public class ClassDAO {
 		return tintroduce;
 	}
 
+	public String userProfilePhoto(SqlSession session, String tuterId) {
+		String tutorProfile= session.selectOne("ClassMapper.userProfilePhoto", tuterId);
+		return tutorProfile;
+	}
+
 //	public String selectClass(SqlSession session, String classId) {
 //		String con_class = session.selectOne("ClassMapper.selectClass", classId);
 //		return con_class;

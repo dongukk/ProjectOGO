@@ -117,4 +117,16 @@ public class ClassService {
 		return tintroduce;
 	}
 
+	public String userProfilePhoto(String tuterId) {
+		SqlSession session= MySqlSessionFactory.getSession();
+		String tutorProfile= null;
+		try {
+			dao= new ClassDAO();
+			tutorProfile= dao.userProfilePhoto(session, tuterId);
+		} finally {
+			session.close();
+		}
+		return tutorProfile;
+	}
+
 }

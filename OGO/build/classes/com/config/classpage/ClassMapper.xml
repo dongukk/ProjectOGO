@@ -50,4 +50,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from tutor
 		where userid= #{userId}
 	</select>
+	
+	<select id="userProfilePhoto" parameterType="string" resultType="string">
+		select PROFILEPHOTO
+		from member
+		where userid= #{tutorId}
+	</select>
 </mapper>
