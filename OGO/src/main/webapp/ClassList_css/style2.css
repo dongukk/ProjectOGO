@@ -36,7 +36,8 @@ h1{
 }
 
 .intro_bg{
-	background-image:url("image/intro3.jpg");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))
+		url("../ClassList_img/intro3.jpg"); 
 	background-repeat:no-repeat;
 	width:100%;
 	height:714px;
@@ -340,7 +341,7 @@ text-align:center;
 .main_text2 {
 	width:100%;
 	height:418px;
-	background-image:url("image/footer00.png");
+	background-image:url("ClassList_img/footer00.png");
 	background-repeat:no-repeat;
 }
 
