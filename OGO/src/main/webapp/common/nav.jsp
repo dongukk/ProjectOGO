@@ -92,8 +92,8 @@
 		<img src="LoginImg/login.jpg" id="loginmodal_logo">
 		<h1 style="text-align: center;"><a href="createMemberServlet" style="text-decoration: none;" id="createmember_Btn">OGO가 처음이신가요?</a><br></h1>	
 			<br>
-		<form action="loginServlet" id="loginform">	<!-- 로그인하면 가는 페이지 삽입할것-->
-			<div class="int-area">	<!-- div(전체적인 틀을 잡아줌, 각각의 블럭을 알맞게 배치) -->
+		<form action="loginServlet" id="loginform">	
+			<div class="int-area">	
 				<input type="text" name="userId" id="userId"
 				autocomplete="off" required>	<!-- autocomplete(이전에 입력한 비슷한값들 드롭다운 옵션), required(폼 데이터(form data)가 서버로 제출되기 전 반드시 채워져 있어야 하는 입력 필드를 명시) -->
 				<label for="userId">USER NAME</label>	<!-- label(for속성이용 다른요소와 결합가능) -->			
