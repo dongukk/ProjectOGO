@@ -16,7 +16,7 @@
 			<div class="header">
 				<ul class="nav">
 				<a href="#" id="logo">
-					<img src="image/whitelogo.png" width="150" height="60">
+					<img src="ClassList_img/whitelogo.png" width="150" height="60">
 				</a>
 				
 				<li><a href="#id_main_text0">행성 카테고리</a></li>
@@ -105,6 +105,7 @@
 						<%
 						 		List<ClassListCategoryDto> listcate = (List<ClassListCategoryDto>) request.getAttribute("listDTO");
 						 		List<ClassListDto> listall = (List<ClassListDto>) request.getAttribute("listall");	
+						 		/* List<ThumbnailDTO> list = (List<ThumbnailDTO>) request.getAttribute("list"); */
 						%>
 							<%
 							if(listall!=null){
@@ -131,7 +132,7 @@
 												<font color="gray">
 												<!-- 이미지 더미// 나중에 이미지 연결 수정할 것 -->
 												<a href="#">
-												 <img src="class_img/B_외국어/1_01.jpg" width="250" height="200">
+												 <img src="class_img/category/B_외국어/1_01.jpg" width="250" height="200">
 												</a>
 												</font>
 											</td>
@@ -196,7 +197,7 @@
 												<font color="gray">
 												<!-- 이미지 더미// 나중에 이미지 연결 수정할 것 -->
 												<a href="#">
-												 <img src="classimg/B_lan/lan1_1.jpg" width="250" height="200">
+												 <img src="class_img/category/B_외국어/1_01.jpg" width="250" height="200">
 												</a>
 												</font>
 											</td>
@@ -331,7 +332,7 @@
 			<li>
 			<div><h1>클래스 등록</h1></div>
 			<div>어떤 분야든 전문성을 갖고있다면, 지금 바로 클래스를 등록해주세요</div>
-			<div class="more2"><a href="classForm.jsp">
+			<div class="more2"><a href="com.controller.classpage/ClassCreateServlet.java">
 			클래스 등록하기</a>
 			</div>
 			</li>
