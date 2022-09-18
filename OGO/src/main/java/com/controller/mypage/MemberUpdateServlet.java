@@ -62,7 +62,7 @@ public class MemberUpdateServlet extends HttpServlet {
 				session.setAttribute("login", dto2);
 				session.setAttribute("memberAdd", "회원정보가 수정되었습니다"); 
 			}
-			nextPage="MainForm2.jsp";
+			nextPage="MainForm.jsp";
 			
 		}else {
 			nextPage="loginUIServlet";

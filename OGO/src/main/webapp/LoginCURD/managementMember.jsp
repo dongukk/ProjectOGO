@@ -60,7 +60,7 @@
     <td><%= dto.getUserName()%></td>
     <td><%= dto.getNickname()%></td>
     <td><%= dto.getGender()%></td>
-    <td><%= dto.getBirth()%></td>
+    <td><%= dto.getBirth().substring(0,10)%></td>
     <td><%= dto.getPhone1()%>-<%= dto.getPhone2()%>-<%= dto.getPhone3()%></td>
     <td><%= dto.getPost()%></td>
     <td><%= dto.getAddress1()%></td>

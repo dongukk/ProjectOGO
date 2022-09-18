@@ -62,11 +62,11 @@
 				</div><br>
 			<%  if(userId.equals("admin")){ // 이중 if문%>	
 				<li><a href="logoutServlet" id="logout">Logout</a></li>
-				<li><a href="LoginMain/managementMember.jsp">management</a></li>
+				<li><a href="managementMemberServlet">management</a></li>
 				<%  } else{ %>
-				<li><a href="logoutServlet" id="logout">Logout</a></li>
+				<li><a href="#" id="logout">Logout</a></li>
 			<%	}} else{ %>
-				<li><a href="" data-bs-toggle="modal" data-bs-target="#loginModal">Log in</a></li>
+				<li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Log in</a></li>
 				<li><a href="LoginCURD/createMember.jsp">Sign up</a></li>
 			<% } // end if~else %>	
 			</ul>  	 
@@ -147,19 +147,19 @@ $(".nav-item").find("a").each(function() {
   		var naverLogin = document.getElementById("naver_id_login").firstChild;
         naverLogin.click();
 	});
-  	
- // 로그아웃 처리
-  	 $("#logout").click(function() {
-	  	   logoutPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "width=1,height=1");
-	  	   logoutPopUp.close();
-  	});  
- 
+ // 네이버 로그아웃	
+ 	function naverLogout() {
+ 		logoutPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "width=1,height=1");
+	  	logoutPopUp.close();
+ 	};
+
  // 카카오 로그인
-       function saveToDos(token) { //item을 localStorage에 저장합니다. 
+        function saveToDos(token) { //item을 localStorage에 저장합니다. 
             typeof(Storage) !== 'undefined' && sessionStorage.setItem('AccessKEY', JSON.stringify(token)); 
         };
 
         window.Kakao.init('642c5e7e3a539fa79d6c27d75caedf4a');
+        window.Kakao.Auth.setAccessToken(JSON.parse(sessionStorage.getItem('AccessKEY'))); //sessionStorage에 저장된 사용자 엑세스 토큰 받아온다.
         
         function kakaoLogin() {
             window.Kakao.Auth.login({
@@ -182,7 +182,25 @@ $(".nav-item").find("a").each(function() {
                 }
             });
         };
-    
+ // 카카오 로그아웃	
+	function kakaoLogout() {
+		Kakao.API.request({
+			  url: '/v1/user/unlink',
+			  success: function (response) {
+			    console.log(response);
+			  },
+			  fail: function (error) {
+			    console.log(error);
+			  }
+		});
+    };
+ 
+    // 소셜 로그아웃
+  	$("#logout").click(function() {
+  		kakaoLogout();
+  		naverLogout();
+	  	window.location.href='logoutServlet';
+  	}); 
  
  // 프로그래스바
 jQuery(function($){
