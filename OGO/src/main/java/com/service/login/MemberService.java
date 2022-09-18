@@ -1,5 +1,6 @@
 package com.service.login;
 
+import java.io.Console;
 import java.util.HashMap;
 import java.util.List;
 
@@ -85,7 +86,7 @@ public class MemberService {
 		 SqlSession session = MySqlSessionFactory.getSession();
 		int n = 0;
 		 try {
-	      n = dao.delete(session,userId);
+	      n = dao.delete(session, userId);
 	    	 session.commit();
 //	      }catch(Exception e) {
 //	    	  e.printStackTrace();
@@ -99,7 +100,7 @@ public class MemberService {
 		 SqlSession session = MySqlSessionFactory.getSession();
 		int n = 0;
 		 try {
-	      n = dao.deleteAll(session,list);
+	      n = dao.deleteAll(session, list);
 	    	 session.commit();
 //	      }catch(Exception e) {
 //	    	  e.printStackTrace();

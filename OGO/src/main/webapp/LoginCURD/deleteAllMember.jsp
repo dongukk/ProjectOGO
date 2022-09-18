@@ -9,12 +9,11 @@
     pageEncoding="UTF-8"%>
 
 <%
-String [] UserIds = request.getParameterValues("delCheck");
-	//for each 사용 출력 
-    List<String> x = Arrays.asList(UserIds);
-    System.out.println(x);
+String [] userIds = request.getParameterValues("delCheck");
+    List<String> list = Arrays.asList(userIds);
+    System.out.println(list);
      MemberService service = new MemberService();
-     int n = service.deleteAll(x);
+     int n = service.deleteAll(list);
 %>    
     
 <!DOCTYPE html>
@@ -26,7 +25,7 @@ String [] UserIds = request.getParameterValues("delCheck");
 <body>
  <%
   String pName = "";
- for(String name:x){
+ for(String name:list){
 	 pName +=(name+" ");
  }
   String mesg = pName + " 회원삭제 성공";

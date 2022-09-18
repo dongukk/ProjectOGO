@@ -34,15 +34,13 @@ public class MemberDAO {
 		return n;
 	}
 
-	public int delete(SqlSession session, String userId) {
-		
+	public int delete(SqlSession session, String userId) {		
 		int n = session.delete("MemberMapper.deleteByMember", userId);
-		return n;
+		return 1;
 	}
-    public int deleteAll(SqlSession session, List<String> list) {
-		
-		int n = session.delete("MemberMapper.deleteByAllMember", list);
-		return n;
+    public int deleteAll(SqlSession session, List<String> list) {		
+    	int n = session.delete("MemberMapper.deleteByAllMember", list);
+		return 1;
 	}
     public MemberDTO mypage(SqlSession session, String userid) {
 		MemberDTO n = session.selectOne("MemberMapper.mypage", userid);
