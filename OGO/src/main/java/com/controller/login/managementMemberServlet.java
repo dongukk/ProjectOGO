@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public class managementMemberServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("LoginMain/managementMember.jsp");
+		response.sendRedirect("LoginCURD/managementMember.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
