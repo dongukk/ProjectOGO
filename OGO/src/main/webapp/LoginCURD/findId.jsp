@@ -50,7 +50,7 @@ $(document).ready(function() {
 
 <body>
 	
-	<form class="find_id-form" method = "POST" action="../findIdServlet">
+	<form class="find_id-form" method = "POST" action="findIdServlet">
 			<div class = "search-title">
 				<h3>아이디 찾기</h3>
 			</div>
