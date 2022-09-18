@@ -8,6 +8,7 @@
 <link rel="shortcut icon" href="common/img/OGO.ico">
 <meta charset="UTF-8">
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
@@ -110,7 +111,7 @@
 				<button type="submit" id="login_modalBtn">LOGIN</button><br><br>
 				<div id="naver_id_login"></div>
 				<a class="subloingBtn" id="naverlogin" href="#"><img src="LoginImg/icon_naver.png" id="naverloginimg">네이버 계정으로 로그인</a>
-                <a class="subloingBtn" id="kakaologin" href="https://www.kakaocorp.com/" target="_blank" onclick="window.close();"><img src="LoginImg/icon_kakao.png" id="kakaologinimg">카카오 계정으로 로그인</a>
+                <a class="subloingBtn" id="kakaoLogin" href="#" onclick="kakaoLogin()"><img src="LoginImg/icon_kakao.png" id="kakaologinimg">카카오 계정으로 로그인</a>
 			</div>
 			
 		</form>
@@ -152,6 +153,36 @@ $(".nav-item").find("a").each(function() {
 	  	   logoutPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "width=1,height=1");
 	  	   logoutPopUp.close();
   	});  
+ 
+ // 카카오 로그인
+       function saveToDos(token) { //item을 localStorage에 저장합니다. 
+            typeof(Storage) !== 'undefined' && sessionStorage.setItem('AccessKEY', JSON.stringify(token)); 
+        };
+
+        window.Kakao.init('642c5e7e3a539fa79d6c27d75caedf4a');
+        
+        function kakaoLogin() {
+            window.Kakao.Auth.login({
+                scope: 'profile_nickname, account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+                success: function(response) {
+                    saveToDos(response.access_token)  // 로그인 성공하면 사용자 엑세스 토큰 sessionStorage에 저장
+                    window.Kakao.API.request({ // 사용자 정보 가져오기 
+                        url: '/v2/user/me',
+                        success: (res) => {
+                            var kakao_account = res.kakao_account;
+                            var email = kakao_account.email;
+                            var nickname = kakao_account.profile.nickname;
+                            alert('카카오 로그인 성공');
+                            window.location.href="kakaoLogin?nickname="+nickname+"&email="+email; 
+                        }
+                    });
+                },
+                fail: function(error) {
+                    console.log(error);
+                }
+            });
+        };
+    
  
  // 프로그래스바
 jQuery(function($){
