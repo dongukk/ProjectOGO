@@ -44,7 +44,7 @@ public class findPwServlet extends HttpServlet {
 		} else {
 			request.setAttribute("userId", null);
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("LoginCURD/findPw2.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("findPw2.jsp");
 		dispatcher.forward(request, response);
 	}
 
