@@ -20,15 +20,13 @@
   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
   function naverSignInCallback() {
 		     var userId = naver_id_login.getProfileData('id');
-			 var userName = naver_id_login.getProfileData('name');
 			 var nickname = naver_id_login.getProfileData('nickname');
 			 var email = naver_id_login.getProfileData('email');
 			 var access_token = naver_id_login.oauthParams.access_token;
 			 console.log(userId);
-			 console.log(userName);
 			 console.log(nickname);	 
-
-			 window.opener.location.href = "../naverLogin?&nickname="+nickname+"&email="+email+"&userName="+userName;
+			 alert('네이버 로그인 성공');
+			 window.opener.location.href = "../naverLogin?nickname="+nickname+"&email="+email;
 			 window.close();
 		  }
 </script>
