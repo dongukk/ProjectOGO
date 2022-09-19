@@ -126,10 +126,10 @@ public class ClassOrderInfoServlet extends HttpServlet {
 //					}
 //				}
 			}
-			resultMap.put("schedules", schedules); //schedules배열도 넘기기
-			//service->dao 에서 insert
-			ClassInsertService insertService= new ClassInsertService();
-			int insertResult =insertService.insert(resultMap); //동적sql insert test
+//			resultMap.put("schedules", schedules); //schedules배열도 넘기기
+//			//service->dao 에서 insert
+//			ClassInsertService insertService= new ClassInsertService();
+//			int insertResult =insertService.insert(resultMap); //동적sql insert test
 			
 		}else { //해당 클래스를 이전에 신청한 적이 없는 경우
 			//classOrderInfo에 insert
