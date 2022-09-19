@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import com.dto.classpage.ClassOrderDTO;
 import com.dto.login.MemberDTO;
+import com.service.classpage.ClassInsertService;
 import com.service.classpage.ClassOrderService;
 
 /**
@@ -65,6 +67,7 @@ public class ClassOrderInfoServlet extends HttpServlet {
 			orderUserId=userId.substring(0, idIndex);//@앞부분까지만 저장
 		}
 		String orderNum= today+time+classNumber+orderUserId;
+		session.setAttribute("orderNum", orderNum); //세션에 주문번호 저장
 		
 		//유저가 이전에 같은 클래스 신청한 적 있는지 검사
 		ClassOrderService oService= new ClassOrderService();
@@ -73,10 +76,61 @@ public class ClassOrderInfoServlet extends HttpServlet {
 		prevDTO.setUserId(userId);
 		int findResult = oService.findOrder(prevDTO);
 		  System.out.println("findResult: "+findResult);
-
+		
+		  
 		String mesg="";
 		if (findResult > 0) { //이전에 신청한 적이 있음
 			mesg= "이전에 수강한 클래스입니다. 다른 클래스를 신청해주세요";
+			//test 중
+			HashMap<String, Object> scheduleMap= new HashMap<String, Object>();
+			String[] schedules= {selectSched1,selectSched2,selectSched3,selectSched4,selectSched5,
+					selectSched6,selectSched7,selectSched8,selectSched9,selectSched10};
+			String orderSched = null;
+			for (int i = 0; i < schedules.length; i++) {
+				if (schedules[i].length()>0) {
+					if (orderSched==null) {
+						orderSched = ""+(i+1); //신청한 회차를 저장
+					}else {
+						orderSched += ","+(i+1); //신청한 회차를 저장
+					}
+					
+				}
+			}
+			System.out.println("새롭게 신청한 회차 정보(orderSched): "+ orderSched);
+			String[] orderSchedules= orderSched.split(",");
+			for (String s : orderSchedules) {
+				System.out.println("String[] orderSchedules:");
+				System.out.println(s);
+			}
+			//////
+			HashMap<String, Object> findRecordMap= new HashMap<String, Object>();
+			findRecordMap.put("classNum", classNumber);
+			findRecordMap.put("userId", userId);
+			HashMap resultMap=oService.findRecord(findRecordMap);
+			System.out.println("resultMap: "+resultMap);
+			
+			//HashMap<String, Object> insertSched= new HashMap();
+			
+			
+			Set keys=resultMap.keySet();
+			for (Object key : keys) {
+				String k= (String)key;
+				Object v= resultMap.get(k);
+				System.out.println(k+"\t"+v);
+				
+//				for (String s : orderSchedules) { //이건 동작하지 않음. 이유는 나중에 알아보기
+//					if (k.equals(s)) {
+//						insertSched.put("choiceSched", k);
+//						insertSched.put("v", v);
+//						System.out.println("insertSched(insert할 회차):"+insertSched);
+//					}
+//				}
+			}
+			resultMap.put("schedules", schedules); //schedules배열도 넘기기
+			//service->dao 에서 insert
+			ClassInsertService insertService= new ClassInsertService();
+			int insertResult =insertService.insert(resultMap); //동적sql insert test
+			
 		}else { //해당 클래스를 이전에 신청한 적이 없는 경우
 			//classOrderInfo에 insert
 			ClassOrderDTO oDTO= new ClassOrderDTO(orderNum, userId, classNumber, price, null, "결제 대기중", selectSched1, 
