@@ -42,10 +42,13 @@
 </script>
 <style type="text/css">
 	#title{text-align: center; margin-top: 100px;}
-	#MemberForm {min-width: 1550px; width:1500px; margin-left: 30px; margin-bottom: 50px;}
-	#MemberForm #table{ border: 1px solid !important; } 
+	#MemberForm {min-width: 1550px; margin-bottom: 50px;}
+	#MemberForm #table{ border: 1px solid !important; margin-left: auto; margin-right: auto;} 
 	#MemberForm #table_head {height: 50px; color: white; background-color: gray;}
 	#MemberForm #hobby{width: 400px;}
+	#MemberForm #deleteAllMember{margin-left: 50px; margin-top: 10px;}
+	#MemberForm #searchName{float: left;}
+	#MemberForm #order{float: right; margin-right: 0;}
 </style>
 </head>
 <body>
@@ -55,7 +58,7 @@
 <!-- 검색기능 -->
 		<tr>
 			<td colspan="5">
-				<form action="EmpListServlet">
+				<form id="searchName" action="EmpListServlet">
 					<select name="searchName">
 						<option value="nickname">닉네임</option>
 						<option value="job">등급</option>
@@ -63,18 +66,15 @@
 						type="submit" value="검색">
 				</form>
 			</td>
-		</tr>
-		<!-- 검색기능  -->
-		<!-- 정렬기준 -->
-		<tr>
-			<th>정렬기준</th>
-			<td colspan="4">
-			  <form action="EmpOrderServlet">
+
+			<td colspan="10">
+			  <form id="order" action="EmpOrderServlet">
 			 	 등급 순 : <input type="radio" name="order" value="job" checked="checked"/>
 			     닉네임 순 : <input type="radio" name="order" value="nickname"  />
 				  <input type="submit" value="정렬">
                </form>
 			</td>
+
 		</tr>
 	<tr id="table_head">
 	   <th><input type="checkbox" name="delCheckAll" id="delCheckAll" onclick="chk(this)"></th>
