@@ -1,4 +1,5 @@
 <%@page import="com.dto.login.MemberDTO"%>
+<%@page import="com.dto.login.PageDTO"%>
 <%@page import="com.service.login.MemberService"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,6 +8,9 @@
 <%
 	MemberService service = new MemberService();
     List<MemberDTO> list = service.select();
+ 
+   /*  PageDTO Pdto = (PageDTO) request.getAttribute("pDTO");
+	List<MemberDTO> Plist = Pdto.getList(); */
 %>  
 <!DOCTYPE html>
 <html>
@@ -26,48 +30,72 @@
 	
 	// 선택된 항목 회원들 삭제
 	function delAll() {
-		document.querySelector("#MemberForm").action='deleteAllMember.jsp';
+		document.querySelector("#MemberForm").action='deleteAllMemberServlet'; 
 	}
 	
 	// 회원 1명 삭제
 	function delMember(n) {
 		event.preventDefault(); 
-		location.href="deleteMember.jsp?userId="+n;		
+		location.href="deleteMemberServlet?userId="+n;		
 	}
 
 </script>
 <style type="text/css">
 	#title{text-align: center; margin-top: 100px;}
-	#MemberForm {min-width: 1550px; width:1500px; margin-left: 20px; margin-bottom: 50px;}
+	#MemberForm {min-width: 1550px; width:1500px; margin-left: 30px; margin-bottom: 50px;}
 	#MemberForm #table{ border: 1px solid !important; } 
 	#MemberForm #table_head {height: 50px; color: white; background-color: gray;}
-	#MemberForm #hobby{width: 500px;}
+	#MemberForm #hobby{width: 400px;}
 </style>
 </head>
 <body>
 <h1 id="title">회원관리 목록</h1>
 <form id="MemberForm">
 <table border="1" cellpadding=5 cellspacing=10 id="table">
+<!-- 검색기능 -->
+		<tr>
+			<td colspan="5">
+				<form action="EmpListServlet">
+					<select name="searchName">
+						<option value="nickname">닉네임</option>
+						<option value="job">등급</option>
+					</select> <input type="text" name="searchValue"> <input
+						type="submit" value="검색">
+				</form>
+			</td>
+		</tr>
+		<!-- 검색기능  -->
+		<!-- 정렬기준 -->
+		<tr>
+			<th>정렬기준</th>
+			<td colspan="4">
+			  <form action="EmpOrderServlet">
+			 	 등급 순 : <input type="radio" name="order" value="job" checked="checked"/>
+			     닉네임 순 : <input type="radio" name="order" value="nickname"  />
+				  <input type="submit" value="정렬">
+               </form>
+			</td>
+		</tr>
 	<tr id="table_head">
 	   <th><input type="checkbox" name="delCheckAll" id="delCheckAll" onclick="chk(this)"></th>
 	   <th>userId</th>
-	   <th>userName</th>
+	   <th>nickname</th>
 	   <th>birth</th>
 	   <th>phone</th>
 	   <th>주소</th>
 	   <th>email</th>
 	   <th id="hobby">hobby</th>
-	   <th>직책</th>
+	   <th>등급</th>
 	   <th>탈퇴</th>
 	 </tr>
 <%
    for(MemberDTO dto: list){
 	String userId = dto.getUserId();
-%> 
+%>
  <tr>
     <td><input type="checkbox" name="delCheck"  class="delCheck" value="<%= dto.getUserId()%>"></td>
     <td><%= dto.getUserId()%></td>
-    <td><%= dto.getUserName()%></td>
+    <td><%= dto.getNickname()%></td>
     <td><%= dto.getBirth().substring(0,10)%></td>
     <td><%= dto.getPhone1()%>-<%= dto.getPhone2()%>-<%= dto.getPhone3()%></td>
     <td><%= dto.getAddress2()%></td>
