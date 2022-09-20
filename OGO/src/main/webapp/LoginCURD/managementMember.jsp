@@ -8,9 +8,9 @@
 <%
 	MemberService service = new MemberService();
     List<MemberDTO> list = service.select();
-    
+ 
    /*  PageDTO Pdto = (PageDTO) request.getAttribute("pDTO");
-	List<MemberDTO> list = Pdto.getList(); */
+	List<MemberDTO> Plist = Pdto.getList(); */
 %>  
 <!DOCTYPE html>
 <html>
@@ -30,13 +30,13 @@
 	
 	// 선택된 항목 회원들 삭제
 	function delAll() {
-		document.querySelector("#MemberForm").action='deleteAllMember.jsp';
+		document.querySelector("#MemberForm").action='deleteAllMemberServlet'; 
 	}
 	
 	// 회원 1명 삭제
 	function delMember(n) {
 		event.preventDefault(); 
-		location.href="deleteMember.jsp?userId="+n;		
+		location.href="deleteMemberServlet?userId="+n;		
 	}
 
 </script>

@@ -62,7 +62,7 @@
 				</div><br>
 			<%  if(userId.equals("admin")){ // 이중 if문%>	
 				<li><a href="logoutServlet" id="logout">Logout</a></li>
-				<li><a href="managementMemberServlet">management</a></li>
+				<li><a href="adminCheckServlet">management</a></li>
 				<%  } else{ %>
 				<li><a href="#" id="logout">Logout</a></li>
 			<%	}} else{ %>
