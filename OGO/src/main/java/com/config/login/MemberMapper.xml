@@ -88,4 +88,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	 	userPasswd = #{newPw}
  	 	where userId = #{userId}
  	 </update>
+ 	 
+ 	 <select id="totalCount" parameterType="hashmap" resultType="int">
+     	select count(*)
+      	from member
+       	<where>
+	  		<if test="searchName == 'nickname'">
+	       		upper(nickname)  like  upper('%'||#{searchValue}||'%') 
+	  		</if>
+	  		<if test="searchName == 'address'">
+	     		 address2 like '%'||#{searchValue}||'%'
+	 		</if>
+     	</where>
+      </select>
+    
+      <select id="search" parameterType="hashmap" resultType="MemberDTO">
+		select *
+      	from member
+       	<where>
+	  		<if test="searchName == 'nickname'">
+	       		upper(nickname)  like  upper('%'||#{searchValue}||'%') 
+	  		</if>
+	  		<if test="searchName == 'address'">
+	     		 address2 like '%'||#{searchValue}||'%'
+	 		</if>
+     	</where>
+		order by userId
+	  </select>
+    
+	  <select id="order" parameterType="hashmap" resultType="MemberDTO">
+		select *
+      	from member 
+    	  <if test="order =='nickname'">
+		      order by nickname
+		  </if> 
+		  <if test="order =='address'">
+		      order by address2
+		  </if>
+	  </select>
 </mapper>

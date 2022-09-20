@@ -3,27 +3,16 @@ package com.dto.login;
 import java.util.List;
 
 public class PageDTO {
-	private int curPage;
-	private int perPage = 10;
-	private int totalCount;
-	private List<MemberDTO> list;
-	
-	
-	public PageDTO(int curPage, int perPage, int totalCount, List<MemberDTO> list) {
-		super();
-		this.curPage = curPage;
-		this.perPage = perPage;
-		this.totalCount = totalCount;
+
+	private List<MemberDTO> list;   // 현재페이지에 들어갈 레코드를 perPage만큼만 저장 
+	private int curPage;    //현재 볼 페이지 번호 
+	private int perPage=6;  //한페이지에 보여질 목록 수 
+	private int totalCount; //전체 레코드 갯수 
+	public List<MemberDTO> getList() {
+		return list;
+	}
+	public void setList(List<MemberDTO> list) {
 		this.list = list;
-	}
-	public PageDTO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	@Override
-	public String toString() {
-		return "PageDTO [curPage=" + curPage + ", perPage=" + perPage + ", totalCount=" + totalCount + ", list=" + list
-				+ "]";
 	}
 	public int getCurPage() {
 		return curPage;
@@ -43,14 +32,6 @@ public class PageDTO {
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 	}
-	public List<MemberDTO> getList() {
-		return list;
-	}
-	public void setList(List<MemberDTO> list) {
-		this.list = list;
-	}
-	
-	
 	
 	
 }
