@@ -1,6 +1,7 @@
 package com.controller.login;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,29 +10,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dto.login.PageDTO;
+import com.dto.login.MemberDTO;
 import com.service.login.MemberService;
 
-/**
- * Servlet implementation class managementMember
- */
-@WebServlet("/managementMemberServlet")
-public class managementMemberServlet extends HttpServlet {
+@WebServlet("/ManageOrderServlet")
+public class ManageOrderServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String curPage = request.getParameter("curPage");//현재페이지 
-		if(curPage == null) curPage = "1";//시작시 현재페이지 1 
+request.setCharacterEncoding("UTF-8");
+			
+		String order = request.getParameter("order");
+		System.out.println("order : "+order);
+		MemberService service = new MemberService();
 		
-		String searchName = request.getParameter("searchName");
-		String searchValue = request.getParameter("searchValue");
-		System.out.println(searchName+"\t"+searchValue);
-//		MemberService service = new MemberService();
-//		PageDTO pDTO = service.select(searchName, searchValue, Integer.parseInt(curPage));
-//		
-//		request.setAttribute("pDTO", pDTO);
-//		request.setAttribute("searchName", searchName);
-//		request.setAttribute("searchValue", searchValue);
-//		
+		List<MemberDTO> list = service.order(order);
+		
+		request.setAttribute("order", order);
+		request.setAttribute("list", list);
+
 		RequestDispatcher dis = request.getRequestDispatcher("ManagementMember.jsp");
 		dis.forward(request, response);
 	}

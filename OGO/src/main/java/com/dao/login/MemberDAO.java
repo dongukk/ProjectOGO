@@ -7,9 +7,11 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import com.dto.login.MemberDTO;
+import com.dto.login.PageDTO;
 
 public class MemberDAO {
 	
@@ -113,6 +115,31 @@ public class MemberDAO {
 		int n = session.update("MemberMapper.newPw", map); 
 		return n; 
 	}
+	public int totalCount(SqlSession session,HashMap<String, String> map) {
+		 int n = session.selectOne("MemberMapper.totalCount",map);
+		 System.out.println("totalCount : "+n);
+		 return n;
+	}
+	
+	public PageDTO search(SqlSession session , HashMap<String, String> map, int curPage) {		
+		PageDTO pDTO = new PageDTO();		// perPage = 2
+		int perPage = pDTO.getPerPage();   //한페이지 10개씩 
+		int offset = (curPage - 1) * perPage; // 최초curPage=1, offset= 1페이지=0, 2페이지면 =2, 3페이지면 =4
+		System.out.println("map : "+map+"curPage : "+curPage);
+		List<MemberDTO> list =  session.selectList("MemberMapper.search" , map , new RowBounds(offset, perPage));
+		//레코드 시작 번호, 읽어올 갯수 
+		System.out.println("list : "+list);
+		pDTO.setCurPage(curPage);//현재 페이지번호 1
+		pDTO.setList(list);//페이지 에 해당 데이터 (0, 1)
+		pDTO.setTotalCount(totalCount(session,map));//전체 레코드 갯수 저장 
+		
+		return pDTO;
+	}
+	public List<MemberDTO> order(SqlSession session, HashMap<String, String> map) {
+		List<MemberDTO> list =  session.selectList("MemberMapper.order" , map);
+		return list;
+	}
+
 	  
 	  
 	  
