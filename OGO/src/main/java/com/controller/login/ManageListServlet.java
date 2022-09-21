@@ -19,8 +19,6 @@ public class ManageListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
-		
 		String curPage = request.getParameter("curPage");//현재페이지 
 		if(curPage == null) curPage = "1";//시작시 현재페이지 1 
 		

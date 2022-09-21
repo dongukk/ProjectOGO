@@ -200,28 +200,7 @@ public class MemberService {
 	      return pDTO;
 		}//end select
 
-	public List<MemberDTO> order(String order) {
-		HashMap<String, String> map = new HashMap<>();		
-		map.put("order", order);
-		
-		 MemberDAO dao = new  MemberDAO();
-		 SqlSession session = MySqlSessionFactory.getSession();
-		 List<MemberDTO> list = null; 
-		 try {
-	      list = dao.order(session,map);
-	    	  
-//	      }catch(Exception e) {
-//	    	  e.printStackTrace();
-	      }finally {
-			session.close();
-	      }
-	      return list;
-	}//end select
 
-
-
-	
-	
 
 	
 }

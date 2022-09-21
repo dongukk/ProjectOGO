@@ -27,7 +27,7 @@ public class deleteMemberServlet extends HttpServlet {
 	    response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		if(n == 1) {	
-			out.println("<script>alert('회원 "+userId+"을(를) 탈퇴시켰습니다.'); window.location.href='ManagementMember.jsp';	</script>");
+			out.println("<script>alert('회원 "+userId+"을(를) 탈퇴시켰습니다.'); window.location.href='ManageListServlet';	</script>");
 		} else {		
 			out.println("<script>alert('회원삭제 실패'); </script>");	
 		}

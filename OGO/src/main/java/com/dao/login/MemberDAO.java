@@ -135,12 +135,7 @@ public class MemberDAO {
 		
 		return pDTO;
 	}
-	public List<MemberDTO> order(SqlSession session, HashMap<String, String> map) {
-		List<MemberDTO> list =  session.selectList("MemberMapper.order" , map);
-		return list;
-	}
 
-	  
 	  
 	  
 	  
