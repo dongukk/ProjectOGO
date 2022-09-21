@@ -116,14 +116,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by userId
 	  </select>
     
-	  <select id="order" parameterType="hashmap" resultType="MemberDTO">
-		select *
-      	from member 
-    	  <if test="order =='nickname'">
-		      order by nickname
-		  </if> 
-		  <if test="order =='address'">
-		      order by address2
-		  </if>
-	  </select>
 </mapper>

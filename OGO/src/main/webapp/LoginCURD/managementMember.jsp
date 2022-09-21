@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@page import="com.dto.login.MemberDTO"%>
 <%@page import="com.dto.login.PageDTO"%>
 <%@page import="com.service.login.MemberService"%>
@@ -6,23 +7,14 @@
     pageEncoding="UTF-8"%>
     
 <%
-	PageDTO pDTO = (PageDTO) request.getAttribute("pDTO");//pDTO꺼내고
-	String order = (String)request.getAttribute("order");
 	
-	MemberService service = new MemberService();
-    List<MemberDTO> list = service.select();
-    
-if(request.getAttribute("list") != null){
-	list = (List<MemberDTO>) request.getAttribute("list");
-}
-    
-    String searchName = null;
-    String searchValue = null;
-if(pDTO != null){
-	list = pDTO.getList();// pDTO안에있는 list를 꺼낸다
-	searchName = (String)request.getAttribute("searchName"); // searchName을 꺼낸다
-	searchValue = (String)request.getAttribute("searchValue"); // searchValue를 꺼낸다
-}
+	PageDTO pDTO = (PageDTO) request.getAttribute("pDTO");
+	List<MemberDTO> list = pDTO.getList();
+	
+	String searchName = (String)request.getAttribute("searchName");
+	String searchValue = (String)request.getAttribute("searchValue");
+	System.out.println("search : "+searchName +"\t" + searchValue);
+
 %>  
 <!DOCTYPE html>
 <html>
@@ -53,14 +45,16 @@ if(pDTO != null){
 
 </script>
 <style type="text/css">
-	#ManageMember{padding-top: 100px; padding-bottom: 50px;}
-	#ManageMember #title{text-align: center;  margin-bottom: 30px; }
-	#ManageMember #table{ border: 1px solid !important; margin-left: auto; margin-right: auto; min-width: 1550px; margin-bottom: 5px;} 
+	#ManageMember {padding-top: 100px; padding-bottom: 10px;}
+	#ManageMember #title {text-align: center;  margin-bottom: 30px; }
+	#ManageMember #table { border: 1px solid !important; margin-left: auto; margin-right: auto; min-width: 1550px; margin-bottom: 5px;} 
 	#ManageMember #table_head {height: 50px; color: white; background-color: gray;}
-	#ManageMember #hobby{width: 400px;}
-	#ManageMember #deleteAllMember{margin-left: 20px; margin-top: 10px;}
-	#ManageMember #search{float: left;}
-	#ManageMember #order{float: right;}
+	#ManageMember #hobby {width: 400px;}
+	#ManageMember #deleteAllMember {margin-left: 20px; margin-top: 10px;}
+	#ManageMember #search {float: left;}
+	#memberPage {text-align: center; font-size: 20px; font-family: 'Noto Sans KR', sans-serif; margin-left: auto; margin-right: auto; margin-top: 10px;}
+    #memberPage a {text-decoration: none; }
+    
 </style>
 </head>
 <body>
@@ -79,17 +73,6 @@ if(pDTO != null){
 					<input type="submit" id="searcBtn" value="검색">
 				</form>
 			</td>
-
-			<td colspan="10">
-			  <form id="order" action="ManageOrderServlet">		 	 
-			     닉네임 순 : <input type="radio" name="order" value="nickname" 
-			     	 <% if("nickname".equals(order) || order == null){ %> checked="checked" <%} %> />&ensp;&ensp;
-			     주소 순 : <input type="radio" name="order" value="address"
-			     	<% if("address".equals(order)){ %> checked="checked" <%} %>/>&ensp;&ensp;
-				  <input type="submit" value="정렬">
-               </form>
-			</td>
-
 		</tr>
 <form id="MemberForm">
 	<tr id="table_head">
@@ -124,9 +107,9 @@ if(pDTO != null){
     <td><button onclick="delMember('<%=dto.getUserId() %>')" >탈퇴</button></td>
   </tr>
 <% } %>  <!-- end for -->
-	<%--  <tr>
-			<td colspan="10" id="notice_perage1">
-				<br>
+</table>
+<div id="memberPage">
+	
 				<%	
 				int curPage = pDTO.getCurPage();	//현재 볼 페이지 번호
 		        int perPage = pDTO.getPerPage();	//한페이지에 보여질 목록 수 
@@ -139,13 +122,11 @@ if(pDTO != null){
 		          	}else{								// RowBound(offset, limit) // 시작 idx, 몇개
 		          		                                //   offset = (원하는 페이지, -1)* perpage
 		          		                                //   limit = purpage
-		          		out.print("<a href='EmpListServlet?curPage="+i+"&searchName="+searchName+"&searchValue="+searchValue+"'>"+i+"</a>&nbsp;");
+		          		out.print("<a href='ManageListServlet?curPage="+i+"&searchName="+searchName+"&searchValue="+searchValue+"'>"+"&nbsp;"+i+"&nbsp;"+"</a>");
 		          	}
 		        }//end for
 				%>
-			</td>
-		</tr> --%>
-</table>
+</div>
 <button id="deleteAllMember" onclick="delAll()">선택한 회원 탈퇴</button>
 </form>
 </section>
