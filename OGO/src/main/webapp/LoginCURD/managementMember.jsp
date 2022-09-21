@@ -65,7 +65,7 @@
 		<tr>
 			<td colspan="5">
 				<form id="search" action="ManageListServlet">
-					<select name="searchName" >
+					<select name="searchName" style="height: 30px;">
 						<option value="nickname" <% if("nickname".equals(searchName) || searchName == null){ %> selected="selected" <%}%> >닉네임</option>
 						<option value="address" <% if("address".equals(searchName)){ %> selected="selected" <%}%> >주소</option>
 					</select> 
