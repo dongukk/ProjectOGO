@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.config.login.MySqlSessionFactory;
 import com.dao.login.MemberDAO;
 import com.dto.login.MemberDTO;
+import com.dto.login.PageDTO;
 
 public class MemberService {
 	
@@ -85,7 +86,7 @@ public class MemberService {
 		 SqlSession session = MySqlSessionFactory.getSession();
 		int n = 0;
 		 try {
-	      n = dao.delete(session,userId);
+	      n = dao.delete(session, userId);
 	    	 session.commit();
 //	      }catch(Exception e) {
 //	    	  e.printStackTrace();
@@ -99,7 +100,7 @@ public class MemberService {
 		 SqlSession session = MySqlSessionFactory.getSession();
 		int n = 0;
 		 try {
-	      n = dao.deleteAll(session,list);
+	      n = dao.deleteAll(session, list);
 	    	 session.commit();
 //	      }catch(Exception e) {
 //	    	  e.printStackTrace();
@@ -179,6 +180,43 @@ public class MemberService {
 		}
 		return n;
 	}
+
+	public PageDTO search(String searchName, String searchValue, int curPage) {		
+		HashMap<String, String> map = new HashMap<>();
+		map.put("searchName", searchName);
+		map.put("searchValue", searchValue);
+		
+		 MemberDAO dao = new MemberDAO();
+		 SqlSession session = MySqlSessionFactory.getSession();
+		 PageDTO pDTO = null;
+		 try {
+			 pDTO = dao.search(session,map, curPage);	// map:검색결과, 최초 실행시curPage = 1
+	    	  
+//	      }catch(Exception e) {
+//	    	  e.printStackTrace();
+	      }finally {
+			session.close();
+	      }
+	      return pDTO;
+		}//end select
+
+	public List<MemberDTO> order(String order) {
+		HashMap<String, String> map = new HashMap<>();		
+		map.put("order", order);
+		
+		 MemberDAO dao = new  MemberDAO();
+		 SqlSession session = MySqlSessionFactory.getSession();
+		 List<MemberDTO> list = null; 
+		 try {
+	      list = dao.order(session,map);
+	    	  
+//	      }catch(Exception e) {
+//	    	  e.printStackTrace();
+	      }finally {
+			session.close();
+	      }
+	      return list;
+	}//end select
 
 
 

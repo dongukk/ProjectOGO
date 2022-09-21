@@ -50,7 +50,7 @@ $(document).ready(function() {
 
 <body>
 	
-	<form class="find_pw-form" method = "POST" action="../findPwServlet">
+	<form class="find_pw-form" method = "POST" action="findPwServlet">
 			<div class = "search-title">
 				<h3>비밀번호 찾기</h3>
 			</div>

@@ -1,7 +1,5 @@
 package com.dto.login;
 
-import java.util.Arrays;
-
 public class MemberDTO {
 
 	private String userId;

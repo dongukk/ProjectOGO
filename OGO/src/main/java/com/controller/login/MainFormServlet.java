@@ -16,8 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MainFormServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 RequestDispatcher dis =request.getRequestDispatcher("MainForm.jsp");
-		 dis.forward(request,response);
+		response.sendRedirect("MainForm.jsp");
 	}
 
 
