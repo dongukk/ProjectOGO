@@ -6,10 +6,20 @@
 
 <select id="selectOrder" parameterType="string" resultType="PayDTO">
 	
-	select o.ORDERNUM, o.USERID, CLASSNUM,o.PRICE,o.ORDERDATE,o.ORDERSTATUS,
+	select o.ORDERNUM, o.USERID, o.CLASSNUM,o.PRICE,o.ORDERDATE,o.ORDERSTATUS,
 	 o.SCHEDULE1,o.SCHEDULE2,o.SCHEDULE3,o.SCHEDULE4,o.SCHEDULE5,o.SCHEDULE6,o.SCHEDULE7,o.SCHEDULE8,o.SCHEDULE9,o.SCHEDULE10,
 	 c.PLACE,c.CLASSNAME,m.USERNAME
-	from CLASSORDER o JOIN CLASS c USING (CLASSNUM) join MEMBER m on o.USERID = m.USERID
+	from CLASSORDER o JOIN CLASS c on o.CLASSNUM = c.CLASSNUM join MEMBER m on o.USERID = m.USERID
+	where ORDERNUM = #{ordernum} 
+	
+</select>
+
+<select id="selectOrder2" parameterType="string" resultType="hashmap">
+	
+	select o.ORDERNUM, o.USERID, o.CLASSNUM,o.PRICE,o.ORDERDATE,o.ORDERSTATUS,
+	 o.SCHEDULE1,o.SCHEDULE2,o.SCHEDULE3,o.SCHEDULE4,o.SCHEDULE5,o.SCHEDULE6,o.SCHEDULE7,o.SCHEDULE8,o.SCHEDULE9,o.SCHEDULE10,
+	 c.PLACE,c.CLASSNAME,m.USERNAME
+	from CLASSORDER o JOIN CLASS c on o.CLASSNUM = c.CLASSNUM join MEMBER m on o.USERID = m.USERID
 	where ORDERNUM = #{ordernum} 
 	
 </select>
@@ -20,5 +30,12 @@
 	where ORDERNUM = #{ordernum}
 </update>
 
+<select id="getPaylist" parameterType="string" resultType="PayDTO" >
+	select o.ORDERNUM, o.ordernum, o.CLASSNUM,o.PRICE,o.ORDERDATE,o.ORDERSTATUS,
+	 o.SCHEDULE1,o.SCHEDULE2,o.SCHEDULE3,o.SCHEDULE4,o.SCHEDULE5,o.SCHEDULE6,o.SCHEDULE7,o.SCHEDULE8,o.SCHEDULE9,o.SCHEDULE10,
+	 c.PLACE,c.CLASSNAME,m.USERNAME, i.CLASSPHOTO1
+	from CLASSORDER o JOIN CLASS c on o.CLASSNUM = c.CLASSNUM join MEMBER m on o.USERID = m.USERID join CLASSIMG i on o.classnum = i.classnum
+	where o.USERID = #{userId} 
+</select>
   
 </mapper>
