@@ -12,9 +12,9 @@
 	List<MemberDTO> list = pDTO.getList();
 	
 	String searchName = (String)request.getAttribute("searchName");
-	String searchValue = (String)request.getAttribute("searchValue");
+	String  searchValue = (String)request.getAttribute("searchValue");
+	if(searchValue==null) {searchValue = "";}
 	System.out.println("search : "+searchName +"\t" + searchValue);
-
 %>  
 <!DOCTYPE html>
 <html>
@@ -42,7 +42,7 @@
 		event.preventDefault(); 
 		location.href="deleteMemberServlet?userId="+n;		
 	}
-
+	
 </script>
 <style type="text/css">
 	#ManageMember {padding-top: 100px; padding-bottom: 10px;}
@@ -66,10 +66,10 @@
 			<td colspan="5">
 				<form id="search" action="ManageListServlet">
 					<select name="searchName" >
-						<option value="nickname">닉네임</option>
-						<option value="address">주소</option>
+						<option value="nickname" <% if("nickname".equals(searchName) || searchName == null){ %> selected="selected" <%}%> >닉네임</option>
+						<option value="address" <% if("address".equals(searchName)){ %> selected="selected" <%}%> >주소</option>
 					</select> 
-					<input type="text" name="searchValue"> 
+					<input type="text" name="searchValue" value="<%=searchValue%>">	
 					<input type="submit" id="searcBtn" value="검색">
 				</form>
 			</td>
