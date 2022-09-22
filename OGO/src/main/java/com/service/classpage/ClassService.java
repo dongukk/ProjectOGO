@@ -30,13 +30,13 @@ public class ClassService {
 		return dto;
 	}
 
-	public String selectNickName(String tuterId) {
+	public String selectNickName(String tutorId) {
 		
 		SqlSession session= MySqlSessionFactory.getSession();
 		String name="";
 		try {
 			dao= new ClassDAO();
-			name= dao.selectNickName(session, tuterId);
+			name= dao.selectNickName(session, tutorId);
 		} finally {
 			session.close();
 		}

@@ -15,8 +15,8 @@ public class ClassDAO {
 		return dto;
 	}
 
-	public String selectNickName(SqlSession session, String tuterId) {
-		String name =session.selectOne("ClassMapper.selectNickName", tuterId);
+	public String selectNickName(SqlSession session, String tutorId) {
+		String name =session.selectOne("ClassMapper.selectNickName", tutorId);
 		return name;
 	}
 
