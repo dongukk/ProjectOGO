@@ -129,4 +129,16 @@ public class ClassService {
 		return tutorProfile;
 	}
 
+	public int tutorSearch(String tutorId) {
+		SqlSession session= MySqlSessionFactory.getSession();
+		int num= 0;
+		try {
+			dao= new ClassDAO();
+			num= dao.tutorSearch(session, tutorId);
+		} finally {
+			session.close();
+		}
+		return num;
+	}
+
 }

@@ -56,4 +56,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from member
 		where userid= #{tutorId}
 	</select>
+	
+	<select id="tutorSearch" parameterType="string" resultType="int">
+		select count(*)
+		from tutor
+		where userid= #{tutorId}	
+	</select>
 </mapper>

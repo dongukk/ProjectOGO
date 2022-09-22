@@ -50,6 +50,11 @@ public class ClassDAO {
 		return tutorProfile;
 	}
 
+	public int tutorSearch(SqlSession session, String tutorId) {
+		int num =session.selectOne("ClassMapper.tutorSearch", tutorId);
+		return num;
+	}
+
 //	public String selectClass(SqlSession session, String classId) {
 //		String con_class = session.selectOne("ClassMapper.selectClass", classId);
 //		return con_class;
