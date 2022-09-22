@@ -13,7 +13,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectNickName" parameterType="string" resultType="string">
 		select DISTINCT nickname
 		from class join member using(userid)
-		where userid = #{tuterId}
+		where userid = #{tutorId}
+		<!-- select tname
+		from tutor
+		where userid= #{tutorId} -->
 	</select>
     
     <insert id="classOpen" parameterType="ClassDTO">
@@ -55,5 +58,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select PROFILEPHOTO
 		from member
 		where userid= #{tutorId}
+	</select>
+	
+	<select id="tutorSearch" parameterType="string" resultType="int">
+		select count(*)
+		from tutor
+		where userid= #{tutorId}	
 	</select>
 </mapper>
