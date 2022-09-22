@@ -12,7 +12,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="common/nav.css?after5">
+<link rel="stylesheet" href="common/nav.css?after1">
 </head>
 <body>
 <!-- 프로그레스바 -->
@@ -62,7 +62,7 @@
 				</div><br>
 			<%  if(userId.equals("admin")){ // 이중 if문%>	
 				<li><a href="logoutServlet" id="logout">Logout</a></li>
-				<li><a href="managementMemberServlet">management</a></li>
+				<li><a href="ManageListServlet">management</a></li>
 				<%  } else{ %>
 				<li><a href="#" id="logout">Logout</a></li>
 			<%	}} else{ %>
@@ -111,7 +111,7 @@
 				<button type="submit" id="login_modalBtn">LOGIN</button><br><br>
 				<div id="naver_id_login"></div>
 				<a class="subloingBtn" id="naverlogin" href="#"><img src="LoginImg/icon_naver.png" id="naverloginimg">네이버 계정으로 로그인</a>
-                <a class="subloingBtn" id="kakaoLogin" href="#" onclick="kakaoLogin()"><img src="LoginImg/icon_kakao.png" id="kakaologinimg">카카오 계정으로 로그인</a>
+                <a class="subloingBtn" id="kakaologin" href="#" onclick="kakaoLogin()"><img src="LoginImg/icon_kakao.png" id="kakaologinimg">카카오 계정으로 로그인</a>
 			</div>
 			
 		</form>

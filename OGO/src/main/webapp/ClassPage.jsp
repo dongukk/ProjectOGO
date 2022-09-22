@@ -192,12 +192,11 @@
 		
 		$("#Pay_button1").click(function() {
 		  
-		if (<%=userId%> != null) {			
+		if ("<%=userId%>" != null) {			
 			$.ajax({
 				type: "get",
 				url: "PayMain",
 				data: {
-					/* "ordernum" :  */
 					"userId" : "<%=userId%>",
 					"classNum" : "<%=classNum%>"
 					}, 
@@ -376,7 +375,7 @@
           orderId: CorderNum.value,
           orderName: Cname.innerText,
           customerName: Cusername.value,
-          successUrl:'http://localhost:8097/OGO/PaySuccess',
+          successUrl:'http://localhost:7076/OGO/PaySuccess',
           failUrl: 'http://localhost:8097/Pay/fail.jsp',
         })
       })
