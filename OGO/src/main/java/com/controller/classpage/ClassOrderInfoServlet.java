@@ -82,50 +82,52 @@ public class ClassOrderInfoServlet extends HttpServlet {
 		if (findResult > 0) { //이전에 신청한 적이 있음
 			mesg= "이전에 수강한 클래스입니다. 다른 클래스를 신청해주세요";
 			//test 중
-			HashMap<String, Object> scheduleMap= new HashMap<String, Object>();
-			String[] schedules= {selectSched1,selectSched2,selectSched3,selectSched4,selectSched5,
-					selectSched6,selectSched7,selectSched8,selectSched9,selectSched10};
-			String orderSched = null;
-			for (int i = 0; i < schedules.length; i++) {
-				if (schedules[i].length()>0) {
-					if (orderSched==null) {
-						orderSched = ""+(i+1); //신청한 회차를 저장
-					}else {
-						orderSched += ","+(i+1); //신청한 회차를 저장
-					}
-					
-				}
-			}
-			System.out.println("새롭게 신청한 회차 정보(orderSched): "+ orderSched);
-			String[] orderSchedules= orderSched.split(",");
-			for (String s : orderSchedules) {
-				System.out.println("String[] orderSchedules:");
-				System.out.println(s);
-			}
-			//////
-			HashMap<String, Object> findRecordMap= new HashMap<String, Object>();
-			findRecordMap.put("classNum", classNumber);
-			findRecordMap.put("userId", userId);
-			HashMap resultMap=oService.findRecord(findRecordMap);
-			System.out.println("resultMap: "+resultMap);
-			
-			//HashMap<String, Object> insertSched= new HashMap();
-			
-			
-			Set keys=resultMap.keySet();
-			for (Object key : keys) {
-				String k= (String)key;
-				Object v= resultMap.get(k);
-				System.out.println(k+"\t"+v);
-				
-//				for (String s : orderSchedules) { //이건 동작하지 않음. 이유는 나중에 알아보기
-//					if (k.equals(s)) {
-//						insertSched.put("choiceSched", k);
-//						insertSched.put("v", v);
-//						System.out.println("insertSched(insert할 회차):"+insertSched);
+//			HashMap<String, Object> scheduleMap= new HashMap<String, Object>();
+//			String[] schedules= {selectSched1,selectSched2,selectSched3,selectSched4,selectSched5,
+//					selectSched6,selectSched7,selectSched8,selectSched9,selectSched10};
+//			String orderSched = null;
+//			String[] schedules2;
+//			for (int i = 0; i < schedules.length; i++) {
+//				if (schedules[i].length()>0) {
+//					
+//					if (orderSched==null) {
+//						orderSched = ""+(i+1); //신청한 회차를 저장
+//					}else {
+//						orderSched += ","+(i+1); //신청한 회차를 저장
 //					}
+//					
 //				}
-			}
+//			}
+//			System.out.println("새롭게 신청한 회차 정보(orderSched): "+ orderSched);
+//			String[] orderSchedules= orderSched.split(",");
+//			for (String s : orderSchedules) {
+//				System.out.println("String[] orderSchedules:");
+//				System.out.println(s);
+//			}
+//			//////
+//			HashMap<String, Object> findRecordMap= new HashMap<String, Object>();
+//			findRecordMap.put("classNum", classNumber);
+//			findRecordMap.put("userId", userId);
+//			HashMap resultMap=oService.findRecord(findRecordMap);
+//			System.out.println("resultMap: "+resultMap);
+//			
+//			//HashMap<String, Object> insertSched= new HashMap();
+//			
+//			
+//			Set keys=resultMap.keySet();
+//			for (Object key : keys) {
+//				String k= (String)key;
+//				Object v= resultMap.get(k);
+//				System.out.println(k+"\t"+v);
+//				
+////				for (String s : orderSchedules) { //이건 동작하지 않음. 이유는 나중에 알아보기
+////					if (k.equals(s)) {
+////						insertSched.put("choiceSched", k);
+////						insertSched.put("v", v);
+////						System.out.println("insertSched(insert할 회차):"+insertSched);
+////					}
+////				}
+//			}
 //			resultMap.put("schedules", schedules); //schedules배열도 넘기기
 //			//service->dao 에서 insert
 //			ClassInsertService insertService= new ClassInsertService();
