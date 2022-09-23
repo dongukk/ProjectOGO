@@ -9,6 +9,7 @@
 	String userId=null;
 	if(loginDto != null){
 		userId=loginDto.getUserId();
+		System.out.println("classOpenLogin.jsp userId:"+userId);
 	} 
 %>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -27,7 +28,7 @@
 					dataType: "text",
 					async: false,
 					data: //서버에 넘겨줄 데이터 
-						userId= "<%= userId%>"
+						{ userId: "<%= userId%>" }
 					,
 					success: function(data, status, xhr) {
 						console.log("TutorSearch success");
