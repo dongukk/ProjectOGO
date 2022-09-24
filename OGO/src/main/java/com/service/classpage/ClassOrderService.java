@@ -41,7 +41,7 @@ public class ClassOrderService {
 	}
 
 	public int findSched(HashMap<String, Object> map) {
-//		System.out.println("schedule: "+map.get("sched"));
+		System.out.println("schedule: "+map.get("sched"));
 //		System.out.println("classNum: "+map.get("classNum"));
 //		System.out.println("userId: "+map.get("userId"));
 		SqlSession session= MySqlSessionFactory.getSession();
@@ -69,6 +69,20 @@ public class ClassOrderService {
 			session.close();
 		}
 		return orderDTO;
+	}
+
+	public HashMap findRecord(HashMap<String, Object> map) {
+		SqlSession session= MySqlSessionFactory.getSession();
+		HashMap resultMap = null;
+		try {
+			dao= new ClassOrderDAO();
+			resultMap =dao.findRecord(session, map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return resultMap;
 	}
 	
 	
