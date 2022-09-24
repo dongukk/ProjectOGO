@@ -47,13 +47,25 @@ public class ClassAddServlet extends HttpServlet {
 		}else if (sCategory.equals("디자인")||sCategory.equals("영상")) {
 			savePath="C:\\Users\\sohyeon\\git\\ProjectOGO\\OGO\\src\\main\\webapp\\class_img\\category\\E_드로잉,영상";
 		}
+//		if (sCategory.equals("메이크업")||sCategory.equals("스타일링")) {
+//			savePath="C:\\OGO\\class_img\\category\\A_뷰티";
+//		}else if (sCategory.equals("영어")||sCategory.equals("일본어·중국어")||sCategory.equals("기타 외국어")) {
+//			savePath="C:\\OGO\\class_img\\category\\B_외국어";
+//		}else if (sCategory.equals("댄스")||sCategory.equals("뮤직")) {
+//			savePath="C:\\OGO\\class_img\\category\\C_댄스,뮤직";
+//		}else if (sCategory.equals("요리·음료")||sCategory.equals("공예·DIY")) {
+//			savePath="C:\\OGO\\class_img\\category\\D_요리,공예";
+//		}else if (sCategory.equals("디자인")||sCategory.equals("영상")) {
+//			savePath="C:\\OGO\\class_img\\category\\E_드로잉,영상";
+//		}
+		
 		
 		// 파일 크기 제한 - 20MB
 		int maxSize = 1024*1024*20;
 		
 		MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "utf-8" ,new DefaultFileRenamePolicy());
 		
-		String userId =multi.getParameter("tutorId"); //나중에 tutorId로 수정
+		String userId =multi.getParameter("tutorId"); //tutorId
 		String className =multi.getParameter("className");
 		String category =multi.getParameter("category");
 		String subCategory =multi.getParameter("subCategory");
@@ -76,11 +88,10 @@ public class ClassAddServlet extends HttpServlet {
 		String address1 =multi.getParameter("address1"); 
 		String address2 =multi.getParameter("address2");
 		
-		String place= "("+post+")"+address1+address2;
-		//System.out.println(schedule1+"--"+schedule2+"--"+schedule3);
+		String place= "("+post+")"+address1+address2; //주소
 		
 		String con_class =multi.getParameter("textClassInfo");
-		String con_tutor =multi.getParameter("textTutorInfo"); //나중에 튜터테이블에서 받아오기
+		String con_tutor =multi.getParameter("textTutorInfo");
 		String con_notice =multi.getParameter("textNotice");
 		String con_attention =multi.getParameter("textAttention");
 		

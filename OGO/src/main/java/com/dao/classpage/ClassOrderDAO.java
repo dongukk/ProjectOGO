@@ -1,6 +1,7 @@
 package com.dao.classpage;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -26,6 +27,13 @@ public class ClassOrderDAO {
 	public ClassOrderDTO findSched2(SqlSession session, HashMap<String, Object> map) {
 		ClassOrderDTO orderDTO= session.selectOne("ClassOrderMapper.findSched2", map);
 		return orderDTO;
+	}
+
+	public HashMap findRecord(SqlSession session, HashMap<String, Object> map) {
+		List<HashMap> list=session.selectList("findRecord", map);
+		HashMap resultMap= list.get(0);
+		System.out.println(resultMap);
+		return resultMap;
 	}
 
 }
