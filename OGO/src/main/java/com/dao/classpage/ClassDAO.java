@@ -15,8 +15,8 @@ public class ClassDAO {
 		return dto;
 	}
 
-	public String selectNickName(SqlSession session, String tuterId) {
-		String name =session.selectOne("ClassMapper.selectNickName", tuterId);
+	public String selectNickName(SqlSession session, String tutorId) {
+		String name =session.selectOne("ClassMapper.selectNickName", tutorId);
 		return name;
 	}
 
@@ -48,6 +48,11 @@ public class ClassDAO {
 	public String userProfilePhoto(SqlSession session, String tuterId) {
 		String tutorProfile= session.selectOne("ClassMapper.userProfilePhoto", tuterId);
 		return tutorProfile;
+	}
+
+	public int tutorSearch(SqlSession session, String tutorId) {
+		int num =session.selectOne("ClassMapper.tutorSearch", tutorId);
+		return num;
 	}
 
 //	public String selectClass(SqlSession session, String classId) {
