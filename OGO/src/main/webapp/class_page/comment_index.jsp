@@ -13,6 +13,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Jua&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@900&family=Sunflower:wght@300&display=swap" rel="stylesheet">
 	<link rel='stylesheet' href='comment.css'>
 	
+	 <% String mesg = (String) session.getAttribute("mesg"); 
+ 	if(mesg != null){
+ %>
+	alert("<%= mesg %>");
+
+<%} session.removeAttribute("mesg"); %>
     <form action="Create_CommentServlet" id="cmt_form" method="get" >
 
     
@@ -36,7 +42,7 @@
 	List<ClassCommentDTO> cmtlist = (List<ClassCommentDTO>) request.getAttribute("commentlist"); 
 	for(int i=0; i< cmtlist.size(); i++){
 %>
-		 
+
 	<%if(i==0||i%3==0) { %>
 	        <div class="notice1"><br>
 	        	<p id="notice_detail"><b>&nbsp&nbsp<%=cmtlist.get(i).getComment_notice()%></b></p>
@@ -56,26 +62,11 @@
 	} 
 %>	
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script type="text/javascript">/* 오늘 날짜 불러오기 */
-	$().click(function() {
-		console.log($("textarea").value);
-		
- 		if ($("textarea").value == null) {
-			event.preventDefault();
-			alert("내용을 입력해 주세요.");
-		}  
-
-	});
-	</script>	        	    
-		
 	        <!-- <button class="button_body" id="cmt_button1">글쓰기</button> -->
-           
+
     <!-- Button to Open the Modal -->
 <button type="button" class="btn btn-primary button_body" id="cmt_button1" data-toggle="modal" data-target="#myModal"
- style="background-color: purple;">
-  쓰기
-</button>
+ 	style="background-color: purple;">쓰기</button>
 
 <!-- The Modal -->
    
@@ -85,18 +76,21 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">님 글쓰기</h4>
+  
+        <h4 class="modal-title">글쓰기</h4>
         <!-- <button type="button" class="close" data-dismiss="modal">&times;close</button> -->
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-        <textarea id="cmt_textarea" rows="5" cols="60"></textarea>
+        <textarea id="cmt_textarea" name="cmttextarea" rows="5" cols="60"></textarea>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-      	<button type="submit" class="cmt_submit" 
+	    
+	   	
+       	<button type="submit" class="cmt_submit" 
       		style="position: relative; background-color: rgb(220,53,69); 
       		color: white; border: 0px; border-radius: 4px; width: 54px; height: 38px;
       		text-align: center;">확인</button>
@@ -107,7 +101,34 @@
   </div>
 </div>
   </form>
-   
+  
+  <form action="Update_CommentSerlvet" method="get">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" id="cmt_button2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">수정</button>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">수정하기</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <textarea id="cmt_textarea" name="cmttextarea2" rows="5" cols="60"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" onclick="location.herf='Update_CommentSerlvet'">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+   <!--   <form action="Update_CommentSerlvet" method="get">
+      	<input type="button" id="upadatebtn" style="position: relative; background-color: rgb(220,53,69); 
+      		color: white; border: 0px; border-radius: 4px; width: 54px; height: 38px;
+      		text-align: center;" />수정
+      </form> -->
     <!-- 수강후기 끝 -->
     
  

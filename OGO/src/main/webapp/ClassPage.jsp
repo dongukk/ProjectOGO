@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.dto.login.MemberDTO"%>
 <%@page import="com.dto.classpage.ClassDTO"%>
 <%@page import="com.dto.classpage.ClassImgDTO"%>
@@ -36,7 +37,6 @@
 	if(mDTO!=null){
 		userId = mDTO.getUserId();
 	}
-	
 %>
 
 <!-- ajax cdn -->
@@ -278,8 +278,12 @@
 		    $('html').stop().animate({scrollTop:targetTop}, 300);
 		    e.preventDefault();
 		})
+		
+		
+	})//end
 			
 	})//script
+	
 </script>
 </head>
 <body>
@@ -288,14 +292,14 @@
 
 <div class="wrap">
 	<!-- 탭 -->
-	<jsp:include page="class_page/class_pagetab.jsp" flush="true"></jsp:include>
+	
   <div id="right">
 	<!-- 결제 박스 -->
 	<jsp:include page="class_page/box.jsp" flush="true"></jsp:include>
   </div>
   <div id="left">
 	<!-- 네비탭 -->
-<%-- 	<jsp:include page="class_page/classNavtab.jsp"></jsp:include> --%>
+	<jsp:include page="class_page/class_pagetab.jsp" flush="true"></jsp:include>
 	<br>
 		<!-- 클래스 이미지, 클래스 이름 -->
 		<jsp:include page="class_page/title.jsp" flush="true"></jsp:include>
@@ -318,7 +322,7 @@
 		<!-- 유의사항 -->
 		<jsp:include page="class_page/attention.jsp" flush="true"></jsp:include>
 		<br>
-	</div>	
+	</div>
 		<!-- 클래스 포토 -->
 		<jsp:include page="class_page/classPhoto.jsp" flush="true"></jsp:include>
 		<br>

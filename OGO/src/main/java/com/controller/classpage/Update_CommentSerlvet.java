@@ -36,18 +36,23 @@ public class Update_CommentSerlvet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		MemberDTO mdto = (MemberDTO) session.getAttribute("login");
-		ClassDTO cdto = (ClassDTO) session.getAttribute("classnum");
+		ClassDTO dto_c =(ClassDTO) session.getAttribute("cDTO");
+		System.out.println(dto_c);
 		String nextpg = "";
-		
 		if (mdto==null) {
 			session.setAttribute("mesg", "로그인이 필요합니다.");
-			nextpg ="MAIN"; 
-		}else if(cdto.getUserId()==mdto.getUserId()) {
-			String textarea = request.getParameter("textarea");
-			String userid = request.getParameter("userid");
-			String CLASSNUM = request.getParameter("CLASSNUM");
+			nextpg =""; 
+		}else if(mdto!=null) {
+			String comment_notice = request.getParameter("cmttextarea2");
+			System.out.println("수정글: "+comment_notice);
+			String userid = mdto.getUserId();
+			System.out.println("ID: "+userid);
+			int classnum = dto_c.getClassNum();
+			System.out.println("classNum: "+classnum);
+			String comment_date = "sysdate";
+			System.out.println("현재날짜: "+comment_date); 
 			
-			UpdateCommentDTO cmtupdatedto = new UpdateCommentDTO(Integer.parseInt(CLASSNUM),userid,textarea);
+			UpdateCommentDTO cmtupdatedto = new UpdateCommentDTO(classnum,userid,comment_notice,comment_date);
 			ClassCommentService cmtservice = new ClassCommentService();
 			int cmtnum = cmtservice.cmtUpdate(cmtupdatedto);
 			if(cmtnum ==1) {
@@ -55,7 +60,8 @@ public class Update_CommentSerlvet extends HttpServlet {
 			}else {
 				session.setAttribute("mest", "다시 시도해주세요.");
 			}
-			nextpg="ClassPage";
+			//nextpg="ClassPage";
+			response.sendRedirect("ClassPage");
 			
 		}
 		

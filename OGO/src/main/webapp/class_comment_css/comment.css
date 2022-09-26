@@ -16,7 +16,7 @@
     "line3 line3 line3"
     "img3 notice3 notice3"
     "line4 line4 line4"
-    "button button button"
+    "button1 button2 button3"
     
 }
 
@@ -151,9 +151,23 @@
     color:rgb(133, 54, 218);
    
 }
+#cmt_button2{
+	grid-area: button2;
+	position :absolute;
+	width : 80px;
+	height :40px;
+    top: 70%;
+    left: 84%;
+    font-family:  'Nanum Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 23px;
+    color: rgb(159, 129, 192);
+	
+}
+
 
 #cmt_button1{
-    grid-area: button;
+    grid-area: button3;
     position :absolute;
     top: 70%;
     left: 84%;
