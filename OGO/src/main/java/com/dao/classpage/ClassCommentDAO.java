@@ -31,7 +31,6 @@ public class ClassCommentDAO {
 		return n;
 	}
 
-
 	
 	
 	

@@ -42,7 +42,6 @@ public class Create_NoticeServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
 		String userid = dto.getUserId();
-		
 		NoticeDTO Ndto = new NoticeDTO(0, userid, ntitle, ncontent, "today"); 
 		//dto는 nickname자리지만 필요한 정보는 userid이기 때문에  nickname자리에 userid작성
 		

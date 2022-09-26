@@ -36,28 +36,38 @@ public class Create_CommentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
-		ClassDTO dto_c = (ClassDTO) session.getAttribute("classnum");
-		request.setCharacterEncoding("UTF-8");
+		ClassDTO dto_c =(ClassDTO) session.getAttribute("cDTO");
+		System.out.println(dto_c);
 	/*	if (dto!=null) {*/
-			String comment_no = request.getParameter("comment_no");
-			String textarea = request.getParameter("textarea");
-			String comment_date = request.getParameter("comment_date");
+			//String comment_no = request.getParameter("comment_no");
+		    String comment_no ="COMMENT_NO_SEQ.nextval" ; //nextval
+		    System.out.println("commentNo: "+comment_no);
+			String comment_notice = request.getParameter("cmttextarea");
+			System.out.println("게시글: "+comment_notice);
+			
+			String comment_date = "sysdate";
+			System.out.println("현재날짜: "+comment_date);
+			
 			String userid = dto.getUserId();
+			System.out.println("ID: "+userid);
+			
 			int classnum = dto_c.getClassNum();
+			System.out.println("classnum: "+ classnum);
 			
-			ClassCommentDTO cmt_dto = 
-					new ClassCommentDTO(Integer.parseInt(comment_no),textarea,comment_date,userid,classnum);
 			
+			  ClassCommentDTO cmt_dto = new
+			  ClassCommentDTO(comment_no,comment_notice,comment_date,userid,classnum);
+			 
 			ClassCommentService cmt_service = new ClassCommentService();
-			int n = cmt_service.cmtAdd(cmt_dto);
-		if (n==1) {
-			session.setAttribute("mesg","저장성공");
 			
-		}else {
-			
-			session.setAttribute("mesg","로그인이 필요한작업입니다");
-		}
-	
+			  int n = cmt_service.cmtAdd(cmt_dto); if (n==1) {
+			  session.setAttribute("mesg","저장성공");
+			  
+			  }else {
+			  
+			  session.setAttribute("mesg","로그인이 필요한작업입니다"); }
+			  response.sendRedirect("ClassPage");
+			 
 	}
 
 	/**
