@@ -9,13 +9,17 @@ public class ClassListDto {
 	String schedule1;
 	String place;
 	String subcategory;
-	String thumbnail;
+	String id;
+	String name;
+	String classphoto1;
 	
 	public ClassListDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ClassListDto(int classNum, String className, String userId, int price, String schedule1, String place, String subcategory, String thumbnail) {
+
+	public ClassListDto(int classNum, String className, String userId, int price, String schedule1, String place,
+			String subcategory, String id, String name, String classphoto1) {
 		super();
 		this.classNum = classNum;
 		this.className = className;
@@ -24,9 +28,11 @@ public class ClassListDto {
 		this.schedule1 = schedule1;
 		this.place = place;
 		this.subcategory = subcategory;
-		this.thumbnail = thumbnail;
-		
+		this.id = id;
+		this.name = name;
+		this.classphoto1 = classphoto1;
 	}
+
 	public int getClassNum() {
 		return classNum;
 	}
@@ -58,11 +64,11 @@ public class ClassListDto {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
+
 	public String getSchedule1() {
 		return schedule1;
 	}
-	
+
 	public void setSchedule1(String schedule1) {
 		this.schedule1 = schedule1;
 	}
@@ -74,7 +80,7 @@ public class ClassListDto {
 	public void setPlace(String place) {
 		this.place = place;
 	}
-	
+
 	public String getSubcategory() {
 		return subcategory;
 	}
@@ -82,22 +88,36 @@ public class ClassListDto {
 	public void setSubcategory(String subcategory) {
 		this.subcategory = subcategory;
 	}
-	
-	public String getThumbnail() {
-		return thumbnail;
+
+	public String getId() {
+		return id;
 	}
 
-	public void setThumbnail(String thumbnail) {
-		this.thumbnail = thumbnail;
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getClassphoto1() {
+		return classphoto1;
+	}
+
+	public void setClassphoto1(String classphoto1) {
+		this.classphoto1 = classphoto1;
 	}
 
 	@Override
 	public String toString() {
-		return "ClassListDto [classNum=" + classNum + ", className=" + className + ", userId="
-				+ userId + ", price" + price + ", schedule1" + schedule1 + ", place"+ place + ", subcategory" + subcategory + ", thumbnail" + thumbnail + "]";
-				
+		return "ClassListDto [classNum=" + classNum + ", className=" + className + ", userId=" + userId + ", price="
+				+ price + ", schedule1=" + schedule1 + ", place=" + place + ", subcategory=" + subcategory + ", id="
+				+ id + ", name=" + name + ", classphoto1=" + classphoto1 + "]";
 	}
-	
-	
 	
 }//end class

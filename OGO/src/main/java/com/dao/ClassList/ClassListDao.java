@@ -23,5 +23,25 @@ public class ClassListDao {
 		return null;
 	}
 
+
+	public List<ClassListDto> listsortdesc(SqlSession session, String listsort) {
+		List<ClassListDto> list = session.selectList("ClassListMapper.listsortdesc");
+		System.out.println("dao"+listsort);
+		return list;
+	}
+
+	public List<ClassListDto> listsortasc(SqlSession session, String listsort) {
+		List<ClassListDto> list = session.selectList("ClassListMapper.listsortasc");
+		System.out.println("dao"+listsort);
+		return list;
+	}
+
+	public List<ClassListDto> listsortdate(SqlSession session, String listsort) {
+		List<ClassListDto> list = session.selectList("ClassListMapper.listsortdate");
+		System.out.println("dao"+listsort);
+		return list;
+	}
+
+
 	
 }

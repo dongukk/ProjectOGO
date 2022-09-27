@@ -22,4 +22,41 @@ public class ClassListService {
 	      return list;
 	   }
 	
+
+	public static List<ClassListDto> listsortdesc(String listsort) {
+		SqlSession session = MySqlSessionFactory.getSession();	
+	      List<ClassListDto> list =null;
+	      try {
+	         list = dao.listsortdesc(session,listsort);
+	         System.out.println("service"+listsort);
+	      } finally {
+	         session.close();
+	      }
+	      return list;
+	}
+	
+	public static List<ClassListDto> listsortasc(String listsort) {
+		SqlSession session = MySqlSessionFactory.getSession();	
+	      List<ClassListDto> list =null;
+	      try {
+	         list = dao.listsortasc(session,listsort);
+	         System.out.println("service"+listsort);
+	      } finally {
+	         session.close();
+	      }
+	      return list;
+	}
+	
+	public static List<ClassListDto> listsortdate(String listsort) {
+		SqlSession session = MySqlSessionFactory.getSession();	
+	      List<ClassListDto> list =null;
+	      try {
+	         list = dao.listsortasc(session,listsort);
+	         System.out.println("service"+listsort);
+	      } finally {
+	         session.close();
+	      }
+	      return list;
+	}
+	
 }

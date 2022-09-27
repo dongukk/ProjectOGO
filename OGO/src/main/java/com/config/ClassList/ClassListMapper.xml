@@ -3,18 +3,28 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ClassListMapper">
-	<select id="view" resultType="ClassListDto">
-	 	select classNum, className, userId ,price, schedule1, place, subcategory
-	 	from CLASS
-	
+	<select id="view" resultType="ClassListDto" parameterType="string">
+	 	select classNum, className, userId, price, schedule1, place, subcategory, cate.id, cate.name, classphoto1 from CLASS 
+	 	class inner join sub_category s_cate on class.subcategory=s_cate.name
+	 	inner join category cate on s_cate.cate_id = cate.id join classimg USING (classnum)
 	</select>
 	
-	<select id="thumbnail" parameterType="string" resultType="string">
-    	select classphoto1
-    	from CLASSIMG
-    </select> 	
+	<select parameterType="string" resultType="ClassListDto" id="listsortasc"> 
+		select classNum, className, userId, price, schedule1, place, subcategory, cate.id, cate.name, classphoto1 from CLASS 
+		class inner join sub_category s_cate on class.subcategory=s_cate.name 
+		inner join category cate on s_cate.cate_id = cate.id join classimg USING (classnum)order by price asc 
+		</select>
+
+	<select parameterType="string" resultType="ClassListDto" id="listsortdesc"> 
+		select classNum, className, userId, price, schedule1, place, subcategory, cate.id, cate.name, classphoto1 from CLASS 
+		class inner join sub_category s_cate on class.subcategory=s_cate.name 
+		inner join category cate on s_cate.cate_id = cate.id join classimg USING (classnum)order by price desc 
+	</select>
 	
-	
-	
+	<select parameterType="string" resultType="ClassListDto" id="listsortdate"> 
+		select classNum, className, userId, price, schedule1, place, subcategory, cate.id, cate.name, classphoto1 from CLASS 
+		class inner join sub_category s_cate on class.subcategory=s_cate.name 
+		inner join category cate on s_cate.cate_id = cate.id join classimg USING (classnum)order by schedule1 desc 
+	</select>
 
 </mapper>

@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-   <properties resource="com/config/ClassList/jdbc.properties" />
+   <properties resource="com/config/ClassList/jdbc.properties"/>
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL" />
 	</settings>
@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			<dataSource type="POOLED">
 				<property name="driver" value="${driver}" />
 				<property name="url" value="${url}" />
-				<property name="username" value="${username}" />
+				<property name="username" value="${username}"/>
 				<property name="password" value="${xxx}" />
 			</dataSource>
 		</environment>
