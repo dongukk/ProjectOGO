@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class MySqlSessionFactory {
-
 	private static SqlSessionFactory sqlSessionFactory = null;
 	static {
 		String resource = "com/config/classcomment/Configuration.xml";
@@ -27,6 +26,7 @@ public class MySqlSessionFactory {
 	public static SqlSession getSession() {
 		return sqlSessionFactory.openSession();
 	}
+	
 	
 	
 }//end class

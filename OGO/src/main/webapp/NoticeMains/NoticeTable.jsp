@@ -28,7 +28,7 @@ for(int i=0; i< list.size(); i++){
 		<% if(curpage == 1) {%>
 		<%= i+1 %>
 		<% } else { %>
-		<%= ((curpage-1)*6+i)+1 %>
+		<%= ((curpage-1)*6+i)+1 %> <!-- 시작해야할 classNum -->
 		<% } %>
 		</td>
 		<td><a id="a1" href="NoticeContentServlet?Nnum=<%= list.get(i).getNnum()%>"><%= list.get(i).getNtitle() %></a></td>

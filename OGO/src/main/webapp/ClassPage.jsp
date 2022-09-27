@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.dto.login.MemberDTO"%>
 <%@page import="com.dto.classpage.ClassDTO"%>
 <%@page import="com.dto.classpage.ClassImgDTO"%>
@@ -36,9 +37,8 @@
 	if(mDTO!=null){
 		userId = mDTO.getUserId();
 	}
-
-	
 %>
+
 <!-- ajax cdn -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -107,25 +107,25 @@
 			
 			var idx= selectSchedule.substring(0, 1);
 			
-			if (idxArr.indexOf(idx, 0)== -1) {
-				idxArr.push(idx);
-				
+			if (idxArr.indexOf(idx, 0)== -1) { //idx가 idxArr에 존재하지 않는 경우
+				idxArr.push(idx); //idxArr에 추가
+				//선택한 일정 정보 드롭다운 하단에 추가
 				scheduleChoice.append("<div class='input-group mb-1' id='select"+idx+"'>"+
 						"<input type='text' class='form-control' value="+selectSchedule+" readonly>"+
 						"<button type='button' class='btn' id='close"+idx+"'>X</button>"+
 						"<br></div>");
 				
 				$("#selectSched"+idx).val(selectSchedule.substring(4));
-			}else {
+			}else { //idx가 idxArr에 이미 존재하는 경우
 				alert("이미 선택한 회차입니다.");
 			}
 			
 			//선택회차 개별 삭제 기능
 			$("#close"+idx).on("click", function() {
-				$("#select"+idx).detach();
+				$("#select"+idx).detach(); //id가 select+idx인 div g태그 삭제
 				var del = idxArr.indexOf(idx);
-				if (del > -1) {
-					idxArr.splice(del, 1);
+				if (del > -1) { //idxArr 배열에 del이 존재하는 경우
+					idxArr.splice(del, 1); //배열에서 del 삭제
 				}
 				$("#selectSched"+idx).val(""); //hidden 태그 value도 삭제
 			})
@@ -192,12 +192,11 @@
 		
 		$("#Pay_button1").click(function() {
 		  
-		if (<%=userId%> != null) {			
+		if ("<%=userId%>" != null) {			
 			$.ajax({
 				type: "get",
 				url: "PayMain",
 				data: {
-					/* "ordernum" :  */
 					"userId" : "<%=userId%>",
 					"classNum" : "<%=classNum%>"
 					}, 
@@ -279,8 +278,12 @@
 		    $('html').stop().animate({scrollTop:targetTop}, 300);
 		    e.preventDefault();
 		})
+		
+		
+	})//end
 			
 	})//script
+	
 </script>
 </head>
 <body>
@@ -289,14 +292,14 @@
 
 <div class="wrap">
 	<!-- 탭 -->
-	<jsp:include page="class_page/class_pagetab.jsp" flush="true"></jsp:include>
+	
   <div id="right">
 	<!-- 결제 박스 -->
 	<jsp:include page="class_page/box.jsp" flush="true"></jsp:include>
   </div>
   <div id="left">
 	<!-- 네비탭 -->
-<%-- 	<jsp:include page="class_page/classNavtab.jsp"></jsp:include> --%>
+	<jsp:include page="class_page/class_pagetab.jsp" flush="true"></jsp:include>
 	<br>
 		<!-- 클래스 이미지, 클래스 이름 -->
 		<jsp:include page="class_page/title.jsp" flush="true"></jsp:include>
@@ -319,7 +322,7 @@
 		<!-- 유의사항 -->
 		<jsp:include page="class_page/attention.jsp" flush="true"></jsp:include>
 		<br>
-	</div>	
+	</div>
 		<!-- 클래스 포토 -->
 		<jsp:include page="class_page/classPhoto.jsp" flush="true"></jsp:include>
 		<br>
@@ -376,7 +379,7 @@
           orderId: CorderNum.value,
           orderName: Cname.innerText,
           customerName: Cusername.value,
-          successUrl:'http://localhost:8097/OGO/PaySuccess',
+          successUrl:'http://localhost:7076/OGO/PaySuccess',
           failUrl: 'http://localhost:8097/Pay/fail.jsp',
         })
       })

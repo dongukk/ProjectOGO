@@ -44,7 +44,7 @@ public class findIdServlet extends HttpServlet {
 		} else {
 			request.setAttribute("userId", null);
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("LoginCURD/findId2.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("findId2.jsp");
 		dispatcher.forward(request, response);
 	}
 

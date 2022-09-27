@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
    <typeAliases>
     <typeAlias type="com.dto.classpage.ClassCommentDTO" alias="ClassCommentDTO"/>
+    <typeAlias type="com.dto.classpage.UpdateCommentDTO" alias="UpdateCommentDTO"/>
    </typeAliases>
    
 	<environments default="development">
