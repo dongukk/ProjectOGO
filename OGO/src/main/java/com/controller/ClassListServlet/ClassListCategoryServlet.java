@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 import com.dto.ClassList.ClassListDto;
 import com.service.ClassList.ClassListCategoryService;
@@ -35,13 +36,28 @@ public class ClassListCategoryServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String subcategory = request.getParameter("subcategory");
+		String listsort = request.getParameter("listsort");
+		String listsortall = request.getParameter("listsortall");
+		String pricedesc = request.getParameter("pricedesc");
+		String priceasc = request.getParameter("priceasc");
+		String datedesc = request.getParameter("datedesc");
 		
-		 if (subcategory==null) {
+		  if(pricedesc!=null)
+		 {  
+			 List<ClassListDto> listall = ClassListService.listsortdesc(listsort);
+			 request.setAttribute("listall", listall);
+			 subcategory = "hello";
+		 }else if(priceasc!=null) {
+			 List<ClassListDto> listall = ClassListService.listsortasc(listsort);
+			 request.setAttribute("listall", listall); 
+			 subcategory="hello";
+		 }else if(subcategory==null){
 			 List<ClassListDto> listall = ClassListService.view();
 			 request.setAttribute("listall", listall); 
-		  }
+		 }
+		  
 		 
-			System.out.println(subcategory);
+		System.out.println(subcategory);
 		System.out.println("소분류: "+subcategory);
 		ClassListCategoryService listcategory = new ClassListCategoryService(); /*service 불러옴*/
 		List<ClassListCategoryServlet> categoryDTO = listcategory.classB(subcategory); 

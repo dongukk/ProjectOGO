@@ -9,13 +9,15 @@ public class ClassListCategoryDto {
 	String schedule1;
 	String place;
 	String subcategory;
-	String cate_id;
+	String id;
+	String name;
+	String classphoto1;
 	public ClassListCategoryDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public ClassListCategoryDto(int classNum, String className, String userId, int price, String schedule1,
-			String place, String subcategory, String cate_id) {
+			String place, String subcategory, String id, String name, String classphoto1) {
 		super();
 		this.classNum = classNum;
 		this.className = className;
@@ -24,7 +26,9 @@ public class ClassListCategoryDto {
 		this.schedule1 = schedule1;
 		this.place = place;
 		this.subcategory = subcategory;
-		this.cate_id = cate_id;
+		this.id = id;
+		this.name = name;
+		this.classphoto1 = classphoto1;
 	}
 	public int getClassNum() {
 		return classNum;
@@ -68,19 +72,29 @@ public class ClassListCategoryDto {
 	public void setSubcategory(String subcategory) {
 		this.subcategory = subcategory;
 	}
-	public String getCate_id() {
-		return cate_id;
+	public String getId() {
+		return id;
 	}
-	public void setCate_id(String cate_id) {
-		this.cate_id = cate_id;
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getClassphoto1() {
+		return classphoto1;
+	}
+	public void setClassphoto1(String classphoto1) {
+		this.classphoto1 = classphoto1;
 	}
 	@Override
 	public String toString() {
 		return "ClassListCategoryDto [classNum=" + classNum + ", className=" + className + ", userId=" + userId
 				+ ", price=" + price + ", schedule1=" + schedule1 + ", place=" + place + ", subcategory=" + subcategory
-				+ ", cate_id=" + cate_id + "]";
+				+ ", id=" + id + ", name=" + name + ", classphoto1=" + classphoto1 + "]";
 	}
-	
-	
 	
 }//end class

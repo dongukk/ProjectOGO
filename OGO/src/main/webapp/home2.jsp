@@ -67,23 +67,22 @@
 		<h1>CLASS LIST</h1>
 		<div class="contents1">필터링 기능으로 원하는 행성을 찾으세요</div>
 		</div>
+		</div>
 	
 	
-<!-- 필터링 시작 -->
-<div class=filter>
-<div style="display:flex; justify-content:center; ">
-<!-- 버튼 요소 -->
-	<button data-value="all" onclick="location.href='ClassListCategoryServlet'" >all</button>
-	<button data-value="new">최신순</button>
-	<button data-value="best">인기순</button>
-	<button data-value="desc">금액 높은 순</button>
-	<button data-value="asc">금액 낮은 순</button>
-</div>
+	<!-- 필터링 시작 -->
+	<div class=filter>
+	<div style="display:flex; justify-content:center; ">
+	<!-- 버튼 요소 -->
+		<button data-value="all" onclick="location.href='ClassListCategoryServlet'" style="color:red;">초기화</button>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+		<p>
+		<a href="ClassListCategoryServlet?listsortdate=desc" data-value="new">최신순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+		<a href="ClassListCategoryServlet?priceasc" data-value="asc">낮은 가격</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+		<a href="ClassListCategoryServlet?pricedesc" data-value="desc">높은 가격</a> 
+	</div> 
+	</div>
 	
 	
-
-
-
 
 <!-- 상품 목록 (임시) 3개씩 정렬 -->
 	<table width="100%" cellspacing="0" cellpadding="0">
@@ -104,9 +103,9 @@
 		
 						<tr>
 						<%
-						 		List<ClassListCategoryDto> listcate = (List<ClassListCategoryDto>) request.getAttribute("listDTO");
-						 		List<ClassListDto> listall = (List<ClassListDto>) request.getAttribute("listall");	
-						 		/* List<ThumbnailDTO> list = (List<ThumbnailDTO>) request.getAttribute("list"); */
+						 	List<ClassListCategoryDto> listcate = (List<ClassListCategoryDto>) request.getAttribute("listDTO");
+						 	List<ClassListDto> listall = (List<ClassListDto>) request.getAttribute("listall");	
+						 		
 						%>
 							<%
 							if(listall!=null){
@@ -133,7 +132,7 @@
 												<font color="gray">
 												<!-- 이미지 더미// 나중에 이미지 연결 수정할 것 -->
 												<a href="#">
-												 <img src="class_img/category/B_외국어/1_01.jpg" width="250" height="200">
+												 <img src="class_img/category/<%=listDTO.get(i).getId()%>_<%=listDTO.get(i).getName()%>/<%=listDTO.get(i).getClassphoto1()%>" width="250" height="200">
 												</a>
 												</font>
 											</td>
@@ -143,8 +142,8 @@
 											<td height="10">
 										</tr>
 										<tr>
-											<td class="td_name" align ="center" width='220px' height='45px' style="word-break:break-all"><strong>
-											<%= listDTO.get(i).getClassName() %></strong>
+											<td class="td_name" align ="center" width='220px' height='45px' style="word-break:break-all">
+											<strong><%= listDTO.get(i).getClassName() %></strong>
 											</td>
 										</tr>
 										<tr>
@@ -197,8 +196,8 @@
 												</a>
 												<font color="gray">
 												<!-- 이미지 더미// 나중에 이미지 연결 수정할 것 -->
-												<a href="#">
-												 <img src="class_img/category/B_외국어/1_01.jpg" width="250" height="200">
+												<a href="ClassPage?classNum=''">
+												 <img src="class_img/category/<%=listDTO.get(i).getId()%>_<%=listDTO.get(i).getName()%>/<%=listDTO.get(i).getClassphoto1()%>" width="250" height="200">
 												</a>
 												</font>
 											</td>
@@ -286,14 +285,14 @@
 		<!-- 좌측 카테고리 -->
 		<ul class="category">
 		<li>
-			<button class=cate>뷰티</button>
+			<button class=cate style="color:#fff; font-weight:bold;">뷰티</button>
 			<ul class="subcate">
 				<li><a href="ClassListCategoryServlet?subcategory=메이크업">메이크업</a></li>
 				<li><a href="ClassListCategoryServlet?subcategory=스타일링">스타일링</a></li>
 			</ul>
 		</li>
 		<li>
-			외국어
+			<button class=cate style="color:#fff; font-weight:bold;">외국어</button>
 			<ul class="subcate">
 				<li><a href="ClassListCategoryServlet?subcategory=영어">영어</a>	
 				<li><a href="ClassListCategoryServlet?subcategory=일본어·중국어">일본어·중국어</a>	
@@ -301,21 +300,21 @@
 			</ul>
 		</li>
 		<li>
-			댄스·뮤직
+			<button class=cate style="color:#fff; font-weight:bold;">댄스·뮤직</button>
 			<ul class="subcate">
 				<li><a href="ClassListCategoryServlet?subcategory=댄스">댄스</a>	
 				<li><a href="ClassListCategoryServlet?subcategory=뮤직">뮤직</a>	
 			</ul>
 		</li>
 		<li>
-			요리·공예
+			<button class=cate style="color:#fff; font-weight:bold;">요리·공예</button>
 			<ul class="subcate">
 				<li><a href="ClassListCategoryServlet?subcategory=요리·음료">요리·음료</a>	
 				<li><a href="ClassListCategoryServlet?subcategory=공예·DIY">공예·DIY</a>		
 			</ul>
 		</li>
 		<li>
-			드로잉·디자인·영상
+			<button class=cate style="color:#fff; font-weight:bold;">드로잉·디자인·영상</button>
 			<ul class="subcate">
 				<li><a href="ClassListCategoryServlet?subcategory=디자인">디자인</a>	
 				<li><a href="ClassListCategoryServlet?subcategory=영상">영상</a>	
@@ -333,7 +332,7 @@
 			<li>
 			<div><h1>클래스 등록</h1></div>
 			<div>어떤 분야든 전문성을 갖고있다면, 지금 바로 클래스를 등록해주세요</div>
-			<div class="more2"><a href="com.controller.classpage/ClassCreateServlet.java">
+			<div class="more2"><a href="ClassCreateServlet" style="color:#fff;">
 			클래스 등록하기</a>
 			</div>
 			</li>
@@ -349,33 +348,33 @@
 				<li class="depth1">
 				<p class="tit">COMPANY</p>
 					<ul class="depth2">
-						<li><a href="#" target="_blank">회사 소개</a></li>
+						<li><a href="#" target="_blank" style="color:#fff;">회사 소개</a></li>
 						<br>
-						<li><a href="#" target="_blank">언론 보도</a></li>
+						<li><a href="#" target="_blank" style="color:#fff;">언론 보도</a></li>
 					</ul>	
 				</li>
 				<li class="depth1">
 				<p class="tit">POLICIES</p>
 					<ul class="depth2">
-						<li><a href="#" target="_blank">이용약관</a></li>
+						<li><a href="#" target="_blank" style="color:#fff;">이용약관</a></li>
 						<br>
-						<li><a href="#" target="_blank">개인정보처리방침</a></li>
+						<li><a href="#" target="_blank" style="color:#fff;">개인정보처리방침</a></li>
 					</ul>	
 				</li>
 				<li class="depth1">
 				<p class="tit">SUPPORT</p>
 					<ul class="depth2">
-						<li><a href="#" target="_blank">FAQ</a></li>
+						<li><a href="#" target="_blank" style="color:#fff;">FAQ</a></li>
 						<br>
-						<li><a href="#" target="_blank">공지사항</a></li>
+						<li><a href="#" target="_blank" style="color:#fff;">공지사항</a></li>
 					</ul>	
 				</li>
 				<li class="depth1">
 				<p class="tit">B2B</p>
 					<ul class="depth2">
-						<li><a href="#" target="_blank">기업교육</a></li>
+						<li><a href="#" target="_blank" style="color:#fff;">기업교육</a></li>
 						<br>
-						<li><a href="#" target="_blank">브랜드제휴</a></li>
+						<li><a href="#" target="_blank" style="color:#fff;">브랜드제휴</a></li>
 					</ul>	
 				</li>
 			</ul>
@@ -392,8 +391,6 @@
 		</div>
 	</div>
 	</footer>
-<a href="#">페이지 위로 이동</a>
 
-<script src="./index.js"></script>
 </body>
 </html>
