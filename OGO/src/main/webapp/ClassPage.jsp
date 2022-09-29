@@ -282,7 +282,6 @@
 		
 	})//end
 			
-	})//script
 	
 </script>
 </head>
