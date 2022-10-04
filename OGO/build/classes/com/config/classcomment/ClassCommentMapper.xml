@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	select comment_no, comment_notice, comment_date ,USERID, CLASSNUM
 	 	from class_comment
 	</select>
-	
+
 	<insert id="cmtAdd" parameterType="ClassCommentDTO">
 		insert into class_comment (comment_no,comment_notice,userid,classnum)
 		 VALUES(COMMENT_NO_SEQ.nextval,#{comment_notice},#{userid},#{classnum})
@@ -23,5 +23,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		set comment_notice = #{comment_notice}, comment_date = #{comment_date}
   		where classnum = #{classnum} and userid = #{userid}
   	</update>
-
+  	
 </mapper>
