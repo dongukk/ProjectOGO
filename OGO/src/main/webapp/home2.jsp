@@ -1,6 +1,8 @@
+<%@page import="com.dto.classpage.ClassDTO"%>
 <%@page import="com.dto.ClassList.ClassListCategoryDto"%>
 <%@page import="java.util.List"%>
 <%@page import="com.dto.ClassList.ClassListDto"%>
+<%@page import="com.controller.classpage.ClassPageServlet" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -85,7 +87,7 @@
 	
 
 <!-- 상품 목록 (임시) 3개씩 정렬 -->
-	<table width="100%" cellspacing="0" cellpadding="0">
+	<table width="100%" cellspacing="0" cellpadding="0" >
 		
 			<tr>
 				<td>
@@ -105,7 +107,6 @@
 						<%
 						 	List<ClassListCategoryDto> listcate = (List<ClassListCategoryDto>) request.getAttribute("listDTO");
 						 	List<ClassListDto> listall = (List<ClassListDto>) request.getAttribute("listall");	
-						 		
 						%>
 							<%
 							if(listall!=null){
@@ -114,7 +115,7 @@
 							%>
 						<% for(int i=0; i<listDTO.size(); i++){ %>
 						<td>
-						 	<table style=padding:15px>
+						 	<table style=padding:15px >
 										<tr>
 											<td>
 												
@@ -131,9 +132,10 @@
 												</a>
 												<font color="gray">
 												<!-- 이미지 더미// 나중에 이미지 연결 수정할 것 -->
-												<a href="#">
-												 <img src="class_img/category/<%=listDTO.get(i).getId()%>_<%=listDTO.get(i).getName()%>/<%=listDTO.get(i).getClassphoto1()%>" width="250" height="200">
-												</a>
+													 
+													<a href="ClassPage?listNum=<%=listDTO.get(i).getClassNum() %>">
+														 <img src="class_img/category/<%=listDTO.get(i).getId()%>_<%=listDTO.get(i).getName()%>/<%=listDTO.get(i).getClassphoto1()%>" width="250" height="200">
+													</a>	
 												</font>
 											</td>
 											
@@ -195,8 +197,9 @@
 												<br>
 												</a>
 												<font color="gray">
-												<!-- 이미지 더미// 나중에 이미지 연결 수정할 것 -->
-												<a href="ClassPage?classNum=''">
+												<!-- 이미지-상세페이지 연결 -->
+												
+												<a href="ClassPageServlet?listNum=<%=listDTO.get(i).getClassNum() %>">
 												 <img src="class_img/category/<%=listDTO.get(i).getId()%>_<%=listDTO.get(i).getName()%>/<%=listDTO.get(i).getClassphoto1()%>" width="250" height="200">
 												</a>
 												</font>
