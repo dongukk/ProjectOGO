@@ -124,41 +124,45 @@
 			$("#classSchedule").empty();
 		})
 		
+		var categoryArr=[];
+		var subOption="";
 		//카테고리 선택
 		$("#category").on("change", function() {
 			var category= $("#category").val();
 			var subCategory = $("#subCategory");
 			
+			categoryArr=[];
+			subOption="";
 			if (category=="뷰티") {
 				subCategory.empty();
-				subCategory.append('<option selected>Sub Category</option>'+
-						"<option class='subCategory' value='메이크업'>메이크업</option>"+
-			      		"<option class='subCategory' value='스타일링'>스타일링</option>");
+				categoryArr.push("메이크업");
+				categoryArr.push("스타일링");
 			}else if (category=="외국어") {
 				subCategory.empty();
-				subCategory.append('<option selected>Sub Category</option>'+
-						  '<option class="subCategory" value="영어">영어</option>'+
-					      '<option class="subCategory" value="일본어·중국어">일본어·중국어</option>'+
-					      '<option class="subCategory" value="기타외국어">기타 외국어</option>');
+				categoryArr.push("영어");
+				categoryArr.push("일본어·중국어");
+				categoryArr.push("기타외국어");
 			}else if (category=="댄스·뮤직") {
 				subCategory.empty();
-				subCategory.append('<option selected>Sub Category</option>'+
-						  '<option class="subCategory" value="댄스">댄스</option>'+
-					      '<option class="subCategory" value="뮤직">뮤직</option>');
+				categoryArr.push("댄스");
+				categoryArr.push("뮤직");
 			}else if (category=="요리·공예") {
 				subCategory.empty();
-				subCategory.append('<option selected>Sub Category</option>'+
-						  '<option class="subCategory" value="요리·음료">요리·음료</option>'+
-					      '<option class="subCategory" value="공예·DIY">공예·DIY</option>')
+				categoryArr.push("요리·음료");
+				categoryArr.push("공예·DIY");
 			}else if (category=="드로잉·디자인·영상") {
 				subCategory.empty();
-				subCategory.append('<option selected>Sub Category</option>'+
-						  '<option class="subCategory" value="디자인">디자인</option>'+
-					      '<option class="subCategory" value="영상">영상</option> ');
+				categoryArr.push("디자인");
+				categoryArr.push("영상");
 			}else if (category=="Category") {
 				subCategory.empty();
-				subCategory.append('<option selected>Sub Category</option>');
+				categoryArr.push("Sub Category");
 			}
+			
+			for (let str of categoryArr) {
+				subOption+="<option class='subCategory' value='"+str+"'>"+str+"</option>"
+			}
+			subCategory.append('<option selected>Sub Category</option>'+subOption);
 			
 		})
 		
