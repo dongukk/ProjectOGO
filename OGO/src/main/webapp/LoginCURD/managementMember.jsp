@@ -12,7 +12,8 @@
 	List<MemberDTO> list = pDTO.getList();
 	
 	String searchName = (String)request.getAttribute("searchName");
-	String  searchValue = (String)request.getAttribute("searchValue");
+	String searchValue = (String)request.getAttribute("searchValue");
+	String order = (String)request.getAttribute("order");
 	if(searchValue==null) {searchValue = "";}
 	System.out.println("search : "+searchName +"\t" + searchValue);
 %>  
@@ -69,7 +70,9 @@
 						<option value="nickname" <% if("nickname".equals(searchName) || searchName == null){ %> selected="selected" <%}%> >닉네임</option>
 						<option value="address" <% if("address".equals(searchName)){ %> selected="selected" <%}%> >주소</option>
 					</select> 
-					<input type="text" name="searchValue" value="<%=searchValue%>">	
+					<input type="text" name="searchValue" value="<%=searchValue%>">
+					<input type="radio" value="asc" name="order" <% if("asc".equals(order) || order == null){ %> checked="checked" <%}%> >오름차순
+					<input type="radio" value="desc" name="order" <% if("desc".equals(order)){ %> checked="checked" <%}%> >내림차순
 					<input type="submit" id="searcBtn" value="검색">
 				</form>
 			</td>
@@ -122,7 +125,7 @@
 		          	}else{								// RowBound(offset, limit) // 시작 idx, 몇개
 		          		                                //   offset = (원하는 페이지, -1)* perpage
 		          		                                //   limit = purpage
-		          		out.print("<a href='ManageListServlet?curPage="+i+"&searchName="+searchName+"&searchValue="+searchValue+"'>"+"&nbsp;"+i+"&nbsp;"+"</a>");
+		          		out.print("<a href='ManageListServlet?curPage="+i+"&searchName="+searchName+"&searchValue="+searchValue+"&order="+order+"'>"+"&nbsp;"+i+"&nbsp;"+"</a>");
 		          	}
 		        }//end for
 				%>
