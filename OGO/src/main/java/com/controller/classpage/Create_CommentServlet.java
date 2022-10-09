@@ -50,8 +50,8 @@ public class Create_CommentServlet extends HttpServlet {
 			
 			String userid = dto.getUserId();
 			System.out.println("ID: "+userid);
-			
-			int classnum = dto_c.getClassNum();
+			int classnum = Integer.parseInt(request.getParameter("cmt_classnum").trim());
+			/* int classnum = dto_c.getClassNum(); */
 			System.out.println("classnum: "+ classnum);
 			
 			

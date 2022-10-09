@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.dto.classpage.ClassCommentDTO;
 import com.dto.classpage.ClassDTO;
+import com.dto.classpage.DeleteCommentDTO;
 import com.dto.classpage.UpdateCommentDTO;
 import com.dto.login.MemberDTO;
 import com.service.classpage.ClassCommentService;
@@ -36,26 +37,29 @@ public class Delete_CommentServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		MemberDTO mdto = (MemberDTO) session.getAttribute("login");
-		ClassDTO cdto = (ClassDTO) session.getAttribute("classnum");
-		String classnum = (String)request.getParameter("classnum");
-		String nextpg = "";
+		ClassDTO dto_c =(ClassDTO) session.getAttribute("cDTO");
+		
 		
 		if (mdto==null) {
 			session.setAttribute("mesg", "로그인이 필요합니다.");
-			nextpg ="MAIN"; 
-		}else if(cdto.getUserId()==mdto.getUserId()) {
-			ClassCommentDTO cmtdto = new ClassCommentDTO();
+		}else {
+			String userid = mdto.getUserId();
+			System.out.println("=====commentDelete=====");
+			System.out.println("ID: "+userid);
+			int classnum = Integer.parseInt(request.getParameter("cmt_classnum").trim());
+			/* int classnum = dto_c.getClassNum(); */
+			System.out.println("classNum: "+classnum);
+			
 			ClassCommentService cmtservice = new ClassCommentService();
-			int cmtnum = cmtservice.cmtDelete(classnum);
-			System.out.println("삭제"+"cmtnum");
+			DeleteCommentDTO cmtdto = new DeleteCommentDTO(classnum,userid);
+			cmtservice.cmtDelete(cmtdto);
 			session.setAttribute("mesg", "삭제가 완료되었습니다.");
-			nextpg="ClassPage";
 			
 		}
 		
 		
 		
-		response.sendRedirect(nextpg);
+		response.sendRedirect("ClassPage");
 	
 	}
 

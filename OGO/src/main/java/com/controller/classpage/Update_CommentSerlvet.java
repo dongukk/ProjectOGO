@@ -47,7 +47,8 @@ public class Update_CommentSerlvet extends HttpServlet {
 			System.out.println("수정글: "+comment_notice);
 			String userid = mdto.getUserId();
 			System.out.println("ID: "+userid);
-			int classnum = dto_c.getClassNum();
+			/* int classnum = dto_c.getClassNum(); */
+			int classnum = Integer.parseInt(request.getParameter("cmt_classnum").trim());
 			System.out.println("classNum: "+classnum);
 			String comment_date = "sysdate";
 			System.out.println("현재날짜: "+comment_date); 
@@ -56,7 +57,7 @@ public class Update_CommentSerlvet extends HttpServlet {
 			ClassCommentService cmtservice = new ClassCommentService();
 			int cmtnum = cmtservice.cmtUpdate(cmtupdatedto);
 			if(cmtnum ==1) {
-				session.setAttribute("mesg", "성공적으로 수정 되었습니다.");
+				session.setAttribute("mesg", "수정 되었습니다.");
 			}else {
 				session.setAttribute("mest", "다시 시도해주세요.");
 			}
@@ -67,7 +68,6 @@ public class Update_CommentSerlvet extends HttpServlet {
 		
 		
 		
-		response.sendRedirect(nextpg);
 	}
 
 	/**

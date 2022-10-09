@@ -1,7 +1,7 @@
 package com.dto.classpage;
 
 public class UpdateCommentDTO {
-	int CLASSNUM;
+	int classnum;
 	String userid;
 	String comment_notice;
 	String comment_date;
@@ -9,18 +9,18 @@ public class UpdateCommentDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public UpdateCommentDTO(int cLASSNUM, String userid, String comment_notice, String comment_date) {
+	public UpdateCommentDTO(int classnum, String userid, String comment_notice, String comment_date) {
 		super();
-		CLASSNUM = cLASSNUM;
+		this.classnum = classnum;
 		this.userid = userid;
 		this.comment_notice = comment_notice;
 		this.comment_date = comment_date;
 	}
-	public int getCLASSNUM() {
-		return CLASSNUM;
+	public int getClassnum() {
+		return classnum;
 	}
-	public void setCLASSNUM(int cLASSNUM) {
-		CLASSNUM = cLASSNUM;
+	public void setClassnum(int classnum) {
+		this.classnum = classnum;
 	}
 	public String getUserid() {
 		return userid;
@@ -42,7 +42,7 @@ public class UpdateCommentDTO {
 	}
 	@Override
 	public String toString() {
-		return "UpdateCommentDTO [CLASSNUM=" + CLASSNUM + ", userid=" + userid + ", comment_notice=" + comment_notice
+		return "UpdateCommentDTO [classnum=" + classnum + ", userid=" + userid + ", comment_notice=" + comment_notice
 				+ ", comment_date=" + comment_date + "]";
 	}
 	
