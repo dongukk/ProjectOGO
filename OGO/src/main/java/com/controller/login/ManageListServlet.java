@@ -26,13 +26,17 @@ public class ManageListServlet extends HttpServlet {
 		
 		String searchName = request.getParameter("searchName");
 		String searchValue = request.getParameter("searchValue");
-		System.out.println(searchName+"\t"+searchValue);
+		String order = request.getParameter("order");
+		System.out.println(searchName+"\t"+searchValue+"\t"+order);
+		if(order == null) {order = "asc";}
+		
 		MemberService service = new MemberService();
-		PageDTO pDTO = service.search(searchName, searchValue, Integer.parseInt(curPage));
+		PageDTO pDTO = service.search(searchName, searchValue, Integer.parseInt(curPage), order);
 		
 		request.setAttribute("pDTO", pDTO);
 		request.setAttribute("searchName", searchName);
 		request.setAttribute("searchValue", searchValue);
+		request.setAttribute("order", order);
 
 		RequestDispatcher dis = request.getRequestDispatcher("ManagementMember.jsp");
 		dis.forward(request, response);

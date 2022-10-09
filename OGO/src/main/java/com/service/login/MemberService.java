@@ -181,11 +181,11 @@ public class MemberService {
 		return n;
 	}
 
-	public PageDTO search(String searchName, String searchValue, int curPage) {		
+	public PageDTO search(String searchName, String searchValue, int curPage, String order) {		
 		HashMap<String, String> map = new HashMap<>();
 		map.put("searchName", searchName);
 		map.put("searchValue", searchValue);
-		
+		map.put("order", order);
 		 MemberDAO dao = new MemberDAO();
 		 SqlSession session = MySqlSessionFactory.getSession();
 		 PageDTO pDTO = null;

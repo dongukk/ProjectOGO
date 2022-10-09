@@ -38,11 +38,11 @@ public class MemberDAO {
 
 	public int delete(SqlSession session, String userId) {		
 		int n = session.delete("MemberMapper.deleteByMember", userId);
-		return 1;
+		return n;
 	}
     public int deleteAll(SqlSession session, List<String> list) {		
     	int n = session.delete("MemberMapper.deleteByAllMember", list);
-		return 1;
+		return n;
 	}
     public MemberDTO mypage(SqlSession session, String userid) {
 		MemberDTO n = session.selectOne("MemberMapper.mypage", userid);
