@@ -32,8 +32,10 @@ public class ClassPageServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		MemberDTO mDTO= (MemberDTO)session.getAttribute("login");
 		/* int classNum=221; */ //나중에 클래스Num 받아오기
-		int classNum= Integer.parseInt(request.getParameter("listNum"));
-		System.out.println("classNum:"+classNum); //클래스번호 확인
+		/* int classNum= Integer.parseInt(request.getParameter("listNum")); */
+		String classNum2= request.getParameter("listNum");
+		int classNum= Integer.parseInt(classNum2);
+		System.out.println(classNum2+"bab");
 		
 		ClassService service= new ClassService();
 		//클래스 정보
